@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Björn Dahlman | Mediagalleri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            
+            <a href="index.html">
+                <img src="../bd_logo.jpg" alt="Björn Dahlman Initialer - Logotyp" class="h-10 w-auto">
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Om mig</a></li>
+                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Kompetenser</a></li>
+                    <li><a href="media.html" class="text-blue-600 dark:text-blue-400 transition font-bold">Media</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projekt</a></li>
+                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Erfarenhet</a></li>
+                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Utbildning</a></li>
+                </ul>
+
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="../media.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Switch to English">🇬🇧</a>
+                    <a href="media.html" class="lang-icon active-lang hover:opacity-100" aria-label="Växla till Svenska">🇸🇪</a>
+                </div>
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="max-w-4xl mx-auto px-6 py-20 space-y-16 mt-[72px]">
+        
+        <header class="text-center pb-10">
+            <div class="mb-10">
+                <a href="index.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-lg hover:shadow-xl">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                    Tillbaka till min Portfolio
+                </a>
+            </div>
+            
+            <h1 class="text-4xl font-bold tracking-tight">Mediagalleri</h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto">
+                En samling av bilder, videor och ljudklipp relaterade till mina intressen och expertisområden.
+            </p>
+        </header>
+
+        <section id="images" class="fade-in">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="image" class="w-7 h-7 text-blue-600"></i> Bilder
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                    <img src="../telephone.jpg" alt="Ett foto från en telekommunikationsantenn." class="w-full h-auto rounded-lg mb-3"> 
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium-satellittelefon
+                    </figcaption>
+                </figure>
+                
+                <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                    <img src="../communication.jpg" alt="En närbild av ett kretskort för inbyggda system." class="w-full h-auto rounded-lg mb-3"> 
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium-satellit
+                    </figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+        <hr class="border-t border-slate-200 dark:border-slate-800">
+
+        <section id="videos" class="fade-in delay-100">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videor
+            </h2>
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
+                <div class="video-container mb-3">
+                    <video controls width="100%" class="rounded-lg">
+                        <source src="../Main-Steam.mp4" type="video/mp4">
+                        Din webbläsare stöder inte videoelementet.
+                    </video>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Kärnkraftssäkerhet - Olycka med huvudångledning (språk engelska)
+                </p>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <i data-lucide="video" class="w-6 h-6 text-blue-600"></i> Ytterligare Videoklipp
+            </h3>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                <div class="video-container mb-3">
+                    <video controls width="100%" class="rounded-lg">
+                        <source src="../thesis.mp4" type="video/mp4">
+                        Din webbläsare stöder inte videoelementet.
+                    </video>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Högfrekvensfilterdesign (språk engelska)
+                </p>
+            </div>
+            
+
+        </section>
+
+        <hr class="border-t border-slate-200 dark:border-slate-800">
+
+        <section id="audio-clips" class="fade-in delay-200">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Ljudklipp
+            </h2>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                <div class="audio-container mb-3">
+                    <audio controls class="w-full">
+                        <source src="../ai_eng.mp3" type="audio/mp3">
+                        Din webbläsare stöder inte ljud-elementet.
+                    </audio>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    AI-säkerhetsindexet (ref: Max Tegmark, språk engelska)
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
+        <p>© 2025 Björn Dahlman. Alla rättigheter reserverade.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Initiera tema, ikoner och mobilmenylogik (krävs för icke-index sidor)
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof initTheme === 'function') initTheme();
+            if (window.lucide) window.lucide.createIcons();
+            
+            // Stäng menyn om man klickar på en länk inuti den (för navigering)
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', typeof closeMobileMenu === 'function' ? closeMobileMenu : () => {});
+                });
+            }
+        });
+    </script>
+</body>
+</html>
