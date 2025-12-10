@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Björn Dahlman | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="../style.css"> 
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            
+            <img src="../bd_logo.jpg" alt="Björn Dahlman Initialer - Logotyp" class="h-10 w-auto">
+            
+            <div class="flex items-center gap-6">
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Om mig</a></li>
+                    <li><a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Kompetenser</a></li>
+                    <li><a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projekt</a></li>
+                    <li><a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Erfarenhet</a></li>
+                    <li><a href="#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Utbildning</a></li>
+                </ul>
+
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="../index.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Switch to English">🇬🇧</a>
+                    <a href="index.html" class="lang-icon active-lang hover:opacity-100" aria-label="Växla till Svenska">🇸🇪</a>
+                </div>
+                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
+                    
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i> 
+                    </a>
+                    
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden 
+                                bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
+            
+            <a href="#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Om mig</a>
+            <a href="#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Kompetenser</a>
+            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Projekt</a>
+            <a href="#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Erfarenhet</a>
+            <a href="#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Utbildning</a>
+            
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Språk:</span>
+                <a href="../index.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" onclick="closeMobileMenu();" aria-label="Switch to English">🇬🇧</a>
+                <a href="index.html" class="lang-icon active-lang text-xl hover:opacity-100" onclick="closeMobileMenu();" aria-label="Växla till Svenska">🇸🇪</a>
+            </div>
+            <button onclick="toggleTheme(); closeMobileMenu();" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 dark:hidden"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                Växla tema
+            </button>
+            
+            <div class="flex gap-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <a href="https://x.com/DahlmanBjorn" target="_blank" class="text-xl hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i> 
+                </a>
+                <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="text-xl hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="hero-bg relative text-white text-center py-40 px-6 fade-in">
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h2 id="name" class="text-5xl md:text-6xl font-bold mb-4 tracking-tight"></h2>
+            <p id="title" class="text-xl md:text-2xl text-slate-200 font-light mb-8"></p>
+            
+            <div class="flex justify-center gap-4">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition shadow-lg shadow-blue-500/30">
+                    Kontakta mig
+                </a>
+                <a href="projects.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-medium transition">
+                    Visa projekt
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 space-y-24 py-20">
+        
+        <section id="about" class="grid md:grid-cols-3 gap-12 items-start fade-in delay-100">
+            <div class="md:col-span-1">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                    <i data-lucide="user" class="w-6 h-6 text-blue-600"></i> Om mig
+                </h3>
+            </div>
+            <div class="md:col-span-2">
+                <p id="presentation" class="text-lg leading-relaxed text-slate-600 dark:text-slate-300"></p>
+                
+                <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+                    <h4 class="text-sm uppercase tracking-wider font-semibold text-slate-500 mb-3">Intressen</h4>
+                    <ul id="freetime-list" class="flex flex-wrap gap-2 text-sm text-slate-600 dark:text-slate-400"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="grid md:grid-cols-3 gap-12 items-start fade-in delay-200">
+            <div class="md:col-span-1">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                    <i data-lucide="cpu" class="w-6 h-6 text-blue-600"></i> Kompetenser
+                </h3>
+            </div>
+            <div class="md:col-span-2">
+                <div id="skills-list" class="flex flex-wrap gap-3"></div>
+            </div>
+        </section>
+
+        <section id="experience" class="grid md:grid-cols-3 gap-12 items-start fade-in delay-300">
+            <div class="md:col-span-1">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                    <i data-lucide="briefcase" class="w-6 h-6 text-blue-600"></i> Erfarenhet
+                </h3>
+            </div>
+            <div id="experience-list" class="md:col-span-2 space-y-10 relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-0 pl-8 md:pl-0">
+                </div>
+        </section>
+
+        <section id="education" class="grid md:grid-cols-3 gap-12 items-start fade-in">
+            <div class="md:col-span-1">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-600"></i> Utbildning
+                </h3>
+            </div>
+            <div id="education-list" class="md:col-span-2 space-y-8"></div>
+        </section>
+
+        <section id="contact" class="bg-slate-100 dark:bg-slate-900 rounded-3xl p-10 text-center fade-in">
+            <h3 class="text-2xl font-bold mb-4">Låt oss höras</h3> 
+            <p class="mb-6 text-slate-600 dark:text-slate-400">Tveka inte att höra av dig för samarbeten eller möjligheter.</p> 
+            <a id="email-link" href="#" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline text-lg font-medium">
+                <i data-lucide="mail" class="w-5 h-5"></i> 
+                <span id="email"></span>
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
+        <p>© 2025 <span id="footer-name"></span>. Alla rättigheter reserverade.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
