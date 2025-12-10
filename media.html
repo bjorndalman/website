@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Björn Dahlman | Media Gallery</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            
+            <a href="index.html">
+                <img src="bd_logo.jpg" alt="Björn Dahlman Initials" class="h-6 w-auto" style="height: 72px; width: auto;">
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
+                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
+                    <li><a href="media.html" class="text-blue-600 dark:text-blue-400 transition font-bold">Media</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a></li>
+                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
+                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
+                </ul>
+
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="media.html" class="lang-icon active-lang hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                    <a href="sv/media.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+                </div>
+                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
+                    
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i> 
+                    </a>
+                    
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden 
+                                bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
+            
+            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">About</a>
+            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Skills</a>
+            <a href="media.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400" onclick="closeMobileMenu();">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Projects</a>
+            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Experience</a>
+            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Education</a>
+            
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
+                <a href="media.html" class="lang-icon active-lang text-xl hover:opacity-100" onclick="closeMobileMenu();" aria-label="Switch to English">🇬🇧</a>
+                <a href="sv/media.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" onclick="closeMobileMenu();" aria-label="Växla till Svenska">🇸🇪</a>
+            </div>
+            <button onclick="toggleTheme(); closeMobileMenu();" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 dark:hidden"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                Toggle Theme
+            </button>
+            
+            <div class="flex gap-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <a href="https://x.com/DahlmanBjorn" target="_blank" class="text-xl hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i> 
+                </a>
+                <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="text-xl hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center">
+        <div class="mb-10">
+            <a href="index.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-lg hover:shadow-xl">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                Back to Portfolio
+            </a>
+        </div>
+        
+        <h1 class="text-4xl font-bold tracking-tight">Media Gallery</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto">
+            A collection of images, videos, and recordings from my work and personal projects.
+        </p>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 space-y-16">
+        
+        <section id="images" class="fade-in">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="image" class="w-7 h-7 text-blue-600"></i> Images
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                    <img src="telephone.jpg" alt="A photo from a telecommunication antenna array." class="w-full h-auto rounded-lg mb-3"> 
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium Satellite "Telephone"
+                    </figcaption>
+                </figure>
+                
+                <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                    <img src="communication.jpg" alt="A close-up of an embedded system circuit board." class="w-full h-auto rounded-lg mb-3"> 
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium Satellite
+                    </figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+        <hr class="border-t border-slate-200 dark:border-slate-800">
+
+        <section id="videos" class="fade-in delay-100">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videos
+            </h2>
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
+                <div class="video-container mb-3">
+                    <video controls width="100%" class="rounded-lg">
+                        <source src="Main-Steam.mp4" type="video/mp4">
+                        Your browser does not support the video tag
+                    </video>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Nuclear Power Safety- The Main Steam Line Break Accident
+                </p>
+            </div>
+            
+            <h3 class="text-xl font-bold mt-8 mb-4">Additional Video Content</h3>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                <div class="video-container mb-3">
+                    <video controls width="100%" class="rounded-lg">
+                        <source src="thesis.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Highfrequency Filter Design
+                </p>
+            </div>
+
+
+        </section>
+        
+        <hr class="border-t border-slate-200 dark:border-slate-800">
+
+        <section id="audio" class="fade-in delay-200">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Audio
+            </h2>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                <div class="audio-container mb-3">
+                    <audio controls class="w-full">
+                        <source src="ai_eng.mp3" type="audio/mp3">
+                        Your browser does not support the audio element
+                    </audio>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    The AI Safety Index (ref. Max Tegmark)
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
+        <p>© 2025 Björn Dahlman. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize theme, icons, and mobile menu logic (required for non-index pages)
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof initTheme === 'function') initTheme();
+            if (window.lucide) window.lucide.createIcons();
+            
+            // Connect mobile menu logic if available in script.js (assuming toggleMobileMenu/closeMobileMenu are global)
+            const menuButton = document.getElementById('menu-button');
+            if (menuButton) {
+                menuButton.addEventListener('click', typeof toggleMobileMenu === 'function' ? toggleMobileMenu : () => {});
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Björn Dahlman | Projects</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            
+            <a href="index.html">
+                <img src="bd_logo.jpg" alt="Björn Dahlman Initials" class="h-6 w-auto" style="height: 72px; width: auto;">
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About Me</a></li>
+                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
+                    <li><a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a></li>
+                    <li><a href="projects.html" class="text-blue-600 dark:text-blue-400 transition font-bold">Projects</a></li>
+                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
+                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
+                </ul>
+
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="projects.html" class="lang-icon active-lang hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                    <a href="sv/projects.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+                </div>
+                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
+                    
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i> 
+                    </a>
+                    
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden 
+                                bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
+            
+            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">About Me</a>
+            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Skills</a>
+            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Media</a>
+            <a href="projects.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400" onclick="closeMobileMenu();">Projects</a>
+            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Experience</a>
+            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Education</a>
+            
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
+                <a href="projects.html" class="lang-icon active-lang text-xl hover:opacity-100" onclick="closeMobileMenu();" aria-label="Switch to English">🇬🇧</a>
+                <a href="sv/projects.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" onclick="closeMobileMenu();" aria-label="Växla till Svenska">🇸🇪</a>
+            </div>
+            <button onclick="toggleTheme(); closeMobileMenu();" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 dark:hidden"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                Toggle Theme
+            </button>
+            
+            <div class="flex gap-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <a href="https://x.com/DahlmanBjorn" target="_blank" class="text-xl hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i> 
+                </a>
+                <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="text-xl hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 space-y-16 mt-[72px]">
+        
+        <header class="text-center pb-10">
+            <div class="mb-10">
+                <a href="index.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-lg hover:shadow-xl">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                    Back to Portfolio
+                </a>
+            </div>
+            <h1 class="text-4xl font-bold tracking-tight">My Technical Projects</h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto">
+                A selection of personal and academic projects highlighting various technical skills.
+            </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+            <div id="telecom" class="fade-in">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="signal" class="w-7 h-7 text-blue-600"></i> Telematic in Automotive
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                TEA2+ testing focuses on the truck's electronic systems for safety and communication. It includes simulation tests for software and hardware, ensures compliance with safety standards, and tests physical durability in various conditions. Dynafleet testing ensures data accuracy, validates features with real users, and assesses usability for fleet management.
+                </p>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300">Vector CANoe</span>
+                    <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300">Software in the Loop</span>
+                    <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300">Engineering Tools</span>
+                </div>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800 fade-in delay-100">
+                <img src="dynafleet_project.jpg" alt="Satellite antenna communicating via signal beams" class="w-full h-auto object-cover">
+            </div>
+        </div>
+        
+       <div class="grid md:grid-cols-2 gap-8 items-center bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+            <div id="embedded  " class="fade-in">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="signal" class="w-7 h-7 text-blue-600"></i> Automotive Engineering
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                The main engineering goal is to enhance diagnostic capabilities for the complex Euro VI system, moving from basic sensor checks to predictive, real-time fault tracing. This involves integrating data from subsystems like EGR, DPF, and SCR to pinpoint issues rather than just symptoms. By developing On-Board Diagnostic (OBD) logic that uses pressure differential sensors, we create performance models that can predict problems before emissions limits are breached. 
+                </p>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300">Vector CANoe</span>
+                    <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300">Software in the Loop</span>
+                    <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300">Engineering Tools</span>
+                </div>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800 fade-in delay-100">
+                <img src="eats_project.jpg" alt="Satellite antenna communicating via signal beams" class="w-full h-auto object-cover">
+            </div>
+        </div>
+
+        <section id="advanced" class="fade-in delay-300">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="list-checks" class="w-7 h-7 text-blue-600"></i> Other Projects
+            </h2>
+            <ul class="space-y-4">
+                <li class="flex justify-between items-center bg-white dark:bg-slate-900 p-4 rounded-xl shadow border border-slate-200 dark:border-slate-800">
+                    <div>
+                        <p class="font-semibold text-lg">Nuclear Power Plant Safety and Ethics</p>
+                        <p class="text-sm text-slate-500">This content outlines key skills and knowledge related to nuclear power plant safety and ethical considerations.
+                            Key Points:
+                            • Master problem-solving with uncertainties and limited information.
+                            • Collaborate in diverse interdisciplinary groups.
+                            • Address and assess ethical implications of problems.
+                            • Communicate effectively in English about various aspects of nuclear power plants.
+                            • Understand the workings, safety culture, regulations, and risk assessments of nuclear power plants.
+                            • Explain safety implementation and analysis methods, along with behavior during incidents.
+                            • Reflect on safety issues, incorporating ethical concerns.
+
+                            Conclusion:
+                            Developing these skills and knowledge is crucial for addressing safety and ethical issues in nuclear power.
+                        </p>
+                    </div>
+                    <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-slate-300 px-2 py-1 rounded">Matlab/Python</span> 
+                </li>
+            </ul>
+        </section>
+
+         <section id="moreadvanced" class="fade-in delay-300">
+            <ul class="space-y-4">
+                <li class="flex justify-between items-center bg-white dark:bg-slate-900 p-4 rounded-xl shadow border border-slate-200 dark:border-slate-800">
+                    <div>
+                        <p class="font-semibold text-lg">High Voltage Engineering</p>
+                        <p class="text-sm text-slate-500">Perform analytical calculations of electric field distribution in insulation systems. Identify unsuitable geometries, suggest improvements, and explain electric breakdown in gases. Define terms and factors for high electric withstand strength. Discuss laboratory equipment, safe test setups, and evaluate test sequences. Identify power components in substations, calculate fault probabilities, and coordinate insulation levels with protective measures. Reflect on international work challenges.
+                        </p>
+                    </div>
+                    <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-slate-300 px-2 py-1 rounded">Electric Power Mearsurements</span> 
+                </li>
+            </ul>
+        </section>
+
+        <section id="general" class="fade-in delay-300">
+            <ul class="space-y-4">
+                <li class="flex justify-between items-center bg-white dark:bg-slate-900 p-4 rounded-xl shadow border border-slate-200 dark:border-slate-800">
+                    <div>
+                        <p class="font-semibold text-lg">Personal Website / Portfolio (This one)</p>
+                        <p class="text-sm text-slate-500">Built with HTML, Tailwind CSS, and JavaScript.</p>
+                    </div>
+                    <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-slate-300 px-2 py-1 rounded">Web Development</span> 
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
+        <p>© 2025 Björn Dahlman. All rights reserved.</p> 
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        // Initialize theme, icons, and mobile menu logic (required for non-index pages)
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof initTheme === 'function') initTheme();
+            if (window.lucide) window.lucide.createIcons();
+            
+            // Close menu if a link inside it is clicked
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', typeof closeMobileMenu === 'function' ? closeMobileMenu : () => {});
+                });
+            }
+        });
+    </script>
+</body>
+</html>

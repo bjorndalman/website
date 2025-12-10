@@ -1,0 +1,147 @@
+/* =========================
+   BASE STYLES & TAILWIND
+   ========================= */
+
+/* Tailwind CSS-direktiven är borttagna härifrån.
+   De kräver ett byggsteg (t.ex. PostCSS) och är 
+   inte nödvändiga eftersom du laddar Tailwind via CDN i din HTML.
+*/
+
+/* =========================
+   GLOBAL OVERRIDES
+   ========================= */
+
+/* Smooth scroll for the entire document */
+html {
+    scroll-behavior: smooth;
+}
+
+/* KORRIGERING FÖR FAST NAVIGATIONSFÄLT:
+   Lägger till en "buffer" (scroll-margin-top) till alla sektioner
+   som har ett ID, så att de inte täcks av det fasta nav-fältet (som är ca 72px högt).
+   6rem (96px) ger en säker marginal.
+*/
+main section[id] {
+    scroll-margin-top: 6rem;
+}
+
+
+/* Ensure images scale correctly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix for lucide icons in dark mode */
+.dark [data-lucide] {
+    color: #cbd5e1; /* slate-300 */
+}
+
+/* =========================
+   HERO SECTION
+   ========================= */
+
+.hero-bg {
+    /* Lägg till en bakgrundsbild för att ge header-sektionen liv. */
+    /* Ersätt 'hero_bg.jpg' med din egen bildfil */
+    background-image: url('hero_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Gör att bilden scrollar långsammare (parallax-effekt) */
+    
+    /* Överlappning (overlay) för att texten ska synas bättre */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Mörk överlappning */
+    backdrop-filter: blur(2px); /* Lite suddighet */
+    z-index: 1;
+}
+
+/* =========================
+   SCROLL-DRIVEN ANIMATIONS
+   (Använder CSS-funktionerna view() och scroll-timeline)
+   ========================= */
+
+/* Definiera fade-in animation för sektioner när de kommer in i vyn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease-out forwards;
+    animation-timeline: view(); /* Använder Scroll-driven animations */
+    animation-range: entry 25% cover 40%;
+}
+
+/* Delay for staggering the animation */
+.fade-in.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.fade-in.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.fade-in.delay-300 {
+    animation-delay: 0.3s;
+}
+
+/* =========================
+   TIMELINE STYLING (EXPERIENCE)
+   ========================= */
+
+/* Cirkelmarkör för mobil (tar över från desktop i script.js) */
+#experience-list > div {
+    position: relative;
+}
+
+/* Under MD breakpoint (767px) */
+@media (max-width: 767px) { 
+    /* Lägg till den vertikala linjen för tidlinjen */
+    #experience-list {
+        /* Tar över från Tailwind-klassen border-l-2 */
+        border-left: 2px solid #e2e8f0; /* slate-200 */
+    }
+    
+    /* Markör för varje tidpunkt */
+    #experience-list > div::before {
+        content: '';
+        position: absolute;
+        /* KORRIGERAD PLACERING: Justerad för att centrera cirkeln på linjen (pl-8/32px) */
+        left: 21px; 
+        top: 4px; /* Justerad för att centrera den vertikalt med titeln */
+        width: 14px;
+        height: 14px;
+        background-color: #3b82f6; /* blue-600 */
+        border-radius: 9999px;
+        border: 4px solid #f9fafb; /* Ljus bakgrund: slate-50 */
+        z-index: 10;
+    }
+    
+    /* Mörk läge override */
+    .dark #experience-list {
+         border-left: 2px solid #1e293b; /* slate-800 */
+    }
+    
+    .dark #experience-list > div::before {
+        border-color: #020617; /* Mörk bakgrund: slate-950 */
+    }
+}
