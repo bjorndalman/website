@@ -119,6 +119,12 @@ const swedishData = { // SVENSKA ÖVERSÄTTNINGAR (Oändrad från ditt original)
             company: "PLATS · Europa - Skandinavien",
             years: " - 2020",
 			description: "Jag har en stark bakgrund inom teknik och har utvecklat praktiska problemlösningsförmågor inom flera olika sektorer. Min tidiga erfarenhet inkluderar roller som mekaniker och produktionsarbetare, med fokus på mekaniskt och fordonsrelaterat arbete. Efter att ha genomfört militär jägarutbildning och civilplikt fortsatte jag med högre studier i teknik vid Chalmers tekniska högskola, där jag tog en kandidatexamen i elektroteknik med inriktning mot elektroniska kommunikationssystem."
+        },
+		{
+            title: "Militärtjänst - Jägare",
+            company: "PLATS · K3 Karlsborg",
+            years: "",
+            "description": "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
         }
     ],
     freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
@@ -315,4 +321,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
