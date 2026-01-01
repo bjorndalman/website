@@ -100,13 +100,13 @@ const swedishData = { // SVENSKA ÖVERSÄTTNINGAR (Oändrad från ditt original)
             program: "Datatransmission & SDH Teknik",
             years: "",
             description: "Certifierad med 25 dagars teknisk utbildning i Datatransmission, med fokus på standarden Synchronous Digital Hierarchy (SDH) och Marconi transmissionssystem. Dokumenterad expertis inom hela livscykeln för SDH-nätverk, inklusive nätverksprinciper, drift, underhåll och komplex design. Kunskaper i specifika Marconi-plattformar (41/51 C, STM-1 MSH 11, MSH63/64) och nätverkshanteringsverktyg (Marconi MV36/38). Stark grund inom Optiska Tekniker och praktisk erfarenhet av mätningar och felsökning av datanätverk med hög kapacitet. Redo att bidra med djup teknisk kunskap för att hantera och optimera kritisk telekommunikationsinfrastruktur."
-        },
+        }/*,
         {
             "school": "K3 - Karlsborg",
             "program": "Militärtjänst - Jägarutbildning",
             "years": "",
             "description": "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare."
-        }
+        } */
     ],
     experience: [
         {
@@ -315,3 +315,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
