@@ -36,13 +36,13 @@ const defaultData = { // ENGELSKA (BAS)
       program: "Data Transmission & SDH Specialist",
       years: "",
       description:"Certified professional with 25 days of specialized technical training in Data Transmission Technology, focusing on the Synchronous Digital Hierarchy (SDH) standard and Marconi transmission systems. Proven expertise in the complete lifecycle of SDH networks, including network principles, operation, maintenance, and complex design. Proficient with specific Marconi platforms (41/51 C, STM-1 MSH 11, MSH63/64) and network management tools (Marconi MV36/38). Strong foundation in Optical Techniques and hands-on experience in measurements and troubleshooting high-capacity data networks. Ready to contribute deep technical knowledge to managing and optimizing critical telecommunications infrastructure.",
-    },
+    } /*,
     {
       "school": "K3 - Karlsborg",
       "program": "Military Service - Rangers Training",
       "years": "",
       "description": "<img src=\"jagar_badge.jpg\" alt=\"Ranger badge\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Completed advanced basic military training as a Ranger (Jägare)."
-}
+} */
   ],
   experience: [
     {
@@ -56,7 +56,13 @@ const defaultData = { // ENGELSKA (BAS)
       company: "PLACE · Europe - Scandinavia",
       years: " - 2020",
       description: "I has a strong background in engineering, gaining hands-on problem solving skills across various sectors. Their early experience includes roles as a mechanic and production worker, focusing on mechanical and automotive work. After completing military ranger training and civil service, they pursued higher education in engineering at Chalmers University of Technology, earning a Bachelor of Science in Electrical Engineering with a specialization in Electronic Communication Systems.",
-    }
+    },
+	{
+      title: "Military Service - Ranger",
+      company: "PLACE · K3 Karlsborg",
+      years: "",
+      "description": "<img src=\"jagar_badge.jpg\" alt=\"Ranger badge\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Completed advanced basic military training as a Ranger (Jägare). Experience from the Life Regiment Hussars (K3) in Karlsborg, where operations are characterized by high levels of responsibility, teamwork under pressure, and the use of advanced technology. The unit focuses on intelligence gathering, reconnaissance, and rapid response capabilities in complex environments, as well as training in survival and personnel recovery for international missions."
+    }    
     ],
   freetime: ["Sports", "Outdoor activities", "YouTube: 'Dalmanium'", "Coding"]
 };
@@ -307,4 +313,5 @@ document.addEventListener("DOMContentLoaded", () => {
           }
       });
   }
+
 });
