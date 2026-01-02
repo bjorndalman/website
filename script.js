@@ -124,7 +124,7 @@ const swedishData = { // SVENSKA ÖVERSÄTTNINGAR (Oändrad från ditt original)
             title: "Instruktör",
             company: "Hemvärnet",
             years: "10 år",
-            "description": "Instruktör med bakgrund i Hemvärnet. Erfaren av att utbilda enheter för hög beredskap med fokus på tydlig samordning och precision under krävande förhållanden."
+            "description": "Instruktör med bakgrund i Hemvärnet. Erfarenhet av att utbilda förband för snabbinsatser samt att upprätthålla hög samordning och precision i fält."
         }
     ],
     freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
@@ -321,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
