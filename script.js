@@ -61,7 +61,7 @@ const defaultData = { // ENGELSKA (BAS)
       title: "Instructor",
       company: "The Swedish Home Guard",
       years: "10-years",
-      "description": "Instructor with a background in the Swedish Home Guard. Experienced in training units for rapid response and maintaining high standards of coordination and precision in the field."
+      "description": "Instructor with a background in the Swedish Home Guard. Experienced in training units for rapid response and maintaining standards of coordination and precision in the field."
     }    
     ],
   freetime: ["Sports", "Outdoor activities", "YouTube: 'Dalmanium'", "Coding"]
@@ -124,7 +124,7 @@ const swedishData = { // SVENSKA ÖVERSÄTTNINGAR (Oändrad från ditt original)
             title: "Instruktör",
             company: "Hemvärnet",
             years: "10 år",
-            "description": "Instruktör med bakgrund i Hemvärnet. Erfarenhet av att utbilda förband för snabbinsatser samt att upprätthålla hög samordning och precision i fält."
+            "description": "Instruktör med bakgrund i Hemvärnet. Erfarenhet av att utbilda förband för snabbinsatser samt att upprätthålla samordning och precision i fält."
         }
     ],
     freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
@@ -321,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
