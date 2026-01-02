@@ -59,9 +59,9 @@ const defaultData = { // ENGELSKA (BAS)
     },
 	{
       title: "Instructor",
-      company: "The Swedish National Security Force",
+      company: "The Swedish Home Guard",
       years: "10-years",
-      "description": "Instructor with a background in the Swedish National Security Force. Experienced in training units for rapid response and maintaining high standards of coordination and precision in the field."
+      "description": "Instructor with a background in the Swedish Home Guard. Experienced in training units for rapid response and maintaining high standards of coordination and precision in the field."
     }    
     ],
   freetime: ["Sports", "Outdoor activities", "YouTube: 'Dalmanium'", "Coding"]
@@ -321,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
