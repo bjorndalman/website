@@ -60,7 +60,7 @@ const defaultData = { // ENGELSKA (BAS)
 	{
       title: "Instructor",
       company: "The Swedish National Security Force",
-      years: "17-years",
+      years: "10-years",
       "description": "The Swedish National Security Force is an operationally ready part of the Swedish Armed Forces, maintaining high readiness and modern equipment. Through mobile and specialized units, it operates rapidly and effectively on land and at sea in coordination with other military forces. Readiness is measured in hours."
     }    
     ],
@@ -321,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
