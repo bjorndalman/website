@@ -56,13 +56,13 @@ const defaultData = { // ENGELSKA (BAS)
       company: "PLACE · Europe - Scandinavia",
       years: " - 2020",
       description: "I has a strong background in engineering, gaining hands-on problem solving skills across various sectors. Their early experience includes roles as a mechanic and production worker, focusing on mechanical and automotive work. After completing military ranger training and civil service, they pursued higher education in engineering at Chalmers University of Technology, earning a Bachelor of Science in Electrical Engineering with a specialization in Electronic Communication Systems.",
-    }/*,
+    },
 	{
       title: "Instructor",
       company: "The Swedish National Security Force",
       years: "10-years",
       "description": "The Swedish National Security Force is an operationally ready part of the Swedish Armed Forces, maintaining high readiness and modern equipment. Through mobile and specialized units, it operates rapidly and effectively on land and at sea in coordination with other military forces. Readiness is measured in hours."
-    } */    
+    }    
     ],
   freetime: ["Sports", "Outdoor activities", "YouTube: 'Dalmanium'", "Coding"]
 };
@@ -321,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
