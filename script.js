@@ -100,13 +100,13 @@ const swedishData = { // SVENSKA ÖVERSÄTTNINGAR (Oändrad från ditt original)
             program: "Datatransmission & SDH Teknik",
             years: "",
             description: "Certifierad med 25 dagars teknisk utbildning i Datatransmission, med fokus på standarden Synchronous Digital Hierarchy (SDH) och Marconi transmissionssystem. Dokumenterad expertis inom hela livscykeln för SDH-nätverk, inklusive nätverksprinciper, drift, underhåll och komplex design. Kunskaper i specifika Marconi-plattformar (41/51 C, STM-1 MSH 11, MSH63/64) och nätverkshanteringsverktyg (Marconi MV36/38). Stark grund inom Optiska Tekniker och praktisk erfarenhet av mätningar och felsökning av datanätverk med hög kapacitet. Redo att bidra med djup teknisk kunskap för att hantera och optimera kritisk telekommunikationsinfrastruktur."
-        }/*,
+        },
         {
             "school": "K3 - Karlsborg",
             "program": "Militärtjänst - Jägarutbildning",
             "years": "",
-            "description": "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare."
-        } */
+            "description": "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
+        }
     ],
     experience: [
         {
@@ -121,10 +121,10 @@ const swedishData = { // SVENSKA ÖVERSÄTTNINGAR (Oändrad från ditt original)
 			description: "Jag har en stark bakgrund inom teknik och har utvecklat praktiska problemlösningsförmågor inom flera olika sektorer. Min tidiga erfarenhet inkluderar roller som mekaniker och produktionsarbetare, med fokus på mekaniskt och fordonsrelaterat arbete. Efter att ha genomfört militär jägarutbildning och civilplikt fortsatte jag med högre studier i teknik vid Chalmers tekniska högskola, där jag tog en kandidatexamen i elektroteknik med inriktning mot elektroniska kommunikationssystem."
         },
 		{
-            title: "Militärtjänst - Jägare",
-            company: "PLATS · K3 Karlsborg",
-            years: "",
-            "description": "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
+            title: "Instruktör",
+            company: "Hemvärnet",
+            years: "10 år",
+            "description": "Instruktör med bakgrund i Hemvärnet. Erfaren av att utbilda enheter för hög beredskap med fokus på tydlig samordning och precision under krävande förhållanden."
         }
     ],
     freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
@@ -321,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
