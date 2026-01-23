@@ -7,4 +7,5 @@ Allow: /
 # Exempel: Disallow: /assets/css/
 
 # Berätta var din sitemap finns (viktigast!)
-Sitemap: https://bjorndalman.github.io/website/sitemap.xml
+
+Sitemap: https://www.dalmanium.se/sitemap.xml
