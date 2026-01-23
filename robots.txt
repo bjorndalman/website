@@ -8,4 +8,5 @@ Allow: /
 
 # Berätta var din sitemap finns (viktigast!)
 
-Sitemap: https://www.dalmanium.se/sitemap.xml
+Sitemap: https://dalmanium.se/sitemap.xml
+
