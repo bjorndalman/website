@@ -35,7 +35,7 @@ jobs:
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          base-url-path: https://bjorndalman.github.io/website/ # ÄNDRA DENNA LÄNK!
+          base-url-path: https://www.dalmanium.se/ # ÄNDRA DENNA LÄNK!
           path: '.'
           drop-extension: true # Gör att länkar ser snyggare ut (utan .html)
       # -----------------------------------------------
