@@ -1,0 +1,10 @@
+# Välkommen sökrobotar!
+User-agent: *
+Allow: /
+
+# Blockera mappar du inte vill ska synas i sökresultat (valfritt)
+# Exempel: Disallow: /private-drafts/
+# Exempel: Disallow: /assets/css/
+
+# Berätta var din sitemap finns (viktigast!)
+Sitemap: https://bjorndalman.github.io/website/sitemap.xml
