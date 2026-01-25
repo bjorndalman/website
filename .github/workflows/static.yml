@@ -37,7 +37,7 @@ jobs:
         with:
           base-url-path: https://dalmanium.se/ # ÄNDRA DENNA LÄNK!
           path: '.'
-          drop-extension: true # Gör att länkar ser snyggare ut (utan .html)
+          drop-extension: false # Gör att länkar ser snyggare ut (utan .html)
       # -----------------------------------------------
 
       - name: Setup Pages
