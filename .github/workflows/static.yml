@@ -11,7 +11,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: write  # Ändrad till write för att kunna spara sitemappen i arbetsflödet
+  contents: write
   pages: write
   id-token: write
 
@@ -31,14 +31,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # --- NYTT STEG: Generera Sitemap automatiskt ---
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          base-url-path: https://dalmanium.se/ # ÄNDRA DENNA LÄNK!
+          base-url-path: https://dalmanium.se/
           path: '.'
-          drop-extension: false # Gör att länkar ser snyggare ut (utan .html)
-      # -----------------------------------------------
+          # false keeps .html in the sitemap for better Google Search Console compatibility
+          drop-extension: false 
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
