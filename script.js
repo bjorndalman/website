@@ -173,7 +173,6 @@ function closeMobileMenu() {
 // ==========================================
 
 function render() {
-    // 5a. Bas-profil (Fungerar på alla sidor som har dessa ID:n)
     setText("name", appData.profile.name);
     setText("footer-name", appData.profile.name);
     setText("title", appData.profile.title);
@@ -183,7 +182,7 @@ function render() {
     const emailLink = document.getElementById("email-link");
     if (emailLink) emailLink.href = `mailto:${appData.profile.email}`;
 
-    // 5b. Skills (Startsidan)
+    // Skills
     const skillsList = document.getElementById("skills-list");
     if (skillsList) {
         skillsList.innerHTML = appData.skills.map(skill => `
@@ -193,7 +192,7 @@ function render() {
         `).join('');
     }
 
-    // 5c. Experience (Startsidan)
+    // Experience
     const expList = document.getElementById("experience-list");
     if (expList) {
         expList.innerHTML = appData.experience.map(exp => `
@@ -206,7 +205,7 @@ function render() {
         `).join('');
     }
 
-    // 5d. Education (Startsidan)
+    // Education
     const eduList = document.getElementById("education-list");
     if (eduList) {
         eduList.innerHTML = appData.education.map(edu => `
@@ -221,22 +220,43 @@ function render() {
         `).join('');
     }
 
-    // 5e. Free time (Startsidan)
-    const freeList = document.getElementById("freetime-list");
-    if (freeList) {
-        freeList.innerHTML = appData.freetime.map((item, index) => `
-            <li class="flex items-center">
-                ${item} ${index < appData.freetime.length - 1 ? '<span class="mx-2 opacity-50">•</span>' : ''}
-            </li>
-        `).join('');
-    }
-
-    // Rita ut Lucide-ikoner för nytt innehåll
     if (window.lucide) window.lucide.createIcons();
+    
+    // Anropa navigations-highlighter
+    updateNavHighlight();
 }
 
 // ==========================================
-// 6. INITIALISERING (NÄR SIDAN LADDATS)
+// 6. AUTOMATIC NAV HIGHLIGHT
+// ==========================================
+
+function updateNavHighlight() {
+    // Hitta nuvarande filnamn (t.ex. media.html)
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    
+    // Hitta alla länkar i både huvudnav och mobilmeny
+    const allLinks = document.querySelectorAll('nav a');
+
+    allLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        
+        // Återställ först (ta bort aktiv-klasser)
+        link.classList.remove('text-blue-600', 'dark:text-blue-400', 'font-bold', 'bg-slate-100', 'dark:bg-slate-800');
+        
+        // Om länkens href matchar nuvarande sida
+        if (href === currentPath) {
+            link.classList.add('text-blue-600', 'dark:text-blue-400', 'font-bold');
+            
+            // Om det är en mobillänk (har klassen block), lägg till bakgrund
+            if (link.classList.contains('block')) {
+                link.classList.add('bg-slate-100', 'dark:bg-slate-800');
+            }
+        }
+    });
+}
+
+// ==========================================
+// 7. INITIALISERING
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -244,13 +264,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     render();
 
-    // Hantera klick på mobilmenyns öppna-knapp
     const menuBtn = document.getElementById('menu-button');
-    if (menuBtn) {
-        menuBtn.addEventListener('click', toggleMobileMenu);
-    }
+    if (menuBtn) menuBtn.addEventListener('click', toggleMobileMenu);
 
-    // Hantera klick på tema-knappar (Desktop & Mobil)
     const themeBtn = document.getElementById('theme-toggle');
     const themeBtnMobile = document.getElementById('theme-toggle-mobile');
     
@@ -262,7 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Stäng mobilmenyn automatiskt när man klickar på en länk
     const mobileLinks = document.querySelectorAll('#mobile-menu a:not(.lang-icon)');
     mobileLinks.forEach(link => {
         link.addEventListener('click', closeMobileMenu);
