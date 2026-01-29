@@ -208,8 +208,47 @@
         </section> -->
 
         <hr class="border-t border-slate-200 dark:border-slate-800">
+        <section id="audio" class="fade-in delay-200 my-12">
+    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
+        <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Audio
+    </h2>
 
-        <section id="audio-clips" class="fade-in delay-200">
+    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 max-w-sm transition-all hover:shadow-xl">
+        
+        <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
+            <picture>
+                <source srcset="ai-safety-index.webp" type="image/webp">
+                <source srcset="ai-safety-index.jpg" type="image/jpeg">
+                
+                <img 
+                    src="ai-safety-index.jpg" 
+                    alt="The AI Safety Index cover" 
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                >
+            </picture>
+        </div>
+
+        <div class="mb-4">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                The AI Safety Index
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+                Ref. Max Tegmark
+            </p>
+        </div>
+
+        <div class="audio-container">
+            <audio controls class="w-full h-10 rounded-lg">
+                <source src="ai-safety-index.mp3" type="audio/mpeg">
+                <source src="ai-safety-index.mp3" type="audio/mp3">
+                Din webbläsare stödjer inte ljudspelaren.
+            </audio>
+        </div>
+    </div>
+</section>
+
+       <!-- <section id="audio-clips" class="fade-in delay-200">
             <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
                 <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Ljudklipp
             </h2>
@@ -224,7 +263,7 @@
                     AI-säkerhetsindexet (ref: Max Tegmark, språk engelska)
                 </p>
             </div>
-        </section>
+        </section> -->
 
     </main>
 
@@ -251,5 +290,6 @@
 </body>
 
 </html>
+
 
 
