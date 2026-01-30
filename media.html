@@ -195,6 +195,7 @@
 </section>
         
        <!-- <hr class="border-t border-slate-200 dark:border-slate-800"> -->
+
 <section id="audio" class="fade-in delay-200 my-12">
     <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
         <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Audio
@@ -232,9 +233,41 @@
 				Your browser does not support the audio element.
             </audio>
         </div>
+		 <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 max-w-sm transition-all hover:shadow-xl">
+        
+        <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
+            <picture>
+                <source srcset="predicting-football.webp" type="image/webp">
+                <source srcset="predicting-football.jpg" type="image/jpeg">
+                
+                <img 
+                    src="predicting-football.jpg" 
+                    alt="The AI Safety Index cover" 
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                >
+            </picture>
+        </div>
+
+        <div class="mb-4">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                The AI Safety Index
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+                Ref. Max Tegmark
+            </p>
+        </div>
+
+        <div class="audio-container">
+            <audio controls class="w-full h-10 rounded-lg">
+                <source src="predicting-football.mpeg" type="audio/mpeg">
+                <source src="predicting-football.mp3" type="audio/mp3">
+				Your browser does not support the audio element.
+            </audio>
+        </div>
+		
     </div>
 </section>
-
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
@@ -258,6 +291,7 @@
 </body>
 
 </html>
+
 
 
 
