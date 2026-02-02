@@ -41,7 +41,7 @@ const defaultData = { // ENGELSKA (BAS)
       school: "K3 - Karlsborg",
       program: "Military Service - Rangers Training",
       years: "",
-      description: "<img src=\"images/Qualification-Badge-K3-Ranger.jpg\" alt=\"Ranger badge\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Completed advanced basic military training as a Ranger (Jägare). Experience from the Life Regiment Hussars (K3) in Karlsborg, where operations are characterized by high levels of responsibility, teamwork under pressure, and the use of advanced technology. The unit focuses on intelligence gathering, reconnaissance, and rapid response capabilities in complex environments, as well as training in survival and personnel recovery for international missions."
+      description: "<img src=images\"Qualification-Badge-K3-Ranger.jpg\" alt=\"Ranger badge\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Completed advanced basic military training as a Ranger (Jägare). Experience from the Life Regiment Hussars (K3) in Karlsborg, where operations are characterized by high levels of responsibility, teamwork under pressure, and the use of advanced technology. The unit focuses on intelligence gathering, reconnaissance, and rapid response capabilities in complex environments, as well as training in survival and personnel recovery for international missions."
     }
   ],
   experience: [
@@ -305,6 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+
 
 
 
