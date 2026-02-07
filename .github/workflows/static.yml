@@ -35,12 +35,10 @@ jobs:
         uses: cicirello/generate-sitemap@v1
         with:
           base-url-path: https://dalmanium.se/
-          path: '.'
-          source-deploy-path: '.' # Säkerställer att den letar i rätt mapp
-          # false keeps .html in the sitemap for better Google Search Console compatibility
-          drop-extension: false 
-          # Lägg till detta för att se i loggen vad som händer:
-          include-pdf: false
+          path-to-root: '.'
+          include-html: true
+          drop-html-extension: false
+          sitemap-format: xml
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
