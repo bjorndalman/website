@@ -40,6 +40,9 @@ jobs:
           drop-html-extension: false
           sitemap-format: xml
 
+      - name: List files to verify
+        run: ls -R
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
