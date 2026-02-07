@@ -223,25 +223,21 @@
     <script src="../script.js"></script>
         <script>
             function trackCV(device) {
-                // 1. Hämta ID från adressfältet (t.ex. "foretag-ab" från #foretag-ab)
-                // Om inget ID finns, använd "General"
-                const hashID = window.location.hash ? window.location.hash.substring(1) : 'General';
+                const rawHash = window.location.hash.substring(1);
+                const clientID = rawHash ? decodeURIComponent(rawHash) : 'General_Visitor';
         
                 if (typeof gtag === 'function') {
-                    // 2. Skicka händelsen till Google Analytics
                     gtag('event', 'cv_download', {
-                        'event_category': 'Engagement',
-                        'event_label': 'EN_' + device, // Vilken enhet
-                        'client_id_tag': hashID        // Vilket företag (ID)
+                        'event_category': 'Recruitment',
+                        'event_label': 'SV_' + device,
+                        'client_tag': clientID
                     });
                 }
-                console.log("Tracking CV download for: " + hashID + " via " + device);
+                console.log("Analytics: CV Nedladdat av " + clientID + " via " + device);
             }
 
-            // Desktop-knappen
-            document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('Desktop'));
-            // Mobil-knappen
-            document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
+            document.getElementById('cv-sv-btn')?.addEventListener('click', () => trackCV('Desktop'));
+            document.getElementById('cv-sv-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
         </script>
 </body>
 

@@ -237,26 +237,23 @@
             lucide.createIcons();
         }
     </script>
-        <script>
+       <script>
             function trackCV(device) {
-                // 1. Hämta ID från adressfältet (t.ex. "foretag-ab" från #foretag-ab)
-                // Om inget ID finns, använd "General"
-                const hashID = window.location.hash ? window.location.hash.substring(1) : 'General';
+                // Hämtar ID från URL (t.ex. #google), annars "Direct"
+                const rawHash = window.location.hash.substring(1);
+                const clientID = rawHash ? decodeURIComponent(rawHash) : 'General_Visitor';
         
                 if (typeof gtag === 'function') {
-                    // 2. Skicka händelsen till Google Analytics
                     gtag('event', 'cv_download', {
-                        'event_category': 'Engagement',
-                        'event_label': 'EN_' + device, // Vilken enhet
-                        'client_id_tag': hashID        // Vilket företag (ID)
+                        'event_category': 'Recruitment',
+                        'event_label': 'EN_' + device,
+                        'client_tag': clientID  // Detta är namnet på företaget du ser i GA
                     });
                 }
-                console.log("Tracking CV download for: " + hashID + " via " + device);
+                console.log("Analytics: CV Downloaded by " + clientID + " on " + device);
             }
 
-            // Desktop-knappen
             document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('Desktop'));
-            // Mobil-knappen
             document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
         </script>
    </body>
