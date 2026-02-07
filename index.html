@@ -229,6 +229,30 @@
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
         <p>© 2025 <span id="footer-name"></span>. All rights reserved.</p>
     </footer>
+    <div id="welcome-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/90 backdrop-blur-md hidden p-4">
+        <div class="bg-white dark:bg-slate-900 border-2 border-blue-500/20 p-8 rounded-3xl max-w-sm w-full shadow-2xl relative overflow-hidden text-center">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full"></div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 shadow-lg shadow-blue-500/30">
+                    <i data-lucide="file-lock-2" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Hello <span id="welcome-name" class="text-blue-600"></span>!</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                    Thanks for visiting! To open my <strong>CV (PDF)</strong>, please use the following password:
+                </p>
+                <div class="group relative mb-6">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="block text-xs uppercase tracking-widest text-slate-500 mb-1 font-semibold">PDF Password</span>
+                        <span class="text-xl font-mono font-bold text-slate-800 dark:text-white select-all">Grebbestad1234</span>
+                    </div>
+                </div>
+                <button onclick="closeWelcomeModal()" class="w-full bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white py-4 rounded-xl font-bold transition-all transform active:scale-95 shadow-xl">
+                    Got it, view portfolio
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script>
@@ -237,24 +261,57 @@
             lucide.createIcons();
         }
     </script>
-       <script>
+        <script>
+            // 1. Funktion för att visa modalen
+            function handleWelcomeModal() {
+                const rawHash = window.location.hash.substring(1);
+                const navIds = ['about', 'skills', 'experience', 'education', 'contact'];
+        
+                if (rawHash && !navIds.includes(rawHash)) {
+                    const clientID = decodeURIComponent(rawHash);
+                    const modal = document.getElementById('welcome-modal');
+                    const nameSpan = document.getElementById('welcome-name');
+            
+                    if (modal && nameSpan) {
+                        nameSpan.innerText = clientID;
+                        modal.classList.remove('hidden');
+                    }
+                }
+            }
+
+            // 2. Funktion för att stänga modalen
+            function closeWelcomeModal() {
+                document.getElementById('welcome-modal').classList.add('hidden');
+            }
+
+            // 3. Funktion för CV-spårning
             function trackCV(device) {
-                // Hämtar ID från URL (t.ex. #google), annars "Direct"
                 const rawHash = window.location.hash.substring(1);
                 const clientID = rawHash ? decodeURIComponent(rawHash) : 'General_Visitor';
-        
+
                 if (typeof gtag === 'function') {
                     gtag('event', 'cv_download', {
                         'event_category': 'Recruitment',
-                        'event_label': 'EN_' + device,
-                        'client_tag': clientID  // Detta är namnet på företaget du ser i GA
+                        'event_label': 'CV_Download_' + device,
+                        'client_tag': clientID
                     });
                 }
-                console.log("Analytics: CV Downloaded by " + clientID + " on " + device);
             }
 
-            document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('Desktop'));
-            document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
+            // 4. Starta allt när sidan laddats
+            window.addEventListener('DOMContentLoaded', () => {
+                // Kör välkomstlogiken
+                handleWelcomeModal();
+        
+                // Aktivera alla ikoner (inklusive den nya lås-ikonen!)
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+
+                // Koppla klick-händelser till CV-knapparna
+                document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('Desktop'));
+                document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
+            });
         </script>
    </body>
 </html>
