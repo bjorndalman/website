@@ -117,7 +117,7 @@
                     Download CV (PDF)
                 </a>
             </div>
-            
+
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Språk:</span>
                 <a href="../index.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" onclick="closeMobileMenu();" aria-label="Switch to English">🇬🇧</a>
@@ -223,21 +223,25 @@
     <script src="../script.js"></script>
         <script>
             function trackCV(device) {
+                // 1. Hämta ID från adressfältet (t.ex. "foretag-ab" från #foretag-ab)
+                // Om inget ID finns, använd "General"
+                const hashID = window.location.hash ? window.location.hash.substring(1) : 'General';
+        
                 if (typeof gtag === 'function') {
+                    // 2. Skicka händelsen till Google Analytics
                     gtag('event', 'cv_download', {
-                    'event_category': 'Engagement',
-                    'event_label': 'Swedish_' + device
+                        'event_category': 'Engagement',
+                        'event_label': 'EN_' + device, // Vilken enhet
+                        'client_id_tag': hashID        // Vilket företag (ID)
                     });
                 }
+                console.log("Tracking CV download for: " + hashID + " via " + device);
             }
 
-            document.getElementById('cv-sv-btn')?.addEventListener('click', function() {
-                trackCV('Desktop');
-            });
-
-            document.getElementById('cv-sv-btn-mob')?.addEventListener('click', function() {
-                trackCV('Mobile');
-            });
+            // Desktop-knappen
+            document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('Desktop'));
+            // Mobil-knappen
+            document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
         </script>
 </body>
 
