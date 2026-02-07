@@ -36,8 +36,11 @@ jobs:
         with:
           base-url-path: https://dalmanium.se/
           path: '.'
+          source-deploy-path: '.' # Säkerställer att den letar i rätt mapp
           # false keeps .html in the sitemap for better Google Search Console compatibility
           drop-extension: false 
+          # Lägg till detta för att se i loggen vad som händer:
+          include-pdf: false
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
