@@ -237,18 +237,29 @@
             lucide.createIcons();
         }
     </script>
-    <script>
-    function trackCV(lang) {
-        if (typeof gtag === 'function') {
-            gtag('event', 'cv_download', { 'event_label': lang });
-        }
-    }
-    // Desktop-knappen
-    document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('English_Desktop'));
-    // Mobil-knappen
-    document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('English_Mobile'));
-</script>
-</body>
+        <script>
+        // Funktion som skickar data till ditt Google Analytics (gtag)
+            function trackCV(device) {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'cv_download', {
+                    'event_category': 'Engagement',
+                    'event_label': 'English_' + device
+                    });
+                }
+                console.log("Tracking CV download from: " + device);
+            }
+
+            // Lyssna på klick från Desktop-knappen
+            document.getElementById('cv-en-btn')?.addEventListener('click', function() {
+                trackCV('Desktop');
+            });
+
+            // Lyssna på klick från Mobil-knappen
+            document.getElementById('cv-en-btn-mob')?.addEventListener('click', function() {
+                trackCV('Mobile');
+            });
+        </script>
+   </body>
 </html>
 
 
