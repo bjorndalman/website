@@ -27,6 +27,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+   # ... (behåll övre delen med permissions och on: push) ...
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,11 +39,18 @@ jobs:
           base-url-path: https://dalmanium.se/
           path-to-root: '.'
           include-html: true
-          drop-html-extension: false
           sitemap-format: xml
 
-      - name: List files to verify
-        run: ls -R
+      - name: Commit and push sitemap
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Vi kollar om filen finns, sen lägger vi till den
+          if [ -f sitemap.xml ]; then
+            git add sitemap.xml
+            git commit -m "Automated sitemap update" || echo "No changes to commit"
+            git push
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -49,7 +58,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: '.'
 
       - name: Deploy to GitHub Pages
