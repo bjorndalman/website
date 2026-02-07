@@ -83,6 +83,11 @@
                     <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a></li>
                     <li><a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
                     <li><a href="#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
+                    <li>
+                        <a href="bjorn-dahlman-cv-en.pdf" id="cv-en-btn" download class="text-blue-600 dark:text-blue-400 font-bold hover:opacity-80 transition flex items-center gap-1">
+                            <i data-lucide="file-down" class="w-4 h-4"></i> CV
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="language-switcher flex items-center gap-2 text-xl">
@@ -120,6 +125,10 @@
             <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projects</a>
             <a href="#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Experience</a>
             <a href="#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Education</a>
+
+            <a href="bjorn-dahlman-cv-en.pdf" id="cv-en-btn-mob" download class="block p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded transition font-bold flex items-center gap-2">
+                <i data-lucide="file-down" class="w-5 h-5"></i> Download CV
+            </a>
             
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
@@ -218,6 +227,17 @@
             lucide.createIcons();
         }
     </script>
+    <script>
+    function trackCV(lang) {
+        if (typeof gtag === 'function') {
+            gtag('event', 'cv_download', { 'event_label': lang });
+        }
+    }
+    // Desktop-knappen
+    document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('English_Desktop'));
+    // Mobil-knappen
+    document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('English_Mobile'));
+</script>
 </body>
 </html>
 
