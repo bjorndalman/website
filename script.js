@@ -19,9 +19,10 @@ const defaultData = { // ENGELSKA (BAS)
     },
     {
       school: "Chalmers- University of Gothenburg",
-      program: "Further Education 90 ECTS",
+      program: "Further Education 97.5 ECTS",
       years: " - 2025",
       description: [
+        "Electronic Design 7.5 ECTS Points",
         "High Voltage Engineering 7.5 ECTS Points",
         "Nuclear Power Safety 7.5 ECTS Points",
         "Business Planning for high Growth Startups 7.5 ECTS Points",
