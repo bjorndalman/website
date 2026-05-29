@@ -87,9 +87,10 @@ const swedishData = { // SVENSKA
     },
     {
       school: "Chalmers - Göteborgs Universitet",
-      program: "Vidareutbildning 90 hp",
-      years: " - 2025",
+      program: "Vidareutbildning 97.5 hp",
+      years: " - 2026",
       description: [
+        "Elektronikkonstruktion 7.5 hp",
         "Högspänningsteknik 7.5 hp",
         "Kärnkraftssäkerhet 7.5 hp",
         "Affärsplanering för snabbväxande Startups 7.5 hp",
