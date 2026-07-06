@@ -49,7 +49,7 @@ const defaultData = { // ENGELSKA (BAS)
     {
       title: "Employment & Studies",
       company: "PLACE · Sweden-Vastra Gotalands lan",
-      years: "2020 - 2025",
+      years: "2020 - 2026",
       description: "I focused on professional growth and technical skills in healthcare and engineering. I completed higher education courses in areas like High Voltage Engineering and Nuclear Power Safety, enhancing my background in Electrical Engineering. This experience prepares me for advanced roles in embedded systems, energy technology, or startups."
     },
     {
