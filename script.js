@@ -50,7 +50,7 @@ const defaultData = { // ENGELSKA (BAS)
       title: "Employment & Studies",
       company: "PLACE · Sweden-Vastra Gotalands lan",
       years: "2020 - 2026",
-      description: "I focused on professional growth and technical skills in healthcare and engineering. I completed higher education courses in areas like High Voltage Engineering and Nuclear Power Safety, enhancing my background in Electrical Engineering. This experience prepares me for advanced roles in embedded systems, energy technology, or startups."
+      description: "I focused on professional growth and technical skills in healthcare and engineering. I completed higher education courses in areas like High Voltage Engineering, Electronic Design, and Nuclear Power Safety, enhancing my background in Electrical Engineering. This experience prepares me for advanced roles in embedded systems, energy technology, or startups."
     },
     {
       title: "Electrical Engineer & Mechanic",
@@ -118,7 +118,7 @@ const swedishData = { // SVENSKA
       title: "Anställning & Studier",
       company: "PLATS · Sverige-Västra Götalands län",
       years: "2020 - 2026",
-      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomfört högskolekurser inom bland annat högspänningsteknik och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
+      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomfört högskolekurser inom bland annat högspänningsteknik, elektronik konstruktion och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
     },
     {
       title: "Ingenjör & Mekaniker",
