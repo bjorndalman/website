@@ -117,7 +117,7 @@ const swedishData = { // SVENSKA
     {
       title: "Anställning & Studier",
       company: "PLATS · Sverige-Västra Götalands län",
-      years: "2020 - 2025",
+      years: "2020 - 2026",
       description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomfört högskolekurser inom bland annat högspänningsteknik och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
     },
     {
