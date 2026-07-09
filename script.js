@@ -306,6 +306,12 @@ document.addEventListener("DOMContentLoaded", () => {
           }
       });
   }
+
+  // ==========================================
+  // HÄR LÄGGER VI IN DE NYA BOT-FUNKTIONERNA!
+  // ==========================================
+  fetchBotStats();
+  renderBotChart();
 });
 
 // ==========================================
