@@ -345,7 +345,74 @@ function fetchBotStats() {
       console.log("Kunde inte ladda stats.json ännu, använder HTML-standardtext.", err);
     });
 }
+// ==========================================
+// AUTOMATION: FETCH CSV & RENDER CHART
+// ==========================================
+function renderBotChart() {
+  const chartCanvas = document.getElementById('bot-profit-chart');
+  if (!chartCanvas) return; // Avbryt om grafen inte ska ligga på denna sida
 
+  fetch('data/portfolio_summary.csv')
+    .then(response => response.text())
+    .then(csvText => {
+      // Radbryt och dela upp CSV-datan
+      const lines = csvText.trim().split('\n');
+      const labels = []; // För datumen (X-axeln)
+      const dataPoints = []; // För kassan (Y-axeln)
+
+      // Loopa igenom raderna (hoppa över första rubrikraden på index 0)
+      for (let i = 1; i < lines.length; i++) {
+        const columns = lines[i].split(',');
+        if (columns.length >= 2) {
+          labels.push(columns[0].trim()); // Lägg till Datum
+          dataPoints.push(parseFloat(columns[1].trim())); // Lägg till Kassa som nummer
+        }
+      }
+
+      // Kontrollera om webbplatsen körs i mörkt läge just nu
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; // slate-700 eller slate-200
+      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; // slate-400 eller slate-500
+
+      // Rita upp grafen med Chart.js
+      new Chart(chartCanvas, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Total Bankroll (kr)',
+            data: dataPoints,
+            borderColor: '#2563eb', // Blå linje (blue-600)
+            backgroundColor: 'rgba(37, 99, 235, 0.1)', // Ljusblå fyllning under linjen
+            borderWidth: 2.5,
+            tension: 0.2, // Gör linjen lite mjukt kurvad
+            pointRadius: 3,
+            pointBackgroundColor: '#2563eb'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false } // Dölj den automatiska rutan högst upp
+          },
+          scales: {
+            x: {
+              grid: { color: gridColor },
+              ticks: { color: textColor, font: { size: 10 } }
+            },
+            y: {
+              grid: { color: gridColor },
+              ticks: { color: textColor, font: { size: 10 } }
+            }
+          }
+        }
+      });
+    })
+    .catch(err => {
+      console.log("Kunde inte ladda portfolio_summary.csv för grafen.", err);
+    });
+}
 
 
 
