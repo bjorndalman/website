@@ -308,6 +308,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// ==========================================
+// AUTOMATION: FETCH LIVE BOT STATS (JSON)
+// ==========================================
+function fetchBotStats() {
+  const videoIframe = document.getElementById('youtube-bot-video');
+  const profitEl = document.getElementById('bot-profit');
+  const bankrollEl = document.getElementById('bot-bankroll');
+
+  // Om elementen inte finns på denna sida (t.ex. på index.html), avbryt direkt
+  if (!videoIframe && !profitEl && !bankrollEl) return;
+
+  fetch('data/stats.json')
+    .then(response => response.json())
+    .then(data => {
+      // 1. Uppdatera YouTube-videon med rätt ID dynamiskt
+      if (videoIframe && data.latest_video_id) {
+        videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
+      }
+
+      // 2. Uppdatera siffrorna för vinst och kassa
+      if (profitEl) {
+        profitEl.textContent = data.profit;
+        // Gör texten grön om det är vinst, annars röd
+        profitEl.className = data.is_positive 
+          ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
+          : "text-xl font-bold text-rose-600 dark:text-rose-400";
+      }
+      
+      if (bankrollEl) {
+        bankrollEl.textContent = data.bankroll;
+        bankrollEl.className = "text-xl font-bold text-slate-900 dark:text-white";
+      }
+    })
+    .catch(err => {
+      console.log("Kunde inte ladda stats.json ännu, använder HTML-standardtext.", err);
+    });
+}
+
 
 
 
