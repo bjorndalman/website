@@ -361,26 +361,49 @@ function renderBotChart() {
   fetch('data/portfolio_summary.csv')
     .then(response => response.text())
     .then(csvText => {
-      // Radbryt och dela upp CSV-datan
       const lines = csvText.trim().split('\n');
-      const labels = []; // För datumen (X-axeln)
-      const dataPoints = []; // För kassan (Y-axeln)
+      if (lines.length <= 1) return;
 
-      // Loopa igenom raderna (hoppa över första rubrikraden på index 0)
+      // Hitta rätt index för kolumnerna dynamiskt baserat på rubrikerna
+      const headers = lines[0].split(',');
+      const dateIndex = headers.indexOf('Datum');
+      const bankrollIndex = headers.indexOf('Nuvarande Kassa (kr)');
+
+      if (dateIndex === -1 || bankrollIndex === -1) {
+        console.error("Kunde inte hitta kolumnerna 'Datum' eller 'Nuvarande Kassa (kr)' i CSV-filen.");
+        return;
+      }
+
+      // Steg 1: Gruppera data per unikt datum (behåll endast sista värdet per dag)
+      const dailyData = {};
+
       for (let i = 1; i < lines.length; i++) {
+        if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
-        if (columns.length >= 2) {
-          labels.push(columns[0].trim()); // Lägg till Datum
-          dataPoints.push(parseFloat(columns[1].trim())); // Lägg till Kassa som nummer
+        
+        // Hämta rådatumet (t.ex. "2026-07-08 08:39") och ta bara första delen ("2026-07-08")
+        const fullDateStr = columns[dateIndex].trim();
+        const cleanDate = fullDateStr.split(' ')[0]; 
+        
+        const bankroll = parseFloat(columns[bankrollIndex].trim());
+
+        if (!isNaN(bankroll)) {
+          // Skriver över eventuella tidigare körningar samma dag, så sista värdet sparas
+          dailyData[cleanDate] = bankroll;
         }
       }
+
+      // Steg 2: Sortera datumen kronologiskt och separera till axlarna
+      const sortedDates = Object.keys(dailyData).sort();
+      const labels = sortedDates;
+      const dataPoints = sortedDates.map(date => dailyData[date]);
 
       // Kontrollera om webbplatsen körs i mörkt läge just nu
       const isDarkMode = document.documentElement.classList.contains('dark');
       const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; // slate-700 eller slate-200
       const textColor = isDarkMode ? '#94a3b8' : '#64748b'; // slate-400 eller slate-500
 
-      // Rita upp grafen med Chart.js
+      // Steg 3: Rita upp grafen med Chart.js
       new Chart(chartCanvas, {
         type: 'line',
         data: {
@@ -391,8 +414,8 @@ function renderBotChart() {
             borderColor: '#2563eb', // Blå linje (blue-600)
             backgroundColor: 'rgba(37, 99, 235, 0.1)', // Ljusblå fyllning under linjen
             borderWidth: 2.5,
-            tension: 0.2, // Gör linjen lite mjukt kurvad
-            pointRadius: 3,
+            tension: 0.3, // Gör linjen lite mjukt kurvad och följsam
+            pointRadius: 4,
             pointBackgroundColor: '#2563eb'
           }]
         },
@@ -404,12 +427,24 @@ function renderBotChart() {
           },
           scales: {
             x: {
-              grid: { color: gridColor },
-              ticks: { color: textColor, font: { size: 10 } }
+              grid: { display: false }, // Tar bort vertikala streck för renare design
+              ticks: { 
+                color: textColor, 
+                font: { size: 10 },
+                maxRotation: 0,
+                autoSkip: true,
+                maxTicksLimit: 7
+              }
             },
             y: {
               grid: { color: gridColor },
-              ticks: { color: textColor, font: { size: 10 } }
+              ticks: { 
+                color: textColor, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return value.toLocaleString('sv-SE') + ' kr';
+                }
+              }
             }
           }
         }
