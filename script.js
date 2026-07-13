@@ -438,7 +438,6 @@ function renderBotChart() {
             },
             y: {
               grid: { color: gridColor },
-              min: 9500, // Sätter ett golv nära din startkassa så att ökningen syns tydligare!
               ticks: { 
               color: textColor, 
               font: { size: 10 },
