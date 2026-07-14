@@ -1,4 +1,4 @@
-/// =========================
+// =========================
 //        GLOBAL CONFIG
 // =========================
 const defaultData = { // ENGELSKA (BAS)
@@ -18,7 +18,7 @@ const defaultData = { // ENGELSKA (BAS)
       description: "Courses in electronics, telecommunications, signal theory, programming, control systems, microwave engineering, and embedded systems."
     },
     {
-      school: "Chalmers- University of Gothenburg",
+      school: "Chalmers - University of Gothenburg",
       program: "Further Education 97.5 ECTS",
       years: " - 2026",
       description: [
@@ -56,7 +56,6 @@ const defaultData = { // ENGELSKA (BAS)
       title: "Electrical Engineer & Mechanic",
       company: "PLACE · Europe - Scandinavia",
       years: " - 2020",
-      // KORRIGERAD: Fixat grammatik (I have/My experience istället för I has/Their)
       description: "I have a strong background in engineering, gaining hands-on problem solving skills across various sectors. My early experience includes roles as a mechanic and production worker, focusing on mechanical and automotive work. After completing military ranger training and civil service, I pursued higher education in engineering at Chalmers University of Technology, earning a Bachelor of Science in Electrical Engineering with a specialization in Electronic Communication Systems.",
     },
     {
@@ -110,7 +109,7 @@ const swedishData = { // SVENSKA
       school: "K3 - Karlsborg",
       program: "Militärtjänst - Jägarutbildning",
       years: "",
-      description: "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
+      description: "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexer miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
     }
   ],
   experience: [
@@ -118,7 +117,7 @@ const swedishData = { // SVENSKA
       title: "Anställning & Studier",
       company: "PLATS · Sverige-Västra Götalands län",
       years: "2020 - 2026",
-      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomfört högskolekurser inom bland annat högspänningsteknik, elektronik konstruktion och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
+      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomföt högskolekurser inom bland annat högspänningsteknik, elektronik konstruktion och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
     },
     {
       title: "Ingenjör & Mekaniker",
@@ -163,9 +162,15 @@ function toggleTheme() {
   document.documentElement.classList.toggle("dark");
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
+  
+  // RENDER GRAPH AGAIN TO UPDATE COLORS IN REAL TIME
+  const chartCanvas = document.getElementById('bot-profit-chart');
+  if (chartCanvas && window.myBotChart) {
+    window.myBotChart.destroy();
+    renderBotChart();
+  }
 }
 
-// KORRIGERAD: Hanterar nu radbrytningar korrekt för strängar
 function renderDescription(descriptionData) {
   if (Array.isArray(descriptionData)) {
     const listItems = descriptionData.map(item => `
@@ -173,7 +178,6 @@ function renderDescription(descriptionData) {
     `).join('');
     return `<ul class="list-outside">${listItems}</ul>`;
   }
-  // Om det är en vanlig sträng, bevara radbrytningar om de finns
   return descriptionData.replace(/\n/g, '<br>');
 }
 
@@ -263,7 +267,6 @@ const closeIcon = document.getElementById('close-icon');
 function toggleMobileMenu() {
     if (window.lucide) window.lucide.createIcons();
     
-    // KORRIGERAD: Bättre hantering av Tailwind-klasser för mjukare utfällning
     if (mobileMenu.classList.contains('h-0')) {
         mobileMenu.classList.remove('h-0'); 
         mobileMenu.classList.add('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
@@ -307,9 +310,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // ==========================================
-  // HÄR LÄGGER VI IN DE NYA BOT-FUNKTIONERNA!
-  // ==========================================
   fetchBotStats();
   renderBotChart();
 });
@@ -322,21 +322,17 @@ function fetchBotStats() {
   const profitEl = document.getElementById('bot-profit');
   const bankrollEl = document.getElementById('bot-bankroll');
 
-  // Om elementen inte finns på denna sida (t.ex. på index.html), avbryt direkt
   if (!videoIframe && !profitEl && !bankrollEl) return;
 
   fetch('data/stats.json')
     .then(response => response.json())
     .then(data => {
-      // 1. Uppdatera YouTube-videon med rätt ID dynamiskt
       if (videoIframe && data.latest_video_id) {
         videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
       }
 
-      // 2. Uppdatera siffrorna för vinst och kassa
       if (profitEl) {
         profitEl.textContent = data.profit;
-        // Gör texten grön om det är vinst, annars röd
         profitEl.className = data.is_positive 
           ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
           : "text-xl font-bold text-rose-600 dark:text-rose-400";
@@ -351,12 +347,13 @@ function fetchBotStats() {
       console.log("Kunde inte ladda stats.json ännu, använder HTML-standardtext.", err);
     });
 }
+
 // ==========================================
 // AUTOMATION: FETCH CSV & RENDER CHART
 // ==========================================
 function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
-  if (!chartCanvas) return; // Avbryt om grafen inte ska ligga på denna sida
+  if (!chartCanvas) return;
 
   fetch('data/portfolio_summary.csv')
     .then(response => response.text())
@@ -364,7 +361,6 @@ function renderBotChart() {
       const lines = csvText.trim().split('\n');
       if (lines.length <= 1) return;
 
-      // Hitta rätt index för kolumnerna dynamiskt baserat på rubrikerna
       const headers = lines[0].split(',');
       const dateIndex = headers.indexOf('Datum');
       const bankrollIndex = headers.indexOf('Nuvarande Kassa (kr)');
@@ -374,47 +370,42 @@ function renderBotChart() {
         return;
       }
 
-      // Steg 1: Gruppera data per unikt datum (behåll endast sista värdet per dag)
       const dailyData = {};
 
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
         
-        // Hämta rådatumet (t.ex. "2026-07-08 08:39") och ta bara första delen ("2026-07-08")
         const fullDateStr = columns[dateIndex].trim();
         const cleanDate = fullDateStr.split(' ')[0]; 
         
         const bankroll = parseFloat(columns[bankrollIndex].trim());
 
         if (!isNaN(bankroll)) {
-          // Skriver över eventuella tidigare körningar samma dag, så sista värdet sparas
           dailyData[cleanDate] = bankroll;
         }
       }
 
-      // Steg 2: Sortera datumen kronologiskt och separera till axlarna
       const sortedDates = Object.keys(dailyData).sort();
       const labels = sortedDates;
       const dataPoints = sortedDates.map(date => dailyData[date]);
 
-      // Kontrollera om webbplatsen körs i mörkt läge just nu
       const isDarkMode = document.documentElement.classList.contains('dark');
-      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; // slate-700 eller slate-200
-      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; // slate-400 eller slate-500
+      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; 
+      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; 
 
-      // Steg 3: Rita upp grafen med Chart.js
-      new Chart(chartCanvas, {
+      // Spara instansen globalt i window så vi kan förstöra och bygga om den vid temabyte
+      window.myBotChart = new Chart(chartCanvas, {
         type: 'line',
         data: {
           labels: labels,
           datasets: [{
             label: 'Total Bankroll (kr)',
             data: dataPoints,
-            borderColor: '#2563eb', // Blå linje (blue-600)
-            backgroundColor: 'rgba(37, 99, 235, 0.1)', // Ljusblå fyllning under linjen
+            borderColor: '#2563eb', 
+            backgroundColor: 'rgba(37, 99, 235, 0.1)', 
             borderWidth: 2.5,
-            tension: 0.3, // Gör linjen lite mjukt kurvad och följsam
+            tension: 0.3, 
             pointRadius: 4,
             pointBackgroundColor: '#2563eb'
           }]
@@ -423,11 +414,11 @@ function renderBotChart() {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false } // Dölj den automatiska rutan högst upp
+            legend: { display: false } 
           },
           scales: {
             x: {
-              grid: { display: false }, // Tar bort vertikala streck för renare design
+              grid: { display: false }, 
               ticks: { 
                 color: textColor, 
                 font: { size: 10 },
@@ -439,10 +430,10 @@ function renderBotChart() {
             y: {
               grid: { color: gridColor },
               ticks: { 
-              color: textColor, 
-              font: { size: 10 },
-              callback: function(value) {
-               return value.toLocaleString('sv-SE') + ' kr';
+                color: textColor, 
+                font: { size: 10 },
+                callback: function(value) {
+                  return value.toLocaleString('sv-SE') + ' kr';
                 }
               }
             }
@@ -454,28 +445,3 @@ function renderBotChart() {
       console.log("Kunde inte ladda portfolio_summary.csv för grafen.", err);
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
