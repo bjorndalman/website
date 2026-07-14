@@ -138,7 +138,7 @@ const swedishData = { // SVENSKA
 // =========================
 //      SPRÅKHANTERING
 // =========================
-let appData; // Deklarera variabeln så den är tillgänglig globalt
+let appData;
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
   appData = isSwedishPage ? swedishData : defaultData;
@@ -257,7 +257,7 @@ function setText(id, text) {
 }
 
 // =========================
-//     MOBILE MENU LOGIC
+//      MOBILE MENU LOGIC
 // =========================
 const mobileMenu = document.getElementById('mobile-menu');
 const menuButton = document.getElementById('menu-button');
@@ -267,11 +267,11 @@ const closeIcon = document.getElementById('close-icon');
 function toggleMobileMenu() {
     if (window.lucide) window.lucide.createIcons();
     
-    if (mobileMenu.classList.contains('h-0')) {
+    if (mobileMenu && mobileMenu.classList.contains('h-0')) {
         mobileMenu.classList.remove('h-0'); 
         mobileMenu.classList.add('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
-        menuIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
+        if (menuIcon) menuIcon.classList.add('hidden');
+        if (closeIcon) closeIcon.classList.remove('hidden');
     } else {
         closeMobileMenu();
     }
@@ -281,22 +281,19 @@ function closeMobileMenu() {
     if(!mobileMenu) return;
     mobileMenu.classList.remove('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
     mobileMenu.classList.add('h-0');
-    menuIcon.classList.remove('hidden');
-    closeIcon.classList.add('hidden');
+    if (menuIcon) menuIcon.classList.remove('hidden');
+    if (closeIcon) closeIcon.classList.add('hidden');
 }
 
 // =========================
-//          INIT
+//           INIT
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
   loadLanguageData();
   initTheme();
   
-  if (document.getElementById('name')) { 
-      render();
-  } else if (window.lucide) {
-      window.lucide.createIcons(); 
-  }
+  // SÄKRAD TRIGGER: Kör alltid render() oavsett om id="name" råkar saknas på just den sida man står på!
+  render();
 
   if (menuButton) {
       menuButton.addEventListener('click', toggleMobileMenu);
@@ -394,7 +391,6 @@ function renderBotChart() {
       const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; 
       const textColor = isDarkMode ? '#94a3b8' : '#64748b'; 
 
-      // Spara instansen globalt i window så vi kan förstöra och bygga om den vid temabyte
       window.myBotChart = new Chart(chartCanvas, {
         type: 'line',
         data: {
@@ -418,16 +414,16 @@ function renderBotChart() {
           },
           scales: {
             x: {
-              grid: { display: false }, // Tar bort vertikala streck för renare design
-              bounds: 'ticks',          // Tvingar axeln att hålla sig inom tick-gränserna
+              grid: { display: false },
+              bounds: 'ticks',
               ticks: { 
                 color: textColor, 
                 font: { size: 10 },
                 maxRotation: 0,
                 autoSkip: true,
                 maxTicksLimit: 7,
-                padding: 8              // <--- LÄGG TILL DETTA: Ger luft under datumen
-                offset: true,             // <--- LÄGG TILL DETTA: Ger marginal till höger/vänster om ytterpunkterna
+                padding: 8,
+                offset: true,
               }
             },
             y: {
