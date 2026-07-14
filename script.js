@@ -18,7 +18,7 @@ const defaultData = { // ENGELSKA (BAS)
       description: "Courses in electronics, telecommunications, signal theory, programming, control systems, microwave engineering, and embedded systems."
     },
     {
-      school: "Chalmers - University of Gothenburg",
+      school: "Chalmers- University of Gothenburg",
       program: "Further Education 97.5 ECTS",
       years: " - 2026",
       description: [
@@ -109,7 +109,7 @@ const swedishData = { // SVENSKA
       school: "K3 - Karlsborg",
       program: "Militärtjänst - Jägarutbildning",
       years: "",
-      description: "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexer miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
+      description: "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
     }
   ],
   experience: [
@@ -117,7 +117,7 @@ const swedishData = { // SVENSKA
       title: "Anställning & Studier",
       company: "PLATS · Sverige-Västra Götalands län",
       years: "2020 - 2026",
-      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomföt högskolekurser inom bland annat högspänningsteknik, elektronik konstruktion och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
+      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomfört högskolekurser inom bland annat högspänningsteknik, elektronik konstruktion och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
     },
     {
       title: "Ingenjör & Mekaniker",
@@ -138,7 +138,7 @@ const swedishData = { // SVENSKA
 // =========================
 //      SPRÅKHANTERING
 // =========================
-let appData;
+let appData; // Deklarera variabeln så den är tillgänglig globalt
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
   appData = isSwedishPage ? swedishData : defaultData;
@@ -162,13 +162,6 @@ function toggleTheme() {
   document.documentElement.classList.toggle("dark");
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
-  
-  // RENDER GRAPH AGAIN TO UPDATE COLORS IN REAL TIME
-  const chartCanvas = document.getElementById('bot-profit-chart');
-  if (chartCanvas && window.myBotChart) {
-    window.myBotChart.destroy();
-    renderBotChart();
-  }
 }
 
 function renderDescription(descriptionData) {
@@ -267,11 +260,11 @@ const closeIcon = document.getElementById('close-icon');
 function toggleMobileMenu() {
     if (window.lucide) window.lucide.createIcons();
     
-    if (mobileMenu && mobileMenu.classList.contains('h-0')) {
+    if (mobileMenu.classList.contains('h-0')) {
         mobileMenu.classList.remove('h-0'); 
         mobileMenu.classList.add('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
-        if (menuIcon) menuIcon.classList.add('hidden');
-        if (closeIcon) closeIcon.classList.remove('hidden');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
     } else {
         closeMobileMenu();
     }
@@ -281,8 +274,8 @@ function closeMobileMenu() {
     if(!mobileMenu) return;
     mobileMenu.classList.remove('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
     mobileMenu.classList.add('h-0');
-    if (menuIcon) menuIcon.classList.remove('hidden');
-    if (closeIcon) closeIcon.classList.add('hidden');
+    menuIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
 }
 
 // =========================
@@ -292,8 +285,11 @@ document.addEventListener("DOMContentLoaded", () => {
   loadLanguageData();
   initTheme();
   
-  // SÄKRAD TRIGGER: Kör alltid render() oavsett om id="name" råkar saknas på just den sida man står på!
-  render();
+  if (document.getElementById('name')) { 
+      render();
+  } else if (window.lucide) {
+      window.lucide.createIcons(); 
+  }
 
   if (menuButton) {
       menuButton.addEventListener('click', toggleMobileMenu);
@@ -307,8 +303,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  fetchBotStats();
-  renderBotChart();
+  // KÖR ENDAST DESSA FUNKTIONER OM DE FAKTISKT FINNS DEFINIERADE (SÄKERHETSÅTGÄRD)
+  if (typeof fetchBotStats === "function") {
+      fetchBotStats();
+  }
+  if (typeof renderBotChart === "function") {
+      renderBotChart();
+  }
 });
 
 // ==========================================
@@ -319,17 +320,21 @@ function fetchBotStats() {
   const profitEl = document.getElementById('bot-profit');
   const bankrollEl = document.getElementById('bot-bankroll');
 
+  // Om elementen inte finns på denna sida (t.ex. på index.html), avbryt direkt
   if (!videoIframe && !profitEl && !bankrollEl) return;
 
   fetch('data/stats.json')
     .then(response => response.json())
     .then(data => {
+      // 1. Uppdatera YouTube-videon med rätt ID dynamiskt
       if (videoIframe && data.latest_video_id) {
         videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
       }
 
+      // 2. Uppdatera siffrorna för vinst och kassa
       if (profitEl) {
         profitEl.textContent = data.profit;
+        // Gör texten grön om det är vinst, annars röd
         profitEl.className = data.is_positive 
           ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
           : "text-xl font-bold text-rose-600 dark:text-rose-400";
@@ -350,7 +355,7 @@ function fetchBotStats() {
 // ==========================================
 function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
-  if (!chartCanvas) return;
+  if (!chartCanvas) return; // Avbryt om grafen inte ska ligga på denna sida
 
   fetch('data/portfolio_summary.csv')
     .then(response => response.text())
@@ -358,6 +363,7 @@ function renderBotChart() {
       const lines = csvText.trim().split('\n');
       if (lines.length <= 1) return;
 
+      // Hitta rätt index för kolumnerna dynamiskt baserat på rubrikerna
       const headers = lines[0].split(',');
       const dateIndex = headers.indexOf('Datum');
       const bankrollIndex = headers.indexOf('Nuvarande Kassa (kr)');
@@ -367,41 +373,47 @@ function renderBotChart() {
         return;
       }
 
+      // Steg 1: Gruppera data per unikt datum (behåll endast sista värdet per dag)
       const dailyData = {};
 
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
         
+        // Hämta rådatumet (t.ex. "2026-07-08 08:39") och ta bara första delen ("2026-07-08")
         const fullDateStr = columns[dateIndex].trim();
         const cleanDate = fullDateStr.split(' ')[0]; 
         
         const bankroll = parseFloat(columns[bankrollIndex].trim());
 
         if (!isNaN(bankroll)) {
+          // Skriver över eventuella tidigare körningar samma dag, så sista värdet sparas
           dailyData[cleanDate] = bankroll;
         }
       }
 
+      // Steg 2: Sortera datumen kronologiskt och separera till axlarna
       const sortedDates = Object.keys(dailyData).sort();
       const labels = sortedDates;
       const dataPoints = sortedDates.map(date => dailyData[date]);
 
+      // Kontrollera om webbplatsen körs i mörkt läge just nu
       const isDarkMode = document.documentElement.classList.contains('dark');
-      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; 
-      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; 
+      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; // slate-700 eller slate-200
+      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; // slate-400 eller slate-500
 
-      window.myBotChart = new Chart(chartCanvas, {
+      // Steg 3: Rita upp grafen med Chart.js
+      new Chart(chartCanvas, {
         type: 'line',
         data: {
           labels: labels,
           datasets: [{
             label: 'Total Bankroll (kr)',
             data: dataPoints,
-            borderColor: '#2563eb', 
-            backgroundColor: 'rgba(37, 99, 235, 0.1)', 
+            borderColor: '#2563eb', // Blå linje (blue-600)
+            backgroundColor: 'rgba(37, 99, 235, 0.1)', // Ljusblå fyllning under linjen
             borderWidth: 2.5,
-            tension: 0.3, 
+            tension: 0.3, // Gör linjen lite mjukt kurvad och följsam
             pointRadius: 4,
             pointBackgroundColor: '#2563eb'
           }]
@@ -410,20 +422,17 @@ function renderBotChart() {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false } 
+            legend: { display: false } // Dölj den automatiska rutan högst upp
           },
           scales: {
             x: {
-              grid: { display: false },
-              bounds: 'ticks',
+              grid: { display: false }, // Tar bort vertikala streck för renare design
               ticks: { 
                 color: textColor, 
                 font: { size: 10 },
                 maxRotation: 0,
                 autoSkip: true,
-                maxTicksLimit: 7,
-                padding: 8,
-                offset: true,
+                maxTicksLimit: 7
               }
             },
             y: {
