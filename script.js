@@ -418,13 +418,16 @@ function renderBotChart() {
           },
           scales: {
             x: {
-              grid: { display: false }, 
+              grid: { display: false }, // Tar bort vertikala streck för renare design
+              bounds: 'ticks',          // Tvingar axeln att hålla sig inom tick-gränserna
               ticks: { 
                 color: textColor, 
                 font: { size: 10 },
                 maxRotation: 0,
                 autoSkip: true,
-                maxTicksLimit: 7
+                maxTicksLimit: 7,
+                padding: 8              // <--- LÄGG TILL DETTA: Ger luft under datumen
+                offset: true,             // <--- LÄGG TILL DETTA: Ger marginal till höger/vänster om ytterpunkterna
               }
             },
             y: {
