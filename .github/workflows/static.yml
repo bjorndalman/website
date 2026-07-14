@@ -2,26 +2,32 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Triggar igång vid push till main
   push:
     branches: ["main"]
+    # VIKTIGT FÖR DIN WEBBPLATS: 
+    # Detta förhindrar att sidan hamnar i en loop eller bygger om i onödan 
+    # när sitemapen eller din automatiserade Python-data uppdateras.
+    paths-ignore:
+      - 'sitemap.xml'
+      - 'data/**'        # Ändra till den mapp där din Python-motor sparar sin data (t.ex. CSV-filer)
+      - '**.csv'         # Ignorerar alla CSV-filer om de ligger löst
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Tillåter att köra detta workflow manuellt från Actions-fliken
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Sätter rättigheter för GITHUB_TOKEN så att vi kan skriva sitemapen och driftsätta till Pages
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
+# Tillåt endast en pågående driftsättning åt gången
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -29,8 +35,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # fetch-depth: 0 behövs för att sitemap-generatorn ska kunna läsa ändringsdatum (lastmod) för filerna
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1
@@ -46,7 +55,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           if [ -f sitemap.xml ]; then
             git add sitemap.xml
-            git commit -m "Automated sitemap update" || echo "No changes to commit"
+            # [skip ci] talar om för GitHub att INTE starta ett nytt bygge för denna commit
+            git commit -m "Automated sitemap update [skip ci]" || echo "No changes to commit"
             git push
           fi
 
