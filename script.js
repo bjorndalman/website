@@ -1,5 +1,5 @@
 // =========================
-//        GLOBAL CONFIG
+//         GLOBAL CONFIG
 // =========================
 const defaultData = { // ENGELSKA (BAS)
   profile: {
@@ -135,10 +135,13 @@ const swedishData = { // SVENSKA
   freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
 };
 
+// Global diagraminstans för att undvika "Canvas is already in use"-krascher
+let botChartInstance = null;
+let appData; 
+
 // =========================
 //      SPRÅKHANTERING
 // =========================
-let appData; // Deklarera variabeln så den är tillgänglig globalt
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
   appData = isSwedishPage ? swedishData : defaultData;
@@ -162,6 +165,17 @@ function toggleTheme() {
   document.documentElement.classList.toggle("dark");
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
+
+  // Uppdatera diagrammets färger direkt om det är laddat, utan omladdning av CSV
+  if (botChartInstance) {
+    const gridColor = isDark ? '#334155' : '#e2e8f0';
+    const textColor = isDark ? '#94a3b8' : '#64748b';
+    
+    botChartInstance.options.scales.x.ticks.color = textColor;
+    botChartInstance.options.scales.y.ticks.color = textColor;
+    botChartInstance.options.scales.y.grid.color = gridColor;
+    botChartInstance.update();
+  }
 }
 
 function renderDescription(descriptionData) {
@@ -279,7 +293,7 @@ function closeMobileMenu() {
 }
 
 // =========================
-//           INIT
+//            INIT
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
   loadLanguageData();
@@ -303,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // KÖR ENDAST DESSA FUNKTIONER OM DE FAKTISKT FINNS DEFINIERADE (SÄKERHETSÅTGÄRD)
+  // Kör endast dessa funktioner om de faktiskt finns definierade (SÄKERHETSÅTGÄRD)
   if (typeof fetchBotStats === "function") {
       fetchBotStats();
   }
@@ -320,7 +334,7 @@ function fetchBotStats() {
   const profitEl = document.getElementById('bot-profit');
   const bankrollEl = document.getElementById('bot-bankroll');
 
-  // Om elementen inte finns på denna sida (t.ex. på index.html), avbryt direkt
+  // Om elementen inte finns på denna sida, avbryt direkt
   if (!videoIframe && !profitEl && !bankrollEl) return;
 
   fetch('data/stats.json')
@@ -363,13 +377,15 @@ function renderBotChart() {
       const lines = csvText.trim().split('\n');
       if (lines.length <= 1) return;
 
-      // Hitta rätt index för kolumnerna dynamiskt baserat på rubrikerna
-      const headers = lines[0].split(',');
-      const dateIndex = headers.indexOf('Datum');
-      const bankrollIndex = headers.indexOf('Nuvarande Kassa (kr)');
+      // Hitta rätt index för kolumnerna dynamiskt och tvätta bort ev. teckenkodningsfel
+      const headers = lines[0].split(',').map(h => h.trim().replace(/[^\x00-\x7F]/g, ""));
+      
+      // Indexering via fuzzy-matchning för att klara encoding-fel
+      const dateIndex = headers.findIndex(h => h.toLowerCase().includes('dat'));
+      const bankrollIndex = headers.findIndex(h => h.toLowerCase().includes('kassa'));
 
       if (dateIndex === -1 || bankrollIndex === -1) {
-        console.error("Kunde inte hitta kolumnerna 'Datum' eller 'Nuvarande Kassa (kr)' i CSV-filen.");
+        console.error("Kunde inte hitta kolumnerna för 'Datum' eller 'Kassa' i CSV-filen.");
         return;
       }
 
@@ -380,7 +396,7 @@ function renderBotChart() {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
         
-        // Hämta rådatumet (t.ex. "2026-07-08 08:39") och ta bara första delen ("2026-07-08")
+        // Hämta rådatumet och ta bara första delen ("YYYY-MM-DD")
         const fullDateStr = columns[dateIndex].trim();
         const cleanDate = fullDateStr.split(' ')[0]; 
         
@@ -399,11 +415,16 @@ function renderBotChart() {
 
       // Kontrollera om webbplatsen körs i mörkt läge just nu
       const isDarkMode = document.documentElement.classList.contains('dark');
-      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; // slate-700 eller slate-200
-      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; // slate-400 eller slate-500
+      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; 
+      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; 
 
-      // Steg 3: Rita upp grafen med Chart.js
-      new Chart(chartCanvas, {
+      // Förstör tidigare instans om den existerar för att undvika "Canvas already in use"
+      if (botChartInstance) {
+        botChartInstance.destroy();
+      }
+
+      // Steg 3: Rita upp grafen med Chart.js och spara i vår globala variabel
+      botChartInstance = new Chart(chartCanvas, {
         type: 'line',
         data: {
           labels: labels,
@@ -422,11 +443,11 @@ function renderBotChart() {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false } // Dölj den automatiska rutan högst upp
+            legend: { display: false } 
           },
           scales: {
             x: {
-              grid: { display: false }, // Tar bort vertikala streck för renare design
+              grid: { display: false }, 
               ticks: { 
                 color: textColor, 
                 font: { size: 10 },
