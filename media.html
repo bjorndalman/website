@@ -37,14 +37,14 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
-	<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
         
         <a href="index.html">
             <picture>
-  				<source srcset="images/bjorn-dahlman.webp" type="image/webp">
-  				<img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
-			</picture>
+                <source srcset="images/bjorn-dahlman.webp" type="image/webp">
+                <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
+            </picture>
         </a>
         
         <div class="flex items-center gap-6">
@@ -99,7 +99,7 @@
             <a href="sv/media.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
         </div>
         
-        <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
+        <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
             <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
             <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
             <span>Toggle Theme</span>
@@ -136,9 +136,9 @@
                         <img src="images/Iridium-Satellite-Phones.jpg" alt="Handheld Iridium satellite phone with extended antenna for global communication." class="w-full h-auto rounded-lg mb-3" loading="lazy">
                     </picture>
 
-                <figcaption class="text-sm text-slate-600 dark:text-slate-400">
-                    Iridium Satellite "Telephone"
-                </figcaption>
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium Satellite "Telephone"
+                    </figcaption>
                 </figure>
                 
                 <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
@@ -147,22 +147,20 @@
                         <img src="images/iridium-satellite-system.jpg" alt="Iridium satellite communication module and embedded circuit board for global data transmission." class="w-full h-auto rounded-lg mb-3" loading="lazy">
                     </picture>
 
-                <figcaption class="text-sm text-slate-600 dark:text-slate-400">
-                    Iridium Satellite
-                </figcaption>
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium Satellite
+                    </figcaption>
                 </figure>
 
             </div>
         </section>
-
-       <!-- <hr class="border-t border-slate-200 dark:border-slate-800"> -->
 
 <section id="videos" class="fade-in delay-100">
     <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
         <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videos
     </h2>
 
-	<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
+    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
         <div class="aspect-video mb-3">
             <iframe 
                 class="w-full h-full rounded-lg" 
@@ -174,7 +172,7 @@
             </iframe>
         </div>
         <p class="text-sm text-slate-600 dark:text-slate-400">
-			High-Precision Temperature Sensing: Implementing a Kalman Filter in KiCad
+            High-Precision Temperature Sensing: Implementing a Kalman Filter in KiCad
         </p>
     </div>
     
@@ -212,7 +210,8 @@
         </p>
     </div>
 </section>
-		<section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
+
+<section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
     <h3 class="text-2xl font-bold mb-2 flex items-center gap-2 text-slate-900 dark:text-white">
         Automated Data Systems
     </h3>
@@ -254,10 +253,7 @@
 
     </div>
 </section>
-	
-        
-       <!-- <hr class="border-t border-slate-200 dark:border-slate-800"> -->
-
+    
 <section id="audio" class="fade-in delay-200 my-12">
     <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
         <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Audio
@@ -309,16 +305,27 @@
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
-        <p>© 2025 Björn Dahlman. All rights reserved.</p>
+        <p>© 2026 Björn Dahlman. All rights reserved.</p>
     </footer>
 
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script>
         // Initialize theme, icons, and mobile menu logic (required for non-index pages)
         document.addEventListener("DOMContentLoaded", () => {
             if (typeof initTheme === 'function') initTheme();
             if (window.lucide) window.lucide.createIcons();
+            
+            // CONNECT LIGHT/DARK MODE TOGGLES TO THE GLOBAL SCRIPT.JS
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if (themeToggleBtn && typeof toggleTheme === 'function') {
+                themeToggleBtn.addEventListener('click', toggleTheme);
+            }
+
+            const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+            if (themeToggleMobileBtn && typeof toggleTheme === 'function') {
+                themeToggleMobileBtn.addEventListener('click', toggleTheme);
+            }
             
             // Connect mobile menu logic if available in script.js (assuming toggleMobileMenu/closeMobileMenu are global)
             const menuButton = document.getElementById('menu-button');
@@ -328,24 +335,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
