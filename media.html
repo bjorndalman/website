@@ -24,7 +24,6 @@
     </script>
     
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGSNWL658"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -38,85 +37,85 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
-        
-        <a href="index.html">
-            <picture>
-                <source srcset="images/bjorn-dahlman.webp" type="image/webp">
-                <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
-            </picture>
-        </a>
-        
-        <div class="flex items-center gap-6">
-            <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
-                <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
-                <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
-                <li><a href="media.html" class="text-blue-600 dark:text-blue-400 transition font-bold">Media</a></li>
-                <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a></li>
-                <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
-                <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
-            </ul>
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            
+            <a href="index.html">
+                <picture>
+                    <source srcset="images/bjorn-dahlman.webp" type="image/webp">
+                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
+                </picture>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
+                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
+                    <li><a href="media.html" class="text-blue-600 dark:text-blue-400 transition font-bold">Media</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a></li>
+                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
+                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
+                </ul>
 
-            <div class="language-switcher flex items-center gap-2 text-xl">
-                <a href="media.html" class="lang-icon hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
-                <a href="sv/media.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="media.html" class="lang-icon hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                    <a href="sv/media.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+                </div>
+
+                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i> 
+                    </a>
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Toggle Menu">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                </button>
             </div>
+        </div>
+    </nav>
 
-            <div class="social-icons hidden md:flex items-center gap-4 text-xl">
-                <a href="https://x.com/DahlmanBjorn" target="_blank" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
-                    <i class="fab fa-x-twitter"></i> 
-                </a>
-                <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
+    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
+            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
+            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
+            <a href="media.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projects</a>
+            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Experience</a>
+            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Education</a>
+            
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
+                <a href="media.html" class="lang-icon text-xl hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                <a href="sv/media.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
             </div>
             
-            <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block">
-                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-            </button>
-            
-            <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
-                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
-                <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
+                <span>Toggle Theme</span>
             </button>
         </div>
-    </div>
-</nav>
-
-<nav id="mobile-menu" class="fixed top-[104px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[max-height] duration-300 ease-in-out md:hidden">
-    <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
-        <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
-        <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
-        <a href="media.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Media</a>
-        <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projects</a>
-        <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Experience</a>
-        <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Education</a>
+    </nav>
         
-        <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-            <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
-            <a href="media.html" class="lang-icon text-xl hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
-            <a href="sv/media.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
-        </div>
-        
-        <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
-            <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
-            <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
-            <span>Toggle Theme</span>
-        </button>
-    </div>
-</nav>
-    
     <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center">
         <div class="mb-10">
-            <a href="index.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-lg hover:shadow-xl">
+            <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700">
                 <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
                 Back to Portfolio
             </a>
         </div>
         
         <h1 class="text-4xl font-bold tracking-tight">Media Gallery</h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto">
+        <p class="text-lg text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto px-6">
             A collection of images, videos, and recordings from my work and personal projects.
         </p>
     </header>
@@ -135,7 +134,6 @@
                         <source srcset="images/Iridium-Satellite-Phones.webp" type="image/webp">
                         <img src="images/Iridium-Satellite-Phones.jpg" alt="Handheld Iridium satellite phone with extended antenna for global communication." class="w-full h-auto rounded-lg mb-3" loading="lazy">
                     </picture>
-
                     <figcaption class="text-sm text-slate-600 dark:text-slate-400">
                         Iridium Satellite "Telephone"
                     </figcaption>
@@ -146,7 +144,6 @@
                         <source srcset="images/iridium-satellite-system.webp" type="image/webp">
                         <img src="images/iridium-satellite-system.jpg" alt="Iridium satellite communication module and embedded circuit board for global data transmission." class="w-full h-auto rounded-lg mb-3" loading="lazy">
                     </picture>
-
                     <figcaption class="text-sm text-slate-600 dark:text-slate-400">
                         Iridium Satellite
                     </figcaption>
@@ -155,153 +152,154 @@
             </div>
         </section>
 
-<section id="videos" class="fade-in delay-100">
-    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
-        <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videos
-    </h2>
+        <section id="videos" class="fade-in delay-100">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videos
+            </h2>
 
-    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
-        <div class="aspect-video mb-3">
-            <iframe 
-                class="w-full h-full rounded-lg" 
-                src="https://www.youtube.com/embed/RRicAHFkRV4" 
-                title="Kalman Filter Implementation" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
-            High-Precision Temperature Sensing: Implementing a Kalman Filter in KiCad
-        </p>
-    </div>
-    
-    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
-        <div class="aspect-video mb-3">
-            <iframe 
-                class="w-full h-full rounded-lg" 
-                src="https://www.youtube.com/embed/t5i80ZmHzB0" 
-                title="Nuclear Power Safety" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
-            Nuclear Power Safety - The Main Steam Line Break Accident
-        </p>
-    </div>
-    
-    <h3 class="text-xl font-bold mt-8 mb-4">Additional Video Content</h3>
-    
-    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
-        <div class="aspect-video mb-3">
-            <iframe 
-                class="w-full h-full rounded-lg" 
-                src="https://www.youtube.com/embed/F5Ip9c3yyMc" 
-                title="Highfrequency Filter Design" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
-            Highfrequency Filter Design
-        </p>
-    </div>
-</section>
-
-<section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
-    <h3 class="text-2xl font-bold mb-2 flex items-center gap-2 text-slate-900 dark:text-white">
-        Automated Data Systems
-    </h3>
-    <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
-        This section showcases a fully automated data pipeline. A separate Python engine performs calculations, updates metrics, generates daily briefing videos, and pushes the live data directly to this portfolio.
-    </p>
-
-    <div class="grid md:grid-cols-2 gap-8 items-start">
-        
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">
-                Latest Daily Briefing
-            </h4>
-            <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-inner">
-                <iframe id="youtube-bot-video" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
+                <div class="aspect-video mb-3">
+                    <iframe 
+                        class="w-full h-full rounded-lg" 
+                        src="https://www.youtube.com/embed/RRicAHFkRV4" 
+                        title="Kalman Filter Implementation" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    High-Precision Temperature Sensing: Implementing a Kalman Filter in KiCad
+                </p>
             </div>
-        </div>
-
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col">
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">
-                Live Quant Performance
-            </h4>
             
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
-                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Net Profit</span>
-                    <span id="bot-profit" class="text-xl font-bold text-slate-400">Loading...</span>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
+                <div class="aspect-video mb-3">
+                    <iframe 
+                        class="w-full h-full rounded-lg" 
+                        src="https://www.youtube.com/embed/t5i80ZmHzB0" 
+                        title="Nuclear Power Safety" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
-                <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
-                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Total Bankroll</span>
-                    <span id="bot-bankroll" class="text-xl font-bold text-slate-400">Loading...</span>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Nuclear Power Safety - The Main Steam Line Break Accident
+                </p>
+            </div>
+            
+            <h3 class="text-xl font-bold mt-8 mb-4">Additional Video Content</h3>
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                <div class="aspect-video mb-3">
+                    <iframe 
+                        class="w-full h-full rounded-lg" 
+                        src="https://www.youtube.com/embed/F5Ip9c3yyMc" 
+                        title="Highfrequency Filter Design" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Highfrequency Filter Design
+                </p>
             </div>
+        </section>
 
-            <div class="relative w-full h-48">
-                <canvas id="bot-profit-chart"></canvas>
-            </div>
-        </div>
+        <section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
+            <h3 class="text-2xl font-bold mb-2 flex items-center gap-2 text-slate-900 dark:text-white">
+                Automated Data Systems
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+                This section showcases a fully automated data pipeline. A separate Python engine performs calculations, updates metrics, generates daily briefing videos, and pushes the live data directly to this portfolio.
+            </p>
 
-    </div>
-</section>
-    
-<section id="audio" class="fade-in delay-200 my-12">
-    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
-        <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Audio
-    </h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">
+                        Latest Daily Briefing
+                    </h4>
+                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-inner">
+                        <iframe id="youtube-bot-video" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-    <div class="flex flex-wrap gap-6">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">
+                        Live Quant Performance
+                    </h4>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Net Profit</span>
+                            <span id="bot-profit" class="text-xl font-bold text-slate-400">Loading...</span>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Total Bankroll</span>
+                            <span id="bot-bankroll" class="text-xl font-bold text-slate-400">Loading...</span>
+                        </div>
+                    </div>
 
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 w-full max-w-sm transition-all hover:shadow-xl">
-            <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
-                <picture>
-                    <source srcset="images/ai-safety-index.webp" type="image/webp">
-                    <img src="images/ai-safety-index.jpg" alt="The AI Safety Index cover" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
-                </picture>
-            </div>
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white">The AI Safety Index</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-400">Ref. Max Tegmark</p>
-            </div>
-            <div class="audio-container">
-                <audio controls class="w-full h-10 rounded-lg">
-                    <source src="media/ai-safety-index.mpeg" type="audio/mpeg">
-                    <source src="media/ai-safety-index.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-        </div>
+                    <div class="relative w-full h-48">
+                        <canvas id="bot-profit-chart"></canvas>
+                    </div>
+                </div>
 
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 w-full max-w-sm transition-all hover:shadow-xl">
-            <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
-                <picture>
-                    <source srcset="images/predicting-football.webp" type="images/webp">
-                    <img src="images/predicting-football.jpg" alt="Predicting Football cover" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
-                </picture>
             </div>
-            <div class="mb-4">
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Predicting Football</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-400">Ref. Analysis Team</p>
-            </div>
-            <div class="audio-container">
-                <audio controls class="w-full h-10 rounded-lg">
-                    <source src="media/predicting-football.mpeg" type="audio/mpeg">
-                    <source src="media/predicting-football.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-        </div>
+        </section>
+            
+        <section id="audio" class="fade-in delay-200 my-12">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
+                <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Audio
+            </h2>
 
-    </div> </section>
+            <div class="flex flex-wrap gap-6">
+
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 w-full max-w-sm transition-all hover:shadow-xl">
+                    <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
+                        <picture>
+                            <source srcset="images/ai-safety-index.webp" type="image/webp">
+                            <img src="images/ai-safety-index.jpg" alt="The AI Safety Index cover" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">The AI Safety Index</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Ref. Max Tegmark</p>
+                    </div>
+                    <div class="audio-container">
+                        <audio controls class="w-full h-10 rounded-lg">
+                            <source src="media/ai-safety-index.mpeg" type="audio/mpeg">
+                            <source src="media/ai-safety-index.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 w-full max-w-sm transition-all hover:shadow-xl">
+                    <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
+                        <picture>
+                            <source srcset="images/predicting-football.webp" type="image/webp">
+                            <img src="images/predicting-football.jpg" alt="Predicting Football cover" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Predicting Football</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Ref. Analysis Team</p>
+                    </div>
+                    <div class="audio-container">
+                        <audio controls class="w-full h-10 rounded-lg">
+                            <source src="media/predicting-football.mpeg" type="audio/mpeg">
+                            <source src="media/predicting-football.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+            </div> 
+        </section>
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
@@ -311,12 +309,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script>
-        // Initialize theme, icons, and mobile menu logic (required for non-index pages)
         document.addEventListener("DOMContentLoaded", () => {
             if (typeof initTheme === 'function') initTheme();
             if (window.lucide) window.lucide.createIcons();
             
-            // CONNECT LIGHT/DARK MODE TOGGLES TO THE GLOBAL SCRIPT.JS
+            // Koppla samman ljust/mörkt läge med script.js-funktionen
             const themeToggleBtn = document.getElementById('theme-toggle');
             if (themeToggleBtn && typeof toggleTheme === 'function') {
                 themeToggleBtn.addEventListener('click', toggleTheme);
@@ -327,7 +324,7 @@
                 themeToggleMobileBtn.addEventListener('click', toggleTheme);
             }
             
-            // Connect mobile menu logic if available in script.js (assuming toggleMobileMenu/closeMobileMenu are global)
+            // Koppla samman mobilmeny-togglingen med script.js-funktionerna
             const menuButton = document.getElementById('menu-button');
             if (menuButton) {
                 menuButton.addEventListener('click', typeof toggleMobileMenu === 'function' ? toggleMobileMenu : () => {});
