@@ -42,9 +42,9 @@ const defaultData = { // ENGELSKA (BAS)
       school: "K3 - Karlsborg",
       program: "Military Service - Rangers Training",
       years: "",
-      description: "<img src=\"jagar_badge.jpg\" alt=\"Ranger badge\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Completed advanced basic military training as a Ranger (Jägare). Experience from the Life Regiment Hussars (K3) in Karlsborg, where operations are characterized by high levels of responsibility, teamwork under pressure, and the use of advanced technology. The unit focuses on intelligence gathering, reconnaissance, and rapid response capabilities in complex environments, as well as training in survival and personnel recovery for international missions."
+      description: "<img src=\"images/jagar_badge.jpg\" alt=\"Ranger badge\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Completed advanced basic military training as a Ranger (Jägare). Experience from the Life Regiment Hussars (K3) in Karlsborg, where operations are characterized by high levels of responsibility, teamwork under pressure, and the use of advanced technology. The unit focuses on intelligence gathering, reconnaissance, and rapid response capabilities in complex environments, as well as training in survival and personnel recovery for international missions."
     }
-    ],
+  ],
   experience: [
     {
       title: "Employment & Studies",
@@ -109,7 +109,7 @@ const swedishData = { // SVENSKA
       school: "K3 - Karlsborg",
       program: "Militärtjänst - Jägarutbildning",
       years: "",
-      description: "<img src=\"jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
+      description: "<img src=\"images/jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexer miljöer, samt utbildning inom överlevnad och undsättning för internationalella uppdrag."
     }
   ],
   experience: [
@@ -272,7 +272,7 @@ const menuIcon = document.getElementById('menu-icon');
 const closeIcon = document.getElementById('close-icon');
 
 function toggleMobileMenu() {
-    if (window.lucide) window.lucide.createIcons();
+    if (!mobileMenu) return;
     
     if (mobileMenu.classList.contains('h-0')) {
         mobileMenu.classList.remove('h-0'); 
@@ -282,6 +282,7 @@ function toggleMobileMenu() {
     } else {
         closeMobileMenu();
     }
+    if (window.lucide) window.lucide.createIcons();
 }
 
 function closeMobileMenu() {
@@ -290,6 +291,31 @@ function closeMobileMenu() {
     mobileMenu.classList.add('h-0');
     menuIcon.classList.remove('hidden');
     closeIcon.classList.add('hidden');
+}
+
+// ==========================================
+// SCROLL ANIMATION (FADE-IN INTERSECTION)
+// ==========================================
+function initScrollAnimations() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  if (fadeElements.length === 0) return;
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.1, // Trigga igång när 10% av elementet syns på skärmen
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Animera bara en gång
+      }
+    });
+  }, observerOptions);
+
+  fadeElements.forEach(el => observer.observe(el));
 }
 
 // =========================
@@ -317,13 +343,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Kör endast dessa funktioner om de faktiskt finns definierade (SÄKERHETSÅTGÄRD)
-  if (typeof fetchBotStats === "function") {
-      fetchBotStats();
-  }
-  if (typeof renderBotChart === "function") {
-      renderBotChart();
-  }
+  // Aktivera snygga scroll-fade-ins på portfolio-elementen
+  initScrollAnimations();
+
+  // Kör automatiserade funktioner om det finns giltiga element på den aktuella sidan
+  fetchBotStats();
+  renderBotChart();
 });
 
 // ==========================================
@@ -334,21 +359,17 @@ function fetchBotStats() {
   const profitEl = document.getElementById('bot-profit');
   const bankrollEl = document.getElementById('bot-bankroll');
 
-  // Om elementen inte finns på denna sida, avbryt direkt
   if (!videoIframe && !profitEl && !bankrollEl) return;
 
   fetch('data/stats.json')
     .then(response => response.json())
     .then(data => {
-      // 1. Uppdatera YouTube-videon med rätt ID dynamiskt
       if (videoIframe && data.latest_video_id) {
         videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
       }
 
-      // 2. Uppdatera siffrorna för vinst och kassa
       if (profitEl) {
         profitEl.textContent = data.profit;
-        // Gör texten grön om det är vinst, annars röd
         profitEl.className = data.is_positive 
           ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
           : "text-xl font-bold text-rose-600 dark:text-rose-400";
@@ -360,7 +381,7 @@ function fetchBotStats() {
       }
     })
     .catch(err => {
-      console.log("Kunde inte ladda stats.json ännu, använder HTML-standardtext.", err);
+      console.log("Kunde inte ladda stats.json, använder HTML-standard.", err);
     });
 }
 
@@ -369,7 +390,7 @@ function fetchBotStats() {
 // ==========================================
 function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
-  if (!chartCanvas) return; // Avbryt om grafen inte ska ligga på denna sida
+  if (!chartCanvas) return;
 
   fetch('data/portfolio_summary.csv')
     .then(response => response.text())
@@ -377,53 +398,41 @@ function renderBotChart() {
       const lines = csvText.trim().split('\n');
       if (lines.length <= 1) return;
 
-      // Hitta rätt index för kolumnerna dynamiskt och tvätta bort ev. teckenkodningsfel
       const headers = lines[0].split(',').map(h => h.trim().replace(/[^\x00-\x7F]/g, ""));
-      
-      // Indexering via fuzzy-matchning för att klara encoding-fel
       const dateIndex = headers.findIndex(h => h.toLowerCase().includes('dat'));
       const bankrollIndex = headers.findIndex(h => h.toLowerCase().includes('kassa'));
 
       if (dateIndex === -1 || bankrollIndex === -1) {
-        console.error("Kunde inte hitta kolumnerna för 'Datum' eller 'Kassa' i CSV-filen.");
+        console.error("Kunde inte hitta kolumner för 'Datum' eller 'Kassa' i CSV.");
         return;
       }
 
-      // Steg 1: Gruppera data per unikt datum (behåll endast sista värdet per dag)
       const dailyData = {};
-
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
-        
-        // Hämta rådatumet och ta bara första delen ("YYYY-MM-DD")
         const fullDateStr = columns[dateIndex].trim();
         const cleanDate = fullDateStr.split(' ')[0]; 
-        
         const bankroll = parseFloat(columns[bankrollIndex].trim());
 
         if (!isNaN(bankroll)) {
-          // Skriver över eventuella tidigare körningar samma dag, så sista värdet sparas
           dailyData[cleanDate] = bankroll;
         }
       }
 
-      // Steg 2: Sortera datumen kronologiskt och separera till axlarna
       const sortedDates = Object.keys(dailyData).sort();
       const labels = sortedDates;
       const dataPoints = sortedDates.map(date => dailyData[date]);
 
-      // Kontrollera om webbplatsen körs i mörkt läge just nu
       const isDarkMode = document.documentElement.classList.contains('dark');
       const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; 
       const textColor = isDarkMode ? '#94a3b8' : '#64748b'; 
 
-      // Förstör tidigare instans om den existerar för att undvika "Canvas already in use"
       if (botChartInstance) {
         botChartInstance.destroy();
       }
 
-      // Steg 3: Rita upp grafen med Chart.js och spara i vår globala variabel
+      // @ts-ignore (om du använder en IDE som varnar för saknad global variabel Chart)
       botChartInstance = new Chart(chartCanvas, {
         type: 'line',
         data: {
@@ -431,10 +440,10 @@ function renderBotChart() {
           datasets: [{
             label: 'Total Bankroll (kr)',
             data: dataPoints,
-            borderColor: '#2563eb', // Blå linje (blue-600)
-            backgroundColor: 'rgba(37, 99, 235, 0.1)', // Ljusblå fyllning under linjen
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37, 99, 235, 0.1)',
             borderWidth: 2.5,
-            tension: 0.3, // Gör linjen lite mjukt kurvad och följsam
+            tension: 0.3,
             pointRadius: 4,
             pointBackgroundColor: '#2563eb'
           }]
@@ -442,9 +451,7 @@ function renderBotChart() {
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false } 
-          },
+          plugins: { legend: { display: false } },
           scales: {
             x: {
               grid: { display: false }, 
@@ -471,6 +478,6 @@ function renderBotChart() {
       });
     })
     .catch(err => {
-      console.log("Kunde inte ladda portfolio_summary.csv för grafen.", err);
+      console.log("Kunde inte ladda portfolio_summary.csv för diagrammet.", err);
     });
 }
