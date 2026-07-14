@@ -27,7 +27,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-   # ... (behåll övre delen med permissions och on: push) ...
 
     steps:
       - name: Checkout
@@ -45,7 +44,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Vi kollar om filen finns, sen lägger vi till den
           if [ -f sitemap.xml ]; then
             git add sitemap.xml
             git commit -m "Automated sitemap update" || echo "No changes to commit"
