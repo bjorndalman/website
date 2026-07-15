@@ -347,39 +347,26 @@ function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
   if (!chartCanvas) return;
 
-  // Cache-busting: Lägger till ett unikt ID för att tvinga webbläsaren att ladda om CSV-filen
-  const cacheBust = new Date().getTime();
-  
-  fetch(`data/portfolio_summary.csv?t=${cacheBust}`)
+  fetch('data/portfolio_summary.csv?t=' + new Date().getTime())
     .then(response => response.text())
     .then(csvText => {
       const lines = csvText.trim().split('\n');
-      if (lines.length <= 1) return;
-      
-      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      let dateIndex = headers.findIndex(h => h.includes('dat'));
-      let bankrollIndex = headers.findIndex(h => h.includes('kassa') || h.includes('nuvarande'));
-      
-      if (dateIndex === -1) dateIndex = 0;
-      if (bankrollIndex === -1) bankrollIndex = 3;
-
       const labels = [];
       const dataPoints = [];
-      
+
       for (let i = 1; i < lines.length; i++) {
-        if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
-        if (columns.length > Math.max(dateIndex, bankrollIndex)) {
-          // Rensa eventuella citattecken och mellanslag
-          const val = parseFloat(columns[bankrollIndex].replace(/["\s]/g, ''));
-          if (!isNaN(val)) {
-            labels.push(columns[dateIndex].replace(/"/g, '').trim());
-            dataPoints.push(val);
+        if (columns.length >= 4) {
+          const date = columns[0].trim();
+          const kassa = parseFloat(columns[3].trim());
+
+          if (!isNaN(kassa)) {
+            labels.push(date);
+            dataPoints.push(kassa);
           }
         }
       }
 
-      const isDark = document.documentElement.classList.contains('dark');
       if (botChartInstance) botChartInstance.destroy();
 
       botChartInstance = new Chart(chartCanvas, {
@@ -387,35 +374,25 @@ function renderBotChart() {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Total Bankroll',
+            label: 'Nuvarande Kassa',
             data: dataPoints,
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37, 99, 235, 0.1)',
-            borderWidth: 2.5,
+            borderWidth: 2,
             tension: 0.3,
-            fill: true,
             pointRadius: 4
           }]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
           scales: {
-            x: { grid: { display: false }, ticks: { color: isDark ? '#94a3b8' : '#64748b', font: { size: 10 }, maxTicksLimit: 7 } },
             y: { 
-              // VIKTIGT: Här tillåter vi Chart.js att sätta min-värdet baserat på datan
-              // Genom att inte definiera 'min' eller 'max', hittar den själv det bästa intervallet
-              beginAtZero: false, 
-              grid: { color: isDark ? '#334155' : '#e2e8f0' }, 
-              ticks: { 
-                color: isDark ? '#94a3b8' : '#64748b', 
-                callback: v => v.toLocaleString('sv-SE') + ' kr' 
-              } 
+              beginAtZero: false 
             }
           }
         }
       });
     })
-    .catch(err => console.log("Kunde inte ladda diagram:", err));
+    .catch(err => console.error("Kunde inte rendera grafen:", err));
 }
