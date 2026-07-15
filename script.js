@@ -63,20 +63,7 @@ function render() {
 // ==========================================
 // AUTOMATION: FETCH LIVE BOT STATS & CHART
 // ==========================================
-function fetchBotStats() {
-  fetch('data/stats.json')
-    .then(response => response.json())
-    .then(data => {
-      const profitEl = document.getElementById('bot-profit');
-      const bankrollEl = document.getElementById('bot-bankroll');
-      if (profitEl) {
-        profitEl.textContent = data.profit;
-        profitEl.className = data.is_positive ? "text-xl font-bold text-emerald-600" : "text-xl font-bold text-rose-600";
-      }
-      if (bankrollEl) bankrollEl.textContent = data.bankroll;
-    })
-    .catch(err => console.log("Stats ej tillgängliga", err));
-}
+// ... (Din övriga kod ovanför)
 
 function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
@@ -98,7 +85,8 @@ function renderBotChart() {
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
-        // Rensa värden från citattecken och mellanslag
+        
+        // Rensar strängar och konverterar till float
         const date = columns[dateIndex].replace(/"/g, '').trim();
         const val = parseFloat(columns[bankrollIndex].replace(/"/g, '').trim());
         
@@ -116,12 +104,14 @@ function renderBotChart() {
         data: {
           labels: labels,
           datasets: [{
+            label: 'Total Bankroll',
             data: dataPoints,
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37, 99, 235, 0.1)',
             borderWidth: 3,
             tension: 0.3,
-            fill: true
+            fill: true,
+            pointRadius: 5
           }]
         },
         options: {
@@ -132,7 +122,11 @@ function renderBotChart() {
             x: { ticks: { color: isDark ? '#94a3b8' : '#64748b' } },
             y: { 
               beginAtZero: false, 
-              ticks: { color: isDark ? '#94a3b8' : '#64748b', callback: v => v + ' kr' } 
+              grid: { color: isDark ? '#334155' : '#e2e8f0' },
+              ticks: { 
+                color: isDark ? '#94a3b8' : '#64748b', 
+                callback: v => v.toLocaleString('sv-SE') + ' kr' 
+              } 
             }
           }
         }
