@@ -398,7 +398,7 @@ function fetchBotStats() {
 }
 
 // ==========================================
-// AUTOMATION: FETCH CSV & RENDER CHART (JUSTERAD)
+// AUTOMATION: FETCH CSV & RENDER CHART (KORRIGERAD)
 // ==========================================
 function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
@@ -461,11 +461,10 @@ function renderBotChart() {
               ticks: { color: textColor, maxRotation: 0, maxTicksLimit: 6 }
             },
             y: {
-              beginAtZero: false, // Gör att Y-axeln börjar nära dina värden
+              beginAtZero: false,
               grid: { color: gridColor },
               ticks: { 
                 color: textColor,
-                // Detta tvingar fram synliga steg på Y-axeln
                 stepSize: 100, 
                 callback: (value) => value.toLocaleString('sv-SE') + ' kr'
               }
@@ -474,8 +473,7 @@ function renderBotChart() {
         }
       });
     })
-    .catch(err => console.log("Kunde inte ladda diagram.", err));
-}
+    .catch(err => {
       console.log("Kunde inte ladda portfolio_summary.csv för diagrammet.", err);
     });
 }
