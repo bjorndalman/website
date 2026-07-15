@@ -309,26 +309,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script>
+        // Initiera enbart Lucide-ikoner lokalt efter sidladdning
         document.addEventListener("DOMContentLoaded", () => {
-            if (typeof initTheme === 'function') initTheme();
             if (window.lucide) window.lucide.createIcons();
-            
-            // Koppla samman ljust/mörkt läge med script.js-funktionen
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            if (themeToggleBtn && typeof toggleTheme === 'function') {
-                themeToggleBtn.addEventListener('click', toggleTheme);
-            }
-
-            const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-            if (themeToggleMobileBtn && typeof toggleTheme === 'function') {
-                themeToggleMobileBtn.addEventListener('click', toggleTheme);
-            }
-            
-            // Koppla samman mobilmeny-togglingen med script.js-funktionerna
-            const menuButton = document.getElementById('menu-button');
-            if (menuButton) {
-                menuButton.addEventListener('click', typeof toggleMobileMenu === 'function' ? toggleMobileMenu : () => {});
-            }
         });
     </script>
 </body>
