@@ -411,6 +411,8 @@ function renderBotChart() {
       if (lines.length <= 1) return;
 
       const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+      
+      // Sök efter kolumnerna
       let dateIndex = headers.findIndex(h => h.includes('dat'));
       let bankrollIndex = headers.findIndex(h => h.includes('kassa') || h.includes('nuvarande'));
       
@@ -423,6 +425,7 @@ function renderBotChart() {
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
+        
         if (columns.length > Math.max(dateIndex, bankrollIndex)) {
           labels.push(columns[dateIndex].trim());
           dataPoints.push(parseFloat(columns[bankrollIndex].trim()));
@@ -440,7 +443,7 @@ function renderBotChart() {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Total Bankroll',
+            label: 'Total Bankroll (kr)',
             data: dataPoints,
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37, 99, 235, 0.1)',
