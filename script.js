@@ -1,7 +1,7 @@
 // =========================
 //         GLOBAL CONFIG
 // =========================
-const defaultData = { // ENGELSKA (BAS)
+const defaultData = { 
   profile: {
     name: "Björn Dahlman",
     initials: "BD",
@@ -68,7 +68,7 @@ const defaultData = { // ENGELSKA (BAS)
   freetime: ["Sports", "Outdoor activities", "YouTube: 'Dalmanium'", "Coding"]
 };
 
-const swedishData = { // SVENSKA
+const swedishData = { 
   profile: {
     name: "Björn Dahlman",
     initials: "BD",
@@ -135,12 +135,12 @@ const swedishData = { // SVENSKA
   freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
 };
 
-// Global diagraminstans för att undvika "Canvas is already in use"-krascher
+// Global diagraminstans
 let botChartInstance = null;
 let appData; 
 
 // =========================
-//        SPRÅKHANTERING
+//     SPRÅKHANTERING
 // =========================
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
@@ -148,12 +148,11 @@ function loadLanguageData() {
 }
 
 // =========================
-//        THEME HANDLING
+//    THEME HANDLING
 // =========================
 function initTheme() {
   const stored = localStorage.getItem("theme");
   const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  
   if (stored === "dark" || (!stored && systemDark)) {
     document.documentElement.classList.add("dark");
   } else {
@@ -166,11 +165,9 @@ function toggleTheme() {
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 
-  // Uppdatera diagrammets färger direkt om det är laddat, utan omladdning av CSV
   if (botChartInstance) {
     const gridColor = isDark ? '#334155' : '#e2e8f0';
     const textColor = isDark ? '#94a3b8' : '#64748b';
-    
     botChartInstance.options.scales.x.ticks.color = textColor;
     botChartInstance.options.scales.y.ticks.color = textColor;
     botChartInstance.options.scales.y.grid.color = gridColor;
@@ -180,16 +177,13 @@ function toggleTheme() {
 
 function renderDescription(descriptionData) {
   if (Array.isArray(descriptionData)) {
-    const listItems = descriptionData.map(item => `
-      <li class="mb-1 ml-4 list-disc">${item}</li>
-    `).join('');
-    return `<ul class="list-outside">${listItems}</ul>`;
+    return `<ul class="list-outside">${descriptionData.map(item => `<li class="mb-1 ml-4 list-disc">${item}</li>`).join('')}</ul>`;
   }
   return descriptionData.replace(/\n/g, '<br>');
 }
 
 // =========================
-//          RENDERING
+//         RENDERING
 // =========================
 function render() {
   setText("name", appData.profile.name);
@@ -201,7 +195,6 @@ function render() {
   const emailLink = document.getElementById("email-link");
   if(emailLink) emailLink.href = `mailto:${appData.profile.email}`;
 
-  // Skills
   const skillsContainer = document.getElementById("skills-list");
   if(skillsContainer) {
     skillsContainer.innerHTML = appData.skills.map(skill => `
@@ -211,7 +204,6 @@ function render() {
     `).join('');
   }
 
-  // Experience
   const expContainer = document.getElementById("experience-list");
   if(expContainer) {
     expContainer.innerHTML = appData.experience.map(exp => `
@@ -228,7 +220,6 @@ function render() {
     `).join('');
   }
 
-  // Education
   const eduContainer = document.getElementById("education-list");
   if(eduContainer) {
     eduContainer.innerHTML = appData.education.map(edu => `
@@ -245,7 +236,6 @@ function render() {
     `).join('');
   }
 
-  // Free Time
   const freeContainer = document.getElementById("freetime-list");
   if(freeContainer) {
     freeContainer.innerHTML = appData.freetime.map((item, index) => `
@@ -264,7 +254,7 @@ function setText(id, text) {
 }
 
 // =========================
-//      MOBILE MENU LOGIC
+//     MOBILE MENU LOGIC
 // =========================
 const mobileMenu = document.getElementById('mobile-menu');
 const menuButton = document.getElementById('menu-button');
@@ -273,7 +263,6 @@ const closeIcon = document.getElementById('close-icon');
 
 function toggleMobileMenu() {
     if (!mobileMenu) return;
-    
     if (mobileMenu.classList.contains('h-0')) {
         mobileMenu.classList.remove('h-0'); 
         mobileMenu.classList.add('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
@@ -294,112 +283,66 @@ function closeMobileMenu() {
 }
 
 // ==========================================
-// SCROLL ANIMATION (FADE-IN INTERSECTION)
+// SCROLL ANIMATION
 // ==========================================
 function initScrollAnimations() {
   const fadeElements = document.querySelectorAll('.fade-in');
-  if (fadeElements.length === 0) return;
-
-  const observerOptions = {
-    root: null,
-    threshold: 0.1, // Trigga igång när 10% av elementet syns på skärmen
-    rootMargin: "0px 0px -50px 0px"
-  };
-
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Animera bara en gång
+        observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
-
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
   fadeElements.forEach(el => observer.observe(el));
 }
 
 // =========================
-//            INIT
+//          INIT
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
   loadLanguageData();
   initTheme();
+  if (document.getElementById('name')) render();
   
-  if (document.getElementById('name')) { 
-      render();
-  } else if (window.lucide) {
-      window.lucide.createIcons(); 
-  }
-
-  // --- GLOBAL TEMA-VÄXLARE (Desktop & Mobil) ---
   const themeToggleBtn = document.getElementById('theme-toggle');
-  if (themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', toggleTheme);
-  }
-
+  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
   const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  if (themeToggleMobileBtn) {
-      themeToggleMobileBtn.addEventListener('click', toggleTheme);
-  }
-
-  // --- GLOBAL MOBILMENY ---
-  if (menuButton) {
-      menuButton.addEventListener('click', toggleMobileMenu);
-  }
-
+  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+  
+  if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
   if (mobileMenu) {
       mobileMenu.querySelectorAll('a').forEach(link => {
-          if (!link.classList.contains('lang-icon')) {
-              link.addEventListener('click', closeMobileMenu);
-          }
+          if (!link.classList.contains('lang-icon')) link.addEventListener('click', closeMobileMenu);
       });
   }
 
-  // Aktivera snygga scroll-fade-ins på portfolio-elementen
   initScrollAnimations();
-
-  // Kör automatiserade funktioner om det finns giltiga element på den aktuella sidan
   fetchBotStats();
   renderBotChart();
 });
 
 // ==========================================
-// AUTOMATION: FETCH LIVE BOT STATS (JSON)
+// AUTOMATION: DATA FETCHING
 // ==========================================
 function fetchBotStats() {
-  const videoIframe = document.getElementById('youtube-bot-video');
-  const profitEl = document.getElementById('bot-profit');
-  const bankrollEl = document.getElementById('bot-bankroll');
-
-  if (!videoIframe && !profitEl && !bankrollEl) return;
-
   fetch('data/stats.json')
     .then(response => response.json())
     .then(data => {
-      if (videoIframe && data.latest_video_id) {
-        videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
-      }
-
+      const videoIframe = document.getElementById('youtube-bot-video');
+      const profitEl = document.getElementById('bot-profit');
+      const bankrollEl = document.getElementById('bot-bankroll');
+      if (videoIframe && data.latest_video_id) videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
       if (profitEl) {
         profitEl.textContent = data.profit;
-        profitEl.className = data.is_positive 
-          ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
-          : "text-xl font-bold text-rose-600 dark:text-rose-400";
+        profitEl.className = data.is_positive ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" : "text-xl font-bold text-rose-600 dark:text-rose-400";
       }
-      
-      if (bankrollEl) {
-        bankrollEl.textContent = data.bankroll;
-        bankrollEl.className = "text-xl font-bold text-slate-900 dark:text-white";
-      }
+      if (bankrollEl) bankrollEl.textContent = data.bankroll;
     })
-    .catch(err => {
-      console.log("Kunde inte ladda stats.json, använder HTML-standard.", err);
-    });
+    .catch(err => console.log("Stats ej tillgängliga.", err));
 }
 
-// ==========================================
-// AUTOMATION: FETCH CSV & RENDER CHART
-// ==========================================
 function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
   if (!chartCanvas) return;
@@ -409,60 +352,41 @@ function renderBotChart() {
     .then(csvText => {
       const lines = csvText.trim().split('\n');
       if (lines.length <= 1) return;
-
-      // Hämta råa headers, trimma dem och gör dem till gemener för säker matchning
       const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      
-      // Sök efter kolumnerna med bredare matchning
       let dateIndex = headers.findIndex(h => h.includes('dat'));
       let bankrollIndex = headers.findIndex(h => h.includes('kassa') || h.includes('nuvarande'));
-
-      // FALLBACK: Om webbläsaren har problem med teckenkodningen, använd kända indexpositioner
       if (dateIndex === -1) dateIndex = 0;
       if (bankrollIndex === -1) bankrollIndex = 3;
 
       const labels = [];
       const dataPoints = [];
-
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
-        
-        // Säkerställ att raden faktiskt har tillräckligt med kolumner
         if (columns.length > Math.max(dateIndex, bankrollIndex)) {
-          const timeStr = columns[dateIndex].trim(); 
-          const bankroll = parseFloat(columns[bankrollIndex].trim());
-
-          if (!isNaN(bankroll)) {
-            // Här pushar vi varje rad som en unik datapunkt istället för att gruppera på datum
-            labels.push(timeStr);
-            dataPoints.push(bankroll);
+          const val = parseFloat(columns[bankrollIndex].trim());
+          if (!isNaN(val)) {
+            labels.push(columns[dateIndex].trim());
+            dataPoints.push(val);
           }
         }
       }
 
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; 
-      const textColor = isDarkMode ? '#94a3b8' : '#64748b'; 
+      const isDark = document.documentElement.classList.contains('dark');
+      if (botChartInstance) botChartInstance.destroy();
 
-      if (botChartInstance) {
-        botChartInstance.destroy();
-      }
-
-      // @ts-ignore
       botChartInstance = new Chart(chartCanvas, {
         type: 'line',
         data: {
           labels: labels,
           datasets: [{
-            label: 'Total Bankroll (kr)',
+            label: 'Total Bankroll',
             data: dataPoints,
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37, 99, 235, 0.1)',
             borderWidth: 2.5,
             tension: 0.3,
-            pointRadius: 4,
-            pointBackgroundColor: '#2563eb'
+            pointRadius: 4
           }]
         },
         options: {
@@ -470,31 +394,11 @@ function renderBotChart() {
           maintainAspectRatio: false,
           plugins: { legend: { display: false } },
           scales: {
-            x: {
-              grid: { display: false }, 
-              ticks: { 
-                color: textColor, 
-                font: { size: 10 },
-                maxRotation: 0,
-                autoSkip: true,
-                maxTicksLimit: 7
-              }
-            },
-            y: {
-              grid: { color: gridColor },
-              ticks: { 
-                color: textColor, 
-                font: { size: 10 },
-                callback: function(value) {
-                  return value.toLocaleString('sv-SE') + ' kr';
-                }
-              }
-            }
+            x: { grid: { display: false }, ticks: { color: isDark ? '#94a3b8' : '#64748b', font: { size: 10 }, maxTicksLimit: 7 } },
+            y: { grid: { color: isDark ? '#334155' : '#e2e8f0' }, ticks: { color: isDark ? '#94a3b8' : '#64748b', callback: v => v.toLocaleString('sv-SE') + ' kr' } }
           }
         }
       });
     })
-    .catch(err => {
-      console.log("Kunde inte ladda portfolio_summary.csv för diagrammet.", err);
-    });
+    .catch(err => console.log("Kunde inte ladda diagram.", err));
 }
