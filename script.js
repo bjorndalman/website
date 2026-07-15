@@ -140,7 +140,7 @@ let botChartInstance = null;
 let appData; 
 
 // =========================
-//       SPRÅKHANTERING
+//        SPRÅKHANTERING
 // =========================
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
@@ -148,7 +148,7 @@ function loadLanguageData() {
 }
 
 // =========================
-//       THEME HANDLING
+//        THEME HANDLING
 // =========================
 function initTheme() {
   const stored = localStorage.getItem("theme");
@@ -189,7 +189,7 @@ function renderDescription(descriptionData) {
 }
 
 // =========================
-//         RENDERING
+//          RENDERING
 // =========================
 function render() {
   setText("name", appData.profile.name);
@@ -418,30 +418,28 @@ function renderBotChart() {
       let bankrollIndex = headers.findIndex(h => h.includes('kassa') || h.includes('nuvarande'));
 
       // FALLBACK: Om webbläsaren har problem med teckenkodningen, använd kända indexpositioner
-      // Index 0: Datum, Index 3: Nuvarande Kassa (kr)
       if (dateIndex === -1) dateIndex = 0;
       if (bankrollIndex === -1) bankrollIndex = 3;
 
-      const dailyData = {};
+      const labels = [];
+      const dataPoints = [];
+
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
         
         // Säkerställ att raden faktiskt har tillräckligt med kolumner
         if (columns.length > Math.max(dateIndex, bankrollIndex)) {
-          const fullDateStr = columns[dateIndex].trim();
-          const cleanDate = fullDateStr.split(' ')[0]; 
+          const timeStr = columns[dateIndex].trim(); 
           const bankroll = parseFloat(columns[bankrollIndex].trim());
 
           if (!isNaN(bankroll)) {
-            dailyData[cleanDate] = bankroll;
+            // Här pushar vi varje rad som en unik datapunkt istället för att gruppera på datum
+            labels.push(timeStr);
+            dataPoints.push(bankroll);
           }
         }
       }
-
-      const sortedDates = Object.keys(dailyData).sort();
-      const labels = sortedDates;
-      const dataPoints = sortedDates.map(date => dailyData[date]);
 
       const isDarkMode = document.documentElement.classList.contains('dark');
       const gridColor = isDarkMode ? '#334155' : '#e2e8f0'; 
