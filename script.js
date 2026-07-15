@@ -374,7 +374,7 @@ function renderBotChart() {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Nuvarande Kassa',
+            label: 'Current Bankroll',
             data: dataPoints,
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37, 99, 235, 0.1)',
@@ -394,5 +394,5 @@ function renderBotChart() {
         }
       });
     })
-    .catch(err => console.error("Kunde inte rendera grafen:", err));
+    .catch(err => console.error("Could not render the chart:", err));
 }
