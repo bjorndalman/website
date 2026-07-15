@@ -66,10 +66,13 @@
 
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-           <picture>
-                <source srcset="images/bjorn-dahlman.webp" type="image/webp">
-                <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
-            </picture>
+            
+            <a href="index.html">
+                <picture>
+                    <source srcset="images/bjorn-dahlman.webp" type="image/webp">
+                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
+                </picture>
+            </a>
             
             <div class="flex items-center gap-6">
                 <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
@@ -104,12 +107,12 @@
                     </a>
                 </div>
                 
-                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Toggle Theme">
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
                 
-                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Toggle Menu">
                     <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
                     <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
                 </button>
@@ -141,10 +144,10 @@
                 <a href="index.html" class="lang-icon active-lang text-xl hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
                 <a href="sv/index.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
             </div>
-            <button onclick="toggleTheme()" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
-                <i data-lucide="sun" class="w-5 h-5 mr-3 dark:hidden"></i>
-                <i data-lucide="moon" class="w-5 h-5 mr-3 hidden dark:block"></i>
-                Toggle Theme
+            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
+                <span>Toggle Theme</span>
             </button>
         </div>
     </nav>
@@ -221,7 +224,7 @@
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
-        <p>© 2025 <span id="footer-name"></span>. All rights reserved.</p>
+        <p>© 2026 <span id="footer-name"></span>. All rights reserved.</p>
     </footer>
 
     <div id="welcome-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/90 backdrop-blur-md hidden p-4">
@@ -242,7 +245,7 @@
                         <span id="pdf-pwd" class="text-xl font-mono font-bold text-slate-800 dark:text-white select-all"></span>
                     </div>
                 </div>
-                <button onclick="closeWelcomeModal()" class="w-full bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white py-4 rounded-xl font-bold transition-all transform active:scale-95 shadow-xl">
+                <button id="modal-close-btn" class="w-full bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white py-4 rounded-xl font-bold transition-all transform active:scale-95 shadow-xl">
                     Got it, view portfolio
                 </button>
             </div>
@@ -251,12 +254,6 @@
 
     <script src="script.js"></script>
     <script>
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    </script>
-    <script>
-        // JAVASCRIPT ÄR UPPDATERAT HÄR (atob logik)
         function handleWelcomeModal() {
             const rawHash = window.location.hash.substring(1);
             const navIds = ['about', 'skills', 'experience', 'education', 'contact'];
@@ -280,7 +277,8 @@
         }
 
         function closeWelcomeModal() {
-            document.getElementById('welcome-modal').classList.add('hidden');
+            const modal = document.getElementById('welcome-modal');
+            if (modal) modal.classList.add('hidden');
         }
 
         function trackCV(device) {
@@ -303,6 +301,7 @@
                 lucide.createIcons();
             }
 
+            document.getElementById('modal-close-btn')?.addEventListener('click', closeWelcomeModal);
             document.getElementById('cv-en-btn')?.addEventListener('click', () => trackCV('Desktop'));
             document.getElementById('cv-en-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
         });
