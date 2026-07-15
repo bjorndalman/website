@@ -411,13 +411,8 @@ function renderBotChart() {
       if (lines.length <= 1) return;
 
       const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      
-      // Sök efter kolumnerna
-      let dateIndex = headers.findIndex(h => h.includes('dat'));
-      let bankrollIndex = headers.findIndex(h => h.includes('kassa') || h.includes('nuvarande'));
-      
-      if (dateIndex === -1) dateIndex = 0;
-      if (bankrollIndex === -1) bankrollIndex = 3;
+      const dateIndex = headers.findIndex(h => h.includes('dat')); 
+      const bankrollIndex = headers.findIndex(h => h.includes('kassa') || h.includes('nuvarande'));
 
       const labels = [];
       const dataPoints = [];
@@ -425,7 +420,6 @@ function renderBotChart() {
       for (let i = 1; i < lines.length; i++) {
         if (!lines[i].trim()) continue;
         const columns = lines[i].split(',');
-        
         if (columns.length > Math.max(dateIndex, bankrollIndex)) {
           labels.push(columns[dateIndex].trim());
           dataPoints.push(parseFloat(columns[bankrollIndex].trim()));
@@ -443,7 +437,7 @@ function renderBotChart() {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Total Bankroll (kr)',
+            label: 'Total Bankroll',
             data: dataPoints,
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37, 99, 235, 0.1)',
@@ -457,18 +451,27 @@ function renderBotChart() {
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
+          plugins: { 
+            legend: { display: false } 
+          },
           scales: {
             x: { 
               grid: { display: false },
-              ticks: { color: textColor, maxRotation: 0, maxTicksLimit: 6 }
+              ticks: { 
+                color: textColor,
+                // Dynamisk rotation: rotera endast om texten blir för lång
+                maxRotation: 45,
+                minRotation: 45
+              }
             },
             y: {
-              beginAtZero: false,
+              // Genom att sätta beginAtZero till false, anpassar Chart.js
+              // skalan dynamiskt efter dina faktiska lägsta och högsta värden.
+              beginAtZero: false, 
               grid: { color: gridColor },
               ticks: { 
                 color: textColor,
-                stepSize: 100, 
+                // Ingen hårdkodad stepSize - Chart.js räknar ut optimala steg själv
                 callback: (value) => value.toLocaleString('sv-SE') + ' kr'
               }
             }
@@ -476,7 +479,5 @@ function renderBotChart() {
         }
       });
     })
-    .catch(err => {
-      console.log("Kunde inte ladda portfolio_summary.csv för diagrammet.", err);
-    });
+    .catch(err => console.log("Kunde inte ladda diagram.", err));
 }
