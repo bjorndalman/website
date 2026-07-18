@@ -137,10 +137,11 @@ const swedishData = {
 
 // Global diagraminstans
 let botChartInstance = null;
+let stockChartInstance = null; 
 let appData; 
 
 // =========================
-//     SPRÅKHANTERING
+//      SPRÅKHANTERING
 // =========================
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
@@ -148,7 +149,7 @@ function loadLanguageData() {
 }
 
 // =========================
-//    THEME HANDLING
+//     THEME HANDLING
 // =========================
 function initTheme() {
   const stored = localStorage.getItem("theme");
@@ -183,7 +184,7 @@ function renderDescription(descriptionData) {
 }
 
 // =========================
-//         RENDERING
+//          RENDERING
 // =========================
 function render() {
   setText("name", appData.profile.name);
@@ -254,7 +255,7 @@ function setText(id, text) {
 }
 
 // =========================
-//     MOBILE MENU LOGIC
+//      MOBILE MENU LOGIC
 // =========================
 const mobileMenu = document.getElementById('mobile-menu');
 const menuButton = document.getElementById('menu-button');
@@ -299,7 +300,7 @@ function initScrollAnimations() {
 }
 
 // =========================
-//          INIT
+//           INIT
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
   loadLanguageData();
@@ -319,12 +320,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initScrollAnimations();
+  
+  // Startar laddning av båda botarna samtidigt
   fetchBotStats();
   renderBotChart();
+  fetchStockStats();
+  renderStockChart();
 });
 
 // ==========================================
-// AUTOMATION: DATA FETCHING
+// AUTOMATION: DATA FETCHING (KALMAN BOT)
 // ==========================================
 function fetchBotStats() {
   fetch('data/stats.json')
@@ -395,4 +400,83 @@ function renderBotChart() {
       });
     })
     .catch(err => console.error("Could not render the chart:", err));
+}
+
+// ==========================================
+// AUTOMATION: NEW STOCK BOT DATA FETCHING
+// ==========================================
+function fetchStockStats() {
+  fetch('data/stock_stats.json')
+    .then(response => response.json())
+    .then(data => {
+      const videoIframe = document.getElementById('youtube-stock-video');
+      const profitEl = document.getElementById('stock-profit');
+      const bankrollEl = document.getElementById('stock-bankroll');
+      
+      if (videoIframe && data.latest_video_id) {
+        videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
+      }
+      if (profitEl) {
+        profitEl.textContent = data.profit;
+        profitEl.className = data.is_positive 
+          ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
+          : "text-xl font-bold text-rose-600 dark:text-rose-400";
+      }
+      if (bankrollEl) bankrollEl.textContent = data.bankroll;
+    })
+    .catch(err => console.log("Aktie-stats ej tillgängliga än.", err));
+}
+
+function renderStockChart() {
+  const chartCanvas = document.getElementById('stock-profit-chart');
+  if (!chartCanvas) return;
+
+  fetch('data/stock_portfolio_summary.csv?t=' + new Date().getTime())
+    .then(response => response.text())
+    .then(csvText => {
+      const lines = csvText.trim().split('\n');
+      const labels = [];
+      const dataPoints = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const columns = lines[i].split(',');
+        if (columns.length >= 4) {
+          const date = columns[0].trim();
+          const kassa = parseFloat(columns[3].trim());
+
+          if (!isNaN(kassa)) {
+            labels.push(date);
+            dataPoints.push(kassa);
+          }
+        }
+      }
+
+      if (stockChartInstance) stockChartInstance.destroy();
+
+      stockChartInstance = new Chart(chartCanvas, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Stock Bankroll',
+            data: dataPoints,
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 2,
+            tension: 0.3,
+            pointRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { 
+              beginAtZero: false 
+            }
+          }
+        }
+      });
+    })
+    .catch(err => console.error("Could not render the stock chart:", err));
 }
