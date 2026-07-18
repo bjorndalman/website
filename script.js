@@ -166,14 +166,18 @@ function toggleTheme() {
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 
-  if (botChartInstance) {
-    const gridColor = isDark ? '#334155' : '#e2e8f0';
-    const textColor = isDark ? '#94a3b8' : '#64748b';
-    botChartInstance.options.scales.x.ticks.color = textColor;
-    botChartInstance.options.scales.y.ticks.color = textColor;
-    botChartInstance.options.scales.y.grid.color = gridColor;
-    botChartInstance.update();
-  }
+  // Uppdatera båda graferna säkert
+  [botChartInstance, stockChartInstance].forEach(chart => {
+    if (chart) {
+      const gridColor = isDark ? '#334155' : '#e2e8f0';
+      const textColor = isDark ? '#94a3b8' : '#64748b';
+      
+      chart.options.scales.x.ticks.color = textColor;
+      chart.options.scales.y.ticks.color = textColor;
+      chart.options.scales.y.grid.color = gridColor;
+      chart.update();
+    }
+  });
 }
 
 function renderDescription(descriptionData) {
