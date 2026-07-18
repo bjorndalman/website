@@ -135,7 +135,9 @@ const swedishData = {
   freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
 };
 
-let appData; 
+let botChartInstance = null;
+let stockChartInstance = null;
+let appData;
 
 // =========================
 // SPRÅKHANTERING
