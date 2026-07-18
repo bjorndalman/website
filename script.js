@@ -321,8 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // =========================
 // DATA FETCHING
 // =========================
-function fetchBotStats() {
-  fetch('/data/stats.json')
+async function fetchBotStats() {
+  fetch('data/stats.json')
     .then(response => response.json())
     .then(data => {
       const videoIframe = document.getElementById('youtube-bot-video');
@@ -335,7 +335,7 @@ function fetchBotStats() {
       }
       if (bankrollEl) bankrollEl.textContent = data.bankroll;
     })
-    .catch(err => console.log("Bot stats ej tillgängliga.", err));
+    .catch(err => console.log("Bot stats ej tillgängliga.", err))
 }
 
 function renderBotChart() {
@@ -362,8 +362,8 @@ function renderBotChart() {
     });
 }
 
-function fetchStockStats() {
-  fetch('/data/stock_stats.json?t=' + new Date().getTime())
+async function fetchStockStats() {
+  fetch('data/stock_stats.json?t=' + new Date().getTime())
     .then(response => response.json())
     .then(data => {
       const videoIframe = document.getElementById('youtube-stock-video');
