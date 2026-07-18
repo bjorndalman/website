@@ -1,5 +1,5 @@
 // =========================
-//         GLOBAL CONFIG
+// GLOBAL CONFIG & INSTANCES
 // =========================
 const defaultData = { 
   profile: {
@@ -135,13 +135,12 @@ const swedishData = {
   freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
 };
 
-// Global diagraminstans
 let botChartInstance = null;
 let stockChartInstance = null; 
 let appData; 
 
 // =========================
-//      SPRÅKHANTERING
+// SPRÅKHANTERING
 // =========================
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
@@ -149,7 +148,7 @@ function loadLanguageData() {
 }
 
 // =========================
-//     THEME HANDLING
+// THEME HANDLING
 // =========================
 function initTheme() {
   const stored = localStorage.getItem("theme");
@@ -166,12 +165,10 @@ function toggleTheme() {
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 
-  // Uppdatera båda graferna säkert
   [botChartInstance, stockChartInstance].forEach(chart => {
     if (chart) {
       const gridColor = isDark ? '#334155' : '#e2e8f0';
       const textColor = isDark ? '#94a3b8' : '#64748b';
-      
       chart.options.scales.x.ticks.color = textColor;
       chart.options.scales.y.ticks.color = textColor;
       chart.options.scales.y.grid.color = gridColor;
@@ -188,7 +185,7 @@ function renderDescription(descriptionData) {
 }
 
 // =========================
-//          RENDERING
+// RENDERING
 // =========================
 function render() {
   setText("name", appData.profile.name);
@@ -196,7 +193,6 @@ function render() {
   setText("title", appData.profile.title);
   setText("presentation", appData.profile.presentation);
   setText("email", appData.profile.email);
-  
   const emailLink = document.getElementById("email-link");
   if(emailLink) emailLink.href = `mailto:${appData.profile.email}`;
 
@@ -249,7 +245,6 @@ function render() {
       </li>
     `).join('');
   }
-
   if (window.lucide) window.lucide.createIcons();
 }
 
@@ -259,7 +254,7 @@ function setText(id, text) {
 }
 
 // =========================
-//      MOBILE MENU LOGIC
+// MOBILE MENU LOGIC
 // =========================
 const mobileMenu = document.getElementById('mobile-menu');
 const menuButton = document.getElementById('menu-button');
@@ -287,9 +282,6 @@ function closeMobileMenu() {
     closeIcon.classList.add('hidden');
 }
 
-// ==========================================
-// SCROLL ANIMATION
-// ==========================================
 function initScrollAnimations() {
   const fadeElements = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries, observer) => {
@@ -303,9 +295,6 @@ function initScrollAnimations() {
   fadeElements.forEach(el => observer.observe(el));
 }
 
-// =========================
-//           INIT
-// =========================
 document.addEventListener("DOMContentLoaded", () => {
   loadLanguageData();
   initTheme();
@@ -322,21 +311,18 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!link.classList.contains('lang-icon')) link.addEventListener('click', closeMobileMenu);
       });
   }
-
   initScrollAnimations();
-  
-  // Startar laddning av båda botarna samtidigt
   fetchBotStats();
   renderBotChart();
   fetchStockStats();
   renderStockChart();
 });
 
-// ==========================================
-// AUTOMATION: DATA FETCHING (KALMAN BOT)
-// ==========================================
+// =========================
+// DATA FETCHING
+// =========================
 function fetchBotStats() {
-  fetch('data/stats.json')
+  fetch('/data/stats.json')
     .then(response => response.json())
     .then(data => {
       const videoIframe = document.getElementById('youtube-bot-video');
@@ -349,149 +335,72 @@ function fetchBotStats() {
       }
       if (bankrollEl) bankrollEl.textContent = data.bankroll;
     })
-    .catch(err => console.log("Stats ej tillgängliga.", err));
+    .catch(err => console.log("Bot stats ej tillgängliga.", err));
 }
 
 function renderBotChart() {
   const chartCanvas = document.getElementById('bot-profit-chart');
   if (!chartCanvas) return;
-
-  fetch('data/portfolio_summary.csv?t=' + new Date().getTime())
+  fetch('/data/portfolio_summary.csv?t=' + new Date().getTime())
     .then(response => response.text())
     .then(csvText => {
       const lines = csvText.trim().split('\n');
-      const labels = [];
-      const dataPoints = [];
-
+      const labels = [], dataPoints = [];
       for (let i = 1; i < lines.length; i++) {
         const columns = lines[i].split(',');
         if (columns.length >= 4) {
-          const date = columns[0].trim();
-          const kassa = parseFloat(columns[3].trim());
-
-          if (!isNaN(kassa)) {
-            labels.push(date);
-            dataPoints.push(kassa);
-          }
+          labels.push(columns[0].trim());
+          dataPoints.push(parseFloat(columns[3].trim()));
         }
       }
-
       if (botChartInstance) botChartInstance.destroy();
-
       botChartInstance = new Chart(chartCanvas, {
         type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Current Bankroll',
-            data: dataPoints,
-            borderColor: '#2563eb',
-            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-            borderWidth: 2,
-            tension: 0.3,
-            pointRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { 
-              beginAtZero: false 
-            }
-          }
-        }
+        data: { labels: labels, datasets: [{ label: 'Bankroll', data: dataPoints, borderColor: '#2563eb', backgroundColor: 'rgba(37, 99, 235, 0.1)', borderWidth: 2, tension: 0.3 }] },
+        options: { responsive: true, maintainAspectRatio: false }
       });
-    })
-    .catch(err => console.error("Could not render the chart:", err));
+    });
 }
-// Lägg dessa högst upp i filen
-let botChartInstance = null;
-let stockChartInstance = null;
-// ==========================================
-// AUTOMATION: NEW STOCK BOT DATA FETCHING
-// ==========================================
+
 function fetchStockStats() {
-  // Lägg till ?t= timestamp för att undvika cache-problem
-  fetch('data/stock_stats.json?t=' + new Date().getTime())
+  fetch('/data/stock_stats.json?t=' + new Date().getTime())
     .then(response => response.json())
     .then(data => {
       const videoIframe = document.getElementById('youtube-stock-video');
       const profitEl = document.getElementById('stock-profit');
       const bankrollEl = document.getElementById('stock-bankroll');
       const investedEl = document.getElementById('stock-invested');
-      
-      if (videoIframe && data.latest_video_id) {
-        videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
-      }
-      
+      if (videoIframe && data.latest_video_id) videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
       if (profitEl) {
-        profitEl.textContent = data.profit_pct; // Använd rätt nyckel
-        profitEl.className = data.is_positive 
-          ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
-          : "text-xl font-bold text-rose-600 dark:text-rose-400";
+        profitEl.textContent = data.profit_pct;
+        profitEl.className = data.is_positive ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400";
       }
-      
-      if (bankrollEl) {
-        bankrollEl.textContent = data.total_bankroll; // Använd rätt nyckel
-      }
-      
-      if (investedEl) {
-        investedEl.textContent = `Startkapital: ${data.total_invested}`;
-      }
+      if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
+      if (investedEl) investedEl.textContent = `Startkapital: ${data.total_invested}`;
     })
-    .catch(err => console.log("Aktie-stats ej tillgängliga än.", err));
+    .catch(err => console.log("Aktie-stats ej tillgängliga.", err));
 }
+
 function renderStockChart() {
   const chartCanvas = document.getElementById('stock-profit-chart');
   if (!chartCanvas) return;
-
-  fetch('data/stock_portfolio_summary.csv?t=' + new Date().getTime())
+  fetch('/data/stock_portfolio_summary.csv?t=' + new Date().getTime())
     .then(response => response.text())
     .then(csvText => {
       const lines = csvText.trim().split('\n');
-      const labels = [];
-      const dataPoints = [];
-
+      const labels = [], dataPoints = [];
       for (let i = 1; i < lines.length; i++) {
         const columns = lines[i].split(',');
         if (columns.length >= 4) {
-          const date = columns[0].trim();
-          const kassa = parseFloat(columns[3].trim());
-
-          if (!isNaN(kassa)) {
-            labels.push(date);
-            dataPoints.push(kassa);
-          }
+          labels.push(columns[0].trim());
+          dataPoints.push(parseFloat(columns[3].trim()));
         }
       }
-
       if (stockChartInstance) stockChartInstance.destroy();
-
       stockChartInstance = new Chart(chartCanvas, {
         type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Stock Bankroll',
-            data: dataPoints,
-            borderColor: '#3b82f6',
-            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-            borderWidth: 2,
-            tension: 0.3,
-            pointRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { 
-              beginAtZero: false 
-            }
-          }
-        }
+        data: { labels: labels, datasets: [{ label: 'Stock Bankroll', data: dataPoints, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderWidth: 2, tension: 0.3 }] },
+        options: { responsive: true, maintainAspectRatio: false }
       });
-    })
-    .catch(err => console.error("Could not render the stock chart:", err));
+    });
 }
