@@ -1,6 +1,3 @@
-// Lägg dessa högst upp i filen
-let botChartInstance = null;
-let stockChartInstance = null;
 // =========================
 //         GLOBAL CONFIG
 // =========================
@@ -408,7 +405,9 @@ function renderBotChart() {
     })
     .catch(err => console.error("Could not render the chart:", err));
 }
-
+// Lägg dessa högst upp i filen
+let botChartInstance = null;
+let stockChartInstance = null;
 // ==========================================
 // AUTOMATION: NEW STOCK BOT DATA FETCHING
 // ==========================================
