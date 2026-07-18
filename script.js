@@ -1,3 +1,6 @@
+// Lägg dessa högst upp i filen
+let botChartInstance = null;
+let stockChartInstance = null;
 // =========================
 //         GLOBAL CONFIG
 // =========================
@@ -410,7 +413,8 @@ function renderBotChart() {
 // AUTOMATION: NEW STOCK BOT DATA FETCHING
 // ==========================================
 function fetchStockStats() {
-  fetch('data/stock_stats.json')
+  // Lägg till ?t= timestamp för att undvika cache-problem
+  fetch('data/stock_stats.json?t=' + new Date().getTime())
     .then(response => response.json())
     .then(data => {
       const videoIframe = document.getElementById('youtube-stock-video');
@@ -423,15 +427,15 @@ function fetchStockStats() {
       }
       
       if (profitEl) {
-        // ÄNDRAT: från data.profit till data.profit_pct
-        profitEl.textContent = data.profit_pct; 
+        profitEl.textContent = data.profit_pct; // Använd rätt nyckel
         profitEl.className = data.is_positive 
           ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
           : "text-xl font-bold text-rose-600 dark:text-rose-400";
       }
       
-      // ÄNDRAT: från data.bankroll till data.total_bankroll
-      if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
+      if (bankrollEl) {
+        bankrollEl.textContent = data.total_bankroll; // Använd rätt nyckel
+      }
       
       if (investedEl) {
         investedEl.textContent = `Startkapital: ${data.total_invested}`;
