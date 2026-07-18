@@ -416,22 +416,23 @@ function fetchStockStats() {
       const videoIframe = document.getElementById('youtube-stock-video');
       const profitEl = document.getElementById('stock-profit');
       const bankrollEl = document.getElementById('stock-bankroll');
-      const investedEl = document.getElementById('stock-invested'); // Nytt element!
+      const investedEl = document.getElementById('stock-invested');
       
       if (videoIframe && data.latest_video_id) {
         videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
       }
       
       if (profitEl) {
-        profitEl.textContent = data.profit;
+        // ÄNDRAT: från data.profit till data.profit_pct
+        profitEl.textContent = data.profit_pct; 
         profitEl.className = data.is_positive 
           ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
           : "text-xl font-bold text-rose-600 dark:text-rose-400";
       }
       
-      if (bankrollEl) bankrollEl.textContent = data.bankroll;
+      // ÄNDRAT: från data.bankroll till data.total_bankroll
+      if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
       
-      // Visa startkapitalet för transparens
       if (investedEl) {
         investedEl.textContent = `Startkapital: ${data.total_invested}`;
       }
