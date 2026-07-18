@@ -135,8 +135,6 @@ const swedishData = {
   freetime: ["Sport", "Fritidsaktiviteter", "YouTube: 'Dalmanium'", "Programmering"]
 };
 
-let botChartInstance = null;
-let stockChartInstance = null; 
 let appData; 
 
 // =========================
