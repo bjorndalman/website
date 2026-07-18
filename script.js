@@ -412,21 +412,28 @@ function fetchStockStats() {
       const videoIframe = document.getElementById('youtube-stock-video');
       const profitEl = document.getElementById('stock-profit');
       const bankrollEl = document.getElementById('stock-bankroll');
+      const investedEl = document.getElementById('stock-invested'); // Nytt element!
       
       if (videoIframe && data.latest_video_id) {
         videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
       }
+      
       if (profitEl) {
         profitEl.textContent = data.profit;
         profitEl.className = data.is_positive 
           ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
           : "text-xl font-bold text-rose-600 dark:text-rose-400";
       }
+      
       if (bankrollEl) bankrollEl.textContent = data.bankroll;
+      
+      // Visa startkapitalet för transparens
+      if (investedEl) {
+        investedEl.textContent = `Startkapital: ${data.total_invested}`;
+      }
     })
     .catch(err => console.log("Aktie-stats ej tillgängliga än.", err));
 }
-
 function renderStockChart() {
   const chartCanvas = document.getElementById('stock-profit-chart');
   if (!chartCanvas) return;
