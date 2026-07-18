@@ -247,47 +247,44 @@
                         <canvas id="bot-profit-chart"></canvas>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- NY SEKTION FÖR AKTIE-BOTEN (Lägg till i media.html under din befintliga bot-sektion) -->
-<section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
-    <h3 class="text-2xl font-bold mb-2 flex items-center gap-2 text-slate-900 dark:white">
-        Automated Stock Trading System
-    </h3>
-    <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
-        This section showcases my new automated stock trading pipeline.
-    </p>
+        <!-- NY SEKTION FÖR AKTIE-BOTEN -->
+        <section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
+            <h3 class="text-2xl font-bold mb-2 flex items-center gap-2 text-slate-900 dark:text-white">
+                Automated Stock Trading System
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+                This section showcases my new automated stock trading pipeline.
+            </p>
 
-    <div class="grid md:grid-cols-2 gap-8 items-start">
-        <!-- Nya Botens Video -->
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Latest Stock Briefing</h4>
-            <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-inner">
-                <iframe id="youtube-stock-video" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </div>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Latest Stock Briefing</h4>
+                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-inner">
+                        <iframe id="youtube-stock-video" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-        <!-- Nya Botens Live Performance -->
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col">
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Live Stock Performance</h4>
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
-                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Net Profit</span>
-                    <span id="stock-profit" class="text-xl font-bold text-slate-400">Loading...</span>
-                </div>
-                <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
-                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Total Bankroll</span>
-                    <span id="stock-bankroll" class="text-xl font-bold text-slate-400">Loading...</span>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Live Stock Performance</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Net Profit</span>
+                            <span id="stock-profit" class="text-xl font-bold text-slate-400">Loading...</span>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Total Bankroll</span>
+                            <span id="stock-bankroll" class="text-xl font-bold text-slate-400">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="relative w-full h-48">
+                        <canvas id="stock-profit-chart"></canvas>
+                    </div>
                 </div>
             </div>
-            <div class="relative w-full h-48">
-                <canvas id="stock-profit-chart"></canvas>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
             
         <section id="audio" class="fade-in delay-200 my-12">
             <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
@@ -347,9 +344,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script>
-        // Initiera enbart Lucide-ikoner lokalt efter sidladdning
         document.addEventListener("DOMContentLoaded", () => {
             if (window.lucide) window.lucide.createIcons();
+            // Aktiverar både gamla bot-datan och den nya aktie-datan
+            if (typeof fetchBotStats === 'function') fetchBotStats();
+            if (typeof fetchStockStats === 'function') fetchStockStats();
         });
     </script>
 </body>
