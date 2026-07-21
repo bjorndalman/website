@@ -417,7 +417,8 @@ function renderBotChart() {
                 color: textColor,
                 maxRotation: 0, // Tvinga texten att stå rakt (inte snett 45 grader)
                 autoSkip: true,
-                maxTicksLimit: 6 // Visa max 6 tidsstämplar på X-axeln så det inte blir trångt
+                maxTicksLimit: 4 // Visa max 6 tidsstämplar på X-axeln så det inte blir trångt
+                padding: 10
               }
             },
             y: {
