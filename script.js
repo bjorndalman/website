@@ -534,8 +534,7 @@ function renderStockChart() {
                 color: textColor,
                 maxRotation: 0,
                 autoSkip: true,
-                maxTicksLimit: 4
-                padding: 10
+                maxTicksLimit: 6
               }
             },
             y: {
