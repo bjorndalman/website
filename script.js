@@ -167,7 +167,7 @@ function toggleTheme() {
 
   [botChartInstance, stockChartInstance].forEach(chart => {
     if (chart) {
-      const gridColor = isDark ? '#334155' : '#e2e8f0';
+      const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
       const textColor = isDark ? '#94a3b8' : '#64748b';
       chart.options.scales.x.ticks.color = textColor;
       chart.options.scales.y.ticks.color = textColor;
@@ -354,13 +354,11 @@ function renderBotChart() {
         }
       }
 
-      // Formatera om datumet till kortare format (t.ex. "20 Jul 11:00" eller enbart tid "11:00")
+      // Visar enbart klockslag (HH:MM) för att undvika överlappning på X-axeln
       const labels = rawLabels.map(dateTimeStr => {
         const parts = dateTimeStr.split(' ');
         if (parts.length >= 2) {
-          const dateParts = parts[0].split('-'); // YYYY-MM-DD
-          const timeParts = parts[1].slice(0, 5); // HH:MM
-          return `${dateParts[1]}/${dateParts[2]} ${timeParts}`; // Exempel: "07/20 11:00"
+          return parts[1].slice(0, 5); 
         }
         return dateTimeStr;
       });
@@ -377,18 +375,18 @@ function renderBotChart() {
           datasets: [{
             label: 'Bankroll',
             data: dataPoints,
-            borderColor: '#2563eb', // Modern blå nyans
+            borderColor: '#2563eb',
             borderWidth: 2,
-            tension: 0.35, // Gör linjen mjukt böjd
-            pointRadius: 0, // Dölj de röriga cirkelpunkterna i normalläge
-            pointHoverRadius: 6, // Visa punkt när man för muspekaren över
+            tension: 0.35,
+            pointRadius: 0,
+            pointHoverRadius: 6,
             pointHoverBackgroundColor: '#2563eb',
             fill: true,
             backgroundColor: (context) => {
               const ctx = context.chart.ctx;
               const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-              gradient.addColorStop(0, 'rgba(37, 99, 235, 0.25)'); // Blå toning i toppen
-              gradient.addColorStop(1, 'rgba(37, 99, 235, 0.0)');  // Transparent i botten
+              gradient.addColorStop(0, 'rgba(37, 99, 235, 0.25)');
+              gradient.addColorStop(1, 'rgba(37, 99, 235, 0.0)');
               return gradient;
             }
           }]
@@ -397,7 +395,7 @@ function renderBotChart() {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false }, // Ta bort den onödiga "Bankroll"-rutan längst upp
+            legend: { display: false },
             tooltip: {
               mode: 'index',
               intersect: false,
@@ -412,22 +410,22 @@ function renderBotChart() {
           },
           scales: {
             x: {
-              grid: { display: false }, // Ta bort vertikala stödlinjer för renare look
+              grid: { display: false },
               ticks: {
                 color: textColor,
-                maxRotation: 0, // Tvinga texten att stå rakt (inte snett 45 grader)
+                maxRotation: 0,
                 autoSkip: true,
-                maxTicksLimit: 4 // Visa max 6 tidsstämplar på X-axeln så det inte blir trångt
+                maxTicksLimit: 4,
                 padding: 10
               }
             },
             y: {
-              grid: { color: gridColor }, // Mycket ljusa/diskreta horisontella linjer
-              border: { dash: [4, 4] }, // Gör stödlinjerna streckade
+              grid: { color: gridColor },
+              border: { dash: [4, 4] },
               ticks: {
                 color: textColor,
                 callback: function(value) {
-                  return value.toLocaleString('sv-SE') + ' kr'; // Lägg till "kr" snyggt på Y-axeln
+                  return value.toLocaleString('sv-SE') + ' kr';
                 }
               }
             }
@@ -475,9 +473,7 @@ function renderStockChart() {
       const labels = rawLabels.map(dateTimeStr => {
         const parts = dateTimeStr.split(' ');
         if (parts.length >= 2) {
-          const dateParts = parts[0].split('-');
-          const timeParts = parts[1].slice(0, 5);
-          return `${dateParts[1]}/${dateParts[2]} ${timeParts}`;
+          return parts[1].slice(0, 5);
         }
         return dateTimeStr;
       });
@@ -494,7 +490,7 @@ function renderStockChart() {
           datasets: [{
             label: 'Stock Bankroll',
             data: dataPoints,
-            borderColor: '#10b981', // Smaragdgrön för aktier/vinst
+            borderColor: '#10b981',
             borderWidth: 2,
             tension: 0.35,
             pointRadius: 0,
@@ -534,7 +530,8 @@ function renderStockChart() {
                 color: textColor,
                 maxRotation: 0,
                 autoSkip: true,
-                maxTicksLimit: 6
+                maxTicksLimit: 4,
+                padding: 10
               }
             },
             y: {
