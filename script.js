@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================
-// DATA FETCHING
+// DATA FETCHING & CHARTS
 // =========================
 async function fetchBotStats() {
   fetch('data/stats.json')
@@ -354,11 +354,16 @@ function renderBotChart() {
         }
       }
 
-      // Visar enbart klockslag (HH:MM) för att undvika överlappning på X-axeln
+      // Formaterar till "DD/MM HH:MM"
       const labels = rawLabels.map(dateTimeStr => {
         const parts = dateTimeStr.split(' ');
         if (parts.length >= 2) {
-          return parts[1].slice(0, 5); 
+          const dateParts = parts[0].split('-');
+          const timeShort = parts[1].slice(0, 5);
+          if (dateParts.length === 3) {
+            return `${dateParts[2]}/${dateParts[1]} ${timeShort}`;
+          }
+          return `${parts[0]} ${timeShort}`;
         }
         return dateTimeStr;
       });
@@ -415,7 +420,7 @@ function renderBotChart() {
                 color: textColor,
                 maxRotation: 0,
                 autoSkip: true,
-                maxTicksLimit: 4,
+                maxTicksLimit: 3, // Sänkt till 3 så att "DD/MM HH:MM" får plats smidigt utan krockar
                 padding: 10
               }
             },
@@ -470,10 +475,16 @@ function renderStockChart() {
         }
       }
 
+      // Formaterar till "DD/MM HH:MM"
       const labels = rawLabels.map(dateTimeStr => {
         const parts = dateTimeStr.split(' ');
         if (parts.length >= 2) {
-          return parts[1].slice(0, 5);
+          const dateParts = parts[0].split('-');
+          const timeShort = parts[1].slice(0, 5);
+          if (dateParts.length === 3) {
+            return `${dateParts[2]}/${dateParts[1]} ${timeShort}`;
+          }
+          return `${parts[0]} ${timeShort}`;
         }
         return dateTimeStr;
       });
@@ -530,7 +541,7 @@ function renderStockChart() {
                 color: textColor,
                 maxRotation: 0,
                 autoSkip: true,
-                maxTicksLimit: 4,
+                maxTicksLimit: 3, // Sänkt till 3 så att texten inte krockar
                 padding: 10
               }
             },
