@@ -345,19 +345,93 @@ function renderBotChart() {
     .then(response => response.text())
     .then(csvText => {
       const lines = csvText.trim().split('\n');
-      const labels = [], dataPoints = [];
+      const rawLabels = [], dataPoints = [];
       for (let i = 1; i < lines.length; i++) {
         const columns = lines[i].split(',');
         if (columns.length >= 4) {
-          labels.push(columns[0].trim());
+          rawLabels.push(columns[0].trim());
           dataPoints.push(parseFloat(columns[3].trim()));
         }
       }
+
+      // Formatera om datumet till kortare format (t.ex. "20 Jul 11:00" eller enbart tid "11:00")
+      const labels = rawLabels.map(dateTimeStr => {
+        const parts = dateTimeStr.split(' ');
+        if (parts.length >= 2) {
+          const dateParts = parts[0].split('-'); // YYYY-MM-DD
+          const timeParts = parts[1].slice(0, 5); // HH:MM
+          return `${dateParts[1]}/${dateParts[2]} ${timeParts}`; // Exempel: "07/20 11:00"
+        }
+        return dateTimeStr;
+      });
+
+      const isDark = document.documentElement.classList.contains("dark");
+      const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+      const textColor = isDark ? '#94a3b8' : '#64748b';
+
       if (botChartInstance) botChartInstance.destroy();
       botChartInstance = new Chart(chartCanvas, {
         type: 'line',
-        data: { labels: labels, datasets: [{ label: 'Bankroll', data: dataPoints, borderColor: '#2563eb', backgroundColor: 'rgba(37, 99, 235, 0.1)', borderWidth: 2, tension: 0.3 }] },
-        options: { responsive: true, maintainAspectRatio: false }
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Bankroll',
+            data: dataPoints,
+            borderColor: '#2563eb', // Modern blå nyans
+            borderWidth: 2,
+            tension: 0.35, // Gör linjen mjukt böjd
+            pointRadius: 0, // Dölj de röriga cirkelpunkterna i normalläge
+            pointHoverRadius: 6, // Visa punkt när man för muspekaren över
+            pointHoverBackgroundColor: '#2563eb',
+            fill: true,
+            backgroundColor: (context) => {
+              const ctx = context.chart.ctx;
+              const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+              gradient.addColorStop(0, 'rgba(37, 99, 235, 0.25)'); // Blå toning i toppen
+              gradient.addColorStop(1, 'rgba(37, 99, 235, 0.0)');  // Transparent i botten
+              return gradient;
+            }
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }, // Ta bort den onödiga "Bankroll"-rutan längst upp
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              padding: 10,
+              displayColors: false
+            }
+          },
+          interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false
+          },
+          scales: {
+            x: {
+              grid: { display: false }, // Ta bort vertikala stödlinjer för renare look
+              ticks: {
+                color: textColor,
+                maxRotation: 0, // Tvinga texten att stå rakt (inte snett 45 grader)
+                autoSkip: true,
+                maxTicksLimit: 6 // Visa max 6 tidsstämplar på X-axeln så det inte blir trångt
+              }
+            },
+            y: {
+              grid: { color: gridColor }, // Mycket ljusa/diskreta horisontella linjer
+              border: { dash: [4, 4] }, // Gör stödlinjerna streckade
+              ticks: {
+                color: textColor,
+                callback: function(value) {
+                  return value.toLocaleString('sv-SE') + ' kr'; // Lägg till "kr" snyggt på Y-axeln
+                }
+              }
+            }
+          }
+        }
       });
     });
 }
@@ -388,19 +462,92 @@ function renderStockChart() {
     .then(response => response.text())
     .then(csvText => {
       const lines = csvText.trim().split('\n');
-      const labels = [], dataPoints = [];
+      const rawLabels = [], dataPoints = [];
       for (let i = 1; i < lines.length; i++) {
         const columns = lines[i].split(',');
         if (columns.length >= 4) {
-          labels.push(columns[0].trim());
+          rawLabels.push(columns[0].trim());
           dataPoints.push(parseFloat(columns[3].trim()));
         }
       }
+
+      const labels = rawLabels.map(dateTimeStr => {
+        const parts = dateTimeStr.split(' ');
+        if (parts.length >= 2) {
+          const dateParts = parts[0].split('-');
+          const timeParts = parts[1].slice(0, 5);
+          return `${dateParts[1]}/${dateParts[2]} ${timeParts}`;
+        }
+        return dateTimeStr;
+      });
+
+      const isDark = document.documentElement.classList.contains("dark");
+      const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+      const textColor = isDark ? '#94a3b8' : '#64748b';
+
       if (stockChartInstance) stockChartInstance.destroy();
       stockChartInstance = new Chart(chartCanvas, {
         type: 'line',
-        data: { labels: labels, datasets: [{ label: 'Stock Bankroll', data: dataPoints, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderWidth: 2, tension: 0.3 }] },
-        options: { responsive: true, maintainAspectRatio: false }
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Stock Bankroll',
+            data: dataPoints,
+            borderColor: '#10b981', // Smaragdgrön för aktier/vinst
+            borderWidth: 2,
+            tension: 0.35,
+            pointRadius: 0,
+            pointHoverRadius: 6,
+            pointHoverBackgroundColor: '#10b981',
+            fill: true,
+            backgroundColor: (context) => {
+              const ctx = context.chart.ctx;
+              const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+              gradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
+              gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+              return gradient;
+            }
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              padding: 10,
+              displayColors: false
+            }
+          },
+          interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: {
+                color: textColor,
+                maxRotation: 0,
+                autoSkip: true,
+                maxTicksLimit: 6
+              }
+            },
+            y: {
+              grid: { color: gridColor },
+              border: { dash: [4, 4] },
+              ticks: {
+                color: textColor,
+                callback: function(value) {
+                  return value.toLocaleString('sv-SE') + ' kr';
+                }
+              }
+            }
+          }
+        }
       });
     });
 }
