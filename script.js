@@ -299,55 +299,47 @@ function initScrollAnimations() {
 // DATA FETCHING & STATS
 // =========================
 async function fetchBotStats() {
-  try {
-    const response = await fetch(`data/stats.json?t=${Date.now()}`);
-    if (!response.ok) return;
-    const data = await response.json();
+    try {
+        const response = await fetch(`data/stats.json?t=${Date.now()}`);
+        if (!response.ok) return;
+        const data = await response.json();
 
-    const videoIframe = document.getElementById('youtube-bot-video');
-    const profitEl = document.getElementById('bot-profit');
-    const bankrollEl = document.getElementById('bot-bankroll');
+        const profitEl = document.getElementById('bot-profit');
+        const bankrollEl = document.getElementById('bot-bankroll');
 
-    if (videoIframe && data.latest_video_id) {
-      videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
+        if (profitEl) {
+            profitEl.textContent = data.profit;
+            profitEl.className = data.is_positive 
+                ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
+                : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
+        }
+        if (bankrollEl) bankrollEl.textContent = data.bankroll;
+    } catch (err) {
+        console.warn("Bot-stats ej tillgängliga.", err);
     }
-    if (profitEl) {
-      profitEl.textContent = data.profit;
-      profitEl.className = data.is_positive 
-        ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
-        : "text-xl font-bold text-rose-600 dark:text-rose-400";
-    }
-    if (bankrollEl) bankrollEl.textContent = data.bankroll;
-  } catch (err) {
-    console.warn("Bot-stats ej tillgängliga.", err);
-  }
 }
 
 async function fetchStockStats() {
-  try {
-    const response = await fetch(`data/stock_stats.json?t=${Date.now()}`);
-    if (!response.ok) return;
-    const data = await response.json();
+    try {
+        const response = await fetch(`data/stock_stats.json?t=${Date.now()}`);
+        if (!response.ok) return;
+        const data = await response.json();
 
-    const videoIframe = document.getElementById('youtube-stock-video');
-    const profitEl = document.getElementById('stock-profit');
-    const bankrollEl = document.getElementById('stock-bankroll');
-    const investedEl = document.getElementById('stock-invested');
+        const profitEl = document.getElementById('stock-profit');
+        const bankrollEl = document.getElementById('stock-bankroll');
+        const investedEl = document.getElementById('stock-invested');
 
-    if (videoIframe && data.latest_video_id) {
-      videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
+        if (profitEl) {
+            profitEl.textContent = data.profit_pct;
+            profitEl.className = data.is_positive 
+                ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
+                : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
+        }
+        if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
+        if (investedEl) investedEl.textContent = data.total_invested;
+    } catch (err) {
+        console.warn("Aktie-stats ej tillgängliga.", err);
     }
-    if (profitEl) {
-      profitEl.textContent = data.profit_pct;
-      profitEl.className = data.is_positive 
-        ? "text-emerald-600 dark:text-emerald-400" 
-        : "text-rose-600 dark:text-rose-400";
-    }
-    if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
-    if (investedEl) investedEl.textContent = `Startkapital: ${data.total_invested}`;
-  } catch (err) {
-    console.warn("Aktie-stats ej tillgängliga.", err);
-  }
 }
 
 // =========================
@@ -495,25 +487,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   initScrollAnimations();
 
-  // Hämta statistik och rendera grafer parallellt
-  fetchBotStats();
-  fetchStockStats();
+ // Hämta statistik och rendera grafer parallellt
+    fetchBotStats();
+    fetchStockStats();
 
-  botChartInstance = await loadAndRenderChart(
-    'bot-profit-chart',
-    'data/portfolio_summary.csv',
-    'Bankroll',
-    '#2563eb',
-    'rgba(37, 99, 235, 0.25)',
-    botChartInstance
-  );
+    botChartInstance = await loadAndRenderChart(
+        'bot-profit-chart',
+        'data/portfolio_summary.csv',
+        'Bankroll',
+        '#2563eb',
+        'rgba(37, 99, 235, 0.25)',
+        botChartInstance
+    );
 
-  stockChartInstance = await loadAndRenderChart(
-    'stock-profit-chart',
-    'data/stock_portfolio_summary.csv',
-    'Stock Bankroll',
-    '#10b981',
-    'rgba(16, 185, 129, 0.25)',
-    stockChartInstance
-  );
+    stockChartInstance = await loadAndRenderChart(
+        'stock-profit-chart',
+        'data/stock_portfolio_summary.csv',
+        'Stock Bankroll',
+        '#10b981',
+        'rgba(16, 185, 129, 0.25)',
+        stockChartInstance
+    );
 });
