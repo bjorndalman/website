@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Björn Dahlman | Media Gallery</title>
     
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,6 +24,7 @@
         }
     </script>
     
+    <!-- Lucide Icons & Google Analytics -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGSNWL658"></script>
     <script>
@@ -36,13 +38,14 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
+    <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             
-            <a href="index.html">
+            <a href="index.html" aria-label="Hem">
                 <picture>
                     <source srcset="images/bjorn-dahlman.webp" type="image/webp">
-                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
+                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-16 w-auto">
                 </picture>
             </a>
             
@@ -62,10 +65,10 @@
                 </div>
 
                 <div class="social-icons hidden md:flex items-center gap-4 text-xl">
-                    <a href="https://x.com/DahlmanBjorn" target="_blank" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
                         <i class="fab fa-x-twitter"></i> 
                     </a>
-                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
@@ -83,6 +86,7 @@
         </div>
     </nav>
 
+    <!-- MOBILMENY -->
     <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
             <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
@@ -106,6 +110,7 @@
         </div>
     </nav>
         
+    <!-- HEADER -->
     <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center">
         <div class="mb-10">
             <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700">
@@ -120,15 +125,16 @@
         </p>
     </header>
 
+    <!-- HUVUDINNEHÅLL -->
     <main class="max-w-4xl mx-auto px-6 py-20 space-y-16">
         
+        <!-- BILDER -->
         <section id="images" class="fade-in">
             <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
                 <i data-lucide="image" class="w-7 h-7 text-blue-600"></i> Images
             </h2>
             
             <div class="grid md:grid-cols-2 gap-8">
-                
                 <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
                     <picture>
                         <source srcset="images/Iridium-Satellite-Phones.webp" type="image/webp">
@@ -145,13 +151,13 @@
                         <img src="images/iridium-satellite-system.jpg" alt="Iridium satellite communication module and embedded circuit board for global data transmission." class="w-full h-auto rounded-lg mb-3" loading="lazy">
                     </picture>
                     <figcaption class="text-sm text-slate-600 dark:text-slate-400">
-                        Iridium Satellite
+                        Iridium Satellite System
                     </figcaption>
                 </figure>
-
             </div>
         </section>
 
+        <!-- VIDEOR -->
         <section id="videos" class="fade-in delay-100">
             <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
                 <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videos
@@ -208,6 +214,7 @@
             </div>
         </section>
 
+        <!-- AUTOMATED DATA SYSTEMS (QUANT BOT) -->
         <section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
             <h3 class="text-2xl font-bold mb-2 flex items-center gap-2 text-slate-900 dark:text-white">
                 Automated Data Systems
@@ -217,7 +224,6 @@
             </p>
 
             <div class="grid md:grid-cols-2 gap-8 items-start">
-                
                 <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">
                         Latest Daily Briefing
@@ -250,13 +256,13 @@
             </div>
         </section>
 
-        <!-- NY SEKTION FÖR AKTIE-BOTEN -->
+        <!-- AUTOMATED STOCK TRADING SYSTEM -->
         <section class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
             <h3 class="text-2xl font-bold mb-2 flex items-center gap-2 text-slate-900 dark:text-white">
                 Automated Stock Trading System
             </h3>
             <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
-                This section showcases my new automated stock trading pipeline.
+                This section showcases my automated stock trading pipeline.
             </p>
 
             <div class="grid md:grid-cols-2 gap-8 items-start">
@@ -278,7 +284,7 @@
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Total Bankroll</span>
                             <span id="stock-bankroll" class="text-xl font-bold text-slate-400">Loading...</span>
                         </div>
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800 col-span-2">
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Invested</span>
                             <span id="stock-invested" class="text-xl font-bold text-slate-400">Loading...</span>
                         </div>
@@ -290,13 +296,13 @@
             </div>
         </section>
             
+        <!-- AUDIO -->
         <section id="audio" class="fade-in delay-200 my-12">
             <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
                 <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Audio
             </h2>
 
             <div class="flex flex-wrap gap-6">
-
                 <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 w-full max-w-sm transition-all hover:shadow-xl">
                     <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
                         <picture>
@@ -336,24 +342,17 @@
                         </audio>
                     </div>
                 </div>
-
             </div> 
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
         <p>© 2026 Björn Dahlman. All rights reserved.</p>
     </footer>
 
+    <!-- SKRIPTLÄNKAR -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            if (window.lucide) window.lucide.createIcons();
-            // Aktiverar både gamla bot-datan och den nya aktie-datan
-            if (typeof fetchBotStats === 'function') fetchBotStats();
-            if (typeof fetchStockStats === 'function') fetchStockStats();
-        });
-    </script>
 </body>
 </html>
