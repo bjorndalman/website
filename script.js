@@ -1,5 +1,5 @@
 // =========================
-// GLOBAL CONFIG & INSTANCES
+// GLOBAL CONFIG & DATA
 // =========================
 const defaultData = { 
   profile: {
@@ -18,14 +18,14 @@ const defaultData = {
       description: "Courses in electronics, telecommunications, signal theory, programming, control systems, microwave engineering, and embedded systems."
     },
     {
-      school: "Chalmers- University of Gothenburg",
+      school: "Chalmers - University of Gothenburg",
       program: "Further Education 97.5 ECTS",
       years: " - 2026",
       description: [
         "Electronic Design 7.5 ECTS Points",
         "High Voltage Engineering 7.5 ECTS Points",
         "Nuclear Power Safety 7.5 ECTS Points",
-        "Business Planning for high Growth Startups 7.5 ECTS Points",
+        "Business Planning for High Growth Startups 7.5 ECTS Points",
         "Radiation Physics 7.5 ECTS Points",
         "Electrical Measurements Techniques 7.5 ECTS Points",
         "C++/C Programming 22.5 ECTS Points",
@@ -36,7 +36,7 @@ const defaultData = {
       school: "STF Engineer Education AB",
       program: "Data Transmission & SDH Specialist",
       years: "",
-      description: "Certified professional with 25 days of specialized technical training in Data Transmission Technology, focusing on the Synchronous Digital Hierarchy (SDH) standard and Marconi transmission systems. Proven expertise in the complete lifecycle of SDH networks, including network principles, operation, maintenance, and complex design. Proficient with specific Marconi platforms (41/51 C, STM-1 MSH 11, MSH63/64) and network management tools (Marconi MV36/38). Strong foundation in Optical Techniques and hands-on experience in measurements and troubleshooting high-capacity data networks. Ready to contribute deep technical knowledge to managing and optimizing critical telecommunications infrastructure.",
+      description: "Certified professional with 25 days of specialized technical training in Data Transmission Technology, focusing on the Synchronous Digital Hierarchy (SDH) standard and Marconi transmission systems. Proven expertise in the complete lifecycle of SDH networks, including network principles, operation, maintenance, and complex design. Proficient with specific Marconi platforms (41/51 C, STM-1 MSH 11, MSH63/64) and network management tools (Marconi MV36/38). Strong foundation in Optical Techniques and hands-on experience in measurements and troubleshooting high-capacity data networks. Ready to contribute deep technical knowledge to managing and optimizing critical telecommunications infrastructure."
     },
     {
       school: "K3 - Karlsborg",
@@ -48,20 +48,20 @@ const defaultData = {
   experience: [
     {
       title: "Employment & Studies",
-      company: "PLACE · Sweden-Vastra Gotalands lan",
+      company: "Västra Götaland, Sweden",
       years: "2020 - 2026",
       description: "I focused on professional growth and technical skills in healthcare and engineering. I completed higher education courses in areas like High Voltage Engineering, Electronic Design, and Nuclear Power Safety, enhancing my background in Electrical Engineering. This experience prepares me for advanced roles in embedded systems, energy technology, or startups."
     },
     {
       title: "Electrical Engineer & Mechanic",
-      company: "PLACE · Europe - Scandinavia",
+      company: "Scandinavia, Europe",
       years: " - 2020",
-      description: "I have a strong background in engineering, gaining hands-on problem solving skills across various sectors. My early experience includes roles as a mechanic and production worker, focusing on mechanical and automotive work. After completing military ranger training and civil service, I pursued higher education in engineering at Chalmers University of Technology, earning a Bachelor of Science in Electrical Engineering with a specialization in Electronic Communication Systems.",
+      description: "I have a strong background in engineering, gaining hands-on problem solving skills across various sectors. My early experience includes roles as a mechanic and production worker, focusing on mechanical and automotive work. After completing military ranger training and civil service, I pursued higher education in engineering at Chalmers University of Technology, earning a Bachelor of Science in Electrical Engineering with a specialization in Electronic Communication Systems."
     },
     {
       title: "Instructor",
       company: "The Swedish Home Guard",
-      years: "10-years",
+      years: "10 years",
       description: "Instructor with a background in the Swedish Home Guard. Experienced in training units for rapid response and maintaining standards of coordination and precision in the field."
     }    
   ],
@@ -109,19 +109,19 @@ const swedishData = {
       school: "K3 - Karlsborg",
       program: "Militärtjänst - Jägarutbildning",
       years: "",
-      description: "<img src=\"images/jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexer miljöer, samt utbildning inom överlevnad och undsättning för internationalella uppdrag."
+      description: "<img src=\"images/jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
     }
   ],
   experience: [
     {
       title: "Anställning & Studier",
-      company: "PLATS · Sverige-Västra Götalands län",
+      company: "Västra Götalands län, Sverige",
       years: "2020 - 2026",
-      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomfört högskolekurser inom bland annat högspänningsteknik, elektronik konstruktion och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
+      description: "Jag har fokuserat på professionell utveckling och tekniska färdigheter inom både vård och teknik. Jag har genomfört högskolekurser inom bland annat högspänningsteknik, elektronikkonstruktion och säkerhet inom kärnkraft, vilket har stärkt min bakgrund inom elektroteknik. Denna erfarenhet förbereder mig för avancerade roller inom inbyggda system, energiteknik eller startup-miljöer."
     },
     {
       title: "Ingenjör & Mekaniker",
-      company: "PLATS · Europa - Skandinavien",
+      company: "Skandinavien, Europa",
       years: " - 2020",
       description: "Jag har en stark bakgrund inom teknik och har utvecklat praktiska problemlösningsförmågor inom flera olika sektorer. Min tidiga erfarenhet inkluderar roller som mekaniker och produktionsarbetare, med fokus på mekaniskt och fordonsrelaterat arbete. Efter att ha genomfört militär jägarutbildning och civilplikt fortsatte jag med högre studier i teknik vid Chalmers tekniska högskola, där jag tog en kandidatexamen i elektroteknik med inriktning mot elektroniska kommunikationssystem."
     },
@@ -140,16 +140,13 @@ let stockChartInstance = null;
 let appData;
 
 // =========================
-// SPRÅKHANTERING
+// SPRÅKHANTERING & TEMA
 // =========================
 function loadLanguageData() {
   const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
   appData = isSwedishPage ? swedishData : defaultData;
 }
 
-// =========================
-// THEME HANDLING
-// =========================
 function initTheme() {
   const stored = localStorage.getItem("theme");
   const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -177,6 +174,14 @@ function toggleTheme() {
   });
 }
 
+// =========================
+// RENDERING HELPER FUNCTIONS
+// =========================
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
 function renderDescription(descriptionData) {
   if (Array.isArray(descriptionData)) {
     return `<ul class="list-outside">${descriptionData.map(item => `<li class="mb-1 ml-4 list-disc">${item}</li>`).join('')}</ul>`;
@@ -184,20 +189,18 @@ function renderDescription(descriptionData) {
   return descriptionData.replace(/\n/g, '<br>');
 }
 
-// =========================
-// RENDERING
-// =========================
 function render() {
   setText("name", appData.profile.name);
   setText("footer-name", appData.profile.name);
   setText("title", appData.profile.title);
   setText("presentation", appData.profile.presentation);
   setText("email", appData.profile.email);
+
   const emailLink = document.getElementById("email-link");
-  if(emailLink) emailLink.href = `mailto:${appData.profile.email}`;
+  if (emailLink) emailLink.href = `mailto:${appData.profile.email}`;
 
   const skillsContainer = document.getElementById("skills-list");
-  if(skillsContainer) {
+  if (skillsContainer) {
     skillsContainer.innerHTML = appData.skills.map(skill => `
       <span class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-blue-900 dark:hover:text-blue-300 transition cursor-default">
         ${skill}
@@ -206,7 +209,7 @@ function render() {
   }
 
   const expContainer = document.getElementById("experience-list");
-  if(expContainer) {
+  if (expContainer) {
     expContainer.innerHTML = appData.experience.map(exp => `
       <div class="relative pl-8 md:pl-0">
         <div class="hidden md:block absolute -left-[41px] top-1 w-5 h-5 bg-blue-600 rounded-full border-4 border-white dark:border-slate-950"></div>
@@ -222,7 +225,7 @@ function render() {
   }
 
   const eduContainer = document.getElementById("education-list");
-  if(eduContainer) {
+  if (eduContainer) {
     eduContainer.innerHTML = appData.education.map(edu => `
       <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
         <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
@@ -238,23 +241,19 @@ function render() {
   }
 
   const freeContainer = document.getElementById("freetime-list");
-  if(freeContainer) {
+  if (freeContainer) {
     freeContainer.innerHTML = appData.freetime.map((item, index) => `
       <li class="flex items-center">
         ${item} ${index < appData.freetime.length - 1 ? '<span class="mx-2 opacity-50">•</span>' : ''}
       </li>
     `).join('');
   }
+
   if (window.lucide) window.lucide.createIcons();
 }
 
-function setText(id, text) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = text;
-}
-
 // =========================
-// MOBILE MENU LOGIC
+// MOBILMENY & ANIMATIONER
 // =========================
 const mobileMenu = document.getElementById('mobile-menu');
 const menuButton = document.getElementById('menu-button');
@@ -262,301 +261,259 @@ const menuIcon = document.getElementById('menu-icon');
 const closeIcon = document.getElementById('close-icon');
 
 function toggleMobileMenu() {
-    if (!mobileMenu) return;
-    if (mobileMenu.classList.contains('h-0')) {
-        mobileMenu.classList.remove('h-0'); 
-        mobileMenu.classList.add('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
-        menuIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
-    } else {
-        closeMobileMenu();
-    }
-    if (window.lucide) window.lucide.createIcons();
+  if (!mobileMenu) return;
+  if (mobileMenu.classList.contains('h-0')) {
+    mobileMenu.classList.remove('h-0'); 
+    mobileMenu.classList.add('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
+    if (menuIcon) menuIcon.classList.add('hidden');
+    if (closeIcon) closeIcon.classList.remove('hidden');
+  } else {
+    closeMobileMenu();
+  }
+  if (window.lucide) window.lucide.createIcons();
 }
 
 function closeMobileMenu() {
-    if(!mobileMenu) return;
-    mobileMenu.classList.remove('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
-    mobileMenu.classList.add('h-0');
-    menuIcon.classList.remove('hidden');
-    closeIcon.classList.add('hidden');
+  if (!mobileMenu) return;
+  mobileMenu.classList.remove('h-auto', 'border-b', 'border-slate-200', 'dark:border-slate-800');
+  mobileMenu.classList.add('h-0');
+  if (menuIcon) menuIcon.classList.remove('hidden');
+  if (closeIcon) closeIcon.classList.add('hidden');
 }
 
 function initScrollAnimations() {
   const fadeElements = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
   fadeElements.forEach(el => observer.observe(el));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadLanguageData();
-  initTheme();
-  if (document.getElementById('name')) render();
-  
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
-  
-  if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
-  if (mobileMenu) {
-      mobileMenu.querySelectorAll('a').forEach(link => {
-          if (!link.classList.contains('lang-icon')) link.addEventListener('click', closeMobileMenu);
-      });
-  }
-  initScrollAnimations();
-  fetchBotStats();
-  renderBotChart();
-  fetchStockStats();
-  renderStockChart();
-});
-
 // =========================
-// DATA FETCHING & CHARTS
+// DATA FETCHING & STATS
 // =========================
 async function fetchBotStats() {
-  fetch('data/stats.json')
-    .then(response => response.json())
-    .then(data => {
-      const videoIframe = document.getElementById('youtube-bot-video');
-      const profitEl = document.getElementById('bot-profit');
-      const bankrollEl = document.getElementById('bot-bankroll');
-      if (videoIframe && data.latest_video_id) videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
-      if (profitEl) {
-        profitEl.textContent = data.profit;
-        profitEl.className = data.is_positive ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" : "text-xl font-bold text-rose-600 dark:text-rose-400";
-      }
-      if (bankrollEl) bankrollEl.textContent = data.bankroll;
-    })
-    .catch(err => console.log("Bot stats ej tillgängliga.", err))
-}
+  try {
+    const response = await fetch(`data/stats.json?t=${Date.now()}`);
+    if (!response.ok) return;
+    const data = await response.json();
 
-function renderBotChart() {
-  const chartCanvas = document.getElementById('bot-profit-chart');
-  if (!chartCanvas) return;
-  fetch('/data/portfolio_summary.csv?t=' + new Date().getTime())
-    .then(response => response.text())
-    .then(csvText => {
-      const lines = csvText.trim().split('\n');
-      const rawLabels = [], dataPoints = [];
-      for (let i = 1; i < lines.length; i++) {
-        const columns = lines[i].split(',');
-        if (columns.length >= 4) {
-          rawLabels.push(columns[0].trim());
-          dataPoints.push(parseFloat(columns[3].trim()));
-        }
-      }
+    const videoIframe = document.getElementById('youtube-bot-video');
+    const profitEl = document.getElementById('bot-profit');
+    const bankrollEl = document.getElementById('bot-bankroll');
 
-      // Formaterar till "DD/MM HH:MM"
-      const labels = rawLabels.map(dateTimeStr => {
-        const parts = dateTimeStr.split(' ');
-        if (parts.length >= 2) {
-          const dateParts = parts[0].split('-');
-          const timeShort = parts[1].slice(0, 5);
-          if (dateParts.length === 3) {
-            return `${dateParts[2]}/${dateParts[1]} ${timeShort}`;
-          }
-          return `${parts[0]} ${timeShort}`;
-        }
-        return dateTimeStr;
-      });
-
-      const isDark = document.documentElement.classList.contains("dark");
-      const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
-      const textColor = isDark ? '#94a3b8' : '#64748b';
-
-      if (botChartInstance) botChartInstance.destroy();
-      botChartInstance = new Chart(chartCanvas, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Bankroll',
-            data: dataPoints,
-            borderColor: '#2563eb',
-            borderWidth: 2,
-            tension: 0.35,
-            pointRadius: 0,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: '#2563eb',
-            fill: true,
-            backgroundColor: (context) => {
-              const ctx = context.chart.ctx;
-              const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-              gradient.addColorStop(0, 'rgba(37, 99, 235, 0.25)');
-              gradient.addColorStop(1, 'rgba(37, 99, 235, 0.0)');
-              return gradient;
-            }
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              mode: 'index',
-              intersect: false,
-              padding: 10,
-              displayColors: false
-            }
-          },
-          interaction: {
-            mode: 'nearest',
-            axis: 'x',
-            intersect: false
-          },
-          scales: {
-            x: {
-              grid: { display: false },
-              ticks: {
-                color: textColor,
-                maxRotation: 0,
-                autoSkip: true,
-                maxTicksLimit: 3, // Sänkt till 3 så att "DD/MM HH:MM" får plats smidigt utan krockar
-                padding: 10
-              }
-            },
-            y: {
-              grid: { color: gridColor },
-              border: { dash: [4, 4] },
-              ticks: {
-                color: textColor,
-                callback: function(value) {
-                  return value.toLocaleString('sv-SE') + ' kr';
-                }
-              }
-            }
-          }
-        }
-      });
-    });
+    if (videoIframe && data.latest_video_id) {
+      videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
+    }
+    if (profitEl) {
+      profitEl.textContent = data.profit;
+      profitEl.className = data.is_positive 
+        ? "text-xl font-bold text-emerald-600 dark:text-emerald-400" 
+        : "text-xl font-bold text-rose-600 dark:text-rose-400";
+    }
+    if (bankrollEl) bankrollEl.textContent = data.bankroll;
+  } catch (err) {
+    console.warn("Bot-stats ej tillgängliga.", err);
+  }
 }
 
 async function fetchStockStats() {
-  fetch('data/stock_stats.json?t=' + new Date().getTime())
-    .then(response => response.json())
-    .then(data => {
-      const videoIframe = document.getElementById('youtube-stock-video');
-      const profitEl = document.getElementById('stock-profit');
-      const bankrollEl = document.getElementById('stock-bankroll');
-      const investedEl = document.getElementById('stock-invested');
-      if (videoIframe && data.latest_video_id) videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
-      if (profitEl) {
-        profitEl.textContent = data.profit_pct;
-        profitEl.className = data.is_positive ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400";
-      }
-      if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
-      if (investedEl) investedEl.textContent = `Startkapital: ${data.total_invested}`;
-    })
-    .catch(err => console.log("Aktie-stats ej tillgängliga.", err));
+  try {
+    const response = await fetch(`data/stock_stats.json?t=${Date.now()}`);
+    if (!response.ok) return;
+    const data = await response.json();
+
+    const videoIframe = document.getElementById('youtube-stock-video');
+    const profitEl = document.getElementById('stock-profit');
+    const bankrollEl = document.getElementById('stock-bankroll');
+    const investedEl = document.getElementById('stock-invested');
+
+    if (videoIframe && data.latest_video_id) {
+      videoIframe.src = `https://www.youtube.com/embed/${data.latest_video_id}`;
+    }
+    if (profitEl) {
+      profitEl.textContent = data.profit_pct;
+      profitEl.className = data.is_positive 
+        ? "text-emerald-600 dark:text-emerald-400" 
+        : "text-rose-600 dark:text-rose-400";
+    }
+    if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
+    if (investedEl) investedEl.textContent = `Startkapital: ${data.total_invested}`;
+  } catch (err) {
+    console.warn("Aktie-stats ej tillgängliga.", err);
+  }
 }
 
-function renderStockChart() {
-  const chartCanvas = document.getElementById('stock-profit-chart');
-  if (!chartCanvas) return;
-  fetch('/data/stock_portfolio_summary.csv?t=' + new Date().getTime())
-    .then(response => response.text())
-    .then(csvText => {
-      const lines = csvText.trim().split('\n');
-      const rawLabels = [], dataPoints = [];
-      for (let i = 1; i < lines.length; i++) {
-        const columns = lines[i].split(',');
-        if (columns.length >= 4) {
-          rawLabels.push(columns[0].trim());
-          dataPoints.push(parseFloat(columns[3].trim()));
-        }
-      }
+// =========================
+// REUSABLE CHART LOGIC
+// =========================
+function parseCsvData(csvText) {
+  const lines = csvText.trim().split('\n');
+  const labels = [];
+  const dataPoints = [];
 
-      // Formaterar till "DD/MM HH:MM"
-      const labels = rawLabels.map(dateTimeStr => {
-        const parts = dateTimeStr.split(' ');
+  for (let i = 1; i < lines.length; i++) {
+    const columns = lines[i].split(',');
+    if (columns.length >= 4) {
+      const rawDate = columns[0].trim();
+      const value = parseFloat(columns[3].trim());
+      
+      if (!isNaN(value)) {
+        // Formaterar till "DD/MM HH:MM"
+        const parts = rawDate.split(' ');
         if (parts.length >= 2) {
           const dateParts = parts[0].split('-');
           const timeShort = parts[1].slice(0, 5);
-          if (dateParts.length === 3) {
-            return `${dateParts[2]}/${dateParts[1]} ${timeShort}`;
-          }
-          return `${parts[0]} ${timeShort}`;
+          labels.push(dateParts.length === 3 ? `${dateParts[2]}/${dateParts[1]} ${timeShort}` : `${parts[0]} ${timeShort}`);
+        } else {
+          labels.push(rawDate);
         }
-        return dateTimeStr;
-      });
-
-      const isDark = document.documentElement.classList.contains("dark");
-      const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
-      const textColor = isDark ? '#94a3b8' : '#64748b';
-
-      if (stockChartInstance) stockChartInstance.destroy();
-      stockChartInstance = new Chart(chartCanvas, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Stock Bankroll',
-            data: dataPoints,
-            borderColor: '#10b981',
-            borderWidth: 2,
-            tension: 0.35,
-            pointRadius: 0,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: '#10b981',
-            fill: true,
-            backgroundColor: (context) => {
-              const ctx = context.chart.ctx;
-              const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-              gradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
-              gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
-              return gradient;
-            }
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              mode: 'index',
-              intersect: false,
-              padding: 10,
-              displayColors: false
-            }
-          },
-          interaction: {
-            mode: 'nearest',
-            axis: 'x',
-            intersect: false
-          },
-          scales: {
-            x: {
-              grid: { display: false },
-              ticks: {
-                color: textColor,
-                maxRotation: 0,
-                autoSkip: true,
-                maxTicksLimit: 3, // Sänkt till 3 så att texten inte krockar
-                padding: 10
-              }
-            },
-            y: {
-              grid: { color: gridColor },
-              border: { dash: [4, 4] },
-              ticks: {
-                color: textColor,
-                callback: function(value) {
-                  return value.toLocaleString('sv-SE') + ' kr';
-                }
-              }
-            }
-          }
-        }
-      });
-    });
+        dataPoints.push(value);
+      }
+    }
+  }
+  return { labels, dataPoints };
 }
+
+function buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark) {
+  const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+  const textColor = isDark ? '#94a3b8' : '#64748b';
+
+  return {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: label,
+        data: dataPoints,
+        borderColor: lineColor,
+        borderWidth: 2,
+        tension: 0.35,
+        pointRadius: 0,
+        pointHoverRadius: 6,
+        pointHoverBackgroundColor: lineColor,
+        fill: true,
+        backgroundColor: (context) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+          gradient.addColorStop(0, fillColor);
+          gradient.addColorStop(1, 'rgba(0, 0, 0, 0.0)');
+          return gradient;
+        }
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+          padding: 10,
+          displayColors: false
+        }
+      },
+      interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: textColor,
+            maxRotation: 0,
+            autoSkip: true,
+            maxTicksLimit: 3,
+            padding: 10
+          }
+        },
+        y: {
+          grid: { color: gridColor },
+          border: { dash: [4, 4] },
+          ticks: {
+            color: textColor,
+            callback: (value) => `${value.toLocaleString('sv-SE')} kr`
+          }
+        }
+      }
+    }
+  };
+}
+
+async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor, existingChartInstance) {
+  const chartCanvas = document.getElementById(canvasId);
+  if (!chartCanvas || typeof Chart === 'undefined') return null;
+
+  try {
+    const response = await fetch(`${csvUrl}?t=${Date.now()}`);
+    if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+    const csvText = await response.text();
+    
+    const { labels, dataPoints } = parseCsvData(csvText);
+    const isDark = document.documentElement.classList.contains("dark");
+
+    if (existingChartInstance) existingChartInstance.destroy();
+    
+    const config = buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark);
+    return new Chart(chartCanvas, config);
+  } catch (err) {
+    console.warn(`Kunde inte ladda graf för ${canvasId}:`, err);
+    return existingChartInstance;
+  }
+}
+
+// =========================
+// INITIALISATION
+// =========================
+document.addEventListener("DOMContentLoaded", async () => {
+  loadLanguageData();
+  initTheme();
+  
+  if (document.getElementById('name')) render();
+
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+  
+  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+  if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      if (!link.classList.contains('lang-icon')) link.addEventListener('click', closeMobileMenu);
+    });
+  }
+
+  initScrollAnimations();
+
+  // Hämta statistik och rendera grafer parallellt
+  fetchBotStats();
+  fetchStockStats();
+
+  botChartInstance = await loadAndRenderChart(
+    'bot-profit-chart',
+    'data/portfolio_summary.csv',
+    'Bankroll',
+    '#2563eb',
+    'rgba(37, 99, 235, 0.25)',
+    botChartInstance
+  );
+
+  stockChartInstance = await loadAndRenderChart(
+    'stock-profit-chart',
+    'data/stock_portfolio_summary.csv',
+    'Stock Bankroll',
+    '#10b981',
+    'rgba(16, 185, 129, 0.25)',
+    stockChartInstance
+  );
+});
