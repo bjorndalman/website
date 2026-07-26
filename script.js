@@ -442,25 +442,39 @@ function buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDar
 }
 
 async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor, existingChartInstance) {
-  const chartCanvas = document.getElementById(canvasId);
-  if (!chartCanvas || typeof Chart === 'undefined') return null;
+    const chartCanvas = document.getElementById(canvasId);
+    if (!chartCanvas || typeof Chart === 'undefined') return null;
 
-  try {
-    const response = await fetch(`${csvUrl}?t=${Date.now()}`);
-    if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
-    const csvText = await response.text();
-    
-    const { labels, dataPoints } = parseCsvData(csvText);
-    const isDark = document.documentElement.classList.contains("dark");
+    try {
+        const response = await fetch(`${csvUrl}?t=${Date.now()}`);
+        if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+        const csvText = await response.text();
+        
+        const { labels, dataPoints } = parseCsvData(csvText);
+        const isDark = document.documentElement.classList.contains("dark");
 
-    if (existingChartInstance) existingChartInstance.destroy();
-    
-    const config = buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark);
-    return new Chart(chartCanvas, config);
-  } catch (err) {
-    console.warn(`Kunde inte ladda graf för ${canvasId}:`, err);
-    return existingChartInstance;
-  }
+        // Synkronisera bankroll-kortet automatiskt med grafens sista värde
+        if (dataPoints.length > 0) {
+            const latestValue = dataPoints[dataPoints.length - 1];
+            const targetElementId = canvasId === 'bot-profit-chart' ? 'bot-bankroll' : 'stock-bankroll';
+            const bankrollEl = document.getElementById(targetElementId);
+            
+            if (bankrollEl) {
+                bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
+                    minimumFractionDigits: 2, 
+                    maximumFractionDigits: 2 
+                }) + ' kr';
+            }
+        }
+
+        if (existingChartInstance) existingChartInstance.destroy();
+        
+        const config = buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark);
+        return new Chart(chartCanvas, config);
+    } catch (err) {
+        console.warn(`Kunde inte ladda graf för ${canvasId}:`, err);
+        return existingChartInstance;
+    }
 }
 
 // =========================
