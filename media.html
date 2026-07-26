@@ -223,36 +223,34 @@
                     <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
                         This section showcases a fully automated data pipeline. A separate Python engine performs calculations, updates metrics, and pushes live performance data directly into this dashboard.
                     </p>
-
                     <!-- Mathematical Framework & Algorithm Box -->
-                    <div class="mt-6 p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
-                        <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Mathematical Framework & Algorithm
+                    <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Mathematical Framework
                         </h4>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-400">
-                            <li class="flex items-start gap-2">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Kalman Filtering:</strong> Tracks hidden team states, specifically net performance strength and home advantage.</span>
+                                <span><strong>Kalman Filtering:</strong> Tracks performance and home advantage.</span>
                             </li>
-                            <li class="flex items-start gap-2">
+                            <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Bayesian Shrinkage (L2):</strong> Applied for long-term parameter stability and to prevent extreme values.</span>
+                                <span><strong>Bayesian Shrinkage:</strong> Secures long-term stability.</span>
                             </li>
-                            <li class="flex items-start gap-2">
+                            <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Dynamic Noise (R):</strong> Automatically adjusts based on market odds to filter out match randomness.</span>
+                                <span><strong>Dynamic Noise:</strong> Filters randomness via market odds.</span>
                             </li>
-                            <li class="flex items-start gap-2">
+                            <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Joseph's Form Covariance:</strong> Ensures numerical stability and symmetry during state updates.</span>
+                                <span><strong>Joseph's Covariance:</strong> Ensures numerical stability.</span>
                             </li>
-                            <li class="flex items-start gap-2 md:col-span-2">
+                            <li class="flex items-start gap-1.5 md:col-span-2">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Multi-Variable Processing:</strong> Evaluates and weights composite match signals, including goals, expected goals (xG), and shots on target.</span>
+                                <span><strong>Multi-Variable:</strong> Weights goals, xG, and shots on target.</span>
                             </li>
                         </ul>
                     </div>
-                </div>
 
                 <!-- Metrics Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
