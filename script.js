@@ -454,17 +454,41 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
         const { labels, dataPoints } = parseCsvData(csvText);
         const isDark = document.documentElement.classList.contains("dark");
 
-        // Synkronisera bankroll-kortet automatiskt med grafens sista värde
+        // Synkronisera bankroll och beräkna net profit utifrån 10 000 kr startsumma
         if (dataPoints.length > 0) {
             const latestValue = dataPoints[dataPoints.length - 1];
-            const targetElementId = canvasId === 'bot-profit-chart' ? 'bot-bankroll' : 'stock-bankroll';
-            const bankrollEl = document.getElementById(targetElementId);
             
-            if (bankrollEl) {
-                bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
-                    minimumFractionDigits: 2, 
-                    maximumFractionDigits: 2 
-                }) + ' kr';
+            if (canvasId === 'bot-profit-chart') {
+                // Uppdatera Total Bankroll
+                const bankrollEl = document.getElementById('bot-bankroll');
+                if (bankrollEl) {
+                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
+                        minimumFractionDigits: 2, 
+                        maximumFractionDigits: 2 
+                    }) + ' kr';
+                }
+
+                // Beräkna och uppdatera Net Profit mot 10 000 kr startsumma
+                const initialValue = 10000;
+                const netProfit = latestValue - initialValue;
+                const profitEl = document.getElementById('bot-profit');
+                if (profitEl) {
+                    profitEl.textContent = netProfit.toLocaleString('sv-SE', { 
+                        minimumFractionDigits: 2, 
+                        maximumFractionDigits: 2 
+                    }) + ' kr';
+                    profitEl.className = netProfit >= 0 
+                        ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
+                        : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
+                }
+            } else if (canvasId === 'stock-profit-chart') {
+                const bankrollEl = document.getElementById('stock-bankroll');
+                if (bankrollEl) {
+                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
+                        minimumFractionDigits: 2, 
+                        maximumFractionDigits: 2 
+                    }) + ' kr';
+                }
             }
         }
 
