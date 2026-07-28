@@ -313,7 +313,8 @@ async function fetchBotStats() {
                 ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
                 : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
         }
-        if (bankrollEl) bankrollEl.textContent = data.bankroll;
+        // Ta bort eller kommentera bort raden nedanför:
+        //if (bankrollEl) bankrollEl.textContent = data.bankroll;
     } catch (err) {
         console.warn("Bot-stats ej tillgängliga.", err);
     }
