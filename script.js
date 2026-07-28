@@ -347,31 +347,42 @@ async function fetchStockStats() {
 // REUSABLE CHART LOGIC
 // =========================
 function parseCsvData(csvText) {
-  const lines = csvText.trim().split('\n');
-  const labels = [];
-  const dataPoints = [];
+    const lines = csvText.trim().split('\n');
+    const labels = [];
+    const dataPoints = [];
+    
+    const monthsSv = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
 
-  for (let i = 1; i < lines.length; i++) {
-    const columns = lines[i].split(',');
-    if (columns.length >= 4) {
-      const rawDate = columns[0].trim();
-      const value = parseFloat(columns[3].trim());
-      
-      if (!isNaN(value)) {
-        // Formaterar till "DD/MM HH:MM"
-        const parts = rawDate.split(' ');
-        if (parts.length >= 2) {
-          const dateParts = parts[0].split('-');
-          const timeShort = parts[1].slice(0, 5);
-          labels.push(dateParts.length === 3 ? `${dateParts[2]}/${dateParts[1]} ${timeShort}` : `${parts[0]} ${timeShort}`);
-        } else {
-          labels.push(rawDate);
+    for (let i = 1; i < lines.length; i++) {
+        const columns = lines[i].split(',');
+        if (columns.length >= 4) {
+            const rawDate = columns[0].trim();
+            const value = parseFloat(columns[3].trim());
+            
+            if (!isNaN(value)) {
+                const parts = rawDate.split(' ');
+                const dateStr = parts[0];
+                const dateParts = dateStr.split('-');
+                
+                if (dateParts.length === 3) {
+                    const monthIndex = parseInt(dateParts[1], 10) - 1;
+                    const day = parseInt(dateParts[2], 10);
+                    const monthName = monthsSv[monthIndex] || dateParts[1];
+                    
+                    if (parts.length >= 2) {
+                        const timeShort = parts[1].slice(0, 5);
+                        labels.push(`${day} ${monthName} ${timeShort}`);
+                    } else {
+                        labels.push(`${day} ${monthName}`);
+                    }
+                } else {
+                    labels.push(rawDate);
+                }
+                dataPoints.push(value);
+            }
         }
-        dataPoints.push(value);
-      }
     }
-  }
-  return { labels, dataPoints };
+    return { labels, dataPoints };
 }
 
 function buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark) {
