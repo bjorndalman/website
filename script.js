@@ -298,28 +298,6 @@ function initScrollAnimations() {
 // =========================
 // DATA FETCHING & STATS
 // =========================
-async function fetchBotStats() {
-    try {
-        const response = await fetch(`data/stats.json?t=${Date.now()}`);
-        if (!response.ok) return;
-        const data = await response.json();
-
-        const profitEl = document.getElementById('bot-profit');
-        const bankrollEl = document.getElementById('bot-bankroll');
-
-        if (profitEl) {
-            profitEl.textContent = data.profit;
-            profitEl.className = data.is_positive 
-                ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
-                : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
-        }
-        // Ta bort eller kommentera bort raden nedanför:
-        //if (bankrollEl) bankrollEl.textContent = data.bankroll;
-    } catch (err) {
-        console.warn("Bot-stats ej tillgängliga.", err);
-    }
-}
-
 async function fetchStockStats() {
     try {
         const response = await fetch(`data/stock_stats.json?t=${Date.now()}`);
@@ -465,12 +443,10 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
         const { labels, dataPoints } = parseCsvData(csvText);
         const isDark = document.documentElement.classList.contains("dark");
 
-        // Synkronisera bankroll och beräkna net profit utifrån 10 000 kr startsumma
         if (dataPoints.length > 0) {
             const latestValue = dataPoints[dataPoints.length - 1];
             
             if (canvasId === 'bot-profit-chart') {
-                // Uppdatera Total Bankroll
                 const bankrollEl = document.getElementById('bot-bankroll');
                 if (bankrollEl) {
                     bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
@@ -479,7 +455,6 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
                     }) + ' kr';
                 }
 
-                // Beräkna och uppdatera Net Profit mot 10 000 kr startsumma
                 const initialValue = 10000;
                 const netProfit = latestValue - initialValue;
                 const profitEl = document.getElementById('bot-profit');
@@ -537,25 +512,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   initScrollAnimations();
 
- // Hämta statistik och rendera grafer parallellt
-    fetchBotStats();
-    fetchStockStats();
+  // Hämta aktiestats och rendera grafer
+  fetchStockStats();
 
-    botChartInstance = await loadAndRenderChart(
-        'bot-profit-chart',
-        'data/portfolio_summary.csv',
-        'Bankroll',
-        '#2563eb',
-        'rgba(37, 99, 235, 0.25)',
-        botChartInstance
-    );
+  botChartInstance = await loadAndRenderChart(
+      'bot-profit-chart',
+      'data/portfolio_summary.csv',
+      'Bankroll',
+      '#2563eb',
+      'rgba(37, 99, 235, 0.25)',
+      botChartInstance
+  );
 
-    stockChartInstance = await loadAndRenderChart(
-        'stock-profit-chart',
-        'data/stock_portfolio_summary.csv',
-        'Stock Bankroll',
-        '#10b981',
-        'rgba(16, 185, 129, 0.25)',
-        stockChartInstance
-    );
+  stockChartInstance = await loadAndRenderChart(
+      'stock-profit-chart',
+      'data/stock_portfolio_summary.csv',
+      'Stock Bankroll',
+      '#10b981',
+      'rgba(16, 185, 129, 0.25)',
+      stockChartInstance
+  );
 });
