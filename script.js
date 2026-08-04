@@ -42,7 +42,7 @@ const defaultData = {
       school: "K3 - Karlsborg",
       program: "Military Service - Rangers Training",
       years: "",
-      description: "<img src=\"images/jagar_badge.jpg\" alt=\"Ranger badge\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Completed advanced basic military training as a Ranger (Jägare). Experience from the Life Regiment Hussars (K3) in Karlsborg, where operations are characterized by high levels of responsibility, teamwork under pressure, and the use of advanced technology. The unit focuses on intelligence gathering, reconnaissance, and rapid response capabilities in complex environments, as well as training in survival and personnel recovery for international missions."
+      description: '<img src="images/jagar_badge.jpg" alt="Ranger badge" style="height: 18px; vertical-align: middle; margin-right: 5px;"> Completed advanced basic military training as a Ranger (Jägare). Experience from the Life Regiment Hussars (K3) in Karlsborg, where operations are characterized by high levels of responsibility, teamwork under pressure, and the use of advanced technology. The unit focuses on intelligence gathering, reconnaissance, and rapid response capabilities in complex environments, as well as training in survival and personnel recovery for international missions.'
     }
   ],
   experience: [
@@ -109,7 +109,7 @@ const swedishData = {
       school: "K3 - Karlsborg",
       program: "Militärtjänst - Jägarutbildning",
       years: "",
-      description: "<img src=\"images/jagar_badge.jpg\" alt=\"JÄGARE-märke\" style=\"height: 18px; vertical-align: middle; margin-right: 5px;\"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag."
+      description: '<img src="../images/jagar_badge.jpg" alt="JÄGARE-märke" style="height: 18px; vertical-align: middle; margin-right: 5px;"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag.'
     }
   ],
   experience: [
@@ -138,13 +138,16 @@ const swedishData = {
 let botChartInstance = null;
 let stockChartInstance = null;
 let appData;
+let isSwedishPage = false;
+let pathPrefix = "";
 
 // =========================
 // SPRÅKHANTERING & TEMA
 // =========================
 function loadLanguageData() {
-  const isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
+  isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
   appData = isSwedishPage ? swedishData : defaultData;
+  pathPrefix = isSwedishPage ? "../" : "";
 }
 
 function initTheme() {
@@ -300,7 +303,7 @@ function initScrollAnimations() {
 // =========================
 async function fetchStockStats() {
     try {
-        const response = await fetch(`data/stock_stats.json?t=${Date.now()}`);
+        const response = await fetch(`${pathPrefix}data/stock_stats.json?t=${Date.now()}`);
         if (!response.ok) return;
         const data = await response.json();
 
@@ -436,7 +439,8 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
     if (!chartCanvas || typeof Chart === 'undefined') return null;
 
     try {
-        const response = await fetch(`${csvUrl}?t=${Date.now()}`);
+        const fullUrl = `${pathPrefix}${csvUrl}?t=${Date.now()}`;
+        const response = await fetch(fullUrl);
         if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
         const csvText = await response.text();
         
