@@ -35,16 +35,6 @@ jobs:
           include-html: true
           sitemap-format: xml
 
-      - name: Commit and push sitemap
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f sitemap.xml ]; then
-            git add sitemap.xml
-            git commit -m "Automated sitemap update [skip ci]" || echo "No changes to commit"
-            git push
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
