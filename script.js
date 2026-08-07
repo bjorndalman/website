@@ -311,13 +311,16 @@ async function fetchStockStats() {
         const bankrollEl = document.getElementById('stock-bankroll');
         const investedEl = document.getElementById('stock-invested');
 
-        if (profitEl) {
+        // Om json innehåller nan, uppdatera inte texten härifrån (grafen gör det säkrare)
+        if (profitEl && data.profit_pct && !data.profit_pct.includes('nan')) {
             profitEl.textContent = data.profit_pct;
             profitEl.className = data.is_positive 
                 ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
                 : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
         }
-        if (bankrollEl) bankrollEl.textContent = data.total_bankroll;
+        if (bankrollEl && data.total_bankroll && !data.total_bankroll.includes('nan')) {
+            bankrollEl.textContent = data.total_bankroll;
+        }
         if (investedEl) investedEl.textContent = data.total_invested;
     } catch (err) {
         console.warn("Aktie-stats ej tillgängliga.", err);
@@ -338,7 +341,11 @@ function parseCsvData(csvText) {
         const columns = lines[i].split(',');
         if (columns.length >= 4) {
             const rawDate = columns[0].trim();
-            const value = parseFloat(columns[3].trim());
+            const valueStr = columns[3].trim();
+            
+            // Skydd mot "nan" / ogiltiga siffror i CSV
+            if (valueStr.toLowerCase() === 'nan') continue;
+            const value = parseFloat(valueStr);
             
             if (!isNaN(value)) {
                 const parts = rawDate.split(' ');
@@ -478,6 +485,18 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
                         minimumFractionDigits: 2, 
                         maximumFractionDigits: 2 
                     }) + ' kr';
+                }
+
+                // BERÄKNA DYNAMISK NET PROFIT PROCENT DEREKT FRÅN SENASTE VALIDA VÄRDET
+                const initialStockValue = 100000.0;
+                const profitPct = ((latestValue - initialStockValue) / initialStockValue) * 100;
+                const profitEl = document.getElementById('stock-profit');
+                if (profitEl) {
+                    const formattedPct = (profitPct >= 0 ? "+" : "") + profitPct.toFixed(2).replace('.', ',') + "%";
+                    profitEl.textContent = formattedPct;
+                    profitEl.className = profitPct >= 0 
+                        ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
+                        : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
                 }
             }
         }
