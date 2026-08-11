@@ -609,6 +609,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Hämta aktiestats
   fetchStockStats();
 
+  // Hämta Kalman-rankings
+  loadKalmanRankings(); // <--- LÄGG TILL DENNA RAD!
+
   // Rendera grafer från CSV-filer
   botChartInstance = await loadAndRenderChart(
       'bot-profit-chart',
