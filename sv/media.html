@@ -276,6 +276,46 @@
             </div>
         </section>
 
+        <!-- 2. LIVE TEAM RANKINGS (KALMAN-STYRKOR) -->
+        <section id="mls-rankings" class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="mb-8">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Team Rankings</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 max-w-2xl">
+                        Kalman-kalibrerade lagstyrkor i realtid. Denna lista korrigerar för brus och formsvackor för att identifiera MLS mest undervärderade och överskattade lag kontra tabellplacering.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Top 5 -->
+                    <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
+                        <h4 class="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i> Top 5: Kalman-Starkast
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="top-teams" class="divide-y divide-emerald-200 dark:divide-emerald-800">
+                                <!-- JS fyller i: <tr><td>Lag</td><td class="text-right">Styrka</td></tr> -->
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bottom 5 -->
+                    <div class="bg-rose-50/50 dark:bg-rose-950/20 p-6 rounded-2xl border border-rose-100 dark:border-rose-900/50">
+                        <h4 class="text-lg font-bold text-rose-800 dark:text-rose-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-down" class="w-5 h-5"></i> Bottom 5: Överskattade
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="bottom-teams" class="divide-y divide-rose-200 dark:divide-rose-800">
+                                <!-- JS fyller i: <tr><td>Lag</td><td class="text-right">Styrka</td></tr> -->
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 3. GRAFER: AUTOMATED STOCK TRADING SYSTEM -->
         <section class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
