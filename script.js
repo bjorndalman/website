@@ -521,39 +521,23 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
     }
 }
 // =========================
-// KALMAN RANKINGS (LAGSTYRKOR)
+// KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
 // =========================
 async function loadKalmanRankings() {
     try {
-        const response = await fetch(`${pathPrefix}data/team_strengths.csv?t=${Date.now()}`);
+        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
         if (!response.ok) return;
         
-        const text = await response.text();
-        const lines = text.trim().split('\n');
-        
-        const teams = [];
-        for (let i = 1; i < lines.length; i++) {
-            const cols = lines[i].split(',');
-            if (cols.length >= 2) {
-                const name = cols[0].trim();
-                const strength = parseFloat(cols[1].trim());
-                if (!isNaN(strength)) {
-                    teams.push({ name, strength });
-                }
-            }
-        }
-
-        teams.sort((a, b) => b.strength - a.strength);
-
-        const top5 = teams.slice(0, 5);
-        const bottom5 = teams.slice(-5).reverse();
+        const data = await response.json();
+        const top5 = data.top5 || [];
+        const bottom5 = data.bottom5 || [];
 
         const topContainer = document.getElementById('top-teams');
-        if (topContainer) {
-            topContainer.innerHTML = top5.map((team, index) => `
+        if (topContainer && top5.length > 0) {
+            topContainer.innerHTML = top5.map(team => `
                 <tr class="hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${index + 1}</span>
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${team.rank}</span>
                         ${team.name}
                     </td>
                     <td class="py-2.5 text-right font-mono font-bold text-emerald-700 dark:text-emerald-400">
@@ -564,11 +548,11 @@ async function loadKalmanRankings() {
         }
 
         const bottomContainer = document.getElementById('bottom-teams');
-        if (bottomContainer) {
-            bottomContainer.innerHTML = bottom5.map((team, index) => `
+        if (bottomContainer && bottom5.length > 0) {
+            bottomContainer.innerHTML = bottom5.map(team => `
                 <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-rose-500 mr-2">#${teams.length - 4 + index}</span>
+                        <span class="text-xs font-bold text-rose-500 mr-2">#${team.rank}</span>
                         ${team.name}
                     </td>
                     <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
