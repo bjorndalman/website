@@ -520,7 +520,68 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
         return existingChartInstance;
     }
 }
+// =========================
+// KALMAN RANKINGS (LAGSTYRKOR)
+// =========================
+async function loadKalmanRankings() {
+    try {
+        const response = await fetch(`${pathPrefix}data/team_strengths.csv?t=${Date.now()}`);
+        if (!response.ok) return;
+        
+        const text = await response.text();
+        const lines = text.trim().split('\n');
+        
+        const teams = [];
+        for (let i = 1; i < lines.length; i++) {
+            const cols = lines[i].split(',');
+            if (cols.length >= 2) {
+                const name = cols[0].trim();
+                const strength = parseFloat(cols[1].trim());
+                if (!isNaN(strength)) {
+                    teams.push({ name, strength });
+                }
+            }
+        }
 
+        teams.sort((a, b) => b.strength - a.strength);
+
+        const top5 = teams.slice(0, 5);
+        const bottom5 = teams.slice(-5).reverse();
+
+        const topContainer = document.getElementById('top-teams');
+        if (topContainer) {
+            topContainer.innerHTML = top5.map((team, index) => `
+                <tr class="hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30 transition">
+                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${index + 1}</span>
+                        ${team.name}
+                    </td>
+                    <td class="py-2.5 text-right font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                        ${team.strength > 0 ? '+' : ''}${team.strength.toFixed(4)}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        const bottomContainer = document.getElementById('bottom-teams');
+        if (bottomContainer) {
+            bottomContainer.innerHTML = bottom5.map((team, index) => `
+                <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
+                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
+                        <span class="text-xs font-bold text-rose-500 mr-2">#${teams.length - 4 + index}</span>
+                        ${team.name}
+                    </td>
+                    <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
+                        ${team.strength > 0 ? '+' : ''}${team.strength.toFixed(4)}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+    } catch (error) {
+        console.warn('Fel vid inläsning av Kalman-rankings:', error);
+    }
+}
 // =========================
 // INITIALISATION
 // =========================
