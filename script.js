@@ -299,7 +299,7 @@ function initScrollAnimations() {
 }
 
 // =========================
-// DATA FETCHING & STATS
+// DATA FETCHING & STATS (AKTIER)
 // =========================
 async function fetchStockStats() {
     try {
@@ -311,7 +311,6 @@ async function fetchStockStats() {
         const bankrollEl = document.getElementById('stock-bankroll');
         const investedEl = document.getElementById('stock-invested');
 
-        // Om json innehåller nan, uppdatera inte texten härifrån (grafen gör det säkrare)
         if (profitEl && data.profit_pct && !data.profit_pct.includes('nan')) {
             profitEl.textContent = data.profit_pct;
             profitEl.className = data.is_positive 
@@ -328,14 +327,15 @@ async function fetchStockStats() {
 }
 
 // =========================
-// REUSABLE CHART LOGIC
+// REUSABLE CHART LOGIC (CSV)
 // =========================
-function parseCsvData(csvText) {
+function parseCsvData(csvText, isBotChart = false) {
     const lines = csvText.trim().split('\n');
     const labels = [];
     const dataPoints = [];
     
     const monthsSv = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+    let lastRawDate = null;
 
     for (let i = 1; i < lines.length; i++) {
         const columns = lines[i].split(',');
@@ -348,6 +348,7 @@ function parseCsvData(csvText) {
             const value = parseFloat(valueStr);
             
             if (!isNaN(value)) {
+                lastRawDate = rawDate; // Spara det senaste giltiga datumet
                 const parts = rawDate.split(' ');
                 const dateStr = parts[0];
                 const dateParts = dateStr.split('-');
@@ -370,6 +371,15 @@ function parseCsvData(csvText) {
             }
         }
     }
+
+    // Uppdatera status-badgens datum för MLS direkt från CSV
+    if (isBotChart && lastRawDate) {
+        const syncEl = document.getElementById('mls-last-sync');
+        if (syncEl) {
+            syncEl.textContent = lastRawDate.split(' ')[0];
+        }
+    }
+
     return { labels, dataPoints };
 }
 
@@ -451,7 +461,8 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
         if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
         const csvText = await response.text();
         
-        const { labels, dataPoints } = parseCsvData(csvText);
+        const isBot = (canvasId === 'bot-profit-chart');
+        const { labels, dataPoints } = parseCsvData(csvText, isBot);
         const isDark = document.documentElement.classList.contains("dark");
 
         if (dataPoints.length > 0) {
@@ -487,7 +498,6 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
                     }) + ' kr';
                 }
 
-                // BERÄKNA DYNAMISK NET PROFIT PROCENT DEREKT FRÅN SENASTE VALIDA VÄRDET
                 const initialStockValue = 100000.0;
                 const profitPct = ((latestValue - initialStockValue) / initialStockValue) * 100;
                 const profitEl = document.getElementById('stock-profit');
@@ -535,9 +545,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   initScrollAnimations();
 
-  // Hämta aktiestats och rendera grafer
+  // Hämta aktiestats
   fetchStockStats();
 
+  // Rendera grafer från CSV-filer
   botChartInstance = await loadAndRenderChart(
       'bot-profit-chart',
       'data/portfolio_summary.csv',
