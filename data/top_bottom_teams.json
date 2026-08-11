@@ -1,0 +1,56 @@
+{
+  "top5": [
+    {
+      "rank": 1,
+      "name": "LAFC",
+      "strength": 0.5254
+    },
+    {
+      "rank": 2,
+      "name": "Inter Miami",
+      "strength": 0.4374
+    },
+    {
+      "rank": 3,
+      "name": "Vancouver Whitecaps",
+      "strength": 0.303
+    },
+    {
+      "rank": 4,
+      "name": "Nashville",
+      "strength": 0.2805
+    },
+    {
+      "rank": 5,
+      "name": "San Diego FC",
+      "strength": 0.1793
+    }
+  ],
+  "bottom5": [
+    {
+      "rank": 27,
+      "name": "Chivas USA",
+      "strength": -0.7701
+    },
+    {
+      "rank": 28,
+      "name": "Kansas City",
+      "strength": -0.7078
+    },
+    {
+      "rank": 29,
+      "name": "DC United",
+      "strength": -0.51
+    },
+    {
+      "rank": 30,
+      "name": "Colorado Rapids",
+      "strength": -0.4765
+    },
+    {
+      "rank": 31,
+      "name": "Austin FC",
+      "strength": -0.4616
+    }
+  ]
+}
