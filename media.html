@@ -212,7 +212,25 @@
         <section id="mls-soccer" class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
                 <div class="max-w-3xl mb-10">
-                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-3 py-1 rounded-full inline-block mb-3">Live Pipeline</span>
+                    
+                    <!-- DYNAMISK PIPELINE STATUS BADGE -->
+                    <div class="flex flex-wrap items-center gap-3 mb-4">
+                        <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/50 px-3 py-1 rounded-full text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span>Pipeline Active</span>
+                        </div>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                            Last Sync: <strong id="mls-last-sync" class="text-slate-700 dark:text-slate-200">Loading...</strong>
+                        </span>
+                        <span class="text-xs text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">
+                            Next Matchday: <strong class="text-slate-700 dark:text-slate-200">15 Aug (MLS)</strong>
+                        </span>
+                    </div>
+
                     <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automated Live System for MLS Soccer Analytics</h3>
                     <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
                         This section showcases a fully automated algorithmic data pipeline for <strong>MLS (Major League Soccer)</strong>, operating live in real-time to track bankroll development, performance metrics, and historical profit curves continuously.
