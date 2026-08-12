@@ -343,12 +343,11 @@ function parseCsvData(csvText, isBotChart = false) {
             const rawDate = columns[0].trim();
             const valueStr = columns[3].trim();
             
-            // Skydd mot "nan" / ogiltiga siffror i CSV
             if (valueStr.toLowerCase() === 'nan') continue;
             const value = parseFloat(valueStr);
             
             if (!isNaN(value)) {
-                lastRawDate = rawDate; // Spara det senaste giltiga datumet
+                lastRawDate = rawDate; 
                 const parts = rawDate.split(' ');
                 const dateStr = parts[0];
                 const dateParts = dateStr.split('-');
@@ -372,7 +371,6 @@ function parseCsvData(csvText, isBotChart = false) {
         }
     }
 
-    // Uppdatera status-badgens datum för MLS direkt från CSV
     if (isBotChart && lastRawDate) {
         const syncEl = document.getElementById('mls-last-sync');
         if (syncEl) {
@@ -520,6 +518,7 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
         return existingChartInstance;
     }
 }
+
 // =========================
 // KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
 // =========================
@@ -566,6 +565,7 @@ async function loadKalmanRankings() {
         console.warn('Fel vid inläsning av Kalman-rankings:', error);
     }
 }
+
 // =========================
 // INITIALISATION
 // =========================
@@ -573,7 +573,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadLanguageData();
   initTheme();
   
-  if (document.getElementById('name')) render();
+  if (document.getElementById('name')) {
+    render();
+  }
 
   const themeToggleBtn = document.getElementById('theme-toggle');
   if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
@@ -594,7 +596,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   fetchStockStats();
 
   // Hämta Kalman-rankings
-  loadKalmanRankings(); // <--- LÄGG TILL DENNA RAD!
+  loadKalmanRankings();
 
   // Rendera grafer från CSV-filer
   botChartInstance = await loadAndRenderChart(
