@@ -343,11 +343,12 @@ function parseCsvData(csvText, isBotChart = false) {
             const rawDate = columns[0].trim();
             const valueStr = columns[3].trim();
             
+            // Skydd mot "nan" / ogiltiga siffror i CSV
             if (valueStr.toLowerCase() === 'nan') continue;
             const value = parseFloat(valueStr);
             
             if (!isNaN(value)) {
-                lastRawDate = rawDate; 
+                lastRawDate = rawDate; // Spara det senaste giltiga datumet
                 const parts = rawDate.split(' ');
                 const dateStr = parts[0];
                 const dateParts = dateStr.split('-');
@@ -371,6 +372,7 @@ function parseCsvData(csvText, isBotChart = false) {
         }
     }
 
+    // Uppdatera status-badgens datum för MLS direkt från CSV
     if (isBotChart && lastRawDate) {
         const syncEl = document.getElementById('mls-last-sync');
         if (syncEl) {
@@ -518,25 +520,40 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
         return existingChartInstance;
     }
 }
-
 // =========================
-// KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
+// KALMAN RANKINGS (LAGSTYRKOR)
 // =========================
 async function loadKalmanRankings() {
     try {
-        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
+        const response = await fetch(`${pathPrefix}data/team_strengths.csv?t=${Date.now()}`);
         if (!response.ok) return;
         
-        const data = await response.json();
-        const top5 = data.top5 || [];
-        const bottom5 = data.bottom5 || [];
+        const text = await response.text();
+        const lines = text.trim().split('\n');
+        
+        const teams = [];
+        for (let i = 1; i < lines.length; i++) {
+            const cols = lines[i].split(',');
+            if (cols.length >= 2) {
+                const name = cols[0].trim();
+                const strength = parseFloat(cols[1].trim());
+                if (!isNaN(strength)) {
+                    teams.push({ name, strength });
+                }
+            }
+        }
+
+        teams.sort((a, b) => b.strength - a.strength);
+
+        const top5 = teams.slice(0, 5);
+        const bottom5 = teams.slice(-5).reverse();
 
         const topContainer = document.getElementById('top-teams');
-        if (topContainer && top5.length > 0) {
-            topContainer.innerHTML = top5.map(team => `
+        if (topContainer) {
+            topContainer.innerHTML = top5.map((team, index) => `
                 <tr class="hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${team.rank}</span>
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${index + 1}</span>
                         ${team.name}
                     </td>
                     <td class="py-2.5 text-right font-mono font-bold text-emerald-700 dark:text-emerald-400">
@@ -547,11 +564,11 @@ async function loadKalmanRankings() {
         }
 
         const bottomContainer = document.getElementById('bottom-teams');
-        if (bottomContainer && bottom5.length > 0) {
-            bottomContainer.innerHTML = bottom5.map(team => `
+        if (bottomContainer) {
+            bottomContainer.innerHTML = bottom5.map((team, index) => `
                 <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-rose-500 mr-2">#${team.rank}</span>
+                        <span class="text-xs font-bold text-rose-500 mr-2">#${teams.length - 4 + index}</span>
                         ${team.name}
                     </td>
                     <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
@@ -565,7 +582,6 @@ async function loadKalmanRankings() {
         console.warn('Fel vid inläsning av Kalman-rankings:', error);
     }
 }
-
 // =========================
 // INITIALISATION
 // =========================
@@ -573,9 +589,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadLanguageData();
   initTheme();
   
-  if (document.getElementById('name')) {
-    render();
-  }
+  if (document.getElementById('name')) render();
 
   const themeToggleBtn = document.getElementById('theme-toggle');
   if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
@@ -596,7 +610,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   fetchStockStats();
 
   // Hämta Kalman-rankings
-  loadKalmanRankings();
+  loadKalmanRankings(); // <--- LÄGG TILL DENNA RAD!
 
   // Rendera grafer från CSV-filer
   botChartInstance = await loadAndRenderChart(
