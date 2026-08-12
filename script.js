@@ -525,33 +525,42 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 // =========================
 async function loadKalmanRankings() {
     try {
-        const response = await fetch(`/data/top_bottom_teams.json?t=${Date.now()}`);
-        if (!response.ok) return;
+        // Fix 1: Använd pathPrefix för att undvika 404-fel på språksidor
+        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
+        if (!response.ok) throw new Error(`Kunde inte hämta data: ${response.status}`);
         
-        // 1. Läs in som JSON istället för ren text
         const data = await response.json();
         
-        let teams = [];
+        let top5 = [];
+        let bottom5 = [];
 
-        // 2. Hantera om JSON är en lista [ {name, strength}, ... ] 
-        //    eller ett objekt { top_teams: [...], bottom_teams: [...] }
-        if (Array.isArray(data)) {
-            teams = data;
-        } else if (data.teams) {
-            teams = data.teams;
-        } else if (data.top_teams && data.bottom_teams) {
-            // Om filen redan är färdig-uppdelad i JSON:
-            renderTeamTablesDirectly(data.top_teams, data.bottom_teams);
+        // Fix 2: Hantera färdig-uppdelad JSON direkt utan att anropa en saknad funktion
+        if (data.top_teams && data.bottom_teams) {
+            top5 = data.top_teams.slice(0, 5);
+            bottom5 = data.bottom_teams.slice(0, 5);
+        } else {
+            // Om all data ligger i en enda lista
+            let teams = [];
+            if (Array.isArray(data)) {
+                teams = data;
+            } else if (data.teams) {
+                teams = data.teams;
+            }
+
+            if (teams.length > 0) {
+                teams.sort((a, b) => b.strength - a.strength);
+                top5 = teams.slice(0, 5);
+                bottom5 = teams.slice(-5).reverse();
+            }
+        }
+
+        // Fix 3: Om ingen data hittades, avbryt innan "Loading..." suddas ut
+        if (top5.length === 0 && bottom5.length === 0) {
+            console.warn("Kunde inte tolka formatet i top_bottom_teams.json. Inga lag laddades.");
             return;
         }
 
-        // 3. Om det var en hel lista, sortera och dela upp
-        teams.sort((a, b) => b.strength - a.strength);
-
-        const top5 = teams.slice(0, 5);
-        const bottom5 = teams.slice(-5).reverse();
-
-        // 4. Skriv ut till DOM
+        // Skriv ut till DOM - Top 5
         const topContainer = document.getElementById('top-teams');
         if (topContainer) {
             topContainer.innerHTML = top5.map((team, index) => `
@@ -567,12 +576,13 @@ async function loadKalmanRankings() {
             `).join('');
         }
 
+        // Skriv ut till DOM - Bottom 5
         const bottomContainer = document.getElementById('bottom-teams');
         if (bottomContainer) {
             bottomContainer.innerHTML = bottom5.map((team, index) => `
                 <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-rose-500 mr-2">#${teams.length - 4 + index}</span>
+                        <span class="text-xs font-bold text-rose-500 mr-2">#${index + 1}</span>
                         ${team.name || team.team}
                     </td>
                     <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
@@ -583,7 +593,7 @@ async function loadKalmanRankings() {
         }
 
     } catch (error) {
-        console.warn('Fel vid inläsning av Kalman-rankings:', error);
+        console.error('Fel vid inläsning av Kalman-rankings:', error);
     }
 }
 // =========================
