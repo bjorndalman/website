@@ -525,73 +525,61 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 // =========================
 async function loadKalmanRankings() {
     try {
-        // Fix 1: Använd pathPrefix för att undvika 404-fel på språksidor
-        // Ändra denna rad i loadKalmanRankings:
-        const response = await fetch(`/data/top_bottom_teams.json?t=${Date.now()}`);
-        if (!response.ok) throw new Error(`Kunde inte hämta data: ${response.status}`);
-        
+        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
+        if (!response.ok) return;
+
         const data = await response.json();
-        
+
         let top5 = [];
         let bottom5 = [];
 
-        // Fix 2: Hantera färdig-uppdelad JSON direkt utan att anropa en saknad funktion
+        // 1. Om JSON redan är uppdelad i top_teams och bottom_teams
         if (data.top_teams && data.bottom_teams) {
             top5 = data.top_teams.slice(0, 5);
             bottom5 = data.bottom_teams.slice(0, 5);
         } else {
-            // Om all data ligger i en enda lista
-            let teams = [];
-            if (Array.isArray(data)) {
-                teams = data;
-            } else if (data.teams) {
-                teams = data.teams;
-            }
-
+            // 2. Om all data ligger i en rak lista
+            let teams = Array.isArray(data) ? data : (data.teams || []);
             if (teams.length > 0) {
-                teams.sort((a, b) => b.strength - a.strength);
+                teams.sort((a, b) => (b.strength || b.score || 0) - (a.strength || a.score || 0));
                 top5 = teams.slice(0, 5);
                 bottom5 = teams.slice(-5).reverse();
             }
         }
 
-        // Fix 3: Om ingen data hittades, avbryt innan "Loading..." suddas ut
-        if (top5.length === 0 && bottom5.length === 0) {
-            console.warn("Kunde inte tolka formatet i top_bottom_teams.json. Inga lag laddades.");
-            return;
-        }
+        if (top5.length === 0 && bottom5.length === 0) return;
 
-        // Skriv ut till DOM - Top 5
+        // Hjälpfunktion för att bygga HTML-rader säkert
+        const buildRows = (teamList, isTop) => teamList.map((team, index) => {
+            const teamName = team.name || team.team || team.team_name || "Okänt lag";
+            const val = team.strength ?? team.score ?? team.kalman_strength ?? 0;
+            const formattedVal = (val > 0 ? '+' : '') + Number(val).toFixed(4);
+            
+            const hoverStyle = isTop 
+                ? 'hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30' 
+                : 'hover:bg-rose-100/50 dark:hover:bg-rose-900/30';
+            const rankColor = isTop ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-500';
+            const valColor = isTop ? 'text-emerald-700 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400';
+
+            return `
+                <tr class="${hoverStyle} transition">
+                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
+                        <span class="text-xs font-bold ${rankColor} mr-2">#${index + 1}</span>
+                        ${teamName}
+                    </td>
+                    <td class="py-2.5 text-right font-mono font-bold ${valColor}">
+                        ${formattedVal}
+                    </td>
+                </tr>
+            `;
+        }).join('');
+
+        // Skriv ut till DOM
         const topContainer = document.getElementById('top-teams');
-        if (topContainer) {
-            topContainer.innerHTML = top5.map((team, index) => `
-                <tr class="hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30 transition">
-                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${index + 1}</span>
-                        ${team.name || team.team}
-                    </td>
-                    <td class="py-2.5 text-right font-mono font-bold text-emerald-700 dark:text-emerald-400">
-                        ${team.strength > 0 ? '+' : ''}${Number(team.strength).toFixed(4)}
-                    </td>
-                </tr>
-            `).join('');
-        }
+        if (topContainer) topContainer.innerHTML = buildRows(top5, true);
 
-        // Skriv ut till DOM - Bottom 5
         const bottomContainer = document.getElementById('bottom-teams');
-        if (bottomContainer) {
-            bottomContainer.innerHTML = bottom5.map((team, index) => `
-                <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
-                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-rose-500 mr-2">#${index + 1}</span>
-                        ${team.name || team.team}
-                    </td>
-                    <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
-                        ${team.strength > 0 ? '+' : ''}${Number(team.strength).toFixed(4)}
-                    </td>
-                </tr>
-            `).join('');
-        }
+        if (bottomContainer) bottomContainer.innerHTML = buildRows(bottom5, false);
 
     } catch (error) {
         console.error('Fel vid inläsning av Kalman-rankings:', error);
