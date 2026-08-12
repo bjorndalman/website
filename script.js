@@ -525,7 +525,7 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 // =========================
 async function loadKalmanRankings() {
     try {
-        const response = await fetch(`${pathPrefix}data/team_strengths.csv?t=${Date.now()}`);
+        const response = await fetch(`/data/top_bottom_teams.json?t=${Date.now()}`);
         if (!response.ok) return;
         
         const text = await response.text();
