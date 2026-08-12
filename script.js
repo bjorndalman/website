@@ -526,7 +526,8 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 async function loadKalmanRankings() {
     try {
         // Fix 1: Använd pathPrefix för att undvika 404-fel på språksidor
-        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
+        // Ändra denna rad i loadKalmanRankings:
+        const response = await fetch(`/data/top_bottom_teams.json?t=${Date.now()}`);
         if (!response.ok) throw new Error(`Kunde inte hämta data: ${response.status}`);
         
         const data = await response.json();
