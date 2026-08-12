@@ -49,7 +49,13 @@
                 </picture>
             </a>
             
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4 sm:gap-6">
+                <!-- NEXT MATCHDAY: FLEXIBELS & RESPONSIV -->
+                <div class="hidden sm:flex items-center text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span class="hidden md:inline mr-1">Next Matchday:</span>
+                    <strong class="text-slate-800 dark:text-slate-200 font-bold">15 Aug (MLS)</strong>
+                </div>
+
                 <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
                     <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
                     <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
@@ -89,6 +95,12 @@
     <!-- MOBILMENY -->
     <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
+            <!-- NEXT MATCHDAY I MOBILMENYN -->
+            <div class="flex items-center gap-2 p-3 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs text-slate-600 dark:text-slate-300 sm:hidden">
+                <i data-lucide="calendar" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                <span>Next Matchday: <strong class="text-slate-900 dark:text-white font-bold">15 Aug (MLS)</strong></span>
+            </div>
+
             <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
             <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
             <a href="media.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Media</a>
@@ -129,55 +141,54 @@
     <main class="max-w-4xl mx-auto px-6 py-16 space-y-16">
 
         <!-- NEW ANNOUNCEMENT: PREMIER LEAGUE SIMULATION -->
-<section class="fade-in mb-12">
-    <div class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-transparent p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-900/50 shadow-xl relative overflow-hidden">
-        <div class="flex items-center gap-3 mb-4">
-            <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm animate-pulse">
-                New
-            </span>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                Season 2026/2027
-            </span>
-        </div>
-
-        <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
-            Upcoming: Premier League AI Simulation Model
-        </h3>
-
-        <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
-            Following the framework built for our MLS analytics, we are expanding our predictive modeling pipeline to the English Premier League! 
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 backdrop-blur-sm text-sm">
-            <div class="flex items-center gap-3">
-                <i data-lucide="calendar" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
-                <div>
-                    <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Season Kick-off</span>
-                    <strong class="text-slate-800 dark:text-slate-200">Friday, Aug 21, 2026</strong>
+        <section class="fade-in mb-12">
+            <div class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-transparent p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-900/50 shadow-xl relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm animate-pulse">
+                        New
+                    </span>
+                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        Season 2026/2027
+                    </span>
                 </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <i data-lucide="flag" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
-                <div>
-                    <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Season Finale</span>
-                    <strong class="text-slate-800 dark:text-slate-200">Sunday, May 30, 2027</strong>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <i data-lucide="trophy" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                <div>
-                    <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Defending Champions</span>
-                    <strong class="text-slate-800 dark:text-slate-200">Arsenal FC</strong>
-                </div>
-            </div>
-        </div>
 
-        <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 italic">
-            * Note: The season kicks off one week later than usual to allow critical recovery time for players following the 2026 FIFA World Cup.
-        </p>
-    </div>
-</section>
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
+                    Upcoming: Premier League AI Simulation Model
+                </h3>
 
+                <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
+                    Following the framework built for our MLS analytics, we are expanding our predictive modeling pipeline to the English Premier League! 
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 backdrop-blur-sm text-sm">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="calendar" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Season Kick-off</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Friday, Aug 21, 2026</strong>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="flag" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Season Finale</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Sunday, May 30, 2027</strong>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="trophy" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Defending Champions</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Arsenal FC</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 italic">
+                    * Note: The season kicks off one week later than usual to allow critical recovery time for players following the 2026 FIFA World Cup.
+                </p>
+            </div>
+        </section>
 
         <!-- 1. BILDER -->
         <section id="images" class="fade-in">
@@ -283,44 +294,42 @@
         </section>
 
         <!-- 2. LIVE TEAM RANKINGS (KALMAN STRENGTHS) -->
-<section id="mls-rankings" class="fade-in">
-    <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
-        <div class="mb-8">
-            <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Team Rankings</h3>
-            <p class="text-slate-600 dark:text-slate-400 mt-3 max-w-2xl">
-                Real-time Kalman-calibrated team strengths. This list filters out noise and temporary slumps to identify MLS's most undervalued and overvalued teams compared to official league standings.
-            </p>
-        </div>
+        <section id="mls-rankings" class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="mb-8">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Team Rankings</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 max-w-2xl">
+                        Real-time Kalman-calibrated team strengths. This list filters out noise and temporary slumps to identify MLS's most undervalued and overvalued teams compared to official league standings.
+                    </p>
+                </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Top 5 -->
-            <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
-                <h4 class="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-4 flex items-center gap-2">
-                    <i data-lucide="trending-up" class="w-5 h-5"></i> Top 5: Kalman Strongest
-                </h4>
-                <table class="w-full text-left">
-                    <tbody id="top-teams" class="divide-y divide-emerald-200 dark:divide-emerald-800">
-                        <!-- JS populates: <tr><td>Team</td><td class="text-right">Strength</td></tr> -->
-                        <tr><td class="py-2">Loading...</td></tr>
-                    </tbody>
-                </table>
-            </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Top 5 -->
+                    <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
+                        <h4 class="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i> Top 5: Kalman Strongest
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="top-teams" class="divide-y divide-emerald-200 dark:divide-emerald-800">
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-            <!-- Bottom 5 -->
-            <div class="bg-rose-50/50 dark:bg-rose-950/20 p-6 rounded-2xl border border-rose-100 dark:border-rose-900/50">
-                <h4 class="text-lg font-bold text-rose-800 dark:text-rose-400 mb-4 flex items-center gap-2">
-                    <i data-lucide="trending-down" class="w-5 h-5"></i> Bottom 5: Overvalued
-                </h4>
-                <table class="w-full text-left">
-                    <tbody id="bottom-teams" class="divide-y divide-rose-200 dark:divide-rose-800">
-                        <!-- JS populates: <tr><td>Team</td><td class="text-right">Strength</td></tr> -->
-                        <tr><td class="py-2">Loading...</td></tr>
-                    </tbody>
-                </table>
+                    <!-- Bottom 5 -->
+                    <div class="bg-rose-50/50 dark:bg-rose-950/20 p-6 rounded-2xl border border-rose-100 dark:border-rose-900/50">
+                        <h4 class="text-lg font-bold text-rose-800 dark:text-rose-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-down" class="w-5 h-5"></i> Bottom 5: Overvalued
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="bottom-teams" class="divide-y divide-rose-200 dark:divide-rose-800">
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- 3. GRAFER: AUTOMATED STOCK TRADING SYSTEM -->
         <section class="fade-in">
@@ -490,12 +499,13 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
-        <p>© 2026 Björn Dahlman. All rights reserved.</p>
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
+        <p>&copy; 2026 Björn Dahlman. All rights reserved.</p>
     </footer>
 
-    <!-- SKRIPTLÄNKAR -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <!-- Lucide Icons initialization script -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
