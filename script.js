@@ -526,34 +526,20 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 async function loadKalmanRankings() {
     try {
         const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
-        if (!response.ok) return;
+        if (!response.ok) throw new Error(`HTTP-fel: ${response.status}`);
 
         const data = await response.json();
 
-        let top5 = [];
-        let bottom5 = [];
-
-        // 1. Om JSON redan är uppdelad i top_teams och bottom_teams
-        if (data.top_teams && data.bottom_teams) {
-            top5 = data.top_teams.slice(0, 5);
-            bottom5 = data.bottom_teams.slice(0, 5);
-        } else {
-            // 2. Om all data ligger i en rak lista
-            let teams = Array.isArray(data) ? data : (data.teams || []);
-            if (teams.length > 0) {
-                teams.sort((a, b) => (b.strength || b.score || 0) - (a.strength || a.score || 0));
-                top5 = teams.slice(0, 5);
-                bottom5 = teams.slice(-5).reverse();
-            }
-        }
+        // Hämta listorna baserat på dina exakta JSON-nycklar
+        const top5 = data.top5 || [];
+        const bottom5 = data.bottom5 || [];
 
         if (top5.length === 0 && bottom5.length === 0) return;
 
-        // Hjälpfunktion för att bygga HTML-rader säkert
-        const buildRows = (teamList, isTop) => teamList.map((team, index) => {
-            const teamName = team.name || team.team || team.team_name || "Okänt lag";
-            const val = team.strength ?? team.score ?? team.kalman_strength ?? 0;
-            const formattedVal = (val > 0 ? '+' : '') + Number(val).toFixed(4);
+        // Hjälpfunktion för att bygga tabellrader
+        const buildRows = (teams, isTop) => teams.map((team) => {
+            const strengthVal = Number(team.strength);
+            const formattedVal = (strengthVal > 0 ? '+' : '') + strengthVal.toFixed(4);
             
             const hoverStyle = isTop 
                 ? 'hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30' 
@@ -564,8 +550,8 @@ async function loadKalmanRankings() {
             return `
                 <tr class="${hoverStyle} transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold ${rankColor} mr-2">#${index + 1}</span>
-                        ${teamName}
+                        <span class="text-xs font-bold ${rankColor} mr-2">#${team.rank}</span>
+                        ${team.name}
                     </td>
                     <td class="py-2.5 text-right font-mono font-bold ${valColor}">
                         ${formattedVal}
@@ -574,7 +560,7 @@ async function loadKalmanRankings() {
             `;
         }).join('');
 
-        // Skriv ut till DOM
+        // Rendera ut till HTML
         const topContainer = document.getElementById('top-teams');
         if (topContainer) topContainer.innerHTML = buildRows(top5, true);
 
