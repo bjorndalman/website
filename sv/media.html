@@ -481,48 +481,506 @@
         </section>
     </main>
 
-   <!-- FOOTER -->
+  <!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Björn Dahlman | Mediagalleri</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons & Google Analytics -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGSNWL658"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8GGSNWL658');
+    </script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+
+    <!-- NAVIGERING -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            
+            <a href="index.html" aria-label="Hem">
+                <picture>
+                    <source srcset="../images/bjorn-dahlman.webp" type="image/webp">
+                    <img src="../images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-16 w-auto">
+                </picture>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Om mig</a></li>
+                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Kompetenser</a></li>
+                    <li><a href="media.html" class="text-blue-600 dark:hover:text-blue-400 transition font-bold">Media</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projekt</a></li>
+                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Erfarenhet</a></li>
+                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Utbildning</a></li>
+                </ul>
+
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="../media.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Switch to English">🇬🇧</a>
+                    <a href="media.html" class="lang-icon hover:opacity-100" aria-label="Växla till Svenska">🇸🇪</a>
+                </div>
+
+                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i> 
+                    </a>
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Växla tema">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Öppna/Stäng meny">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILMENY -->
+    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
+            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Om mig</a>
+            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Kompetenser</a>
+            <a href="media.html" class="block p-3 bg-slate-100 dark:hover:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projekt</a>
+            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Erfarenhet</a>
+            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Utbildning</a>
+            
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Språk:</span>
+                <a href="../media.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Switch to English">🇬🇧</a>
+                <a href="media.html" class="lang-icon text-xl hover:opacity-100" aria-label="Växla till Svenska">🇸🇪</a>
+            </div>
+            
+            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
+                <span>Växla tema</span>
+            </button>
+        </div>
+    </nav>
+        
+    <!-- HEADER -->
+    <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center">
+        <div class="mb-10">
+            <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                Tillbaka till min Portfolio
+            </a>
+        </div>
+        
+        <h1 class="text-4xl font-bold tracking-tight">Mediagalleri</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto px-6">
+            En samling av bilder, videor och ljudklipp relaterade till mitt arbete och personliga projekt.
+        </p>
+    </header>
+
+    <!-- HUVUDINNEHÅLL -->
+    <main class="max-w-4xl mx-auto px-6 py-20 space-y-16">
+
+        <!-- NYHET: PREMIER LEAGUE-SIMULERING -->
+        <section class="fade-in mb-12">
+            <div class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-transparent p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-900/50 shadow-xl relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm animate-pulse">
+                        Nyhet
+                    </span>
+                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        Säsongen 2026/2027
+                    </span>
+                </div>
+
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
+                    Kommande: Premier League AI-simuleringsmodell
+                </h3>
+
+                <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
+                    Efter framgångarna med vår analysmodell för MLS expanderar vi nu vår prediktiva datamodell till engelska Premier League!
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 backdrop-blur-sm text-sm">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="calendar" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Säsongsstart</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Fredag 21 augusti 2026</strong>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="flag" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Säsongsavslutning</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Söndag 30 maj 2027</strong>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="trophy" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Regerande mästare</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Arsenal FC</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 italic">
+                    * Notera: Ligan startar en vecka senare än vanligt för att ge spelarna välbehövlig återhämtning efter sommarens fotbolls-VM 2026.
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. BILDER -->
+        <section id="images" class="fade-in">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="image" class="w-7 h-7 text-blue-600"></i> Bilder
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                    <picture>
+                        <source srcset="../images/Iridium-Satellite-Phones.webp" type="image/webp">
+                        <img src="../images/Iridium-Satellite-Phones.jpg" alt="Handhållen Iridium-satellittelefon med utfälld antenn för global kommunikation." class="w-full h-auto rounded-lg mb-3" loading="lazy">
+                    </picture>
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium Satellittelefon
+                    </figcaption>
+                </figure>
+                
+                <figure class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                    <picture>
+                        <source srcset="../images/iridium-satellite-system.webp" type="image/webp">
+                        <img src="../images/iridium-satellite-system.jpg" alt="Iridium satellitkommunikationsmodul och kretskort för global dataöverföring." class="w-full h-auto rounded-lg mb-3" loading="lazy">
+                    </picture>
+                    <figcaption class="text-sm text-slate-600 dark:text-slate-400">
+                        Iridium Satellitsystem
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- 2. GRAFER: AUTOMATED DATA SYSTEMS (QUANT BOT) -->
+        <section class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                
+                <!-- PIPELINE STATUS & METADATA -->
+                <div class="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                    <span class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-mono px-3 py-1 rounded-full">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Pipeline Active
+                    </span>
+                    <span>•</span>
+                    <span>Last Sync: <strong class="text-slate-800 dark:text-slate-200">2026-08-02</strong></span>
+                    <span>•</span>
+                    <span>Next Matchday: <strong class="text-slate-800 dark:text-slate-200">15 Aug (MLS)</strong></span>
+                </div>
+
+                <div class="max-w-3xl mb-10">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-3 py-1 rounded-full inline-block mb-3">Livedata</span>
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automatiserat livedatasystem för MLS-fotbollsanalys</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
+                        Denna sektion visar en helt automatiserad algoritmisk datapipeline för <strong>MLS (Major League Soccer)</strong>, som körs i realtid för att kontinuerligt spåra spelkapitalets utveckling, prestandamått och historiska vinstkurvor.
+                    </p>
+                    
+                    <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Matematisk ramverk
+                        </h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Kalman-filtrering:</strong> Spårar lagform och hemmafördel.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Bayesian Shrinkage:</strong> Säkerställer långsiktig stabilitet.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Dynamiskt brus:</strong> Filtrerar slumpmässighet via marknadsodds.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Josephs kovarians:</strong> Garanterar numerisk stabilitet.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5 md:col-span-2">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Multivariabel:</strong> Viktsätter mål, xG och skott på mål.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Nettovinst</span>
+                        <span id="bot-profit" class="text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Totalt kapital</span>
+                        <span id="bot-bankroll" class="text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full h-80 md:h-96 bg-slate-50/50 dark:bg-slate-800/20 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                    <canvas id="bot-profit-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. LIVE TEAM RANKINGS (KALMAN-STYRKOR) -->
+        <section id="mls-rankings" class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="mb-8">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Team Rankings</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 max-w-2xl">
+                        Kalman-kalibrerade lagstyrkor i realtid. Denna lista korrigerar för brus och formsvackor för att identifiera MLS mest undervärderade och överskattade lag kontra tabellplacering.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Top 5 -->
+                    <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
+                        <h4 class="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i> Top 5: Kalman-Starkast
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="top-teams" class="divide-y divide-emerald-200 dark:divide-emerald-800">
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bottom 5 -->
+                    <div class="bg-rose-50/50 dark:bg-rose-950/20 p-6 rounded-2xl border border-rose-100 dark:border-rose-900/50">
+                        <h4 class="text-lg font-bold text-rose-800 dark:text-rose-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-down" class="w-5 h-5"></i> Bottom 5: Överskattade
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="bottom-teams" class="divide-y divide-rose-200 dark:divide-rose-800">
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. GRAFER: AUTOMATED STOCK TRADING SYSTEM -->
+        <section class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="max-w-2xl mb-10">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full inline-block mb-3">Algoritmitrading</span>
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automatiserat aktiehandelsystem</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
+                        Denna sektion visar min helt automatiserade algoritmiska aktiehandels-pipeline, som körs i realtid för att kontinuerligt spåra portföljutveckling, tillgångsallokering och historiska vinstkurvor.
+                    </p>
+                    
+                    <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Matematisk ramverk
+                        </h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Multivariabel:</strong> Utvärderar sammansatta marknadssignaler.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Sannolikhetsmodellering:</strong> Beräknar sannolikheter för prisavvikelser.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Z-Score-utvärdering:</strong> Mäter verkligt värde kontra marknadspris.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Kelly-storlek:</strong> Optimerar positionsstorlek baserat på edge.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5 md:col-span-2">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Riskkontroll:</strong> Tvingar fram strikta portföljgränser och säkerhetstak.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Nettovinst</span>
+                        <span id="stock-profit" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Totalt kapital</span>
+                        <span id="stock-bankroll" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80 sm:col-span-1 col-span-1">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Investerat</span>
+                        <span id="stock-invested" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full h-80 md:h-96 bg-slate-50/50 dark:bg-slate-800/20 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                    <canvas id="stock-profit-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. VIDEOR (YOUTUBE) -->
+        <section id="videos" class="fade-in">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videor
+            </h2>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
+                <div class="aspect-video mb-3">
+                    <iframe 
+                        class="w-full h-full rounded-lg" 
+                        src="https://www.youtube.com/embed/RRicAHFkRV4" 
+                        title="Kalman Filter Implementation" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    High-Precision Temperature Sensing: Implementing a Kalman Filter in KiCad
+                </p>
+            </div>
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
+                <div class="aspect-video mb-3">
+                    <iframe 
+                        class="w-full h-full rounded-lg" 
+                        src="https://www.youtube.com/embed/t5i80ZmHzB0" 
+                        title="Nuclear Power Safety" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Nuclear Power Safety - The Main Steam Line Break Accident
+                </p>
+            </div>
+            
+            <h3 class="text-xl font-bold mt-8 mb-4">Ytterligare videoinnehåll</h3>
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+                <div class="aspect-video mb-3">
+                    <iframe 
+                        class="w-full h-full rounded-lg" 
+                        src="https://www.youtube.com/embed/F5Ip9c3yyMc" 
+                        title="Highfrequency Filter Design" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Highfrequency Filter Design
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. AUDIO -->
+        <section id="audio" class="fade-in my-12">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
+                <i data-lucide="volume-2" class="w-7 h-7 text-blue-600"></i> Ljud
+            </h2>
+
+            <div class="flex flex-wrap gap-6">
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 w-full max-w-sm transition-all hover:shadow-xl">
+                    <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
+                        <picture>
+                            <source srcset="../images/ai-safety-index.webp" type="image/webp">
+                            <img src="../images/ai-safety-index.jpg" alt="Omslagsbild för The AI Safety Index" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">The AI Safety Index</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Ref. Max Tegmark</p>
+                    </div>
+                    <div class="audio-container">
+                        <audio controls class="w-full h-10 rounded-lg">
+                            <source src="../media/ai-safety-index.mpeg" type="audio/mpeg">
+                            <source src="../media/ai-safety-index.mp3" type="audio/mp3">
+                            Din webbläsare stöder inte ljudelementet.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 w-full max-w-sm transition-all hover:shadow-xl">
+                    <div class="aspect-square w-full mb-4 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 group relative">
+                        <picture>
+                            <source srcset="../images/predicting-football.webp" type="image/webp">
+                            <img src="../images/predicting-football.jpg" alt="Omslagsbild för Predicting Football" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Predicting Football</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Ref. Analysis Team</p>
+                    </div>
+                    <div class="audio-container">
+                        <audio controls class="w-full h-10 rounded-lg">
+                            <source src="../media/predicting-football.mpeg" type="audio/mpeg">
+                            <source src="../media/predicting-football.mp3" type="audio/mp3">
+                            Din webbläsare stöder inte ljudelementet.
+                        </audio>
+                    </div>
+                </div>
+            </div> 
+        </section>
+    </main>
+
+    <!-- FOOTER -->
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-12 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 dark:text-slate-400 text-sm">
             <p>&copy; 2026 Björn Dahlman. Alla rättigheter förbehållna.</p>
-            <div class="flex items-center gap-4">
-                <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-700 dark:hover:text-slate-200 transition" aria-label="X (Twitter)">
-                    <i class="fab fa-x-twitter text-lg"></i>
-                </a>
-                <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
-                    <i class="fab fa-youtube text-lg"></i>
-                </a>
+            <div class="flex items-center gap-6">
+                <a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Om mig</a>
+                <a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projekt</a>
+                <a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a>
             </div>
         </div>
     </footer>
 
-    <!-- SKRIPT FOR IKONER OCH TEMA/MENY -->
+    <!-- SKRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../script.js"></script>
     <script>
-        // Initiera Lucide-ikoner
         lucide.createIcons();
-
-        // Mobilmeny-logik
-        const menuButton = document.getElementById('menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
-
-        if (menuButton && mobileMenu) {
-            menuButton.addEventListener('click', () => {
-                const isOpen = mobileMenu.classList.contains('h-auto');
-                if (isOpen) {
-                    mobileMenu.classList.remove('h-auto');
-                    mobileMenu.classList.add('h-0');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                } else {
-                    mobileMenu.classList.remove('h-0');
-                    mobileMenu.classList.add('h-auto');
-                    menuIcon.classList.add('hidden');
-                    closeIcon.classList.remove('hidden');
-                }
-            });
-        }
     </script>
 </body>
 </html>
