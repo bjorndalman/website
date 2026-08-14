@@ -211,17 +211,23 @@
         <section class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
                 
-                <!-- PIPELINE STATUS & METADATA -->
-                <div class="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
-                    <span class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-mono px-3 py-1 rounded-full">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Pipeline Active
-                    </span>
-                    <span>•</span>
-                    <span>Last Sync: <strong class="text-slate-800 dark:text-slate-200">2026-08-02</strong></span>
-                    <span>•</span>
-                    <span>Next Matchday: <strong class="text-slate-800 dark:text-slate-200">15 Aug (MLS)</strong></span>
-                </div>
+                 <!-- DYNAMISK PIPELINE STATUS BADGE -->
+                    <div class="flex flex-wrap items-center gap-3 mb-4">
+                        <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/50 px-3 py-1 rounded-full text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span>Pipeline Active</span>
+                        </div>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                            Last Sync: <strong id="mls-last-sync" class="text-slate-700 dark:text-slate-200">Loading...</strong>
+                        </span>
+                        <span class="text-xs text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">
+                            Next Matchday: <strong class="text-slate-700 dark:text-slate-200">15 Aug (MLS)</strong>
+                        </span>
+                    </div>
 
                 <div class="max-w-3xl mb-10">
                     <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-3 py-1 rounded-full inline-block mb-3">Livedata</span>
