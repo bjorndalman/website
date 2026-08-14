@@ -334,11 +334,7 @@ function parseCsvData(csvText, isBotChart = false) {
     const labels = [];
     const dataPoints = [];
     
-    // Dynamisk språkhantering för månader
-    const months = isSwedishPage 
-      ? ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec']
-      : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      
+    const monthsSv = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
     let lastRawDate = null;
 
     for (let i = 1; i < lines.length; i++) {
@@ -347,12 +343,11 @@ function parseCsvData(csvText, isBotChart = false) {
             const rawDate = columns[0].trim();
             const valueStr = columns[3].trim();
             
-            // Skydd mot "nan" / ogiltiga siffror i CSV
             if (valueStr.toLowerCase() === 'nan') continue;
             const value = parseFloat(valueStr);
             
             if (!isNaN(value)) {
-                lastRawDate = rawDate; // Spara det senaste giltiga datumet
+                lastRawDate = rawDate; 
                 const parts = rawDate.split(' ');
                 const dateStr = parts[0];
                 const dateParts = dateStr.split('-');
@@ -360,7 +355,7 @@ function parseCsvData(csvText, isBotChart = false) {
                 if (dateParts.length === 3) {
                     const monthIndex = parseInt(dateParts[1], 10) - 1;
                     const day = parseInt(dateParts[2], 10);
-                    const monthName = months[monthIndex] || dateParts[1];
+                    const monthName = monthsSv[monthIndex] || dateParts[1];
                     
                     if (parts.length >= 2) {
                         const timeShort = parts[1].slice(0, 5);
@@ -376,7 +371,6 @@ function parseCsvData(csvText, isBotChart = false) {
         }
     }
 
-    // Uppdatera status-badgens datum för MLS direkt från CSV
     if (isBotChart && lastRawDate) {
         const syncEl = document.getElementById('mls-last-sync');
         if (syncEl) {
@@ -390,8 +384,6 @@ function parseCsvData(csvText, isBotChart = false) {
 function buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark) {
   const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
   const textColor = isDark ? '#94a3b8' : '#64748b';
-  const locale = isSwedishPage ? 'sv-SE' : 'en-US';
-  const currencySuffix = isSwedishPage ? ' kr' : ' SEK';
 
   return {
     type: 'line',
@@ -425,10 +417,7 @@ function buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDar
           mode: 'index',
           intersect: false,
           padding: 10,
-          displayColors: false,
-          callbacks: {
-            label: (context) => `${context.parsed.y.toLocaleString(locale)} ${currencySuffix}`
-          }
+          displayColors: false
         }
       },
       interaction: {
@@ -452,7 +441,7 @@ function buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDar
           border: { dash: [4, 4] },
           ticks: {
             color: textColor,
-            callback: (value) => `${value.toLocaleString(locale)}${currencySuffix}`
+            callback: (value) => `${value.toLocaleString('sv-SE')} kr`
           }
         }
       }
@@ -473,8 +462,6 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
         const isBot = (canvasId === 'bot-profit-chart');
         const { labels, dataPoints } = parseCsvData(csvText, isBot);
         const isDark = document.documentElement.classList.contains("dark");
-        const locale = isSwedishPage ? 'sv-SE' : 'en-US';
-        const currencySuffix = isSwedishPage ? ' kr' : ' SEK';
 
         if (dataPoints.length > 0) {
             const latestValue = dataPoints[dataPoints.length - 1];
@@ -482,20 +469,20 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
             if (canvasId === 'bot-profit-chart') {
                 const bankrollEl = document.getElementById('bot-bankroll');
                 if (bankrollEl) {
-                    bankrollEl.textContent = latestValue.toLocaleString(locale, { 
+                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
                         minimumFractionDigits: 2, 
                         maximumFractionDigits: 2 
-                    }) + currencySuffix;
+                    }) + ' kr';
                 }
 
                 const initialValue = 10000;
                 const netProfit = latestValue - initialValue;
                 const profitEl = document.getElementById('bot-profit');
                 if (profitEl) {
-                    profitEl.textContent = netProfit.toLocaleString(locale, { 
+                    profitEl.textContent = netProfit.toLocaleString('sv-SE', { 
                         minimumFractionDigits: 2, 
                         maximumFractionDigits: 2 
-                    }) + currencySuffix;
+                    }) + ' kr';
                     profitEl.className = netProfit >= 0 
                         ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
                         : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
@@ -503,17 +490,17 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
             } else if (canvasId === 'stock-profit-chart') {
                 const bankrollEl = document.getElementById('stock-bankroll');
                 if (bankrollEl) {
-                    bankrollEl.textContent = latestValue.toLocaleString(locale, { 
+                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
                         minimumFractionDigits: 2, 
                         maximumFractionDigits: 2 
-                    }) + currencySuffix;
+                    }) + ' kr';
                 }
 
                 const initialStockValue = 100000.0;
                 const profitPct = ((latestValue - initialStockValue) / initialStockValue) * 100;
                 const profitEl = document.getElementById('stock-profit');
                 if (profitEl) {
-                    const formattedPct = (profitPct >= 0 ? "+" : "") + profitPct.toFixed(2).replace('.', isSwedishPage ? ',' : '.') + "%";
+                    const formattedPct = (profitPct >= 0 ? "+" : "") + profitPct.toFixed(2).replace('.', ',') + "%";
                     profitEl.textContent = formattedPct;
                     profitEl.className = profitPct >= 0 
                         ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
@@ -533,53 +520,49 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 }
 
 // =========================
-// KALMAN RANKINGS (LAGSTYRKOR)
+// KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
 // =========================
 async function loadKalmanRankings() {
     try {
         const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
-        if (!response.ok) throw new Error(`HTTP-fel: ${response.status}`);
-
+        if (!response.ok) return;
+        
         const data = await response.json();
-
         const top5 = data.top5 || [];
         const bottom5 = data.bottom5 || [];
 
-        if (top5.length === 0 && bottom5.length === 0) return;
-
-        // Hjälpfunktion för att bygga tabellrader
-        const buildRows = (teams, isTop) => teams.map((team) => {
-            const strengthVal = Number(team.strength);
-            const formattedVal = (strengthVal > 0 ? '+' : '') + strengthVal.toFixed(4);
-            
-            const hoverStyle = isTop 
-                ? 'hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30' 
-                : 'hover:bg-rose-100/50 dark:hover:bg-rose-900/30';
-            const rankColor = isTop ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-500';
-            const valColor = isTop ? 'text-emerald-700 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400';
-
-            return `
-                <tr class="${hoverStyle} transition">
+        const topContainer = document.getElementById('top-teams');
+        if (topContainer && top5.length > 0) {
+            topContainer.innerHTML = top5.map(team => `
+                <tr class="hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold ${rankColor} mr-2">#${team.rank}</span>
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${team.rank}</span>
                         ${team.name}
                     </td>
-                    <td class="py-2.5 text-right font-mono font-bold ${valColor}">
-                        ${formattedVal}
+                    <td class="py-2.5 text-right font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                        ${team.strength > 0 ? '+' : ''}${team.strength.toFixed(4)}
                     </td>
                 </tr>
-            `;
-        }).join('');
-
-        // Rendera ut till HTML
-        const topContainer = document.getElementById('top-teams');
-        if (topContainer) topContainer.innerHTML = buildRows(top5, true);
+            `).join('');
+        }
 
         const bottomContainer = document.getElementById('bottom-teams');
-        if (bottomContainer) bottomContainer.innerHTML = buildRows(bottom5, false);
+        if (bottomContainer && bottom5.length > 0) {
+            bottomContainer.innerHTML = bottom5.map(team => `
+                <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
+                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
+                        <span class="text-xs font-bold text-rose-500 mr-2">#${team.rank}</span>
+                        ${team.name}
+                    </td>
+                    <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
+                        ${team.strength > 0 ? '+' : ''}${team.strength.toFixed(4)}
+                    </td>
+                </tr>
+            `).join('');
+        }
 
     } catch (error) {
-        console.warn('Kalman-rankings ej tillgängliga:', error);
+        console.warn('Fel vid inläsning av Kalman-rankings:', error);
     }
 }
 
@@ -590,10 +573,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadLanguageData();
   initTheme();
   
-  // Rendera profildata om vi är på en sida som innehåller profilfält
-  if (document.getElementById('name')) render();
+  if (document.getElementById('name')) {
+    render();
+  }
 
-  // Event Listeners för Tema & Meny
   const themeToggleBtn = document.getElementById('theme-toggle');
   if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
   
@@ -607,7 +590,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // Animera fade-in element
   initScrollAnimations();
 
   // Hämta aktiestats
