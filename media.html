@@ -24,8 +24,9 @@
         }
     </script>
     
-    <!-- Lucide Icons & Google Analytics -->
+    <!-- Lucide Icons, Chart.js & Google Analytics -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGSNWL658"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -36,7 +37,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col justify-between">
 
     <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
@@ -87,7 +88,7 @@
     </nav>
 
     <!-- MOBILE MENU -->
-    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
+    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden border-b border-slate-200 dark:border-slate-800">
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
             <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
             <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
@@ -126,7 +127,7 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-4xl mx-auto px-6 py-16 space-y-16">
+    <main class="max-w-4xl mx-auto px-6 py-16 space-y-16 flex-grow">
 
         <!-- NEW ANNOUNCEMENT: PREMIER LEAGUE SIMULATION -->
         <section class="fade-in mb-12">
@@ -482,27 +483,73 @@
                         </audio>
                     </div>
                 </div>
-            </div> 
+            </div>
         </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-12">
-        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 dark:text-slate-400 text-sm">
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p>&copy; 2026 Björn Dahlman. All rights reserved.</p>
-            <div class="flex items-center gap-6">
-                <a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
-                <a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
-                <a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a>
+            <div class="flex items-center gap-4 text-lg">
+                <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 transition" aria-label="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-500 transition" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <!-- INTERACTIVE SCRIPTS -->
     <script>
+        // Render Lucide Icons
         lucide.createIcons();
+
+        // Dark Mode Toggle Logic
+        const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+        
+        // Initialize theme from preference or system default
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtns.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    if (document.documentElement.classList.contains('dark')) {
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+            }
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.style.height && mobileMenu.style.height !== '0px';
+                if (isOpen) {
+                    mobileMenu.style.height = '0px';
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                } else {
+                    mobileMenu.style.height = mobileMenu.scrollHeight + 'px';
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                }
+            });
+        }
     </script>
 </body>
 </html>
