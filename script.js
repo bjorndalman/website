@@ -302,14 +302,16 @@ function initScrollAnimations() {
 // DATA FETCHING & STATS (AKTIER)
 // =========================
 async function fetchStockStats() {
+    const profitEl = document.getElementById('stock-profit');
+    const bankrollEl = document.getElementById('stock-bankroll');
+    const investedEl = document.getElementById('stock-invested');
+
+    if (!profitEl && !bankrollEl && !investedEl) return;
+
     try {
         const response = await fetch(`${pathPrefix}data/stock_stats.json?t=${Date.now()}`);
         if (!response.ok) return;
         const data = await response.json();
-
-        const profitEl = document.getElementById('stock-profit');
-        const bankrollEl = document.getElementById('stock-bankroll');
-        const investedEl = document.getElementById('stock-invested');
 
         if (profitEl && data.profit_pct && !data.profit_pct.includes('nan')) {
             profitEl.textContent = data.profit_pct;
@@ -523,6 +525,11 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 // KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
 // =========================
 async function loadKalmanRankings() {
+    const topContainer = document.getElementById('top-teams');
+    const bottomContainer = document.getElementById('bottom-teams');
+
+    if (!topContainer && !bottomContainer) return;
+
     try {
         const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
         if (!response.ok) return;
@@ -531,7 +538,6 @@ async function loadKalmanRankings() {
         const top5 = data.top5 || [];
         const bottom5 = data.bottom5 || [];
 
-        const topContainer = document.getElementById('top-teams');
         if (topContainer && top5.length > 0) {
             topContainer.innerHTML = top5.map(team => `
                 <tr class="hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30 transition">
@@ -546,7 +552,6 @@ async function loadKalmanRankings() {
             `).join('');
         }
 
-        const bottomContainer = document.getElementById('bottom-teams');
         if (bottomContainer && bottom5.length > 0) {
             bottomContainer.innerHTML = bottom5.map(team => `
                 <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
