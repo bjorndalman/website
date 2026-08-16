@@ -67,7 +67,7 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             
-            <a href="index.html">
+            <a href="index.html" aria-label="Home">
                 <picture>
                     <source srcset="images/bjorn-dahlman.webp" type="image/webp">
                     <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-10 md:h-16 w-auto">
@@ -87,7 +87,7 @@
                             id="cv-en-btn" 
                             download 
                             class="flex items-center gap-2 px-4 py-1.5 border border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-full text-xs font-bold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-slate-900 transition-all duration-300 shadow-sm shadow-blue-500/10">
-                            <i data-lucide="file-down" class="w-3.5 h-3.5"></i>
+                            <i data-lucide="file-down" class="w-3.5 h-3.5" aria-hidden="true"></i>
                             Download CV
                         </a>
                     </li>
@@ -99,22 +99,22 @@
                 </div>
 
                 <div class="social-icons hidden md:flex items-center gap-4 text-xl">
-                    <a href="https://www.linkedin.com/in/bjorn-dahlman" target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i> 
+                    <a href="https://www.linkedin.com/in/bjorn-dahlman" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i> 
                     </a>
-                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
                     </a>
                 </div>
                 
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Toggle Theme">
-                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block" aria-hidden="true"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden" aria-hidden="true"></i>
                 </button>
                 
                 <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Toggle Menu">
-                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
-                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6" aria-hidden="true"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -134,7 +134,7 @@
                     id="cv-en-btn-mob" 
                     download 
                     class="flex items-center justify-center gap-2 w-full p-3 bg-blue-600 text-white rounded-xl font-bold shadow-lg shadow-blue-500/20 active:scale-95 transition-all">
-                    <i data-lucide="file-down" class="w-5 h-5"></i>
+                    <i data-lucide="file-down" class="w-5 h-5" aria-hidden="true"></i>
                     Download CV (PDF)
                 </a>
             </div>
@@ -145,8 +145,8 @@
                 <a href="sv/index.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
             </div>
             <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
-                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
-                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
+                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block" aria-hidden="true"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden" aria-hidden="true"></i>
                 <span>Toggle Theme</span>
             </button>
         </div>
@@ -171,7 +171,7 @@
         <section id="about" class="grid md:grid-cols-3 gap-12 items-start fade-in delay-100">
             <div class="md:col-span-1">
                 <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
-                    <i data-lucide="user" class="w-6 h-6 text-blue-600"></i> About
+                    <i data-lucide="user" class="w-6 h-6 text-blue-600" aria-hidden="true"></i> About
                 </h3>
             </div>
             <div class="md:col-span-2">
@@ -186,7 +186,7 @@
         <section id="skills" class="grid md:grid-cols-3 gap-12 items-start fade-in delay-200">
             <div class="md:col-span-1">
                 <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
-                    <i data-lucide="cpu" class="w-6 h-6 text-blue-600"></i> Skills
+                    <i data-lucide="cpu" class="w-6 h-6 text-blue-600" aria-hidden="true"></i> Skills
                 </h3>
             </div>
             <div class="md:col-span-2">
@@ -197,7 +197,7 @@
         <section id="experience" class="grid md:grid-cols-3 gap-12 items-start fade-in delay-300">
             <div class="md:col-span-1">
                 <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
-                    <i data-lucide="briefcase" class="w-6 h-6 text-blue-600"></i> Experience
+                    <i data-lucide="briefcase" class="w-6 h-6 text-blue-600" aria-hidden="true"></i> Experience
                 </h3>
             </div>
             <div id="experience-list" class="md:col-span-2 space-y-10 relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-0 pl-8 md:pl-0">
@@ -207,7 +207,7 @@
         <section id="education" class="grid md:grid-cols-3 gap-12 items-start fade-in">
             <div class="md:col-span-1">
                 <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
-                    <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-600"></i> Education
+                    <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-600" aria-hidden="true"></i> Education
                 </h3>
             </div>
             <div id="education-list" class="md:col-span-2 space-y-8"></div>
@@ -217,14 +217,14 @@
             <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
             <p class="mb-6 text-slate-600 dark:text-slate-400">Feel free to reach out for collaborations or opportunities.</p>
             <a id="email-link" href="#" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline text-lg font-medium">
-                <i data-lucide="mail" class="w-5 h-5"></i>
+                <i data-lucide="mail" class="w-5 h-5" aria-hidden="true"></i>
                 <span id="email"></span>
             </a>
         </section>
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
-        <p>© 2026 <span id="footer-name"></span>. All rights reserved.</p>
+        <p>© <span id="copyright-year"></span> <span id="footer-name"></span>. All rights reserved.</p>
     </footer>
 
     <div id="welcome-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/90 backdrop-blur-md hidden p-4">
@@ -232,7 +232,7 @@
             <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full"></div>
             <div class="relative z-10">
                 <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 shadow-lg shadow-blue-500/30">
-                    <i data-lucide="file-lock-2" class="w-8 h-8"></i>
+                    <i data-lucide="file-lock-2" class="w-8 h-8" aria-hidden="true"></i>
                 </div>
                 <h3 class="text-2xl font-bold mb-2">Hello <span id="welcome-name" class="text-blue-600"></span>!</h3>
                 <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
@@ -267,8 +267,8 @@
                 if (modal && nameSpan && pwdSpan) {
                     nameSpan.innerText = clientID;
                     
-                    // Avkodar "S29zdGVyMjAyNSE=" till "Koster2025!"
-                    const encodedPwd = "S29zdGVyMjAyNSE=";
+                    // Avkodar "S29zdGVyMjAyNiE=" till "Koster2026!"
+                    const encodedPwd = "S29zdGVyMjAyNiE=";
                     pwdSpan.innerText = atob(encodedPwd);
                     
                     modal.classList.remove('hidden');
@@ -295,6 +295,10 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            // Sätt dynamiskt år i footern
+            const yearSpan = document.getElementById('copyright-year');
+            if (yearSpan) yearSpan.innerText = new Date().getFullYear();
+
             handleWelcomeModal();
     
             if (typeof lucide !== 'undefined') {
