@@ -202,6 +202,11 @@ function render() {
   const emailLink = document.getElementById("email-link");
   if (emailLink) emailLink.href = `mailto:${appData.profile.email}`;
 
+  const copyrightYear = document.getElementById("copyright-year");
+  if (copyrightYear && !copyrightYear.textContent) {
+    copyrightYear.textContent = new Date().getFullYear();
+  }
+
   const skillsContainer = document.getElementById("skills-list");
   if (skillsContainer) {
     skillsContainer.innerHTML = appData.skills.map(skill => `
@@ -286,6 +291,8 @@ function closeMobileMenu() {
 
 function initScrollAnimations() {
   const fadeElements = document.querySelectorAll('.fade-in');
+  if (!fadeElements.length) return;
+
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
