@@ -320,21 +320,82 @@ async function fetchStockStats() {
         if (!response.ok) return;
         const data = await response.json();
 
+        // Sätt vinstprocent direkt från Python-boten
         if (profitEl && data.profit_pct && !data.profit_pct.includes('nan')) {
             profitEl.textContent = data.profit_pct;
             profitEl.className = data.is_positive 
                 ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
                 : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
         }
+
+        // Sätt total bankrulle från Python-boten
         if (bankrollEl && data.total_bankroll && !data.total_bankroll.includes('nan')) {
             bankrollEl.textContent = data.total_bankroll;
         }
-        if (investedEl) investedEl.textContent = data.total_invested;
+
+        // Sätt totalkapital/investerat från Python-boten
+        if (investedEl && data.total_invested) {
+            investedEl.textContent = data.total_invested;
+        }
     } catch (err) {
         console.warn("Aktie-stats ej tillgängliga.", err);
     }
 }
 
+// =========================
+// LOAD & RENDER CHART (RELOADED)
+// =========================
+async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor, existingChartInstance) {
+    const chartCanvas = document.getElementById(canvasId);
+    if (!chartCanvas || typeof Chart === 'undefined') return null;
+
+    try {
+        const fullUrl = `${pathPrefix}${csvUrl}?t=${Date.now()}`;
+        const response = await fetch(fullUrl);
+        if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+        const csvText = await response.text();
+        
+        const isBot = (canvasId === 'bot-profit-chart');
+        const { labels, dataPoints } = parseCsvData(csvText, isBot);
+        const isDark = document.documentElement.classList.contains("dark");
+
+        if (dataPoints.length > 0) {
+            const latestValue = dataPoints[dataPoints.length - 1];
+            
+            if (canvasId === 'bot-profit-chart') {
+                const bankrollEl = document.getElementById('bot-bankroll');
+                if (bankrollEl) {
+                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
+                        minimumFractionDigits: 2, 
+                        maximumFractionDigits: 2 
+                    }) + ' kr';
+                }
+
+                const initialValue = 10000;
+                const netProfit = latestValue - initialValue;
+                const profitEl = document.getElementById('bot-profit');
+                if (profitEl) {
+                    profitEl.textContent = netProfit.toLocaleString('sv-SE', { 
+                        minimumFractionDigits: 2, 
+                        maximumFractionDigits: 2 
+                    }) + ' kr';
+                    profitEl.className = netProfit >= 0 
+                        ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
+                        : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
+                }
+            }
+            // För stock-profit-chart uppdateras siffrorna nu helt dynamiskt via fetchStockStats()!
+        }
+
+        if (existingChartInstance) existingChartInstance.destroy();
+        
+        const config = buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark);
+        return new Chart(chartCanvas, config);
+    } catch (err) {
+        console.warn(`Kunde inte ladda graf för ${canvasId}:`, err);
+        return existingChartInstance;
+    }
+}
 // =========================
 // REUSABLE CHART LOGIC (CSV)
 // =========================
