@@ -40,7 +40,7 @@
 
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
-            <!-- Logotyp / Profilbild (Korrekt sökväg från sv/-mappen) -->
+            <!-- Logotyp / Profilbild -->
             <a href="index.html" aria-label="Hem">
                 <picture class="flex items-center">
                     <source srcset="../images/bjorn-dahlman.webp" type="image/webp">
@@ -63,11 +63,11 @@
 
                 <!-- Språkväljare (GB / SE) -->
                 <div class="language-switcher flex items-center gap-2 text-sm font-semibold">
-                    <a href="../index.html" class="hover:text-blue-600 text-slate-400 transition" aria-label="Switch to English">GB</a>
-                    <a href="index.html" class="text-slate-900 dark:text-white font-bold" aria-label="Växla till Svenska">SE</a>
+                    <a href="../analytics.html" class="hover:text-blue-600 text-slate-400 transition" aria-label="Switch to English">GB</a>
+                    <a href="analytics.html" class="text-slate-900 dark:text-white font-bold" aria-label="Växla till Svenska">SE</a>
                 </div>
 
-                <!-- Sociala ikoner (X & YouTube) -->
+                <!-- Sociala ikoner -->
                 <div class="social-icons hidden md:flex items-center gap-4 text-lg text-slate-700 dark:text-slate-300">
                     <a href="https://x.com" target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
                         <i class="fa-brands fa-x-twitter"></i> 
@@ -77,7 +77,7 @@
                     </a>
                 </div>
                 
-                <!-- Tema-knapp (Måne/Sol) -->
+                <!-- Tema-knapp -->
                 <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block text-slate-700 dark:text-slate-300">
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
@@ -105,8 +105,8 @@
             
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Språk:</span>
-                <a href="../index.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition" onclick="closeMobileMenu();">GB</a>
-                <a href="index.html" class="font-bold text-slate-900 dark:text-white" onclick="closeMobileMenu();">SE</a>
+                <a href="../analytics.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition" onclick="closeMobileMenu();">GB</a>
+                <a href="analytics.html" class="font-bold text-slate-900 dark:text-white" onclick="closeMobileMenu();">SE</a>
             </div>
             
             <button onclick="toggleTheme(); closeMobileMenu();" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
@@ -206,8 +206,9 @@
                             Senaste synk: <strong id="mls-last-sync" class="text-slate-700 dark:text-slate-200">Laddar...</strong>
                         </span>
                         <span class="text-xs text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+                        <!-- AUTOMATISERAT NÄSTA MATCHDATUM NEDAN -->
                         <span class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">
-                            Nästa matchdag: <strong class="text-slate-700 dark:text-slate-200">15 Aug (MLS)</strong>
+                            Nästa matchdag: <strong id="mls-next-matchday" class="text-slate-700 dark:text-slate-200">Laddar...</strong>
                         </span>
                     </div>
 
