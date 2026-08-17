@@ -306,6 +306,145 @@ function initScrollAnimations() {
 }
 
 // =========================
+// AI STOCK DASHBOARD FETCH & TABLE POPULATION
+// =========================
+async function loadStockAIDashboard() {
+  const tradesBody = document.getElementById('stock-trades-body');
+  if (!tradesBody) return;
+
+  try {
+    const res = await fetch(`${pathPrefix}data/ai_dashboard_data.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error("Could not fetch ai_dashboard_data.json");
+    
+    const data = await res.json();
+    
+    // 1. Update sync date
+    if (data.updated_at) {
+      const syncElem = document.getElementById('stock-last-sync');
+      if (syncElem) syncElem.innerText = data.updated_at;
+    }
+
+    // 2. Update KPI metrics if available in summary
+    if (data.summary) {
+      const bankroll = data.summary.current_bankroll || 100000;
+      const profit = data.summary.profit_sek || 0;
+      const profitPct = data.summary.profit_pct || 0;
+
+      const bankrollElem = document.getElementById('stock-bankroll');
+      if (bankrollElem) {
+        bankrollElem.innerText = bankroll.toLocaleString('sv-SE') + ' SEK';
+      }
+      
+      const profitElem = document.getElementById('stock-profit');
+      if (profitElem) {
+        profitElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
+        profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+      }
+    }
+
+    // 3. Populate AI trade & forecast table
+    const trades = data.latest_trades_and_forecasts || [];
+
+    if (trades.length === 0) {
+      tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">No active trades registered yet.</td></tr>`;
+      const investedElem = document.getElementById('stock-invested');
+      if (investedElem) investedElem.innerText = '0 SEK';
+      return;
+    }
+
+    tradesBody.innerHTML = '';
+    let totalInvested = 0;
+
+    // Render trades
+    trades.slice().reverse().forEach(row => {
+      const date = row['Date'] || row['date'] || row['Datum'] || '-';
+      
+      // Stock ticker/name mapping logic with full fallback coverage
+      const stock = row['Stock'] 
+        || row['stock'] 
+        || row['ticker'] 
+        || row['symbol'] 
+        || row['Aktie'] 
+        || row['namn'] 
+        || row['Name'] 
+        || '-';
+
+      const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
+      
+      // Fetch AI Investment amount
+      const rawAmount = row['ai_investment'] 
+        ?? row['position_size'] 
+        ?? row['Rek. Investering (kr)'] 
+        ?? row['AI Investering (kr)'] 
+        ?? row['Trade Amount'] 
+        ?? 0;
+      
+      const amount = parseFloat(rawAmount) || 0;
+      if (action === 'KÖP' || action === 'BUY') totalInvested += amount;
+
+      const formattedAmount = amount > 0 
+        ? `${amount.toLocaleString('sv-SE')} SEK` 
+        : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
+
+      // Badge style depending on action
+      let badgeStyle = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800";
+      if (action === 'SÄLJ' || action === 'SELL' || action === 'STÄNG') {
+        badgeStyle = "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400 border-rose-300 dark:border-rose-800";
+      } else if (action === 'HÅLL' || action === 'HOLD') {
+        badgeStyle = "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700";
+      }
+
+      // Price parsing
+      const rawPrice = row['price'] ?? row['Price'] ?? row['Aktuell Kurs'] ?? row['close_price'] ?? row['current_price'] ?? '';
+      const parsedPrice = parseFloat(rawPrice);
+      const formattedPrice = !isNaN(parsedPrice) ? `${parsedPrice.toFixed(2)} SEK` : (rawPrice || '-');
+
+      // Kalman Value parsing
+      const rawKalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Kalman-värde'] ?? row['fair_value'] ?? '';
+      const parsedKalman = parseFloat(rawKalman);
+      const formattedKalman = !isNaN(parsedKalman) ? `${parsedKalman.toFixed(2)} SEK` : (rawKalman || '-');
+
+      // Argument & Reasoning mapping logic with full fallback coverage
+      const argument = row['argument'] 
+        || row['AI Argument & Forecast'] 
+        || row['Motivering'] 
+        || row['reasoning'] 
+        || row['forecast'] 
+        || row['ai_forecast'] 
+        || row['comment'] 
+        || row['analysis'] 
+        || '-';
+
+      const tr = document.createElement('tr');
+      tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors";
+      tr.innerHTML = `
+        <td class="py-3.5 px-4 text-xs font-medium text-slate-600 dark:text-slate-400 whitespace-nowrap">${date}</td>
+        <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white">${stock}</td>
+        <td class="py-3.5 px-4">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border ${badgeStyle}">
+            ${action}
+          </span>
+        </td>
+        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${formattedPrice}</td>
+        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${formattedKalman}</td>
+        <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
+        <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${argument}</td>
+      `;
+      tradesBody.appendChild(tr);
+    });
+
+    // Update Total Invested metric
+    const investedElem = document.getElementById('stock-invested');
+    if (investedElem) {
+      investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
+    }
+
+  } catch (err) {
+    console.warn("Could not load AI stock dashboard table data:", err);
+  }
+}
+
+// =========================
 // DATA FETCHING & STATS (AKTIER)
 // =========================
 async function fetchStockStats() {
@@ -342,60 +481,6 @@ async function fetchStockStats() {
     }
 }
 
-// =========================
-// LOAD & RENDER CHART (RELOADED)
-// =========================
-async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor, existingChartInstance) {
-    const chartCanvas = document.getElementById(canvasId);
-    if (!chartCanvas || typeof Chart === 'undefined') return null;
-
-    try {
-        const fullUrl = `${pathPrefix}${csvUrl}?t=${Date.now()}`;
-        const response = await fetch(fullUrl);
-        if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
-        const csvText = await response.text();
-        
-        const isBot = (canvasId === 'bot-profit-chart');
-        const { labels, dataPoints } = parseCsvData(csvText, isBot);
-        const isDark = document.documentElement.classList.contains("dark");
-
-        if (dataPoints.length > 0) {
-            const latestValue = dataPoints[dataPoints.length - 1];
-            
-            if (canvasId === 'bot-profit-chart') {
-                const bankrollEl = document.getElementById('bot-bankroll');
-                if (bankrollEl) {
-                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
-                        minimumFractionDigits: 2, 
-                        maximumFractionDigits: 2 
-                    }) + ' kr';
-                }
-
-                const initialValue = 10000;
-                const netProfit = latestValue - initialValue;
-                const profitEl = document.getElementById('bot-profit');
-                if (profitEl) {
-                    profitEl.textContent = netProfit.toLocaleString('sv-SE', { 
-                        minimumFractionDigits: 2, 
-                        maximumFractionDigits: 2 
-                    }) + ' kr';
-                    profitEl.className = netProfit >= 0 
-                        ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
-                        : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
-                }
-            }
-            // För stock-profit-chart uppdateras siffrorna nu helt dynamiskt via fetchStockStats()!
-        }
-
-        if (existingChartInstance) existingChartInstance.destroy();
-        
-        const config = buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark);
-        return new Chart(chartCanvas, config);
-    } catch (err) {
-        console.warn(`Kunde inte ladda graf för ${canvasId}:`, err);
-        return existingChartInstance;
-    }
-}
 // =========================
 // REUSABLE CHART LOGIC (CSV)
 // =========================
@@ -615,7 +700,7 @@ async function loadPipelineStatus() {
 async function loadKalmanRankings() {
     const topContainer = document.getElementById('top-teams');
     const bottomContainer = document.getElementById('bottom-teams');
-    const nextMatchdayEl = document.getElementById('mls-next-matchday'); // Nytt!
+    const nextMatchdayEl = document.getElementById('mls-next-matchday');
 
     if (!topContainer && !bottomContainer && !nextMatchdayEl) return;
 
@@ -625,7 +710,6 @@ async function loadKalmanRankings() {
         
         const data = await response.json();
 
-        // Sätt nästa matchdag dynamiskt från JSON
         if (nextMatchdayEl && data.next_matchday) {
             nextMatchdayEl.textContent = data.next_matchday;
         }
@@ -693,10 +777,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   initScrollAnimations();
 
   // Hämta pipeline-status (Last Sync)
-  loadPipelineStatus(); // <--- LÄGG TILL DENNA HÄR!
+  loadPipelineStatus();
 
   // Hämta aktiestats
   fetchStockStats();
+
+  // Hämta AI Stock Dashboard (Tabell & Metriker)
+  loadStockAIDashboard();
 
   // Hämta Kalman-rankings
   loadKalmanRankings();
