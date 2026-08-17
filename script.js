@@ -534,14 +534,21 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 async function loadKalmanRankings() {
     const topContainer = document.getElementById('top-teams');
     const bottomContainer = document.getElementById('bottom-teams');
+    const nextMatchdayEl = document.getElementById('mls-next-matchday'); // Nytt!
 
-    if (!topContainer && !bottomContainer) return;
+    if (!topContainer && !bottomContainer && !nextMatchdayEl) return;
 
     try {
         const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
         if (!response.ok) return;
         
         const data = await response.json();
+
+        // Sätt nästa matchdag dynamiskt från JSON
+        if (nextMatchdayEl && data.next_matchday) {
+            nextMatchdayEl.textContent = data.next_matchday;
+        }
+
         const top5 = data.top5 || [];
         const bottom5 = data.bottom5 || [];
 
