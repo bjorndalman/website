@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Björn Dahlman | Analytics</title>
+    <title>Björn Dahlman | Analys & Kvantitativa Modeller</title>
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Tailwind CSS -->
@@ -24,9 +24,8 @@
         }
     </script>
     
-    <!-- Lucide Icons, Chart.js & Google Analytics -->
+    <!-- Lucide Icons & Google Analytics -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGSNWL658"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -39,14 +38,14 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
-    <!-- NAVIGERING -->
+    <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             
             <a href="index.html" aria-label="Hem">
                 <picture>
-                    <source srcset="../images/bjorn-dahlman.webp" type="image/webp">
-                    <img src="../images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-16 w-auto">
+                    <source srcset="images/bjorn-dahlman.webp" type="image/webp">
+                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-16 w-auto">
                 </picture>
             </a>
             
@@ -54,7 +53,7 @@
                 <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
                     <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Om mig</a></li>
                     <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Kompetenser</a></li>
-                    <li><a href="analytics.html" class="text-blue-600 dark:hover:text-blue-400 transition font-bold">Analytics</a></li>
+                    <li><a href="analytics.html" class="text-blue-600 dark:text-blue-400 font-bold transition">Analys</a></li>
                     <li><a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a></li>
                     <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projekt</a></li>
                     <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Erfarenhet</a></li>
@@ -62,8 +61,8 @@
                 </ul>
 
                 <div class="language-switcher flex items-center gap-2 text-xl">
-                    <a href="../analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Switch to English">🇬🇧</a>
-                    <a href="analytics.html" class="lang-icon hover:opacity-100" aria-label="Växla till Svenska">🇸🇪</a>
+                    <a href="/analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till engelska">🇬🇧</a>
+                    <a href="#" class="lang-icon hover:opacity-100" aria-label="Svenska">🇸🇪</a>
                 </div>
 
                 <div class="social-icons hidden md:flex items-center gap-4 text-xl">
@@ -80,7 +79,7 @@
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
                 
-                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Öppna/Stäng meny">
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Växla meny">
                     <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
                     <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
                 </button>
@@ -93,7 +92,7 @@
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
             <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Om mig</a>
             <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Kompetenser</a>
-            <a href="analytics.html" class="block p-3 bg-slate-100 dark:hover:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Analytics</a>
+            <a href="analytics.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Analys</a>
             <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Media</a>
             <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projekt</a>
             <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Erfarenhet</a>
@@ -101,8 +100,8 @@
             
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Språk:</span>
-                <a href="../analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Switch to English">🇬🇧</a>
-                <a href="analytics.html" class="lang-icon text-xl hover:opacity-100" aria-label="Växla till Svenska">🇸🇪</a>
+                <a href="/analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till engelska">🇬🇧</a>
+                <a href="#" class="lang-icon text-xl hover:opacity-100" aria-label="Svenska">🇸🇪</a>
             </div>
             
             <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
@@ -114,126 +113,119 @@
     </nav>
         
     <!-- HEADER -->
-    <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center">
-        <div class="mb-10">
-            <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700">
+    <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
+        <div class="mb-8">
+            <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-sm hover:shadow-md border border-slate-200 dark:border-slate-700">
                 <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
-                Tillbaka till min Portfolio
+                Tillbaka till portföljen
             </a>
         </div>
         
-        <h1 class="text-4xl font-bold tracking-tight">Analytics & Datamodeller</h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto px-6">
-            Livedata, prediktiva algoritmer, simuleringar och automatiserade kvantitativa handels- och analyssystem.
+        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Analys & Kvantitativa Modeller</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto px-6">
+            Algoritmiska datapipelines i realtid, prediktiv sportanalys och automatiserade finansiella handelssystem.
         </p>
     </header>
 
-    <!-- HUVUDINNEHÅLL (ANALYTICS ENBART) -->
-    <main class="max-w-4xl mx-auto px-6 py-20 space-y-16">
+    <!-- HUVUDINNEHÅLL -->
+    <main class="max-w-4xl mx-auto px-6 py-16 space-y-16">
 
-        <!-- PREMIER LEAGUE-SIMULERING -->
+        <!-- ANNOUNCEMENT: MLS SOCCER ANALYTICS UPDATE -->
         <section class="fade-in mb-12">
             <div class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-transparent p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-900/50 shadow-xl relative overflow-hidden">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm animate-pulse">
-                        Nyhet
+                        Nyhet!
                     </span>
                     <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                        Säsongen 2026/2027
+                        MLS Systemuppdatering
                     </span>
                 </div>
 
                 <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
-                    Kommande: Premier League AI-simuleringsmodell
+                    Automatiserat Live-AI-system för MLS Fotbollsanalys
                 </h3>
 
                 <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
-                    Efter framgångarna med vår analysmodell för MLS expanderar vi nu vår prediktiva datamodell till engelska Premier League!
+                    Den här sektionen visar en helt automatiserad, självlärande AI-pipeline för MLS (Major League Soccer), som fungerar live i realtid för att kontinuerligt spåra spelkassans utveckling, dynamiska bettingsstrategier och historiska vinstkurvor.
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 backdrop-blur-sm text-sm">
                     <div class="flex items-center gap-3">
-                        <i data-lucide="calendar" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <i data-lucide="cpu" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
                         <div>
-                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Säsongsstart</span>
-                            <strong class="text-slate-800 dark:text-slate-200">Fredag 21 augusti 2026</strong>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Kärnmotor</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Adaptivt Kalmanfilter</strong>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <i data-lucide="flag" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <i data-lucide="brain-circuit" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
                         <div>
-                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Säsongsavslutning</span>
-                            <strong class="text-slate-800 dark:text-slate-200">Söndag 30 maj 2027</strong>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Optimering</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Reinforcement Learning</strong>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <i data-lucide="trophy" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                        <i data-lucide="activity" class="w-5 h-5 text-emerald-500 shrink-0"></i>
                         <div>
-                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Regerande mästare</span>
-                            <strong class="text-slate-800 dark:text-slate-200">Arsenal FC</strong>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Pipelinestatus</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Live & Självlärande</strong>
                         </div>
                     </div>
                 </div>
-
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 italic">
-                    * Notera: Ligan startar en vecka senare än vanligt för att ge spelarna välbehövlig återhämtning efter sommarens fotbolls-VM 2026.
-                </p>
             </div>
         </section>
 
-        <!-- AUTOMATED DATA SYSTEMS (QUANT BOT) -->
-        <section class="fade-in">
+        <!-- MLS SOCCER ANALYTICS -->
+        <section id="mls-soccer" class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
-                
-                 <!-- DYNAMISK PIPELINE STATUS BADGE -->
+                <div class="max-w-3xl mb-10">
                     <div class="flex flex-wrap items-center gap-3 mb-4">
                         <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/50 px-3 py-1 rounded-full text-xs font-semibold text-emerald-600 dark:text-emerald-400">
                             <span class="relative flex h-2 w-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                             </span>
-                            <span>Pipeline aktiv</span>
+                            <span>Pipeline Aktiv</span>
                         </div>
                         <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">
                             Senaste synk: <strong id="mls-last-sync" class="text-slate-700 dark:text-slate-200">Laddar...</strong>
                         </span>
                         <span class="text-xs text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
                         <span class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">
-                            Nästa matchdag: <strong class="text-slate-700 dark:text-slate-200">15 aug (MLS)</strong>
+                            Nästa matchdag: <strong class="text-slate-700 dark:text-slate-200">15 Aug (MLS)</strong>
                         </span>
                     </div>
 
-                <div class="max-w-3xl mb-10">
-                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-3 py-1 rounded-full inline-block mb-3">Livedata</span>
-                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automatiserat livedatasystem för MLS-fotbollsanalys</h3>
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automatiserat Live-AI-system för MLS Fotbollsanalys</h3>
                     <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
-                        Denna sektion visar en helt automatiserad algoritmisk datapipeline för <strong>MLS (Major League Soccer)</strong>, som körs i realtid för att kontinuerligt spåra spelkapitalets utveckling, prestandamått och historiska vinstkurvor.
+                        Den här sektionen visar en helt automatiserad, självlärande AI-pipeline för <strong>MLS (Major League Soccer)</strong>, som fungerar live i realtid för att kontinuerligt spåra spelkassans utveckling, dynamiska bettingsstrategier och historiska vinstkurvor.
                     </p>
                     
                     <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Matematiskt ramverk
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> AI & Matematiskt Ramverk
                         </h4>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-400">
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Kalman-filtrering:</strong> Spårar lagform och hemmafördel.</span>
+                                <span><strong>Adaptivt Kalmanfilter:</strong> Spårar mål, xG och skott med hjälp av stabil Josephs kovarians.</span>
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Bayesian Shrinkage:</strong> Säkerställer långsiktig stabilitet.</span>
+                                <span><strong>Oövervakad klustring:</strong> Grupperar lag dynamiskt för att bygga prestandabaslinjer.</span>
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Dynamiskt brus:</strong> Filtrerar slumpmässighet via marknadsodds.</span>
+                                <span><strong>Självövervakad EM:</strong> Autokalibrerar dynamisk brusfiltrering via marknadsodds.</span>
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Josephs kovarians:</strong> Garanterar numerisk stabilitet.</span>
+                                <span><strong>Evolutionsalgoritmer:</strong> Finjusterar hyperparametrar automatiskt för att säkerställa långsiktig stabilitet.</span>
                             </li>
                             <li class="flex items-start gap-1.5 md:col-span-2">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Multivariabel:</strong> Viktsätter mål, xG och skott på mål.</span>
+                                <span><strong>Reinforcement Learning:</strong> Optimerar insatsstorlek (Q-Learning) för maximal EV-tillväxt.</span>
                             </li>
                         </ul>
                     </div>
@@ -245,7 +237,7 @@
                         <span id="bot-profit" class="text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
                     </div>
                     <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Totalt kapital</span>
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Total Spelkassa</span>
                         <span id="bot-bankroll" class="text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
                     </div>
                 </div>
@@ -256,13 +248,13 @@
             </div>
         </section>
 
-        <!-- LIVE TEAM RANKINGS (KALMAN-STYRKOR) -->
+        <!-- LIVE TEAM RANKINGS -->
         <section id="mls-rankings" class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
                 <div class="mb-8">
-                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Lagranking</h3>
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Lagrankning</h3>
                     <p class="text-slate-600 dark:text-slate-400 mt-3 max-w-2xl">
-                        Kalman-kalibrerade lagstyrkor i realtid. Denna lista korrigerar för brus och formsvackor för att identifiera MLS:s mest undervärderade och överskattade lag kontra tabellplacering.
+                        Realtidskalibrerade lagstyrkor med Kalmanfilter. Denna lista filtrerar bort brus och tillfälliga formsvackor för att identifiera MLS mest under- och övervärderade lag jämfört med den officiella tabellen.
                     </p>
                 </div>
 
@@ -270,7 +262,7 @@
                     <!-- Top 5 -->
                     <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
                         <h4 class="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-4 flex items-center gap-2">
-                            <i data-lucide="trending-up" class="w-5 h-5"></i> Topp 5: Kalman-starkast
+                            <i data-lucide="trending-up" class="w-5 h-5"></i> Topp 5: Starkast enligt Kalman
                         </h4>
                         <table class="w-full text-left">
                             <tbody id="top-teams" class="divide-y divide-emerald-200 dark:divide-emerald-800">
@@ -282,7 +274,7 @@
                     <!-- Bottom 5 -->
                     <div class="bg-rose-50/50 dark:bg-rose-950/20 p-6 rounded-2xl border border-rose-100 dark:border-rose-900/50">
                         <h4 class="text-lg font-bold text-rose-800 dark:text-rose-400 mb-4 flex items-center gap-2">
-                            <i data-lucide="trending-down" class="w-5 h-5"></i> Botten 5: Överskattade
+                            <i data-lucide="trending-down" class="w-5 h-5"></i> Botten 5: Övervärderade
                         </h4>
                         <table class="w-full text-left">
                             <tbody id="bottom-teams" class="divide-y divide-rose-200 dark:divide-rose-800">
@@ -298,15 +290,15 @@
         <section class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
                 <div class="max-w-2xl mb-10">
-                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full inline-block mb-3">Algoritmisk handel</span>
-                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automatiserat aktiehandelsystem</h3>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full inline-block mb-3">Algoritmisk Handel</span>
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automatiserat Aktiehandelssystem</h3>
                     <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
-                        Denna sektion visar min helt automatiserade algoritmiska aktiehandels-pipeline, som körs i realtid för att kontinuerligt spåra portföljutveckling, tillgångsallokering och historiska vinstkurvor.
+                        Den här sektionen visar min fullt automatiserade algoritmiska pipeline för aktiehandel, som körs live i realtid för att kontinuerligt spåra portföljutveckling, tillgångsallokering och historiska vinstkurvor.
                     </p>
                     
                     <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Matematiskt ramverk
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Matematiskt Ramverk
                         </h4>
                         <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
                             <li class="flex items-start gap-1.5">
@@ -319,15 +311,15 @@
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Z-Score-utvärdering:</strong> Mäter verkligt värde kontra marknadspris.</span>
+                                <span><strong>Z-Score-utvärdering:</strong> Mäter rimligt värde (fair value) mot marknadspris.</span>
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Kelly-storlek:</strong> Optimerar positionsstorlek baserat på edge.</span>
+                                <span><strong>Kelly-kriteriet:</strong> Optimerar positionsstorlek baserat på fördel (edge).</span>
                             </li>
                             <li class="flex items-start gap-1.5 md:col-span-2">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Riskkontroll:</strong> Tvingar fram strikta portföljgränser och säkerhetstak.</span>
+                                <span><strong>Riskkontroll:</strong> Upprätthåller strikta portföljgränser och säkerhetstak.</span>
                             </li>
                         </ul>
                     </div>
@@ -339,10 +331,10 @@
                         <span id="stock-profit" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
                     </div>
                     <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Totalt kapital</span>
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Total Portfölj</span>
                         <span id="stock-bankroll" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
                     </div>
-                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80 sm:col-span-1 col-span-1">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
                         <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Investerat</span>
                         <span id="stock-invested" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Laddar...</span>
                     </div>
@@ -355,10 +347,8 @@
         </section>
 
     </main>
-
-    <!-- EXTERNA SKRIPT & IKON-INITIERING -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../script.js"></script>
+    <script src="script.js"></script>
     <script>
         lucide.createIcons();
     </script>
