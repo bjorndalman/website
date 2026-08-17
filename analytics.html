@@ -398,7 +398,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     
-    <!-- AI STOCK DASHBOARD FETCH SCRIPT -->
+   <!-- AI STOCK DASHBOARD FETCH SCRIPT -->
     <script>
         if (window.lucide) {
             lucide.createIcons();
@@ -411,13 +411,13 @@
                 
                 const data = await res.json();
                 
-                // 1. Uppdatera synk-datum
+                // 1. Update sync date
                 if (data.updated_at) {
                     const syncElem = document.getElementById('stock-last-sync');
                     if (syncElem) syncElem.innerText = data.updated_at;
                 }
 
-                // 2. Uppdatera KPI-värden
+                // 2. Update KPI metrics
                 if (data.summary) {
                     const bankroll = data.summary.current_bankroll || 100000;
                     const profit = data.summary.profit_sek || 0;
@@ -441,7 +441,7 @@
                     }
                 }
 
-                // 3. Fyll i handels- & AI-prognostabellen
+                // 3. Populate AI trade & forecast table
                 const tradesBody = document.getElementById('stock-trades-body');
                 if (!tradesBody) return;
 
@@ -457,11 +457,13 @@
                 tradesBody.innerHTML = '';
                 let totalInvested = 0;
 
-                // Visa de nyaste köpen överst
+                // Show newest trades at the top
                 trades.slice().reverse().forEach(row => {
-                    const action = row['Åtgärd'] || row['Action'] || row['action'] || 'KÖP';
+                    const date = row['Date'] || row['date'] || row['Datum'] || '-';
+                    const stock = row['Stock'] || row['stock'] || row['Aktie'] || '-';
+                    const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
                     
-                    // 1. Hämta AI Investering
+                    // Fetch AI Investment amount
                     const rawAmount = row['ai_investment'] 
                         ?? row['position_size'] 
                         ?? row['Rek. Investering (kr)'] 
@@ -470,68 +472,59 @@
                         ?? 0;
                     
                     const amount = parseFloat(rawAmount) || 0;
-                    if (action === 'KÖP') totalInvested += amount;
+                    if (action === 'KÖP' || action === 'BUY') totalInvested += amount;
 
                     const formattedAmount = amount > 0 
-                        ? `${amount.toLocaleString('sv-SE')} kr` 
+                        ? `${amount.toLocaleString('sv-SE')} SEK` 
                         : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
 
+                    // Badge style depending on action
                     let badgeStyle = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800";
-                    if (action === 'SÄLJ') {
+                    if (action === 'SÄLJ' || action === 'SELL') {
                         badgeStyle = "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400 border-rose-300 dark:border-rose-800";
-                    } else if (action === 'HÅLL') {
+                    } else if (action === 'HÅLL' || action === 'HOLD') {
                         badgeStyle = "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700";
                     }
 
-                    // 2. Hämta Pris dynamiskt med fallbacks för alla namn
+                    // Price parsing
                     const rawPrice = row['price'] ?? row['Price'] ?? row['Aktuell Kurs'] ?? row['close_price'] ?? row['current_price'] ?? '';
                     const parsedPrice = parseFloat(rawPrice);
-                    const currentPrice = !isNaN(parsedPrice) && parsedPrice > 0 ? parsedPrice.toFixed(2) + ' SEK' : (rawPrice || '-');
+                    const formattedPrice = !isNaN(parsedPrice) ? `${parsedPrice.toFixed(2)} SEK` : (rawPrice || '-');
 
-                    // 3. Hämta Kalman Fair Value dynamiskt med fallbacks
-                    const rawKalman = row['kalman_value'] ?? row['Kalman Fair Value'] ?? row['kalman_fair_value'] ?? row['fair_value'] ?? '';
+                    // Kalman Value parsing
+                    const rawKalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Kalman-värde'] ?? row['fair_value'] ?? '';
                     const parsedKalman = parseFloat(rawKalman);
-                    const fairValue = !isNaN(parsedKalman) && parsedKalman > 0 ? parsedKalman.toFixed(2) + ' SEK' : (rawKalman || '-');
+                    const formattedKalman = !isNaN(parsedKalman) ? `${parsedKalman.toFixed(2)} SEK` : (rawKalman || '-');
 
-                    // 4. Hämta Motivering/Argument
-                    const reasoning = row['ai_argument'] 
-                        || row['llm_reasoning'] 
-                        || row['AI Argument & Forecast'] 
-                        || row['AI Reasoning'] 
-                        || '-';
-
-                    const date = row['date'] || row['Date'] || row['Datum'] || '-';
-                    const ticker = row['ticker'] || row['Ticker'] || row['Stock'] || '-';
-                    const name = row['name'] || row['Namn'] || '';
+                    // Argument & Reasoning
+                    const argument = row['argument'] || row['AI Argument & Forecast'] || row['Motivering'] || row['reasoning'] || '-';
 
                     const tr = document.createElement('tr');
-                    tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors";
+                    tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors";
                     tr.innerHTML = `
-                        <td class="py-3.5 px-4 text-xs font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">${date}</td>
-                        <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">
-                            ${ticker} ${name ? `<span class="text-xs font-normal text-slate-400">(${name})</span>` : ''}
-                        </td>
-                        <td class="py-3.5 px-4 whitespace-nowrap">
+                        <td class="py-3.5 px-4 text-xs font-medium text-slate-600 dark:text-slate-400 whitespace-nowrap">${date}</td>
+                        <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white">${stock}</td>
+                        <td class="py-3.5 px-4">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border ${badgeStyle}">
                                 ${action}
                             </span>
                         </td>
-                        <td class="py-3.5 px-4 font-semibold text-slate-800 dark:text-slate-200 whitespace-nowrap">${currentPrice}</td>
-                        <td class="py-3.5 px-4 font-semibold text-blue-600 dark:text-blue-400 whitespace-nowrap">${fairValue}</td>
-                        <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
-                        <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${reasoning}</td>
+                        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${formattedPrice}</td>
+                        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${formattedKalman}</td>
+                        <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
+                        <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${argument}</td>
                     `;
                     tradesBody.appendChild(tr);
                 });
 
-                // Uppdatera totalt investerat belopp i KPI-kortet
+                // Update Total Invested metric
                 const investedElem = document.getElementById('stock-invested');
                 if (investedElem) {
                     investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
                 }
 
             } catch (err) {
-                console.error("Fel vid laddning av AI Dashboard:", err);
+                console.error("Error loading stock AI dashboard data:", err);
             }
         }
 
