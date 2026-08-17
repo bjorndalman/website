@@ -2,9 +2,9 @@
   "updated_at": "2026-08-17",
   "summary": {
     "start_capital": 100000.0,
-    "current_bankroll": 92335.77,
-    "profit_sek": -7664.23,
-    "profit_pct": -7.66
+    "current_bankroll": 91580.89,
+    "profit_sek": -8419.11,
+    "profit_pct": -8.42
   },
   "latest_trades_and_forecasts": [
     {
@@ -18,12 +18,12 @@
       "current_price": 1489.0,
       "close_price": 1489.0,
       "stock_price": 1489.0,
-      "kalman_value": 1484.82,
-      "Kalman Value": 1484.82,
-      "Kalman Fair Value": 1484.82,
-      "fair_value": 1484.82,
+      "kalman_value": 1484.95,
+      "Kalman Value": 1484.95,
+      "Kalman Fair Value": 1484.95,
+      "fair_value": 1484.95,
       "ai_investment": "-",
-      "ai_argument": "Svag uppåt trend under kontroll och låg volatilitet."
+      "ai_argument": "Måttlig och stabil uppgång med god signalkvalitet."
     },
     {
       "date": "2026-08-17",
@@ -36,12 +36,12 @@
       "current_price": 207.8000030517578,
       "close_price": 207.8000030517578,
       "stock_price": 207.8000030517578,
-      "kalman_value": 209.73,
-      "Kalman Value": 209.73,
-      "Kalman Fair Value": 209.73,
-      "fair_value": 209.73,
-      "ai_investment": "5762.41",
-      "ai_argument": "Små kursrörelser och stabilt läge."
+      "kalman_value": 209.65,
+      "Kalman Value": 209.65,
+      "Kalman Fair Value": 209.65,
+      "fair_value": 209.65,
+      "ai_investment": "5716.47",
+      "ai_argument": "Låg volatilitet och stabilt marknadsläge."
     },
     {
       "date": "2026-08-17",
@@ -54,12 +54,12 @@
       "current_price": 529.4000244140625,
       "close_price": 529.4000244140625,
       "stock_price": 529.4000244140625,
-      "kalman_value": 534.63,
-      "Kalman Value": 534.63,
-      "Kalman Fair Value": 534.63,
-      "fair_value": 534.63,
-      "ai_investment": "5763.24",
-      "ai_argument": "Positiv daglig rörelse i linje med normal marknadsaktivitet."
+      "kalman_value": 534.53,
+      "Kalman Value": 534.53,
+      "Kalman Fair Value": 534.53,
+      "fair_value": 534.53,
+      "ai_investment": "5716.95",
+      "ai_argument": "Positiv rörelse som stöder en stabil trend."
     },
     {
       "date": "2026-08-17",
@@ -72,12 +72,12 @@
       "current_price": 28.549999237060547,
       "close_price": 28.549999237060547,
       "stock_price": 28.549999237060547,
-      "kalman_value": 29.7,
-      "Kalman Value": 29.7,
-      "Kalman Fair Value": 29.7,
-      "fair_value": 29.7,
-      "ai_investment": "5756.13",
-      "ai_argument": "Kraftigt kursfall som indikerar ökad osäkerhet och event-risk."
+      "kalman_value": 29.66,
+      "Kalman Value": 29.66,
+      "Kalman Fair Value": 29.66,
+      "fair_value": 29.66,
+      "ai_investment": "5709.85",
+      "ai_argument": "Kraftig prisrörelse nedåt vilket indikerar ökad osäkerhet och volatilitet."
     },
     {
       "date": "2026-08-17",
@@ -90,12 +90,12 @@
       "current_price": 97.13999938964844,
       "close_price": 97.13999938964844,
       "stock_price": 97.13999938964844,
-      "kalman_value": 97.69,
-      "Kalman Value": 97.69,
-      "Kalman Fair Value": 97.69,
-      "fair_value": 97.69,
-      "ai_investment": "5762.41",
-      "ai_argument": "Liten negativ förändring, stabila marknadsförhållanden."
+      "kalman_value": 97.67,
+      "Kalman Value": 97.67,
+      "Kalman Fair Value": 97.67,
+      "fair_value": 97.67,
+      "ai_investment": "5716.47",
+      "ai_argument": "Liten rörelse och avsaknad av nyhetsbrus."
     },
     {
       "date": "2026-08-17",
@@ -108,12 +108,12 @@
       "current_price": 268.3999938964844,
       "close_price": 268.3999938964844,
       "stock_price": 268.3999938964844,
-      "kalman_value": 274.17,
-      "Kalman Value": 274.17,
-      "Kalman Fair Value": 274.17,
-      "fair_value": 274.17,
-      "ai_investment": "5754.61",
-      "ai_argument": "Stort kursfall med hög volatilitet och ökad osäkerhet."
+      "kalman_value": 274.03,
+      "Kalman Value": 274.03,
+      "Kalman Fair Value": 274.03,
+      "fair_value": 274.03,
+      "ai_investment": "5708.28",
+      "ai_argument": "Betydande nedgång med hög processvolatilitet och event-risk."
     },
     {
       "date": "2026-08-17",
@@ -126,12 +126,12 @@
       "current_price": 787.5999755859375,
       "close_price": 787.5999755859375,
       "stock_price": 787.5999755859375,
-      "kalman_value": 767.85,
-      "Kalman Value": 767.85,
-      "Kalman Fair Value": 767.85,
-      "fair_value": 767.85,
+      "kalman_value": 768.5,
+      "Kalman Value": 768.5,
+      "Kalman Fair Value": 768.5,
+      "fair_value": 768.5,
       "ai_investment": "-",
-      "ai_argument": "Stark positiv kursreaktion med hög volatilitet som bekräftar tydlig trend."
+      "ai_argument": "Kraftig uppgång med hög volatilitet som bekräftar en stark köptrend."
     },
     {
       "date": "2026-08-17",
@@ -144,12 +144,12 @@
       "current_price": 239.6999969482422,
       "close_price": 239.6999969482422,
       "stock_price": 239.6999969482422,
-      "kalman_value": 240.22,
-      "Kalman Value": 240.22,
-      "Kalman Fair Value": 240.22,
-      "fair_value": 240.22,
-      "ai_investment": "5762.64",
-      "ai_argument": "Mycket små kursrörelser utan väsentligt brus."
+      "kalman_value": 240.19,
+      "Kalman Value": 240.19,
+      "Kalman Fair Value": 240.19,
+      "fair_value": 240.19,
+      "ai_investment": "5716.68",
+      "ai_argument": "Mycket stabila förhållanden utan brus."
     },
     {
       "date": "2026-08-17",
@@ -162,12 +162,12 @@
       "current_price": 94.73999786376952,
       "close_price": 94.73999786376952,
       "stock_price": 94.73999786376952,
-      "kalman_value": 95.8,
-      "Kalman Value": 95.8,
-      "Kalman Fair Value": 95.8,
-      "fair_value": 95.8,
-      "ai_investment": "5762.41",
-      "ai_argument": "Låg volatilitet och stabil kursutveckling."
+      "kalman_value": 95.76,
+      "Kalman Value": 95.76,
+      "Kalman Fair Value": 95.76,
+      "fair_value": 95.76,
+      "ai_investment": "5716.47",
+      "ai_argument": "Liten prisändring och låg marknadsosäkerhet."
     },
     {
       "date": "2026-08-17",
@@ -180,12 +180,12 @@
       "current_price": 172.6999969482422,
       "close_price": 172.6999969482422,
       "stock_price": 172.6999969482422,
-      "kalman_value": 174.72,
-      "Kalman Value": 174.72,
-      "Kalman Fair Value": 174.72,
-      "fair_value": 174.72,
-      "ai_investment": "5760.37",
-      "ai_argument": "Måttlig nedgång som reflekterar viss osäkerhet."
+      "kalman_value": 174.66,
+      "Kalman Value": 174.66,
+      "Kalman Fair Value": 174.66,
+      "fair_value": 174.66,
+      "ai_investment": "5714.55",
+      "ai_argument": "Måttlig nedgång under normala marknadsförhållanden."
     },
     {
       "date": "2026-08-17",
@@ -198,12 +198,12 @@
       "current_price": 410.75,
       "close_price": 410.75,
       "stock_price": 410.75,
-      "kalman_value": 414.0,
-      "Kalman Value": 414.0,
-      "Kalman Fair Value": 414.0,
-      "fair_value": 414.0,
-      "ai_investment": "5762.41",
-      "ai_argument": "Stabilt investmentbolag med lågt processbrus."
+      "kalman_value": 413.79,
+      "Kalman Value": 413.79,
+      "Kalman Fair Value": 413.79,
+      "fair_value": 413.79,
+      "ai_investment": "5717.37",
+      "ai_argument": "Stabil utveckling i aktien utan störande brus."
     },
     {
       "date": "2026-08-17",
@@ -220,8 +220,8 @@
       "Kalman Value": 57.59,
       "Kalman Fair Value": 57.59,
       "fair_value": 57.59,
-      "ai_investment": "5758.88",
-      "ai_argument": "Tydlig nedgång som visar på förhöjd volatilitet."
+      "ai_investment": "5711.72",
+      "ai_argument": "Förhöjd negativ rörelse och ökad kortsiktig osäkerhet."
     },
     {
       "date": "2026-08-17",
@@ -234,12 +234,12 @@
       "current_price": 191.0500030517578,
       "close_price": 191.0500030517578,
       "stock_price": 191.0500030517578,
-      "kalman_value": 191.3,
-      "Kalman Value": 191.3,
-      "Kalman Fair Value": 191.3,
-      "fair_value": 191.3,
-      "ai_investment": "3770.03",
-      "ai_argument": "Normal marknadsrörelse utan signifikant osäkerhet."
+      "kalman_value": 191.29,
+      "Kalman Value": 191.29,
+      "Kalman Fair Value": 191.29,
+      "fair_value": 191.29,
+      "ai_investment": "3590.51",
+      "ai_argument": "Låg volatilitet och lugn handel i aktien."
     },
     {
       "date": "2026-08-17",
@@ -252,12 +252,12 @@
       "current_price": 361.3999938964844,
       "close_price": 361.3999938964844,
       "stock_price": 361.3999938964844,
-      "kalman_value": 362.16,
-      "Kalman Value": 362.16,
-      "Kalman Fair Value": 362.16,
-      "fair_value": 362.16,
-      "ai_investment": "5763.45",
-      "ai_argument": "Positiv rörelse med god signalkvalitet."
+      "kalman_value": 362.14,
+      "Kalman Value": 362.14,
+      "Kalman Fair Value": 362.14,
+      "fair_value": 362.14,
+      "ai_investment": "5716.95",
+      "ai_argument": "Måttlig positiv rörelse med god signalkvalitet."
     },
     {
       "date": "2026-08-17",
@@ -274,8 +274,8 @@
       "Kalman Value": 108.48,
       "Kalman Fair Value": 108.48,
       "fair_value": 108.48,
-      "ai_investment": "5761.73",
-      "ai_argument": "Måttlig nedgång med normal risknivå."
+      "ai_investment": "5714.77",
+      "ai_argument": "Måttlig nedgång, normal marknadsaktivitet."
     },
     {
       "date": "2026-08-17",
@@ -288,12 +288,12 @@
       "current_price": 221.0,
       "close_price": 221.0,
       "stock_price": 221.0,
-      "kalman_value": 221.81,
-      "Kalman Value": 221.81,
-      "Kalman Fair Value": 221.81,
-      "fair_value": 221.81,
-      "ai_investment": "5762.18",
-      "ai_argument": "Måttlig rörelse inom normala ramar."
+      "kalman_value": 221.78,
+      "Kalman Value": 221.78,
+      "Kalman Fair Value": 221.78,
+      "fair_value": 221.78,
+      "ai_investment": "5716.36",
+      "ai_argument": "Måttlig rörelse inom stabilt intervall."
     },
     {
       "date": "2026-08-17",
@@ -306,12 +306,12 @@
       "current_price": 265.1000061035156,
       "close_price": 265.1000061035156,
       "stock_price": 265.1000061035156,
-      "kalman_value": 263.29,
-      "Kalman Value": 263.29,
-      "Kalman Fair Value": 263.29,
-      "fair_value": 263.29,
+      "kalman_value": 263.28,
+      "Kalman Value": 263.28,
+      "Kalman Fair Value": 263.28,
+      "fair_value": 263.28,
       "ai_investment": "-",
-      "ai_argument": "Positiv kursrörelse som bekräftar uppåtgående trend."
+      "ai_argument": "Tydlig uppgång med god signalkvalitet."
     },
     {
       "date": "2026-08-17",
@@ -324,12 +324,12 @@
       "current_price": 379.5,
       "close_price": 379.5,
       "stock_price": 379.5,
-      "kalman_value": 380.05,
-      "Kalman Value": 380.05,
-      "Kalman Fair Value": 380.05,
-      "fair_value": 380.05,
-      "ai_investment": "4175.66",
-      "ai_argument": "Små kursförändringar under lugna förhållanden."
+      "kalman_value": 380.03,
+      "Kalman Value": 380.03,
+      "Kalman Fair Value": 380.03,
+      "fair_value": 380.03,
+      "ai_investment": "3991.89",
+      "ai_argument": "Mycket stabil handel utan betydande nyhetsbrus."
     },
     {
       "date": "2026-08-17",
@@ -347,7 +347,7 @@
       "Kalman Fair Value": 43.3,
       "fair_value": 43.3,
       "ai_investment": "-",
-      "ai_argument": "Negativ rörelse som ger viss tillfällig osäkerhet."
+      "ai_argument": "Måttlig nedgång inom normal marknadsvolatilitet."
     },
     {
       "date": "2026-08-17",
@@ -360,12 +360,12 @@
       "current_price": 342.70001220703125,
       "close_price": 342.70001220703125,
       "stock_price": 342.70001220703125,
-      "kalman_value": 340.4,
-      "Kalman Value": 340.4,
-      "Kalman Fair Value": 340.4,
-      "fair_value": 340.4,
+      "kalman_value": 340.46,
+      "Kalman Value": 340.46,
+      "Kalman Fair Value": 340.46,
+      "fair_value": 340.46,
       "ai_investment": "-",
-      "ai_argument": "Stadig uppgång med god signalkvalitet."
+      "ai_argument": "Stabil positiv utveckling med bekräftad trend."
     }
   ]
 }
