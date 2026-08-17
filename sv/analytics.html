@@ -38,79 +38,92 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
-    <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
+            <!-- Logotyp / Profilbild -->
+            <picture class="flex items-center">
+                <source srcset="/images/bjorn-dahlman.webp" type="image/webp">
+                <img src="/images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-12 w-auto rounded-full object-cover">
+            </picture>
             
-            <a href="index.html" aria-label="Hem">
-                <picture>
-                    <source srcset="/..images/bjorn-dahlman.webp" type="image/webp">
-                    <img src="/..images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-16 w-auto">
-                </picture>
-            </a>
-            
+            <!-- Högersektion / Meny -->
             <div class="flex items-center gap-6">
-                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
-                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Om mig</a></li>
-                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Kompetenser</a></li>
-                    <li><a href="analytics.html" class="text-blue-600 dark:text-blue-400 font-bold transition">Analys</a></li>
+                <!-- Huvudmeny (Desktop) -->
+                <ul id="main-nav" class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Om mig</a></li>
+                    <li><a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Kompetenser</a></li>
+                    <li><a href="analytics.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Analytics</a></li>
                     <li><a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a></li>
                     <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projekt</a></li>
-                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Erfarenhet</a></li>
-                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Utbildning</a></li>
+                    <li><a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Erfarenhet</a></li>
+                    <li><a href="#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Utbildning</a></li>
                 </ul>
 
-                <div class="language-switcher flex items-center gap-2 text-xl">
-                    <a href="/analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till engelska">🇬🇧</a>
-                    <a href="#" class="lang-icon hover:opacity-100" aria-label="Svenska">🇸🇪</a>
+                <!-- Språkväljare (GB / SE) -->
+                <div class="language-switcher flex items-center gap-2 text-sm font-semibold">
+                    <a href="../index.html" class="hover:text-blue-600 text-slate-400 transition" aria-label="Switch to English">GB</a>
+                    <a href="index.html" class="text-slate-900 dark:text-white font-bold" aria-label="Växla till Svenska">SE</a>
                 </div>
 
-                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
-                    <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
-                        <i class="fab fa-x-twitter"></i> 
+                <!-- Sociala ikoner (X & YouTube) -->
+                <div class="social-icons hidden md:flex items-center gap-4 text-lg text-slate-700 dark:text-slate-300">
+                    <a href="https://x.com" target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
+                        <i class="fa-brands fa-x-twitter"></i> 
                     </a>
-                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
                 
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Växla tema">
+                <!-- Tema-knapp (Måne/Sol) -->
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block text-slate-700 dark:text-slate-300">
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
                 
-                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Växla meny">
+                <!-- Mobilmeny-knapp -->
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
                     <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
                     <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
                 </button>
             </div>
         </div>
     </nav>
-
-    <!-- MOBILMENY -->
+    
+    <!-- Mobilmeny (Anpassad för de nya länkarna) -->
     <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
-            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Om mig</a>
-            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Kompetenser</a>
-            <a href="analytics.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Analys</a>
-            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Media</a>
-            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projekt</a>
-            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Erfarenhet</a>
-            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Utbildning</a>
+            <a href="#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Om mig</a>
+            <a href="#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Kompetenser</a>
+            <a href="analytics.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Analytics</a>
+            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Projekt</a>
+            <a href="#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Erfarenhet</a>
+            <a href="#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Utbildning</a>
             
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Språk:</span>
-                <a href="/analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till engelska">🇬🇧</a>
-                <a href="#" class="lang-icon text-xl hover:opacity-100" aria-label="Svenska">🇸🇪</a>
+                <a href="../index.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition" onclick="closeMobileMenu();">GB</a>
+                <a href="index.html" class="font-bold text-slate-900 dark:text-white" onclick="closeMobileMenu();">SE</a>
             </div>
             
-            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
-                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
-                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
-                <span>Växla tema</span>
+            <button onclick="toggleTheme(); closeMobileMenu();" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 dark:hidden"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                Växla tema
             </button>
+            
+            <div class="flex gap-6 pt-4 border-t border-slate-200 dark:border-slate-800 text-xl">
+                <a href="https://x.com" target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter"></i> 
+                </a>
+                <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
         </div>
     </nav>
+
         
     <!-- HEADER -->
     <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
