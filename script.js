@@ -529,6 +529,26 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
 }
 
 // =========================
+// PIPELINE STATUS (LAST SYNC)
+// =========================
+async function loadPipelineStatus() {
+    const syncEl = document.getElementById('mls-last-sync');
+    if (!syncEl) return;
+
+    try {
+        const response = await fetch(`${pathPrefix}data/pipeline_status.json?t=${Date.now()}`);
+        if (!response.ok) return;
+        const data = await response.json();
+
+        if (syncEl && data.last_sync) {
+            syncEl.textContent = data.last_sync;
+        }
+    } catch (error) {
+        console.warn("Kunde inte hämta pipeline-status:", error);
+    }
+}
+
+// =========================
 // KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
 // =========================
 async function loadKalmanRankings() {
@@ -610,6 +630,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   initScrollAnimations();
+
+  // Hämta pipeline-status (Last Sync)
+  loadPipelineStatus(); // <--- LÄGG TILL DENNA HÄR!
 
   // Hämta aktiestats
   fetchStockStats();
