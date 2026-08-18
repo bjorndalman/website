@@ -63,7 +63,7 @@ const defaultData = {
       company: "The Swedish Home Guard",
       years: "10 years",
       description: "Instructor with a background in the Swedish Home Guard. Experienced in training units for rapid response and maintaining standards of coordination and precision in the field."
-    }    
+    }   
   ],
   freetime: ["Sports", "Outdoor activities", "YouTube: 'Dalmanium'", "Coding"]
 };
@@ -650,7 +650,6 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
             maximumFractionDigits: 2 
         }) + ' kr';
     }
-    // profitEl uppdateras redan korrekt via fetchStockStats() / loadStockAIDashboard()
 }
         if (existingChartInstance) existingChartInstance.destroy();
         
@@ -766,9 +765,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Hämta pipeline-status (Last Sync)
   loadPipelineStatus();
-
-  // Hämta aktiestats
- // fetchStockStats();
 
   // Hämta AI Stock Dashboard (Tabell & Metriker)
   loadStockAIDashboard();
