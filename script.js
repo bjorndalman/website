@@ -642,28 +642,16 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
                         ? "text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
                         : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
                 }
-            } else if (canvasId === 'stock-profit-chart') {
-                const bankrollEl = document.getElementById('stock-bankroll');
-                if (bankrollEl) {
-                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
-                        minimumFractionDigits: 2, 
-                        maximumFractionDigits: 2 
-                    }) + ' kr';
-                }
-
-                const initialStockValue = 100000.0;
-                const profitPct = ((latestValue - initialStockValue) / initialStockValue) * 100;
-                const profitEl = document.getElementById('stock-profit');
-                if (profitEl) {
-                    const formattedPct = (profitPct >= 0 ? "+" : "") + profitPct.toFixed(2).replace('.', ',') + "%";
-                    profitEl.textContent = formattedPct;
-                    profitEl.className = profitPct >= 0 
-                        ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
-                        : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
-                }
-            }
-        }
-
+           } else if (canvasId === 'stock-profit-chart') {
+    const bankrollEl = document.getElementById('stock-bankroll');
+    if (bankrollEl) {
+        bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2 
+        }) + ' kr';
+    }
+    // profitEl uppdateras redan korrekt via fetchStockStats() / loadStockAIDashboard()
+}
         if (existingChartInstance) existingChartInstance.destroy();
         
         const config = buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark);
