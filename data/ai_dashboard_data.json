@@ -2,189 +2,189 @@
   "updated_at": "2026-08-18",
   "summary": {
     "start_capital": 100000.0,
-    "current_bankroll": 89405.76,
-    "profit_sek": -10594.24,
-    "profit_pct": -10.59
+    "current_bankroll": 89444.17,
+    "profit_sek": -10555.83,
+    "profit_pct": -10.56
   },
   "latest_trades_and_forecasts": [
     {
       "date": "2026-08-18",
-      "stock": "AZN.ST",
-      "action": "CLOSE",
-      "price": "1496.0",
-      "kalman_value": "1488.12",
-      "ai_investment": 0.0,
-      "argument": "Steady positive movement showing stable signal quality."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "ATCO-A.ST",
-      "action": "BUY",
-      "price": "204.1999969482422",
-      "kalman_value": "208.1",
-      "ai_investment": 5565.93,
-      "argument": "Moderate downward pull with standard noise levels."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "BOL.ST",
-      "action": "BUY",
-      "price": "524.0",
-      "kalman_value": "532.76",
-      "ai_investment": 5566.36,
+      "stock": "VOLV-B.ST",
+      "action": "Stängd",
+      "price": 340.2,
+      "kalman_value": 341.01,
+      "ai_investment": 5621.78,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
       "date": "2026-08-18",
-      "stock": "ELUX-B.ST",
-      "action": "BUY",
-      "price": "28.13999938964844",
-      "kalman_value": "29.55",
-      "ai_investment": 5560.5,
-      "argument": "Sharp drop indicates elevated earnings risk and high market volatility."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "ERIC-B.ST",
-      "action": "BUY",
-      "price": "97.08000183105467",
-      "kalman_value": "97.68",
-      "ai_investment": 5566.36,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "ESSITY-B.ST",
-      "action": "BUY",
-      "price": "268.20001220703125",
-      "kalman_value": "273.75",
-      "ai_investment": 5562.72,
-      "argument": "Significant decline suggests increased uncertainty and process noise."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "EVO.ST",
-      "action": "CLOSE",
-      "price": "789.7999877929688",
-      "kalman_value": "768.57",
-      "ai_investment": 0.0,
-      "argument": "Strong positive gain with clear trend signal but higher volatility."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "GETI-B.ST",
-      "action": "BUY",
-      "price": "239.8000030517578",
-      "kalman_value": "240.26",
-      "ai_investment": 5338.84,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "HEXA-B.ST",
-      "action": "BUY",
-      "price": "94.1999969482422",
-      "kalman_value": "95.53",
-      "ai_investment": 5567.81,
-      "argument": "Small price change reflecting relative stability."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "HM-B.ST",
-      "action": "CLOSE",
-      "price": "179.60000610351562",
-      "kalman_value": "177.84",
-      "ai_investment": 0.0,
-      "argument": "Solid gain indicating good trend quality with moderate volatility."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "INVE-B.ST",
-      "action": "BUY",
-      "price": "409.6000061035156",
-      "kalman_value": "413.49",
-      "ai_investment": 5566.36,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "KINV-B.ST",
-      "action": "BUY",
-      "price": "57.08000183105469",
-      "kalman_value": "57.63",
-      "ai_investment": 5566.36,
-      "argument": "Moderate negative fluctuation within typical market bounds."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "NDA-SE.ST",
-      "action": "BUY",
-      "price": "190.75",
-      "kalman_value": "191.16",
-      "ai_investment": 5566.36,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "SAND.ST",
-      "action": "BUY",
-      "price": "356.70001220703125",
-      "kalman_value": "360.15",
-      "ai_investment": 5566.36,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "SCA-B.ST",
-      "action": "BUY",
-      "price": "107.9499969482422",
-      "kalman_value": "108.72",
-      "ai_investment": 5566.36,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "SEB-A.ST",
-      "action": "BUY",
-      "price": "219.6000061035156",
-      "kalman_value": "221.2",
-      "ai_investment": 5566.36,
-      "argument": "Slight daily decline under stable market conditions."
-    },
-    {
-      "date": "2026-08-18",
-      "stock": "SKF-B.ST",
-      "action": "CLOSE",
-      "price": "262.6000061035156",
-      "kalman_value": "262.06",
+      "stock": "TELIA.ST",
+      "action": "Stängd",
+      "price": 43.95,
+      "kalman_value": 43.31,
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
       "date": "2026-08-18",
       "stock": "SWED-A.ST",
-      "action": "BUY",
-      "price": "377.6000061035156",
-      "kalman_value": "379.22",
-      "ai_investment": 5566.36,
+      "action": "Stängd",
+      "price": 380.5,
+      "kalman_value": 380.57,
+      "ai_investment": 517.11,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
       "date": "2026-08-18",
-      "stock": "TELIA.ST",
-      "action": "CLOSE",
-      "price": "43.88999938964844",
-      "kalman_value": "43.53",
+      "stock": "SKF-B.ST",
+      "action": "Stängd",
+      "price": 262.0,
+      "kalman_value": 261.58,
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
       "date": "2026-08-18",
-      "stock": "VOLV-B.ST",
-      "action": "CLOSE",
-      "price": "343.20001220703125",
-      "kalman_value": "340.49",
+      "stock": "SEB-A.ST",
+      "action": "Stängd",
+      "price": 222.9,
+      "kalman_value": 222.35,
       "ai_investment": 0.0,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "SCA-B.ST",
+      "action": "Stängd",
+      "price": 108.55,
+      "kalman_value": 109.36,
+      "ai_investment": 5621.77,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "SAND.ST",
+      "action": "Stängd",
+      "price": 359.2,
+      "kalman_value": 362.97,
+      "ai_investment": 5621.77,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "NDA-SE.ST",
+      "action": "Stängd",
+      "price": 192.05,
+      "kalman_value": 191.44,
+      "ai_investment": 0.0,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "KINV-B.ST",
+      "action": "Stängd",
+      "price": 57.98,
+      "kalman_value": 57.6,
+      "ai_investment": 0.0,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "INVE-B.ST",
+      "action": "Stängd",
+      "price": 412.65,
+      "kalman_value": 416.72,
+      "ai_investment": 5621.77,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "HM-B.ST",
+      "action": "Stängd",
+      "price": 175.1,
+      "kalman_value": 176.09,
+      "ai_investment": 5621.78,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "HEXA-B.ST",
+      "action": "Stängd",
+      "price": 95.2,
+      "kalman_value": 96.26,
+      "ai_investment": 5621.78,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "GETI-B.ST",
+      "action": "Stängd",
+      "price": 240.1,
+      "kalman_value": 240.14,
+      "ai_investment": 468.21,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "EVO.ST",
+      "action": "Stängd",
+      "price": 752.6,
+      "kalman_value": 745.52,
+      "ai_investment": 0.0,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "ESSITY-B.ST",
+      "action": "Stängd",
+      "price": 278.2,
+      "kalman_value": 277.74,
+      "ai_investment": 0.0,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "ERIC-B.ST",
+      "action": "Stängd",
+      "price": 97.62,
+      "kalman_value": 97.83,
+      "ai_investment": 5621.78,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "ELUX-B.ST",
+      "action": "Stängd",
+      "price": 29.32,
+      "kalman_value": 30.18,
+      "ai_investment": 5621.78,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "BOL.ST",
+      "action": "Stängd",
+      "price": 525.0,
+      "kalman_value": 534.81,
+      "ai_investment": 5621.78,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "ATCO-A.ST",
+      "action": "Stängd",
+      "price": 208.4,
+      "kalman_value": 210.63,
+      "ai_investment": 5621.78,
+      "argument": "Standard quantitative Kalman analysis without anomalies."
+    },
+    {
+      "date": "2026-08-18",
+      "stock": "AZN.ST",
+      "action": "Stängd",
+      "price": 1480.0,
+      "kalman_value": 1490.58,
+      "ai_investment": 5621.78,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     }
   ]
