@@ -12,7 +12,7 @@
       "stock": "AZN.ST",
       "action": "BUY",
       "price": "1480.0",
-      "kalman_value": "1490.21",
+      "kalman_value": "1490.04",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -21,7 +21,7 @@
       "stock": "ATCO-A.ST",
       "action": "BUY",
       "price": "208.3999938964844",
-      "kalman_value": "210.67",
+      "kalman_value": "210.66",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -30,7 +30,7 @@
       "stock": "BOL.ST",
       "action": "BUY",
       "price": "525.0",
-      "kalman_value": "534.73",
+      "kalman_value": "534.81",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -39,7 +39,7 @@
       "stock": "ELUX-B.ST",
       "action": "BUY",
       "price": "29.31999969482422",
-      "kalman_value": "30.25",
+      "kalman_value": "30.26",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -48,7 +48,7 @@
       "stock": "ERIC-B.ST",
       "action": "BUY",
       "price": "97.62000274658205",
-      "kalman_value": "97.83",
+      "kalman_value": "97.84",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -57,7 +57,7 @@
       "stock": "ESSITY-B.ST",
       "action": "CLOSE",
       "price": "278.20001220703125",
-      "kalman_value": "277.71",
+      "kalman_value": "277.72",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -66,7 +66,7 @@
       "stock": "EVO.ST",
       "action": "CLOSE",
       "price": "752.5999755859375",
-      "kalman_value": "745.78",
+      "kalman_value": "745.94",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -84,7 +84,7 @@
       "stock": "HEXA-B.ST",
       "action": "BUY",
       "price": "95.1999969482422",
-      "kalman_value": "96.45",
+      "kalman_value": "96.47",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -93,7 +93,7 @@
       "stock": "HM-B.ST",
       "action": "BUY",
       "price": "175.10000610351562",
-      "kalman_value": "176.22",
+      "kalman_value": "176.23",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -102,7 +102,7 @@
       "stock": "INVE-B.ST",
       "action": "BUY",
       "price": "412.6499938964844",
-      "kalman_value": "416.7",
+      "kalman_value": "416.72",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -111,7 +111,7 @@
       "stock": "KINV-B.ST",
       "action": "CLOSE",
       "price": "57.97999954223633",
-      "kalman_value": "57.63",
+      "kalman_value": "57.64",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -129,7 +129,7 @@
       "stock": "SAND.ST",
       "action": "BUY",
       "price": "359.20001220703125",
-      "kalman_value": "363.0",
+      "kalman_value": "362.97",
       "ai_investment": 5621.77,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -147,7 +147,7 @@
       "stock": "SEB-A.ST",
       "action": "CLOSE",
       "price": "222.8999938964844",
-      "kalman_value": "222.44",
+      "kalman_value": "222.43",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -156,7 +156,7 @@
       "stock": "SKF-B.ST",
       "action": "CLOSE",
       "price": "262.0",
-      "kalman_value": "261.65",
+      "kalman_value": "261.63",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -165,8 +165,8 @@
       "stock": "SWED-A.ST",
       "action": "BUY",
       "price": "380.5",
-      "kalman_value": "380.56",
-      "ai_investment": 443.24,
+      "kalman_value": "380.57",
+      "ai_investment": 517.11,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
