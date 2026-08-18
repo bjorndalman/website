@@ -28,12 +28,12 @@
   ],
   "bottom5": [
     {
-      "rank": 27,
+      "rank": 31,
       "name": "kansas city",
       "strength": -0.858
     },
     {
-      "rank": 28,
+      "rank": 30,
       "name": "chivas usa",
       "strength": -0.8123
     },
@@ -43,12 +43,12 @@
       "strength": -0.6078
     },
     {
-      "rank": 30,
+      "rank": 28,
       "name": "cf montreal",
       "strength": -0.5125
     },
     {
-      "rank": 31,
+      "rank": 27,
       "name": "atlanta utd",
       "strength": -0.4711
     }
