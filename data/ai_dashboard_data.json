@@ -2,9 +2,9 @@
   "updated_at": "2026-08-18",
   "summary": {
     "start_capital": 100000.0,
-    "current_bankroll": 90552.68,
-    "profit_sek": -9447.32,
-    "profit_pct": -9.45
+    "current_bankroll": 89937.93,
+    "profit_sek": -10062.07,
+    "profit_pct": -10.06
   },
   "latest_trades_and_forecasts": [
     {
@@ -12,17 +12,17 @@
       "stock": "AZN.ST",
       "action": "BUY",
       "price": "1480.0",
-      "kalman_value": "1490.58",
-      "ai_investment": 5621.78,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
+      "kalman_value": "1490.44",
+      "ai_investment": 5602.64,
+      "argument": "Moderate pull-back indicates increased short-term price uncertainty."
     },
     {
       "date": "2026-08-18",
       "stock": "ATCO-A.ST",
       "action": "BUY",
       "price": "208.3999938964844",
-      "kalman_value": "210.63",
-      "ai_investment": 5621.78,
+      "kalman_value": "210.67",
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -30,8 +30,8 @@
       "stock": "BOL.ST",
       "action": "BUY",
       "price": "525.0",
-      "kalman_value": "534.81",
-      "ai_investment": 5621.78,
+      "kalman_value": "534.73",
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -39,9 +39,9 @@
       "stock": "ELUX-B.ST",
       "action": "BUY",
       "price": "29.31999969482422",
-      "kalman_value": "30.18",
-      "ai_investment": 5621.78,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
+      "kalman_value": "30.29",
+      "ai_investment": 5600.96,
+      "argument": "Sharp price drop signals elevated risk and uncertainty."
     },
     {
       "date": "2026-08-18",
@@ -49,7 +49,7 @@
       "action": "BUY",
       "price": "97.62000274658205",
       "kalman_value": "97.83",
-      "ai_investment": 5621.78,
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -57,7 +57,7 @@
       "stock": "ESSITY-B.ST",
       "action": "CLOSE",
       "price": "278.20001220703125",
-      "kalman_value": "277.74",
+      "kalman_value": "277.71",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -66,17 +66,17 @@
       "stock": "EVO.ST",
       "action": "CLOSE",
       "price": "752.5999755859375",
-      "kalman_value": "745.52",
+      "kalman_value": "746.5",
       "ai_investment": 0.0,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
+      "argument": "Strong positive move indicating clear upward momentum."
     },
     {
       "date": "2026-08-18",
       "stock": "GETI-B.ST",
       "action": "BUY",
       "price": "240.1000061035156",
-      "kalman_value": "240.14",
-      "ai_investment": 468.21,
+      "kalman_value": "240.22",
+      "ai_investment": 1400.45,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -84,8 +84,8 @@
       "stock": "HEXA-B.ST",
       "action": "BUY",
       "price": "95.1999969482422",
-      "kalman_value": "96.26",
-      "ai_investment": 5621.78,
+      "kalman_value": "96.45",
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -93,8 +93,8 @@
       "stock": "HM-B.ST",
       "action": "BUY",
       "price": "175.10000610351562",
-      "kalman_value": "176.09",
-      "ai_investment": 5621.78,
+      "kalman_value": "176.22",
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -102,8 +102,8 @@
       "stock": "INVE-B.ST",
       "action": "BUY",
       "price": "412.6499938964844",
-      "kalman_value": "416.72",
-      "ai_investment": 5621.77,
+      "kalman_value": "416.7",
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -111,16 +111,16 @@
       "stock": "KINV-B.ST",
       "action": "CLOSE",
       "price": "57.97999954223633",
-      "kalman_value": "57.6",
+      "kalman_value": "57.67",
       "ai_investment": 0.0,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
+      "argument": "Sharp upward surge driven by strong market momentum."
     },
     {
       "date": "2026-08-18",
       "stock": "NDA-SE.ST",
       "action": "CLOSE",
       "price": "192.0500030517578",
-      "kalman_value": "191.44",
+      "kalman_value": "191.46",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -129,8 +129,8 @@
       "stock": "SAND.ST",
       "action": "BUY",
       "price": "359.20001220703125",
-      "kalman_value": "362.97",
-      "ai_investment": 5621.77,
+      "kalman_value": "363.0",
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -139,7 +139,7 @@
       "action": "BUY",
       "price": "108.5500030517578",
       "kalman_value": "109.36",
-      "ai_investment": 5621.77,
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -147,7 +147,7 @@
       "stock": "SEB-A.ST",
       "action": "CLOSE",
       "price": "222.8999938964844",
-      "kalman_value": "222.35",
+      "kalman_value": "222.44",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -156,7 +156,7 @@
       "stock": "SKF-B.ST",
       "action": "CLOSE",
       "price": "262.0",
-      "kalman_value": "261.58",
+      "kalman_value": "261.65",
       "ai_investment": 0.0,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
@@ -165,8 +165,8 @@
       "stock": "SWED-A.ST",
       "action": "BUY",
       "price": "380.5",
-      "kalman_value": "380.57",
-      "ai_investment": 517.11,
+      "kalman_value": "380.56",
+      "ai_investment": 441.87,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     },
     {
@@ -174,17 +174,17 @@
       "stock": "TELIA.ST",
       "action": "CLOSE",
       "price": "43.95000076293945",
-      "kalman_value": "43.31",
+      "kalman_value": "43.36",
       "ai_investment": 0.0,
-      "argument": "Standard quantitative Kalman analysis without anomalies."
+      "argument": "Steady positive gain reflecting stable trend direction."
     },
     {
       "date": "2026-08-18",
       "stock": "VOLV-B.ST",
       "action": "BUY",
       "price": "340.20001220703125",
-      "kalman_value": "341.01",
-      "ai_investment": 5621.78,
+      "kalman_value": "341.21",
+      "ai_investment": 5604.41,
       "argument": "Standard quantitative Kalman analysis without anomalies."
     }
   ]
