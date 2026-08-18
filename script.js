@@ -723,68 +723,62 @@ async function loadKalmanRankings() {
                         ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
                     </td>
                 </tr>
-            `).join('');
+                    `).join('');
+                }
+
+                if (bottomContainer && bottom5.length > 0) {
+                    bottomContainer.innerHTML = bottom5.map(team => `
+                        <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
+                            <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
+                                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mr-2">#${team.rank}</span>
+                                ${team.name}
+                            </td>
+                            <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
+                                ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            } catch (err) {
+                console.warn("Could not load Kalman rankings:", err);
+            }
         }
 
-        if (bottomContainer && bottom5.length > 0) {
-            bottomContainer.innerHTML = bottom5.map(team => `
-                <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
-                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mr-2">#${team.rank}</span>
-                        ${team.name}
-                    </td>
-                    <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
-                        ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
-                    </td>
-                </tr>
-            `).join('');
-        }
-    } catch (err) {
-        console.warn("Kunde inte ladda Kalman rankings:", err);
-    }
-}
+        // =========================
+        // INITIALIZATION & EVENT LISTENERS
+        // =========================
+        document.addEventListener("DOMContentLoaded", async () => {
+            loadLanguageData();
+            initTheme();
+            render();
+            initScrollAnimations();
 
-// =========================
-// INITIALIZATION & EVENT LISTENERS
-// =========================
-document.addEventListener("DOMContentLoaded", async () => {
-    loadLanguageData();
-    initTheme();
-    render();
-    initScrollAnimations();
+            if (menuButton) {
+                menuButton.addEventListener('click', toggleMobileMenu);
+            }
 
-    // Attach event listeners
-    if (menuButton) {
-        menuButton.addEventListener('click', toggleMobileMenu);
-    }
+            // Fetch and render dashboard metrics & rankings
+            loadPipelineStatus();
+            loadStockAIDashboard();
+            fetchStockStats();
+            loadKalmanRankings();
 
-    const themeToggleBtn = document.getElementById("theme-toggle");
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener("click", toggleTheme);
-    }
+            // Render Chart.js instances
+            botChartInstance = await loadAndRenderChart(
+                'bot-profit-chart',
+                'data/bot_bankroll.csv',
+                'Bankroll',
+                '#2563eb',
+                'rgba(37, 99, 235, 0.2)',
+                botChartInstance
+            );
 
-    // Load asynchronous dashboard data
-    await loadPipelineStatus();
-    await fetchStockStats();
-    await loadStockAIDashboard();
-    await loadKalmanRankings();
-
-    // Initialize Chart.js graphs
-    botChartInstance = await loadAndRenderChart(
-        'bot-profit-chart',
-        'data/bot_history.csv',
-        'Bot Profit',
-        '#2563eb',
-        'rgba(37, 99, 235, 0.15)',
-        botChartInstance
-    );
-
-    stockChartInstance = await loadAndRenderChart(
-        'stock-profit-chart',
-        'data/stock_history.csv',
-        'Stock Profit',
-        '#059669',
-        'rgba(5, 150, 105, 0.15)',
-        stockChartInstance
-    );
-});
+            stockChartInstance = await loadAndRenderChart(
+                'stock-profit-chart',
+                'data/stock_bankroll.csv',
+                'Stock Portfolio',
+                '#10b981',
+                'rgba(16, 185, 129, 0.2)',
+                stockChartInstance
+            );
+        });
