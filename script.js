@@ -63,7 +63,7 @@ const defaultData = {
       company: "The Swedish Home Guard",
       years: "10 years",
       description: "Instructor with a background in the Swedish Home Guard. Experienced in training units for rapid response and maintaining standards of coordination and precision in the field."
-    }   
+    }    
   ],
   freetime: ["Sports", "Outdoor activities", "YouTube: 'Dalmanium'", "Coding"]
 };
@@ -359,7 +359,6 @@ async function loadStockAIDashboard() {
     trades.slice().reverse().forEach(row => {
       const date = row['Date'] || row['date'] || row['Datum'] || '-';
       
-      // Stock ticker/name mapping logic with full fallback coverage
       const stock = row['Stock'] 
         || row['stock'] 
         || row['ticker'] 
@@ -371,7 +370,6 @@ async function loadStockAIDashboard() {
 
       const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
       
-      // Fetch AI Investment amount
       const rawAmount = row['ai_investment'] 
         ?? row['position_size'] 
         ?? row['Rek. Investering (kr)'] 
@@ -386,7 +384,6 @@ async function loadStockAIDashboard() {
         ? `${amount.toLocaleString('sv-SE')} SEK` 
         : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
 
-      // Badge style depending on action
       let badgeStyle = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800";
       if (action === 'SÄLJ' || action === 'SELL' || action === 'STÄNG') {
         badgeStyle = "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400 border-rose-300 dark:border-rose-800";
@@ -394,17 +391,14 @@ async function loadStockAIDashboard() {
         badgeStyle = "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700";
       }
 
-      // Price parsing
       const rawPrice = row['price'] ?? row['Price'] ?? row['Aktuell Kurs'] ?? row['close_price'] ?? row['current_price'] ?? '';
       const parsedPrice = parseFloat(rawPrice);
       const formattedPrice = !isNaN(parsedPrice) ? `${parsedPrice.toFixed(2)} SEK` : (rawPrice || '-');
 
-      // Kalman Value parsing
       const rawKalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Kalman-värde'] ?? row['fair_value'] ?? '';
       const parsedKalman = parseFloat(rawKalman);
       const formattedKalman = !isNaN(parsedKalman) ? `${parsedKalman.toFixed(2)} SEK` : (rawKalman || '-');
 
-      // Argument & Reasoning mapping logic with full fallback coverage
       const argument = row['argument'] 
         || row['AI Argument & Forecast'] 
         || row['Motivering'] 
@@ -433,7 +427,6 @@ async function loadStockAIDashboard() {
       tradesBody.appendChild(tr);
     });
 
-    // Update Total Invested metric
     const investedElem = document.getElementById('stock-invested');
     if (investedElem) {
       investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
@@ -459,7 +452,6 @@ async function fetchStockStats() {
         if (!response.ok) return;
         const data = await response.json();
 
-        // Sätt vinstprocent direkt från Python-boten
         if (profitEl && data.profit_pct && !data.profit_pct.includes('nan')) {
             profitEl.textContent = data.profit_pct;
             profitEl.className = data.is_positive 
@@ -467,12 +459,10 @@ async function fetchStockStats() {
                 : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
         }
 
-        // Sätt total bankrulle från Python-boten
         if (bankrollEl && data.total_bankroll && !data.total_bankroll.includes('nan')) {
             bankrollEl.textContent = data.total_bankroll;
         }
 
-        // Sätt totalkapital/investerat från Python-boten
         if (investedEl && data.total_invested) {
             investedEl.textContent = data.total_invested;
         }
@@ -643,14 +633,16 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
                         : "text-3xl font-extrabold text-rose-600 dark:text-rose-400";
                 }
            } else if (canvasId === 'stock-profit-chart') {
-    const bankrollEl = document.getElementById('stock-bankroll');
-    if (bankrollEl) {
-        bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
-            minimumFractionDigits: 2, 
-            maximumFractionDigits: 2 
-        }) + ' kr';
-    }
-}
+                const bankrollEl = document.getElementById('stock-bankroll');
+                if (bankrollEl) {
+                    bankrollEl.textContent = latestValue.toLocaleString('sv-SE', { 
+                        minimumFractionDigits: 2, 
+                        maximumFractionDigits: 2 
+                    }) + ' kr';
+                }
+           }
+        }
+
         if (existingChartInstance) existingChartInstance.destroy();
         
         const config = buildChartConfig(labels, dataPoints, label, lineColor, fillColor, isDark);
