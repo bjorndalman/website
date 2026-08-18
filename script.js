@@ -768,7 +768,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadPipelineStatus();
 
   // Hämta aktiestats
-  fetchStockStats();
+ // fetchStockStats();
 
   // Hämta AI Stock Dashboard (Tabell & Metriker)
   loadStockAIDashboard();
