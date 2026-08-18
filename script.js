@@ -697,25 +697,19 @@ async function loadPipelineStatus() {
 // =========================
 // KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
 // =========================
+// ... (övriga funktioner såsom loadStockAIDashboard, fetchStockStats, etc.)
+
 async function loadKalmanRankings() {
-    const topContainer = document.getElementById('top-teams');
-    const bottomContainer = document.getElementById('bottom-teams');
-    const nextMatchdayEl = document.getElementById('mls-next-matchday');
-
-    if (!topContainer && !bottomContainer && !nextMatchdayEl) return;
-
     try {
-        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
-        if (!response.ok) return;
+        const res = await fetch('data/kalman_rankings.json');
+        if (!res.ok) return;
+        const data = await res.json();
         
-        const data = await response.json();
-
-        if (nextMatchdayEl && data.next_matchday) {
-            nextMatchdayEl.textContent = data.next_matchday;
-        }
-
         const top5 = data.top5 || [];
         const bottom5 = data.bottom5 || [];
+
+        const topContainer = document.getElementById('kalman-top5-body');
+        const bottomContainer = document.getElementById('kalman-bottom5-body');
 
         if (topContainer && top5.length > 0) {
             topContainer.innerHTML = top5.map(team => `
@@ -724,8 +718,9 @@ async function loadKalmanRankings() {
                         <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${team.rank}</span>
                         ${team.name}
                     </td>
-                    <td class="py-2.5 text-right font-mono font-bold text-emerald-700 dark:text-emerald-400">
-                        ${team.strength > 0 ? '+' : ''}${team.strength.toFixed(4)}
+                    <!-- HÄR BÖRJAR DIN KODSNUTT -->
+                    <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
+                        ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
                     </td>
                 </tr>
             `).join('');
@@ -735,75 +730,52 @@ async function loadKalmanRankings() {
             bottomContainer.innerHTML = bottom5.map(team => `
                 <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-rose-500 mr-2">#${team.rank}</span>
+                        <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mr-2">#${team.rank}</span>
                         ${team.name}
                     </td>
-                    <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
-                        ${team.strength > 0 ? '+' : ''}${team.strength.toFixed(4)}
+                    <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
+                        ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
                     </td>
                 </tr>
             `).join('');
         }
-
-    } catch (error) {
-        console.warn('Fel vid inläsning av Kalman-rankings:', error);
+    } catch (err) {
+        console.warn("Could not load Kalman rankings:", err);
     }
 }
 
 // =========================
-// INITIALISATION
+// INITIALIZATION
 // =========================
 document.addEventListener("DOMContentLoaded", async () => {
-  loadLanguageData();
-  initTheme();
-  
-  if (document.getElementById('name')) {
+    initTheme();
+    loadLanguageData();
     render();
-  }
+    initScrollAnimations();
 
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-  
-  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+    // Load async dashboard data
+    await loadStockAIDashboard();
+    await fetchStockStats();
+    await loadPipelineStatus();
+    await loadKalmanRankings();
 
-  if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
-  if (mobileMenu) {
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      if (!link.classList.contains('lang-icon')) link.addEventListener('click', closeMobileMenu);
-    });
-  }
+    // Render interactive charts
+    botChartInstance = await loadAndRenderChart(
+        'bot-profit-chart',
+        'data/bot_bankroll.csv',
+        'Bankroll (SEK)',
+        '#2563eb',
+        'rgba(37, 99, 235, 0.2)',
+        botChartInstance
+    );
 
-  initScrollAnimations();
-
-  // Hämta pipeline-status (Last Sync)
-  loadPipelineStatus();
-
-  // Hämta aktiestats
-  fetchStockStats();
-
-  // Hämta AI Stock Dashboard (Tabell & Metriker)
-  loadStockAIDashboard();
-
-  // Hämta Kalman-rankings
-  loadKalmanRankings();
-
-  // Rendera grafer från CSV-filer
-  botChartInstance = await loadAndRenderChart(
-      'bot-profit-chart',
-      'data/portfolio_summary.csv',
-      'Bankroll',
-      '#2563eb',
-      'rgba(37, 99, 235, 0.25)',
-      botChartInstance
-  );
-
-  stockChartInstance = await loadAndRenderChart(
-      'stock-profit-chart',
-      'data/stock_portfolio_summary.csv',
-      'Stock Bankroll',
-      '#10b981',
-      'rgba(16, 185, 129, 0.25)',
-      stockChartInstance
-  );
+    stockChartInstance = await loadAndRenderChart(
+        'stock-profit-chart',
+        'data/stock_bankroll.csv',
+        'Stock Portfolio (SEK)',
+        '#059669',
+        'rgba(5, 150, 105, 0.2)',
+        stockChartInstance
+    );
 });
+</script>
