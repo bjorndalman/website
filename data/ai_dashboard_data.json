@@ -2,9 +2,10 @@
   "updated_at": "2026-08-18",
   "summary": {
     "start_capital": 100000.0,
-    "current_bankroll": 89444.17,
-    "profit_sek": -10555.83,
-    "profit_pct": -10.56
+    "current_bankroll": 98384.38,
+    "cash_available": 98384.38,
+    "profit_sek": -1615.62,
+    "profit_pct": -1.62
   },
   "latest_trades_and_forecasts": [
     {
