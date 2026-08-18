@@ -355,6 +355,22 @@ async function loadStockAIDashboard() {
     tradesBody.innerHTML = '';
     let totalInvested = 0;
 
+    // Översättnings- och statusmappning till engelska
+    const actionMap = {
+      'KÖP': 'BUY',
+      'BUY': 'BUY',
+      'SÄLJ': 'SELL',
+      'SELL': 'SELL',
+      'STÄNG': 'CLOSED',
+      'STÄNGD': 'CLOSED',
+      'CLOSE': 'CLOSED',
+      'CLOSED': 'CLOSED',
+      'HÅLL': 'HOLD',
+      'HOLD': 'HOLD',
+      'NEUTRAL': 'HOLD',
+      'PAUS': 'PAUSED'
+    };
+
     // Render trades
     trades.slice().reverse().forEach(row => {
       const date = row['Date'] || row['date'] || row['Datum'] || '-';
@@ -368,7 +384,10 @@ async function loadStockAIDashboard() {
         || row['Name'] 
         || '-';
 
-      const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
+      // Normalisera status till ENGELSKA
+      const rawAction = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
+      const actionUpper = String(rawAction).trim().toUpperCase();
+      const displayAction = actionMap[actionUpper] || actionUpper;
       
       const rawAmount = row['ai_investment'] 
         ?? row['position_size'] 
@@ -378,16 +397,18 @@ async function loadStockAIDashboard() {
         ?? 0;
       
       const amount = parseFloat(rawAmount) || 0;
-      if (action === 'KÖP' || action === 'BUY') totalInvested += amount;
+      if (displayAction === 'BUY') totalInvested += amount;
 
       const formattedAmount = amount > 0 
         ? `${amount.toLocaleString('sv-SE')} SEK` 
         : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
 
+      // Färgsättning baserad på engelska statusar
       let badgeStyle = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800";
-      if (action === 'SÄLJ' || action === 'SELL' || action === 'STÄNG') {
+      
+      if (displayAction === 'SELL' || displayAction === 'CLOSED') {
         badgeStyle = "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400 border-rose-300 dark:border-rose-800";
-      } else if (action === 'HÅLL' || action === 'HOLD') {
+      } else if (displayAction === 'HOLD' || displayAction === 'PAUSED') {
         badgeStyle = "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700";
       }
 
@@ -416,7 +437,7 @@ async function loadStockAIDashboard() {
         <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white">${stock}</td>
         <td class="py-3.5 px-4">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border ${badgeStyle}">
-            ${action}
+            ${displayAction}
           </span>
         </td>
         <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${formattedPrice}</td>
