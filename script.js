@@ -385,7 +385,8 @@ async function loadStockAIDashboard() {
         || '-';
 
       // Normalisera status till ENGELSKA
-      const rawAction = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
+      // Hämtar status oavsett om fältet heter Åtgärd, åtgärd, Action, action, Status eller status
+      const rawAction = row['Åtgärd'] || row['åtgärd'] || row['Action'] || row['action'] || row['Status'] || row['status'] || 'BUY';
       const actionUpper = String(rawAction).trim().toUpperCase();
       const displayAction = actionMap[actionUpper] || actionUpper;
       
