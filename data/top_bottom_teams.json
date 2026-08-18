@@ -5,54 +5,54 @@
     {
       "rank": 1,
       "name": "inter miami",
-      "strength": 0.4559
+      "strength": 0.5453
     },
     {
       "rank": 2,
       "name": "lafc",
-      "strength": 0.4073
+      "strength": 0.4495
     },
     {
       "rank": 3,
       "name": "vancouver whitecaps",
-      "strength": 0.2631
+      "strength": 0.4163
     },
     {
       "rank": 4,
       "name": "nashville",
-      "strength": 0.2138
+      "strength": 0.347
     },
     {
       "rank": 5,
       "name": "san diego fc",
-      "strength": 0.0581
+      "strength": 0.1353
     }
   ],
   "bottom5": [
     {
       "rank": 31,
       "name": "kansas city",
-      "strength": -1.123
+      "strength": -0.6369
     },
     {
       "rank": 30,
       "name": "chivas usa",
-      "strength": -0.9752
+      "strength": -0.6154
     },
     {
       "rank": 29,
       "name": "austin fc",
-      "strength": -0.8523
+      "strength": -0.4674
     },
     {
       "rank": 28,
-      "name": "cf montreal",
-      "strength": -0.7379
+      "name": "red bulls",
+      "strength": -0.3576
     },
     {
       "rank": 27,
-      "name": "dc united",
-      "strength": -0.7325
+      "name": "atlanta utd",
+      "strength": -0.3526
     }
   ]
 }
