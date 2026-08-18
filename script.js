@@ -719,7 +719,7 @@ async function loadKalmanRankings() {
                         ${team.name}
                     </td>
                     <!-- HÄR BÖRJAR DIN KODSNUTT -->
-                    <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
+                   <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
                         ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
                     </td>
                 </tr>
@@ -740,42 +740,51 @@ async function loadKalmanRankings() {
             `).join('');
         }
     } catch (err) {
-        console.warn("Could not load Kalman rankings:", err);
+        console.warn("Kunde inte ladda Kalman rankings:", err);
     }
 }
 
 // =========================
-// INITIALIZATION
+// INITIALIZATION & EVENT LISTENERS
 // =========================
 document.addEventListener("DOMContentLoaded", async () => {
-    initTheme();
     loadLanguageData();
+    initTheme();
     render();
     initScrollAnimations();
 
-    // Load async dashboard data
-    await loadStockAIDashboard();
-    await fetchStockStats();
+    // Attach event listeners
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMobileMenu);
+    }
+
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", toggleTheme);
+    }
+
+    // Load asynchronous dashboard data
     await loadPipelineStatus();
+    await fetchStockStats();
+    await loadStockAIDashboard();
     await loadKalmanRankings();
 
-    // Render interactive charts
+    // Initialize Chart.js graphs
     botChartInstance = await loadAndRenderChart(
         'bot-profit-chart',
-        'data/bot_bankroll.csv',
-        'Bankroll (SEK)',
+        'data/bot_history.csv',
+        'Bot Profit',
         '#2563eb',
-        'rgba(37, 99, 235, 0.2)',
+        'rgba(37, 99, 235, 0.15)',
         botChartInstance
     );
 
     stockChartInstance = await loadAndRenderChart(
         'stock-profit-chart',
-        'data/stock_bankroll.csv',
-        'Stock Portfolio (SEK)',
+        'data/stock_history.csv',
+        'Stock Profit',
         '#059669',
-        'rgba(5, 150, 105, 0.2)',
+        'rgba(5, 150, 105, 0.15)',
         stockChartInstance
     );
 });
-</script>
