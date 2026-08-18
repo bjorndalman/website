@@ -318,21 +318,18 @@ async function loadStockAIDashboard() {
     
     const data = await res.json();
     
-    // 1. Update sync date
     if (data.updated_at) {
       const syncElem = document.getElementById('stock-last-sync');
       if (syncElem) syncElem.innerText = data.updated_at;
     }
 
-    // 2. Update KPI metrics if available in summary
     if (data.summary) {
       const bankroll = data.summary.current_bankroll || 100000;
-      const profit = data.summary.profit_sek || 0;
       const profitPct = data.summary.profit_pct || 0;
 
       const bankrollElem = document.getElementById('stock-bankroll');
       if (bankrollElem) {
-        bankrollElem.innerText = bankroll.toLocaleString('sv-SE') + ' SEK';
+        bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
       }
       
       const profitElem = document.getElementById('stock-profit');
@@ -342,7 +339,6 @@ async function loadStockAIDashboard() {
       }
     }
 
-    // 3. Populate AI trade & forecast table
     const trades = data.latest_trades_and_forecasts || [];
 
     if (trades.length === 0) {
@@ -355,38 +351,19 @@ async function loadStockAIDashboard() {
     tradesBody.innerHTML = '';
     let totalInvested = 0;
 
-    // Render trades
     trades.slice().reverse().forEach(row => {
       const date = row['Date'] || row['date'] || row['Datum'] || '-';
-      
-      // Stock ticker/name mapping logic with full fallback coverage
-      const stock = row['Stock'] 
-        || row['stock'] 
-        || row['ticker'] 
-        || row['symbol'] 
-        || row['Aktie'] 
-        || row['namn'] 
-        || row['Name'] 
-        || '-';
-
+      const stock = row['Stock'] || row['stock'] || row['ticker'] || row['symbol'] || row['Aktie'] || row['namn'] || '-';
       const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
       
-      // Fetch AI Investment amount
-      const rawAmount = row['ai_investment'] 
-        ?? row['position_size'] 
-        ?? row['Rek. Investering (kr)'] 
-        ?? row['AI Investering (kr)'] 
-        ?? row['Trade Amount'] 
-        ?? 0;
-      
+      const rawAmount = row['ai_investment'] ?? row['position_size'] ?? row['Rek. Investering (kr)'] ?? row['AI Investering (kr)'] ?? 0;
       const amount = parseFloat(rawAmount) || 0;
       if (action === 'KÖP' || action === 'BUY') totalInvested += amount;
 
       const formattedAmount = amount > 0 
         ? `${amount.toLocaleString('sv-SE')} SEK` 
-        : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
+        : (row['ai_investment'] || '-');
 
-      // Badge style depending on action
       let badgeStyle = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800";
       if (action === 'SÄLJ' || action === 'SELL' || action === 'STÄNG') {
         badgeStyle = "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400 border-rose-300 dark:border-rose-800";
@@ -394,26 +371,15 @@ async function loadStockAIDashboard() {
         badgeStyle = "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700";
       }
 
-      // Price parsing
-      const rawPrice = row['price'] ?? row['Price'] ?? row['Aktuell Kurs'] ?? row['close_price'] ?? row['current_price'] ?? '';
+      const rawPrice = row['price'] ?? row['Price'] ?? row['Aktuell Kurs'] ?? row['close_price'] ?? '';
       const parsedPrice = parseFloat(rawPrice);
       const formattedPrice = !isNaN(parsedPrice) ? `${parsedPrice.toFixed(2)} SEK` : (rawPrice || '-');
 
-      // Kalman Value parsing
-      const rawKalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Kalman-värde'] ?? row['fair_value'] ?? '';
+      const rawKalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Kalman-värde'] ?? '';
       const parsedKalman = parseFloat(rawKalman);
       const formattedKalman = !isNaN(parsedKalman) ? `${parsedKalman.toFixed(2)} SEK` : (rawKalman || '-');
 
-      // Argument & Reasoning mapping logic with full fallback coverage
-      const argument = row['argument'] 
-        || row['AI Argument & Forecast'] 
-        || row['Motivering'] 
-        || row['reasoning'] 
-        || row['forecast'] 
-        || row['ai_forecast'] 
-        || row['comment'] 
-        || row['analysis'] 
-        || '-';
+      const argument = row['argument'] || row['AI Argument & Forecast'] || row['Motivering'] || row['reasoning'] || '-';
 
       const tr = document.createElement('tr');
       tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors";
@@ -433,7 +399,6 @@ async function loadStockAIDashboard() {
       tradesBody.appendChild(tr);
     });
 
-    // Update Total Invested metric
     const investedElem = document.getElementById('stock-invested');
     if (investedElem) {
       investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
@@ -459,7 +424,6 @@ async function fetchStockStats() {
         if (!response.ok) return;
         const data = await response.json();
 
-        // Sätt vinstprocent direkt från Python-boten
         if (profitEl && data.profit_pct && !data.profit_pct.includes('nan')) {
             profitEl.textContent = data.profit_pct;
             profitEl.className = data.is_positive 
@@ -467,12 +431,10 @@ async function fetchStockStats() {
                 : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
         }
 
-        // Sätt total bankrulle från Python-boten
         if (bankrollEl && data.total_bankroll && !data.total_bankroll.includes('nan')) {
             bankrollEl.textContent = data.total_bankroll;
         }
 
-        // Sätt totalkapital/investerat från Python-boten
         if (investedEl && data.total_invested) {
             investedEl.textContent = data.total_invested;
         }
@@ -482,24 +444,34 @@ async function fetchStockStats() {
 }
 
 // =========================
-// REUSABLE CHART LOGIC (CSV)
+// ROBST FLEXIBEL CSV-PARSER
 // =========================
 function parseCsvData(csvText, isBotChart = false) {
     const lines = csvText.trim().split('\n');
     const labels = [];
     const dataPoints = [];
-    
     const monthsSv = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
     let lastRawDate = null;
 
+    if (lines.length < 2) return { labels, dataPoints };
+
+    const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+    
+    // Dynamisk sökning efter rätt kolumner
+    let valIdx = headers.findIndex(h => h.includes('bankroll') || h.includes('value') || h.includes('portfolio') || h.includes('värde') || h.includes('close'));
+    if (valIdx === -1) valIdx = headers.length - 1; // Använd sista kolumnen om ingen matchar
+
+    let dateIdx = headers.findIndex(h => h.includes('date') || h.includes('datum') || h.includes('time'));
+    if (dateIdx === -1) dateIdx = 0; // Använd första kolumnen om ingen matchar
+
     for (let i = 1; i < lines.length; i++) {
         const columns = lines[i].split(',');
-        if (columns.length >= 4) {
-            const rawDate = columns[0].trim();
-            const valueStr = columns[3].trim();
+        if (columns.length > valIdx) {
+            const rawDate = columns[dateIdx] ? columns[dateIdx].trim() : '';
+            const valueStr = columns[valIdx] ? columns[valIdx].trim() : '';
             
-            if (valueStr.toLowerCase() === 'nan') continue;
-            const value = parseFloat(valueStr);
+            if (!valueStr || valueStr.toLowerCase() === 'nan') continue;
+            const value = parseFloat(valueStr.replace(',', '.'));
             
             if (!isNaN(value)) {
                 lastRawDate = rawDate; 
@@ -697,19 +669,23 @@ async function loadPipelineStatus() {
 // =========================
 // KALMAN RANKINGS (LAGSTYRKOR VIA JSON)
 // =========================
-// ... (övriga funktioner såsom loadStockAIDashboard, fetchStockStats, etc.)
-
 async function loadKalmanRankings() {
     try {
-        const res = await fetch('data/kalman_rankings.json');
+        const res = await fetch(`${pathPrefix}data/kalman_rankings.json?t=${Date.now()}`);
         if (!res.ok) return;
         const data = await res.json();
         
         const top5 = data.top5 || [];
         const bottom5 = data.bottom5 || [];
 
-        const topContainer = document.getElementById('kalman-top5-body');
-        const bottomContainer = document.getElementById('kalman-bottom5-body');
+        // Hitta elementet oavsett vilket ID som används i HTML-strukturen
+        const topContainer = document.getElementById('kalman-top5-body') 
+            || document.getElementById('top-rankings-container') 
+            || document.getElementById('kalman-top5');
+            
+        const bottomContainer = document.getElementById('kalman-bottom5-body') 
+            || document.getElementById('bottom-rankings-container') 
+            || document.getElementById('kalman-bottom5');
 
         if (topContainer && top5.length > 0) {
             topContainer.innerHTML = top5.map(team => `
@@ -718,67 +694,64 @@ async function loadKalmanRankings() {
                         <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mr-2">#${team.rank}</span>
                         ${team.name}
                     </td>
-                    <!-- HÄR BÖRJAR DIN KODSNUTT -->
-                   <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
+                    <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
                         ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
                     </td>
                 </tr>
-                    `).join('');
-                }
-
-                if (bottomContainer && bottom5.length > 0) {
-                    bottomContainer.innerHTML = bottom5.map(team => `
-                        <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
-                            <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mr-2">#${team.rank}</span>
-                                ${team.name}
-                            </td>
-                            <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
-                                ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
-                            </td>
-                        </tr>
-                    `).join('');
-                }
-            } catch (err) {
-                console.warn("Could not load Kalman rankings:", err);
-            }
+            `).join('');
         }
 
-        // =========================
-        // INITIALIZATION & EVENT LISTENERS
-        // =========================
-        document.addEventListener("DOMContentLoaded", async () => {
-            loadLanguageData();
-            initTheme();
-            render();
-            initScrollAnimations();
+        if (bottomContainer && bottom5.length > 0) {
+            bottomContainer.innerHTML = bottom5.map(team => `
+                <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
+                    <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
+                        <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mr-2">#${team.rank}</span>
+                        ${team.name}
+                    </td>
+                    <td class="text-right py-2.5 font-semibold text-slate-900 dark:text-white">
+                        ${team.rating ? team.rating.toFixed(2) : (team.score || '-')}
+                    </td>
+                </tr>
+            `).join('');
+        }
+    } catch (err) {
+        console.warn("Could not load Kalman rankings:", err);
+    }
+}
 
-            if (menuButton) {
-                menuButton.addEventListener('click', toggleMobileMenu);
-            }
+// =========================
+// INITIALIZATION & EVENT LISTENERS
+// =========================
+document.addEventListener("DOMContentLoaded", async () => {
+    loadLanguageData();
+    initTheme();
+    render();
+    initScrollAnimations();
 
-            // Fetch and render dashboard metrics & rankings
-            loadPipelineStatus();
-            loadStockAIDashboard();
-            fetchStockStats();
-            loadKalmanRankings();
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMobileMenu);
+    }
 
-            // Render Chart.js instances
-            botChartInstance = await loadAndRenderChart(
-                'bot-profit-chart',
-                'data/bot_bankroll.csv',
-                'Bankroll',
-                '#2563eb',
-                'rgba(37, 99, 235, 0.2)',
-                botChartInstance
-            );
+    loadPipelineStatus();
+    loadStockAIDashboard();
+    fetchStockStats();
+    loadKalmanRankings();
 
-            stockChartInstance = await loadAndRenderChart(
-                'stock-profit-chart',
-                'data/stock_bankroll.csv',
-                'Stock Portfolio',
-                '#10b981',
-                'rgba(16, 185, 129, 0.2)',
-                stockChartInstance
-            );
-        });
+    botChartInstance = await loadAndRenderChart(
+        'bot-profit-chart',
+        'data/bot_bankroll.csv',
+        'Bankroll',
+        '#2563eb',
+        'rgba(37, 99, 235, 0.2)',
+        botChartInstance
+    );
+
+    stockChartInstance = await loadAndRenderChart(
+        'stock-profit-chart',
+        'data/stock_bankroll.csv',
+        'Stock Portfolio',
+        '#10b981',
+        'rgba(16, 185, 129, 0.2)',
+        stockChartInstance
+    );
+});
