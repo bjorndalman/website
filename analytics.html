@@ -448,7 +448,7 @@
                 const trades = data.latest_trades_and_forecasts || [];
 
                 if (trades.length === 0) {
-                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">No active trades registered yet.</td></tr>`;
+                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">No active trades registered yet.</td></tr>`;
                     const investedElem = document.getElementById('stock-invested');
                     if (investedElem) investedElem.innerText = '0 SEK';
                     return;
@@ -482,41 +482,78 @@
                         ? `${amount.toLocaleString('sv-SE')} SEK` 
                         : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
 
-                    // Badge style depending on action
-                    let badgeStyle = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800";
+                    // Badge style matching style.css classes
+                    let badgeClass = "badge badge-buy";
                     if (action === 'SÄLJ' || action === 'SELL') {
-                        badgeStyle = "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400 border-rose-300 dark:border-rose-800";
-                    } else if (action === 'HÅLL' || action === 'HOLD') {
-                        badgeStyle = "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700";
+                        badgeClass = "badge badge-sell";
+                    } else if (action === 'STÅ ÖVER' || action === 'HOLD') {
+                        badgeClass = "badge badge-hold";
                     }
 
                     const tr = document.createElement('tr');
-                    tr.className = "hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors";
+                    tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition";
                     tr.innerHTML = `
-                        <td class="py-3.5 px-4 text-xs font-medium text-slate-500 whitespace-nowrap">${date}</td>
-                        <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">${stock}</td>
-                        <td class="py-3.5 px-4 whitespace-nowrap">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${badgeStyle}">
-                                ${action}
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-4 font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap">${price}</td>
-                        <td class="py-3.5 px-4 font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap">${kalman}</td>
-                        <td class="py-3.5 px-4 font-semibold text-slate-800 dark:text-slate-200 whitespace-nowrap">${formattedAmount}</td>
+                        <td class="py-3.5 px-4 text-xs whitespace-nowrap text-slate-500 dark:text-slate-400">${date}</td>
+                        <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">${stock}</td>
+                        <td class="py-3.5 px-4 whitespace-nowrap"><span class="${badgeClass}">${action}</span></td>
+                        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof price === 'number' ? price.toFixed(2) + ' SEK' : price}</td>
+                        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof kalman === 'number' ? kalman.toFixed(2) + ' SEK' : kalman}</td>
+                        <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
                         <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${argument}</td>
                     `;
                     tradesBody.appendChild(tr);
                 });
 
-                // Update total invested element
                 const investedElem = document.getElementById('stock-invested');
                 if (investedElem) {
                     investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
                 }
 
+                // 4. Render Chart if historical data is present
+                if (data.history && Array.isArray(data.history) && data.history.length > 0) {
+                    renderStockChart(data.history);
+                }
+
             } catch (err) {
-                console.error("Error loading Stock AI Dashboard:", err);
+                console.error("Error loading AI Stock Dashboard:", err);
             }
+        }
+
+        function renderStockChart(historyData) {
+            const ctx = document.getElementById('stock-profit-chart');
+            if (!ctx) return;
+
+            const labels = historyData.map(item => item.date || item.Date || '');
+            const profitValues = historyData.map(item => item.profit || item.Profit || 0);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Net Profit (SEK)',
+                        data: profitValues,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 3,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { grid: { color: 'rgba(148, 163, 184, 0.1)' } }
+                    }
+                }
+            });
         }
 
         document.addEventListener('DOMContentLoaded', loadStockAIDashboard);
