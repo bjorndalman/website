@@ -385,7 +385,6 @@ async function loadStockAIDashboard() {
         || '-';
 
       // Normalisera status till ENGELSKA
-      // Hämtar status oavsett om fältet heter Åtgärd, åtgärd, Action, action, Status eller status
       const rawAction = row['Åtgärd'] || row['åtgärd'] || row['Action'] || row['action'] || row['Status'] || row['status'] || 'BUY';
       const actionUpper = String(rawAction).trim().toUpperCase();
       const displayAction = actionMap[actionUpper] || actionUpper;
@@ -736,72 +735,53 @@ async function loadKalmanRankings() {
             bottomContainer.innerHTML = bottom5.map(team => `
                 <tr class="hover:bg-rose-100/50 dark:hover:bg-rose-900/30 transition">
                     <td class="py-2.5 font-medium text-slate-800 dark:text-slate-200">
-                        <span class="text-xs font-bold text-rose-500 mr-2">#${team.rank}</span>
+                        <span class="text-xs font-bold text-rose-600 dark:text-rose-400 mr-2">#${team.rank}</span>
                         ${team.name}
                     </td>
-                    <td class="py-2.5 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
+                    <td class="py-2.5 text-right font-mono font-bold text-rose-700 dark:text-rose-400">
                         ${team.strength > 0 ? '+' : ''}${team.strength.toFixed(4)}
                     </td>
                 </tr>
             `).join('');
         }
-
-    } catch (error) {
-        console.warn('Fel vid inläsning av Kalman-rankings:', error);
+    } catch (err) {
+        console.warn("Kunde inte hämta Kalman-rankings:", err);
     }
 }
 
 // =========================
-// INITIALISATION
+// INITIALIZATION
 // =========================
 document.addEventListener("DOMContentLoaded", async () => {
-  loadLanguageData();
-  initTheme();
-  
-  if (document.getElementById('name')) {
+    initTheme();
+    loadLanguageData();
     render();
-  }
+    initScrollAnimations();
 
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-  
-  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMobileMenu);
+    }
 
-  if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
-  if (mobileMenu) {
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      if (!link.classList.contains('lang-icon')) link.addEventListener('click', closeMobileMenu);
-    });
-  }
+    await loadPipelineStatus();
+    await fetchStockStats();
+    await loadStockAIDashboard();
+    await loadKalmanRankings();
 
-  initScrollAnimations();
+    botChartInstance = await loadAndRenderChart(
+        'bot-profit-chart',
+        'data/bot_bankroll.csv',
+        'Bankroll',
+        '#3b82f6',
+        'rgba(59, 130, 246, 0.2)',
+        botChartInstance
+    );
 
-  // Hämta pipeline-status (Last Sync)
-  loadPipelineStatus();
-
-  // Hämta AI Stock Dashboard (Tabell & Metriker)
-  loadStockAIDashboard();
-
-  // Hämta Kalman-rankings
-  loadKalmanRankings();
-
-  // Rendera grafer från CSV-filer
-  botChartInstance = await loadAndRenderChart(
-      'bot-profit-chart',
-      'data/portfolio_summary.csv',
-      'Bankroll',
-      '#2563eb',
-      'rgba(37, 99, 235, 0.25)',
-      botChartInstance
-  );
-
-  stockChartInstance = await loadAndRenderChart(
-      'stock-profit-chart',
-      'data/stock_portfolio_summary.csv',
-      'Stock Bankroll',
-      '#10b981',
-      'rgba(16, 185, 129, 0.25)',
-      stockChartInstance
-  );
+    stockChartInstance = await loadAndRenderChart(
+        'stock-profit-chart',
+        'data/stock_bankroll.csv',
+        'Portfolio',
+        '#10b981',
+        'rgba(16, 185, 129, 0.2)',
+        stockChartInstance
+    );
 });
