@@ -25,7 +25,6 @@ main section[id] {
     scroll-margin-top: 6rem;
 }
 
-
 /* Ensure images scale correctly */
 img {
     max-width: 100%;
@@ -42,14 +41,10 @@ img {
    ========================= */
 
 .hero-bg {
-    /* Lägg till en bakgrundsbild för att ge header-sektionen liv. */
-    /* Ersätt 'hero_bg.jpg' med din egen bildfil */
     background-image: url('hero_bg.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Gör att bilden scrollar långsammare (parallax-effekt) */
-    
-    /* Överlappning (overlay) för att texten ska synas bättre */
+    background-attachment: fixed; /* Parallax-effekt */
     position: relative;
     overflow: hidden;
 }
@@ -62,7 +57,7 @@ img {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.4); /* Mörk överlappning */
-    backdrop-filter: blur(2px); /* Lite suddighet */
+    backdrop-filter: blur(2px);
     z-index: 1;
 }
 
@@ -71,7 +66,6 @@ img {
    (Använder CSS-funktionerna view() och scroll-timeline)
    ========================= */
 
-/* Definiera fade-in animation för sektioner när de kommer in i vyn */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -87,7 +81,7 @@ img {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 0.6s ease-out forwards;
-    animation-timeline: view(); /* Använder Scroll-driven animations */
+    animation-timeline: view();
     animation-range: entry 25% cover 40%;
 }
 
@@ -108,40 +102,89 @@ img {
    TIMELINE STYLING (EXPERIENCE)
    ========================= */
 
-/* Cirkelmarkör för mobil (tar över från desktop i script.js) */
 #experience-list > div {
     position: relative;
 }
 
 /* Under MD breakpoint (767px) */
 @media (max-width: 767px) { 
-    /* Lägg till den vertikala linjen för tidlinjen */
     #experience-list {
-        /* Tar över från Tailwind-klassen border-l-2 */
         border-left: 2px solid #e2e8f0; /* slate-200 */
     }
     
-    /* Markör för varje tidpunkt */
     #experience-list > div::before {
         content: '';
         position: absolute;
-        /* KORRIGERAD PLACERING: Justerad för att centrera cirkeln på linjen (pl-8/32px) */
         left: 21px; 
-        top: 4px; /* Justerad för att centrera den vertikalt med titeln */
+        top: 4px;
         width: 14px;
         height: 14px;
         background-color: #3b82f6; /* blue-600 */
         border-radius: 9999px;
-        border: 4px solid #f9fafb; /* Ljus bakgrund: slate-50 */
+        border: 4px solid #f9fafb; /* slate-50 */
         z-index: 10;
     }
     
-    /* Mörk läge override */
     .dark #experience-list {
          border-left: 2px solid #1e293b; /* slate-800 */
     }
     
     .dark #experience-list > div::before {
-        border-color: #020617; /* Mörk bakgrund: slate-950 */
+        border-color: #020617; /* slate-950 */
     }
+}
+
+/* =========================
+   ANALYTICS & QUANT BADGES
+   ========================= */
+
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Ljust läge (Default) */
+.badge-buy {
+    background-color: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.badge-sell,
+.badge-closed {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.badge-hold {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+/* Mörkt läge (.dark) */
+.dark .badge-buy {
+    background-color: rgba(22, 101, 52, 0.35);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.dark .badge-sell,
+.dark .badge-closed {
+    background-color: rgba(153, 27, 27, 0.35);
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.dark .badge-hold {
+    background-color: rgba(30, 41, 59, 0.6);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.2);
 }
