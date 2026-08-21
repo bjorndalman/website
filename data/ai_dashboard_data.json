@@ -11,38 +11,38 @@
     {
       "date": "2026-08-21",
       "stock": "ABB.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "BUY",
+      "status": "BUY",
       "price": 949.0,
       "kalman_value": 955.44,
-      "ai_investment": 0.0,
+      "ai_investment": 9857.66,
       "argument": "Low daily volatility (0.34%). Standard quantitative Kalman analysis applied."
     },
     {
       "date": "2026-08-21",
       "stock": "ALFA.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 558.2,
       "kalman_value": 551.98,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "ASSA-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 354.2,
       "kalman_value": 350.36,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "AZN.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 1549.0,
       "kalman_value": 1531.0,
       "ai_investment": 0.0,
@@ -51,38 +51,38 @@
     {
       "date": "2026-08-21",
       "stock": "ATCO-A.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 203.8,
       "kalman_value": 203.01,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "BOL.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 563.4,
       "kalman_value": 545.59,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "ELUX-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 28.63,
       "kalman_value": 28.58,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "ERIC-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 97.18,
       "kalman_value": 97.3,
       "ai_investment": 0.0,
@@ -91,8 +91,8 @@
     {
       "date": "2026-08-21",
       "stock": "ESSITY-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 273.7,
       "kalman_value": 271.46,
       "ai_investment": 0.0,
@@ -101,18 +101,18 @@
     {
       "date": "2026-08-21",
       "stock": "EVO.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 813.2,
       "kalman_value": 797.24,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "GETI-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 244.6,
       "kalman_value": 243.21,
       "ai_investment": 0.0,
@@ -121,8 +121,8 @@
     {
       "date": "2026-08-21",
       "stock": "HEXA-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 99.36,
       "kalman_value": 97.66,
       "ai_investment": 0.0,
@@ -131,8 +131,8 @@
     {
       "date": "2026-08-21",
       "stock": "HM-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 182.9,
       "kalman_value": 180.6,
       "ai_investment": 0.0,
@@ -141,8 +141,8 @@
     {
       "date": "2026-08-21",
       "stock": "INVE-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 412.6,
       "kalman_value": 410.55,
       "ai_investment": 0.0,
@@ -151,58 +151,58 @@
     {
       "date": "2026-08-21",
       "stock": "KINV-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "BUY",
+      "status": "BUY",
       "price": 57.86,
       "kalman_value": 58.1,
-      "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "ai_investment": 9857.66,
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "NDA-SE.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 190.65,
       "kalman_value": 190.26,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "SAND.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 377.2,
       "kalman_value": 364.76,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "SCA-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 110.45,
       "kalman_value": 108.45,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "SEB-A.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 220.4,
       "kalman_value": 219.56,
       "ai_investment": 0.0,
-      "argument": "AI-analys slutförd."
+      "argument": "AI analysis completed."
     },
     {
       "date": "2026-08-21",
       "stock": "SKF-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 262.4,
       "kalman_value": 261.07,
       "ai_investment": 0.0,
@@ -211,8 +211,8 @@
     {
       "date": "2026-08-21",
       "stock": "SWED-A.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 374.3,
       "kalman_value": 375.31,
       "ai_investment": 0.0,
@@ -221,8 +221,8 @@
     {
       "date": "2026-08-21",
       "stock": "TELIA.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 43.81,
       "kalman_value": 43.71,
       "ai_investment": 0.0,
@@ -231,8 +231,8 @@
     {
       "date": "2026-08-21",
       "stock": "VOLV-B.ST",
-      "action": "STÄNGD",
-      "status": "STÄNGD",
+      "action": "CLOSED",
+      "status": "CLOSED",
       "price": 341.5,
       "kalman_value": 337.4,
       "ai_investment": 0.0,
