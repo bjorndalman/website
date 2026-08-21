@@ -24,9 +24,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 561.2,
-      "kalman_value": 553.2,
+      "kalman_value": 552.83,
       "ai_investment": 0.0,
-      "argument": "Moderate positive momentum with clear directional signal. (Q: 1.10x, R: 0.90x)"
+      "argument": "Solid gain indicating moderate bullish momentum under normal conditions. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-08-21",
@@ -44,9 +44,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 1577.5,
-      "kalman_value": 1557.44,
+      "kalman_value": 1556.34,
       "ai_investment": 0.0,
-      "argument": "Stable gain indicating low volatility and good signal quality. (Q: 0.80x, R: 0.80x)"
+      "argument": "Low volatility and stable moderate gain indicate low noise. (Q: 0.80x, R: 0.90x)"
     },
     {
       "date": "2026-08-21",
@@ -54,9 +54,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 204.7,
-      "kalman_value": 202.73,
+      "kalman_value": 202.64,
       "ai_investment": 0.0,
-      "argument": "Steady gain reflecting normal market conditions and clear trend. (Q: 1.00x, R: 0.90x)"
+      "argument": "Steady modest gain reflecting standard market behavior. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-08-21",
@@ -66,7 +66,7 @@
       "price": 565.6,
       "kalman_value": 552.28,
       "ai_investment": 0.0,
-      "argument": "Sharp upward movement shows higher process noise with strong momentum. (Q: 1.80x, R: 0.80x)"
+      "argument": "Strong price surge confirms high momentum with increased volatility. (Q: 1.80x, R: 0.80x)"
     },
     {
       "date": "2026-08-21",
@@ -74,9 +74,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 30.08,
-      "kalman_value": 29.25,
+      "kalman_value": 29.24,
       "ai_investment": 0.0,
-      "argument": "Strong price surge indicates elevated volatility alongside a clear upward signal. (Q: 1.90x, R: 0.80x)"
+      "argument": "Significant price increase signals strong trend with elevated short-term volatility. (Q: 1.70x, R: 0.80x)"
     },
     {
       "date": "2026-08-21",
@@ -104,9 +104,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 820.0,
-      "kalman_value": 809.85,
+      "kalman_value": 809.38,
       "ai_investment": 0.0,
-      "argument": "Solid daily gain under normal volatility and reliable signal quality. (Q: 1.00x, R: 0.90x)"
+      "argument": "Moderate upward movement aligns with normal trading activity. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-08-21",
@@ -124,9 +124,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 100.15,
-      "kalman_value": 98.88,
+      "kalman_value": 98.82,
       "ai_investment": 0.0,
-      "argument": "Moderate positive gain in normal market conditions. (Q: 1.00x, R: 0.90x)"
+      "argument": "Moderate positive gain showing consistent standard trend. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-08-21",
@@ -151,11 +151,11 @@
     {
       "date": "2026-08-21",
       "stock": "KINV-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
+      "action": "BUY",
+      "status": "BUY",
       "price": 57.62,
       "kalman_value": 58.02,
-      "ai_investment": 0.0,
+      "ai_investment": 9857.66,
       "argument": "Low daily volatility (0.07%). Standard quantitative Kalman analysis applied."
     },
     {
@@ -164,9 +164,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 191.15,
-      "kalman_value": 190.15,
+      "kalman_value": 190.09,
       "ai_investment": 0.0,
-      "argument": "Low volatility and steady price movement with clean signal. (Q: 0.80x, R: 0.80x)"
+      "argument": "Mild positive movement indicates stable trading and low noise. (Q: 0.80x, R: 0.90x)"
     },
     {
       "date": "2026-08-21",
@@ -174,9 +174,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 380.8,
-      "kalman_value": 371.35,
+      "kalman_value": 371.01,
       "ai_investment": 0.0,
-      "argument": "Strong upward move indicates higher volatility with reliable positive momentum. (Q: 1.40x, R: 0.80x)"
+      "argument": "Notable price jump demonstrates clear bullish momentum. (Q: 1.30x, R: 0.85x)"
     },
     {
       "date": "2026-08-21",
@@ -184,9 +184,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 111.1,
-      "kalman_value": 109.48,
+      "kalman_value": 109.41,
       "ai_investment": 0.0,
-      "argument": "Stable gain under low volatility conditions. (Q: 0.90x, R: 0.90x)"
+      "argument": "Moderate daily gain reflects steady trading with low noise. (Q: 0.90x, R: 1.00x)"
     },
     {
       "date": "2026-08-21",
@@ -204,9 +204,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 262.5,
-      "kalman_value": 261.37,
+      "kalman_value": 261.3,
       "ai_investment": 0.0,
-      "argument": "Minimal price movement indicating low process noise and stable conditions. (Q: 0.80x, R: 0.80x)"
+      "argument": "Slight price gain shows steady and stable stock movement. (Q: 0.70x, R: 0.90x)"
     },
     {
       "date": "2026-08-21",
