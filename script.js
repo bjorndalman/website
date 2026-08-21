@@ -750,38 +750,56 @@ async function loadKalmanRankings() {
 }
 
 // =========================
-// INITIALIZATION
+// INITIALISATION
 // =========================
 document.addEventListener("DOMContentLoaded", async () => {
-    initTheme();
-    loadLanguageData();
+  loadLanguageData();
+  initTheme();
+  
+  if (document.getElementById('name')) {
     render();
-    initScrollAnimations();
+  }
 
-    if (menuButton) {
-        menuButton.addEventListener('click', toggleMobileMenu);
-    }
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+  
+  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
 
-    await loadPipelineStatus();
-    await fetchStockStats();
-    await loadStockAIDashboard();
-    await loadKalmanRankings();
+  if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      if (!link.classList.contains('lang-icon')) link.addEventListener('click', closeMobileMenu);
+    });
+  }
 
-    botChartInstance = await loadAndRenderChart(
-        'bot-profit-chart',
-        'data/bot_bankroll.csv',
-        'Bankroll',
-        '#3b82f6',
-        'rgba(59, 130, 246, 0.2)',
-        botChartInstance
-    );
+  initScrollAnimations();
 
-    stockChartInstance = await loadAndRenderChart(
-        'stock-profit-chart',
-        'data/stock_bankroll.csv',
-        'Portfolio',
-        '#10b981',
-        'rgba(16, 185, 129, 0.2)',
-        stockChartInstance
-    );
+  // Hämta pipeline-status (Last Sync)
+  loadPipelineStatus();
+
+  // Hämta AI Stock Dashboard (Tabell & Metriker)
+  loadStockAIDashboard();
+
+  // Hämta Kalman-rankings
+  loadKalmanRankings();
+
+  // Rendera grafer från CSV-filer
+  botChartInstance = await loadAndRenderChart(
+      'bot-profit-chart',
+      'data/portfolio_summary.csv',
+      'Bankroll',
+      '#2563eb',
+      'rgba(37, 99, 235, 0.25)',
+      botChartInstance
+  );
+
+  stockChartInstance = await loadAndRenderChart(
+      'stock-profit-chart',
+      'data/stock_portfolio_summary.csv',
+      'Stock Bankroll',
+      '#10b981',
+      'rgba(16, 185, 129, 0.25)',
+      stockChartInstance
+  );
 });
