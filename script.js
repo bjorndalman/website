@@ -306,6 +306,30 @@ function initScrollAnimations() {
 }
 
 // =========================
+// PORTFOLIO DATA FETCHING
+// =========================
+async function loadPortfolioData() {
+  try {
+    const response = await fetch(`${pathPrefix}data/portfolio_summary.json?t=${Date.now()}`);
+    if (!response.ok) return;
+    const data = await response.json();
+
+    // Exempel på uppdatering av DOM-element om de finns i din HTML:
+    const totalValEl = document.getElementById('portfolio-total-value');
+    if (totalValEl && data.total_value) {
+      totalValEl.textContent = `${data.total_value.toLocaleString('sv-SE')} SEK`;
+    }
+
+    const returnEl = document.getElementById('portfolio-total-return');
+    if (returnEl && data.total_return) {
+      returnEl.textContent = data.total_return;
+    }
+  } catch (err) {
+    console.warn("Kunde inte hämta portföljdata:", err);
+  }
+}
+
+// =========================
 // AI STOCK DASHBOARD FETCH & TABLE POPULATION
 // =========================
 async function loadStockAIDashboard() {
@@ -777,6 +801,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Hämta pipeline-status (Last Sync)
   loadPipelineStatus();
+
+  // Hämta portföljdata
+  await loadPortfolioData();
 
   // Hämta AI Stock Dashboard (Tabell & Metriker)
   loadStockAIDashboard();
