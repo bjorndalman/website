@@ -696,6 +696,18 @@ async function loadAndRenderChart(canvasId, csvUrl, label, lineColor, fillColor,
                     }) + ' kr';
                 }
            }
+          // --- LÄGG TILL DESSA 8 RADER ---
+                const initialValue = 100000;
+                const netProfit = latestValue - initialValue;
+                const profitEl = document.getElementById('stock-profit');
+                if (profitEl) {
+                    profitEl.textContent = (netProfit >= 0 ? '+' : '') + netProfit.toLocaleString('sv-SE', { 
+                        minimumFractionDigits: 2, 
+                        maximumFractionDigits: 2 
+                    }) + ' SEK';
+                    profitEl.className = "text-2xl md:text-3xl font-extrabold " + (netProfit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                }
+                // ---------------------------------
         }
 
         if (existingChartInstance) existingChartInstance.destroy();
