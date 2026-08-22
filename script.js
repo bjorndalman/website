@@ -359,10 +359,10 @@ async function loadStockAIDashboard() {
         bankrollElem.innerText = bankroll.toLocaleString('sv-SE') + ' SEK';
       }
       
-      const profitElem = document.getElementById('stock-profit');
-      if (profitElem) {
-        profitElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
-        profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+      const returnElem = document.getElementById('stock-return-pct');
+      if (returnElem) {
+        returnElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
+        returnElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
       }
     }
 
@@ -486,35 +486,30 @@ async function loadStockAIDashboard() {
 // DATA FETCHING & STATS (AKTIER)
 // =========================
 async function fetchStockStats() {
+    const returnEl = document.getElementById('stock-return-pct');
     const profitEl = document.getElementById('stock-profit');
     const bankrollEl = document.getElementById('stock-bankroll');
     const investedEl = document.getElementById('stock-invested');
 
-    if (!profitEl && !bankrollEl && !investedEl) return;
+    if (!returnEl && !profitEl && !bankrollEl && !investedEl) return;
 
     try {
         const response = await fetch(`${pathPrefix}data/stock_stats.json?t=${Date.now()}`);
         if (!response.ok) return;
         const data = await response.json();
 
-        if (profitEl && data.profit_pct && !data.profit_pct.includes('nan')) {
-            profitEl.textContent = data.profit_pct;
-            profitEl.className = data.is_positive 
+        // Skicka % till RETURN (%)
+        if (returnEl && data.profit_pct && !data.profit_pct.includes('nan')) {
+            returnEl.textContent = data.profit_pct;
+            returnEl.className = data.is_positive 
                 ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
                 : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
         }
 
-        if (bankrollEl && data.total_bankroll && !data.total_bankroll.includes('nan')) {
-            bankrollEl.textContent = data.total_bankroll;
+        // Om din JSON har nettovinst i kr (t.ex. data.net_profit_sek)
+        if (profitEl && data.net_profit_sek) {
+            profitEl.textContent = data.net_profit_sek;
         }
-
-        if (investedEl && data.total_invested) {
-            investedEl.textContent = data.total_invested;
-        }
-    } catch (err) {
-        console.warn("Aktie-stats ej tillgängliga.", err);
-    }
-}
 
 // =========================
 // REUSABLE CHART LOGIC (CSV)
