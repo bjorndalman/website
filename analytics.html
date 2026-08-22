@@ -398,165 +398,181 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     
-    <!-- AI STOCK DASHBOARD FETCH SCRIPT -->
-    <script>
-        if (window.lucide) {
-            lucide.createIcons();
-        }
+    <!-- Byt ut ditt befintliga script-block längst ner i analytics.html mot detta: -->
+<script>
+    // 1. Variabel för att förhindra Chart.js "Canvas is already in use"-fel
+    let stockChartInstance = null;
 
-        async function loadStockAIDashboard() {
-            try {
-                const res = await fetch('data/ai_dashboard_data.json?t=' + Date.now());
-                if (!res.ok) throw new Error("Could not fetch ai_dashboard_data.json");
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
+    async function loadStockAIDashboard() {
+        try {
+            const res = await fetch('data/ai_dashboard_data.json?t=' + Date.now());
+            if (!res.ok) throw new Error("Could not fetch ai_dashboard_data.json");
+            
+            const data = await res.json();
+            
+            // Uppdatera synkdatum
+            if (data.updated_at) {
+                const syncElem = document.getElementById('stock-last-sync');
+                if (syncElem) syncElem.innerText = data.updated_at;
+            }
+
+            // Uppdatera KPI-mätare
+            if (data.summary) {
+                const bankroll = data.summary.current_bankroll || 100000;
+                const profit = data.summary.profit_sek || 0;
+                const profitPct = data.summary.profit_pct || 0;
+
+                const bankrollElem = document.getElementById('stock-bankroll');
+                if (bankrollElem) {
+                    bankrollElem.innerText = bankroll.toLocaleString('sv-SE') + ' SEK';
+                }
                 
-                const data = await res.json();
-                
-                // 1. Update sync date
-                if (data.updated_at) {
-                    const syncElem = document.getElementById('stock-last-sync');
-                    if (syncElem) syncElem.innerText = data.updated_at;
+                const profitElem = document.getElementById('stock-profit');
+                if (profitElem) {
+                    profitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE') + ' SEK';
+                    profitElem.className = "text-2xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
                 }
 
-                // 2. Update KPI metrics
-                if (data.summary) {
-                    const bankroll = data.summary.current_bankroll || 100000;
-                    const profit = data.summary.profit_sek || 0;
-                    const profitPct = data.summary.profit_pct || 0;
-
-                    const bankrollElem = document.getElementById('stock-bankroll');
-                    if (bankrollElem) {
-                        bankrollElem.innerText = bankroll.toLocaleString('sv-SE') + ' SEK';
-                    }
-                    
-                    const profitElem = document.getElementById('stock-profit');
-                    if (profitElem) {
-                        profitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE') + ' SEK';
-                        profitElem.className = "text-2xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
-                    }
-
-                    const pctElem = document.getElementById('stock-return-pct');
-                    if (pctElem) {
-                        pctElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
-                        pctElem.className = "text-2xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
-                    }
+                const pctElem = document.getElementById('stock-return-pct');
+                if (pctElem) {
+                    pctElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
+                    pctElem.className = "text-2xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
                 }
+            }
 
-                // 3. Populate AI trade & forecast table
-                const tradesBody = document.getElementById('stock-trades-body');
-                if (!tradesBody) return;
+            // Bygg tabellen med affärer och AI-argument
+            const tradesBody = document.getElementById('stock-trades-body');
+            if (!tradesBody) return;
 
-                const trades = data.latest_trades_and_forecasts || [];
+            const trades = data.latest_trades_and_forecasts || [];
 
-                if (trades.length === 0) {
-                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">No active trades registered yet.</td></tr>`;
-                    const investedElem = document.getElementById('stock-invested');
-                    if (investedElem) investedElem.innerText = '0 SEK';
-                    return;
-                }
-
-                tradesBody.innerHTML = '';
-                let totalInvested = 0;
-
-                // Show newest trades at the top
-                trades.slice().reverse().forEach(row => {
-                    const date = row['Date'] || row['date'] || row['Datum'] || '-';
-                    const stock = row['Stock'] || row['stock'] || row['Aktie'] || '-';
-                    const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
-                    
-                    const price = row['Price'] || row['price'] || row['Pris'] || '-';
-                    const kalman = row['Kalman Value'] || row['kalman_value'] || row['Fair Value'] || '-';
-                    const argument = row['AI Argument & Forecast'] || row['argument'] || row['Reasoning'] || '-';
-
-                    // Fetch AI Investment amount
-                    const rawAmount = row['ai_investment'] 
-                        ?? row['position_size'] 
-                        ?? row['Rek. Investering (kr)'] 
-                        ?? row['AI Investering (kr)'] 
-                        ?? row['Trade Amount'] 
-                        ?? 0;
-                    
-                    const amount = parseFloat(rawAmount) || 0;
-                    if (action === 'KÖP' || action === 'BUY') totalInvested += amount;
-
-                    const formattedAmount = amount > 0 
-                        ? `${amount.toLocaleString('sv-SE')} SEK` 
-                        : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
-
-                    // Badge style matching style.css classes
-                    let badgeClass = "badge badge-buy";
-                    if (action === 'SÄLJ' || action === 'SELL') {
-                        badgeClass = "badge badge-sell";
-                    } else if (action === 'STÅ ÖVER' || action === 'HOLD') {
-                        badgeClass = "badge badge-hold";
-                    }
-
-                    const tr = document.createElement('tr');
-                    tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition";
-                    tr.innerHTML = `
-                        <td class="py-3.5 px-4 text-xs whitespace-nowrap text-slate-500 dark:text-slate-400">${date}</td>
-                        <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">${stock}</td>
-                        <td class="py-3.5 px-4 whitespace-nowrap"><span class="${badgeClass}">${action}</span></td>
-                        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof price === 'number' ? price.toFixed(2) + ' SEK' : price}</td>
-                        <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof kalman === 'number' ? kalman.toFixed(2) + ' SEK' : kalman}</td>
-                        <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
-                        <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${argument}</td>
-                    `;
-                    tradesBody.appendChild(tr);
-                });
-
+            if (trades.length === 0) {
+                tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Inga aktiva affärer registrerade ännu.</td></tr>`;
                 const investedElem = document.getElementById('stock-invested');
-                if (investedElem) {
-                    investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
+                if (investedElem) investedElem.innerText = '0 SEK';
+                return;
+            }
+
+            tradesBody.innerHTML = '';
+            let totalInvested = 0;
+
+            trades.slice().reverse().forEach(row => {
+                const date = row['Date'] || row['date'] || row['Datum'] || '-';
+                const stock = row['Stock'] || row['stock'] || row['Aktie'] || '-';
+                const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
+                
+                const price = row['Price'] || row['price'] || row['Pris'] || '-';
+                const kalman = row['Kalman Value'] || row['kalman_value'] || row['Fair Value'] || '-';
+                const argument = row['AI Argument & Forecast'] || row['argument'] || row['Reasoning'] || '-';
+
+                const rawAmount = row['ai_investment'] 
+                    ?? row['position_size'] 
+                    ?? row['Rek. Investering (kr)'] 
+                    ?? row['AI Investering (kr)'] 
+                    ?? row['Trade Amount'] 
+                    ?? 0;
+                
+                const amount = parseFloat(rawAmount) || 0;
+                if (action === 'KÖP' || action === 'BUY') totalInvested += amount;
+
+                const formattedAmount = amount > 0 
+                    ? `${amount.toLocaleString('sv-SE')} SEK` 
+                    : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
+
+                let badgeClass = "badge badge-buy";
+                if (action === 'SÄLJ' || action === 'SELL') {
+                    badgeClass = "badge badge-sell";
+                } else if (action === 'STÅ ÖVER' || action === 'HOLD') {
+                    badgeClass = "badge badge-hold";
                 }
 
-                // 4. Render Chart if historical data is present
-                if (data.history && Array.isArray(data.history) && data.history.length > 0) {
-                    renderStockChart(data.history);
-                }
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition";
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 text-xs whitespace-nowrap text-slate-500 dark:text-slate-400">${date}</td>
+                    <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">${stock}</td>
+                    <td class="py-3.5 px-4 whitespace-nowrap"><span class="${badgeClass}">${action}</span></td>
+                    <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof price === 'number' ? price.toFixed(2) + ' SEK' : price}</td>
+                    <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof kalman === 'number' ? kalman.toFixed(2) + ' SEK' : kalman}</td>
+                    <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
+                    <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${argument}</td>
+                `;
+                tradesBody.appendChild(tr);
+            });
 
-            } catch (err) {
-                console.error("Error loading AI Stock Dashboard:", err);
+            // 2. Rendera om Lucide-ikoner för dynamiska rader
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            const investedElem = document.getElementById('stock-invested');
+            if (investedElem) {
+                investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
+            }
+
+            // 4. Rendera graf om historisk data finns
+            if (data.history && Array.isArray(data.history) && data.history.length > 0) {
+                renderStockChart(data.history);
+            }
+
+        } catch (err) {
+            console.error("Error loading AI Stock Dashboard:", err);
+            
+            // 3. Visa felmeddelande i tabellen om datan inte hittas
+            const tradesBody = document.getElementById('stock-trades-body');
+            if (tradesBody) {
+                tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-rose-500 font-medium">Kunde inte ladda data. Kontrollera att data/ai_dashboard_data.json finns.</td></tr>`;
             }
         }
+    }
 
-        function renderStockChart(historyData) {
-            const ctx = document.getElementById('stock-profit-chart');
-            if (!ctx) return;
+    function renderStockChart(historyData) {
+        const ctx = document.getElementById('stock-profit-chart');
+        if (!ctx) return;
 
-            const labels = historyData.map(item => item.date || item.Date || '');
-            const profitValues = historyData.map(item => item.profit || item.Profit || 0);
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Net Profit (SEK)',
-                        data: profitValues,
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 3,
-                        pointHoverRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: { mode: 'index', intersect: false }
-                    },
-                    scales: {
-                        x: { grid: { display: false } },
-                        y: { grid: { color: 'rgba(148, 163, 184, 0.1)' } }
-                    }
-                }
-            });
+        // Förstör den gamla grafinstansen innan den nya skapas
+        if (stockChartInstance) {
+            stockChartInstance.destroy();
         }
 
-        document.addEventListener('DOMContentLoaded', loadStockAIDashboard);
-    </script>
+        const labels = historyData.map(item => item.date || item.Date || '');
+        const profitValues = historyData.map(item => item.profit || item.Profit || 0);
+
+        stockChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Net Profit (SEK)',
+                    data: profitValues,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 3,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { color: 'rgba(148, 163, 184, 0.1)' } }
+                }
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadStockAIDashboard);
+</script>
 </body>
 </html>
