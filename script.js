@@ -818,6 +818,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Hämta AI Stock Dashboard (Tabell & Metriker)
   loadStockAIDashboard();
 
+  // Hämta aktiestatistik (Sätter NET PROFIT från stock_stats.json)
+  fetchStockStats();
+
   // Hämta Kalman-rankings
   loadKalmanRankings();
 
