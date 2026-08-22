@@ -485,6 +485,9 @@ async function loadStockAIDashboard() {
 // =========================
 // DATA FETCHING & STATS (AKTIER)
 // =========================
+// =========================
+// DATA FETCHING & STATS (AKTIER)
+// =========================
 async function fetchStockStats() {
     const returnEl = document.getElementById('stock-return-pct');
     const profitEl = document.getElementById('stock-profit');
@@ -510,6 +513,18 @@ async function fetchStockStats() {
         if (profitEl && data.net_profit_sek) {
             profitEl.textContent = data.net_profit_sek;
         }
+
+        if (bankrollEl && data.total_bankroll && !data.total_bankroll.includes('nan')) {
+            bankrollEl.textContent = data.total_bankroll;
+        }
+
+        if (investedEl && data.total_invested) {
+            investedEl.textContent = data.total_invested;
+        }
+    } catch (err) {
+        console.warn("Aktie-stats ej tillgängliga.", err);
+    }
+}
 
 // =========================
 // REUSABLE CHART LOGIC (CSV)
