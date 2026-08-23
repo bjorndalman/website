@@ -1,104 +1,104 @@
 Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,Netto (kr)
 2026-07-20,Inter Miami vs Chicago Fire,Home,0.53,1.88,2.12,100.58,Förlust,-100.58
-2026-07-20,Cincinnati vs Vancouver Whitecaps,Home,0.43,2.35,3.95,165.61,Annullerad,0.0
-2026-07-20,New England Revolution vs Toronto,Away,0.4,2.52,3.7,134.75,Annullerad,0.0
-2026-07-20,Philadelphia Union vs Red Bulls,Away,0.29,3.43,3.5,6.34,Annullerad,0.0
-2026-07-20,Nashville vs CF Montreal,Away,0.33,3.06,5.3,103.66,Annullerad,0.0
+2026-07-20,Cincinnati vs Vancouver Whitecaps,Home,0.43,2.35,3.95,165.61,Vinst,488.55
+2026-07-20,New England Revolution vs Toronto,Away,0.4,2.52,3.7,134.75,Förlust,-134.75
+2026-07-20,Philadelphia Union vs Red Bulls,Away,0.29,3.43,3.5,6.34,Förlust,-6.34
+2026-07-20,Nashville vs CF Montreal,Away,0.33,3.06,5.3,103.66,Förlust,-103.66
 2026-07-20,Houston Dynamo vs DC United,Away,0.36,2.78,4.45,97.59,Förlust,-97.59
-2026-07-20,Kansas City vs Minnesota United,Home,0.49,2.03,3.79,159.04,Annullerad,0.0
+2026-07-20,Kansas City vs Minnesota United,Home,0.49,2.03,3.79,159.04,Vinst,443.72
 2026-07-20,Colorado Rapids vs San Diego FC,Home,0.53,1.9,1.98,36.74,Vinst,36.01
-2026-07-20,Portland Timbers vs Dallas,Home,0.51,1.97,2.15,63.92,Annullerad,0.0
-2026-07-20,LAFC vs Real Salt Lake,Away,0.36,2.81,4.45,97.31,Annullerad,0.0
-2026-07-20,San Jose vs Orlando City,Draw,0.19,5.13,5.15,0.51,Annullerad,0.0
-2026-07-20,San Jose vs Orlando City,Away,0.49,2.04,5.46,113.07,Annullerad,0.0
-2026-07-20,Red Bulls vs Charlotte,Away,0.42,2.4,2.73,62.89,Annullerad,0.0
+2026-07-20,Portland Timbers vs Dallas,Home,0.51,1.97,2.15,63.92,Förlust,-63.92
+2026-07-20,LAFC vs Real Salt Lake,Away,0.36,2.81,4.45,97.31,Förlust,-97.31
+2026-07-20,San Jose vs Orlando City,Draw,0.19,5.13,5.15,0.51,Förlust,-0.51
+2026-07-20,San Jose vs Orlando City,Away,0.49,2.04,5.46,113.07,Vinst,504.29
+2026-07-20,Red Bulls vs Charlotte,Away,0.42,2.4,2.73,62.89,Vinst,108.8
 2026-07-20,CF Montreal vs Inter Miami,Home,0.47,2.11,2.82,144.97,Förlust,-144.97
 2026-07-20,New York City vs Chicago Fire,Home,0.52,1.94,2.1,60.88,Vinst,66.97
-2026-07-20,DC United vs Toronto,Away,0.53,1.89,3.63,160.5,Annullerad,0.0
-2026-07-20,Orlando City vs Nashville,Home,0.47,2.12,2.65,121.95,Annullerad,0.0
+2026-07-20,DC United vs Toronto,Away,0.53,1.89,3.63,160.5,Förlust,-160.5
+2026-07-20,Orlando City vs Nashville,Home,0.47,2.12,2.65,121.95,Vinst,201.22
 2026-07-20,Houston Dynamo vs Austin FC,Away,0.52,1.93,4.4,112.31,Förlust,-112.31
 2026-07-20,St. Louis City vs Colorado Rapids,Away,0.47,2.11,3.3,204.7,Förlust,-204.7
 2026-07-20,Minnesota United vs Vancouver Whitecaps,Home,0.39,2.59,2.9,52.4,Förlust,-52.4
-2026-07-20,LAFC vs Kansas City,Draw,0.21,4.79,6.25,33.35,Annullerad,0.0
-2026-07-20,LAFC vs Kansas City,Away,0.4,2.51,8.5,115.07,Annullerad,0.0
+2026-07-20,LAFC vs Kansas City,Draw,0.21,4.79,6.25,33.35,Förlust,-33.35
+2026-07-20,LAFC vs Kansas City,Away,0.4,2.51,8.5,115.07,Förlust,-115.07
 2026-07-21,Portland Timbers vs Real Salt Lake,Away,0.43,2.34,2.45,24.79,Förlust,-24.79
-2026-07-22,Cincinnati vs Vancouver Whitecaps,Away,0.64,1.56,1.82,45.6,Annullerad,0.0
-2026-07-22,New England Revolution vs Toronto,Home,0.59,1.69,1.95,45.25,Annullerad,0.0
-2026-07-22,Nashville vs CF Montreal,Home,0.9,1.11,1.46,50.55,Annullerad,0.0
+2026-07-22,Cincinnati vs Vancouver Whitecaps,Away,0.64,1.56,1.82,45.6,Förlust,-45.6
+2026-07-22,New England Revolution vs Toronto,Home,0.59,1.69,1.95,45.25,Förlust,-45.25
+2026-07-22,Nashville vs CF Montreal,Home,0.9,1.11,1.46,50.55,Vinst,23.25
 2026-07-22,Houston Dynamo vs DC United,Home,0.64,1.56,1.82,45.78,Vinst,37.54
-2026-07-22,Kansas City vs Minnesota United,Away,0.81,1.23,2.02,47.72,Annullerad,0.0
+2026-07-22,Kansas City vs Minnesota United,Away,0.81,1.23,2.02,47.72,Förlust,-47.72
 2026-07-22,Colorado Rapids vs San Diego FC,Away,0.7,1.42,3.1,61.69,Förlust,-61.69
-2026-07-22,Portland Timbers vs Dallas,Away,0.5,2.0,2.55,45.27,Annullerad,0.0
-2026-07-22,LAFC vs Real Salt Lake,Home,0.8,1.25,1.7,48.26,Annullerad,0.0
-2026-07-22,San Jose vs Orlando City,Home,0.64,1.56,1.57,6.08,Annullerad,0.0
+2026-07-22,Portland Timbers vs Dallas,Away,0.5,2.0,2.55,45.27,Förlust,-45.27
+2026-07-22,LAFC vs Real Salt Lake,Home,0.8,1.25,1.7,48.26,Vinst,33.78
+2026-07-22,San Jose vs Orlando City,Home,0.64,1.56,1.57,6.08,Förlust,-6.08
 2026-07-22,CF Montreal vs Inter Miami,Away,0.94,1.07,1.93,50.59,Vinst,47.05
-2026-07-22,Orlando City vs Nashville,Away,0.64,1.56,1.88,50.55,Annullerad,0.0
+2026-07-22,Orlando City vs Nashville,Away,0.64,1.56,1.88,50.55,Förlust,-50.55
 2026-07-22,Minnesota United vs Vancouver Whitecaps,Away,0.67,1.5,1.8,45.6,Vinst,36.48
-2026-07-22,San Diego FC vs Dallas,Home,0.58,1.72,1.86,60.32,Annullerad,0.0
-2026-07-22,LAFC vs Kansas City,Home,0.98,1.02,1.14,48.26,Annullerad,0.0
+2026-07-22,San Diego FC vs Dallas,Home,0.58,1.72,1.86,60.32,Vinst,51.88
+2026-07-22,LAFC vs Kansas City,Home,0.98,1.02,1.14,48.26,Vinst,6.76
 2026-07-23,St. Louis City vs Colorado Rapids,Home,0.54,1.84,1.86,8.82,Förlust,-8.82
 2026-07-25,Houston Dynamo vs Austin FC,Home,0.66,1.52,1.62,95.35,Vinst,59.12
 2026-07-25,Portland Timbers vs Real Salt Lake,Home,0.49,2.04,2.25,80.24,Vinst,100.3
-2026-07-26,New York City vs Toronto,Home,0.66,1.52,1.71,100.1,Annullerad,0.0
+2026-07-26,New York City vs Toronto,Home,0.66,1.52,1.71,100.1,Vinst,71.07
 2026-07-26,CF Montreal vs New England Revolution,Away,0.34,2.97,3.14,26.09,Vinst,55.83
-2026-07-26,DC United vs Nashville,Away,0.86,1.16,2.35,105.85,Annullerad,0.0
-2026-07-26,Cincinnati vs San Jose,Home,0.71,1.4,1.87,102.98,Annullerad,0.0
-2026-07-26,Vancouver Whitecaps vs LAFC,Away,0.4,2.47,4.13,71.17,Annullerad,0.0
-2026-07-26,Red Bulls vs Orlando City,Away,0.52,1.93,3.13,99.08,Annullerad,0.0
+2026-07-26,DC United vs Nashville,Away,0.86,1.16,2.35,105.85,Vinst,142.9
+2026-07-26,Cincinnati vs San Jose,Home,0.71,1.4,1.87,102.98,Vinst,89.59
+2026-07-26,Vancouver Whitecaps vs LAFC,Away,0.4,2.47,4.13,71.17,Förlust,-71.17
+2026-07-26,Red Bulls vs Orlando City,Away,0.52,1.93,3.13,99.08,Förlust,-99.08
 2026-07-26,Chicago Fire vs Charlotte,Away,0.34,2.95,5.5,78.45,Förlust,-78.45
-2026-07-26,Kansas City vs Houston Dynamo,Away,0.64,1.55,1.98,97.07,Annullerad,0.0
+2026-07-26,Kansas City vs Houston Dynamo,Away,0.64,1.55,1.98,97.07,Förlust,-97.07
 2026-07-26,Minnesota United vs San Diego FC,Away,0.55,1.83,3.48,130.33,Vinst,323.22
 2026-07-26,St. Louis City vs Real Salt Lake,Away,0.34,2.9,3.09,30.07,Förlust,-30.07
 2026-07-26,Colorado Rapids vs Austin FC,Away,0.29,3.39,4.1,51.26,Förlust,-51.26
 2026-07-26,Chicago Fire vs Charlotte,Draw,0.22,4.57,4.75,7.93,Förlust,-7.93
 2026-07-26,New England Revolution vs Houston Dynamo,Away,0.51,1.96,2.8,99.35,Förlust,-99.35
 2026-07-26,CF Montreal vs DC United,Home,0.53,1.9,2.25,97.73,Förlust,-97.73
-2026-07-26,Toronto vs New England Revolution,Home,0.53,1.88,2.4,98.75,Annullerad,0.0
-2026-07-26,Nashville vs Inter Miami,Away,0.39,2.58,3.0,89.09,Annullerad,0.0
+2026-07-26,Toronto vs New England Revolution,Home,0.53,1.88,2.4,98.75,Vinst,138.25
+2026-07-26,Nashville vs Inter Miami,Away,0.39,2.58,3.0,89.09,Förlust,-89.09
 2026-07-26,Real Salt Lake vs Minnesota United,Away,0.37,2.68,4.4,71.67,Vinst,243.68
-2026-07-26,San Jose vs St. Louis City,Away,0.42,2.41,4.35,84.35,Annullerad,0.0
+2026-07-26,San Jose vs St. Louis City,Away,0.42,2.41,4.35,84.35,Vinst,282.57
 2026-07-26,Chicago Fire vs Portland Timbers,Away,0.25,3.97,4.5,26.69,Förlust,-26.69
 2026-07-26,New York City vs Philadelphia Union,Away,0.38,2.65,4.75,68.84,Förlust,-68.84
-2026-07-26,Austin FC vs Dallas,Away,0.52,1.91,2.07,74.8,Annullerad,0.0
-2026-07-27,Colorado Rapids vs Kansas City,Away,0.17,5.93,6.0,0.86,Annullerad,0.0
-2026-07-28,Orlando City vs Cincinnati,Home,0.45,2.21,2.3,16.84,Annullerad,0.0
+2026-07-26,Austin FC vs Dallas,Away,0.52,1.91,2.07,74.8,Vinst,80.04
+2026-07-27,Colorado Rapids vs Kansas City,Away,0.17,5.93,6.0,0.86,Förlust,-0.86
+2026-07-28,Orlando City vs Cincinnati,Home,0.45,2.21,2.3,16.84,Förlust,-16.84
 2026-07-29,Chicago Fire vs Portland Timbers,Draw,0.21,4.75,4.75,0.09,Vinst,0.34
-2026-08-02,Toronto vs Charlotte,Away,0.53,1.87,2.73,62.11,Annullerad,0.0
+2026-08-02,Toronto vs Charlotte,Away,0.53,1.87,2.73,62.11,Förlust,-62.11
 2026-08-02,Orlando City vs Chicago Fire,Home,0.56,1.79,3.2,54.61,Vinst,120.14
 2026-08-02,DC United vs New England Revolution,Away,0.45,2.24,3.4,52.92,Förlust,-52.92
 2026-08-02,Philadelphia Union vs Inter Miami,Away,0.55,1.83,2.39,59.36,Förlust,-59.36
-2026-08-02,Red Bulls vs Nashville,Away,0.72,1.39,2.3,58.72,Annullerad,0.0
-2026-08-02,Kansas City vs St. Louis City,Away,0.62,1.63,2.05,64.91,Annullerad,0.0
-2026-08-02,Colorado Rapids vs LAFC,Away,0.89,1.13,2.15,56.03,Annullerad,0.0
-2026-08-02,Real Salt Lake vs Dallas,Away,0.43,2.33,3.6,53.29,Annullerad,0.0
+2026-08-02,Red Bulls vs Nashville,Away,0.72,1.39,2.3,58.72,Vinst,76.34
+2026-08-02,Kansas City vs St. Louis City,Away,0.62,1.63,2.05,64.91,Förlust,-64.91
+2026-08-02,Colorado Rapids vs LAFC,Away,0.89,1.13,2.15,56.03,Förlust,-56.03
+2026-08-02,Real Salt Lake vs Dallas,Away,0.43,2.33,3.6,53.29,Vinst,138.55
 2026-08-02,Vancouver Whitecaps vs Houston Dynamo,Home,0.75,1.33,1.41,54.23,Förlust,-54.23
 2026-08-02,Portland Timbers vs San Diego FC,Away,0.57,1.75,3.15,71.9,Vinst,154.59
-2026-08-16,Colorado Rapids vs Kansas City,Home,0.71,1.41,1.45,61.67,Annullerad,0.0
-2026-08-16,LAFC vs San Diego FC,Home,0.7,1.42,1.52,110.72,Annullerad,0.0
+2026-08-16,Colorado Rapids vs Kansas City,Home,0.71,1.41,1.45,61.67,Vinst,27.75
+2026-08-16,LAFC vs San Diego FC,Home,0.7,1.42,1.52,110.72,Förlust,-110.72
 2026-08-16,New York City vs Philadelphia Union,Home,0.42,2.39,2.4,4.38,Vinst,6.13
-2026-08-19,toronto vs charlotte,Away,0.45,2.22,2.94,52.55,Placerat,0.0
-2026-08-19,orlando city vs chicago fire,Home,0.42,2.4,2.9,52.55,Placerat,0.0
-2026-08-19,dc united vs new england revolution,Away,0.43,2.32,3.15,52.55,Placerat,0.0
-2026-08-19,cincinnati vs new york city,Away,0.37,2.69,3.13,40.16,Placerat,0.0
-2026-08-19,philadelphia union vs inter miami,Away,0.53,1.88,2.64,52.55,Placerat,0.0
-2026-08-19,red bulls vs nashville,Away,0.58,1.71,2.3,52.55,Placerat,0.0
-2026-08-20,kansas city vs st. louis city,Home,0.32,3.12,3.4,19.64,Placerat,0.0
-2026-08-20,kansas city vs st. louis city,Away,0.51,1.95,1.98,10.58,Placerat,0.0
-2026-08-20,colorado rapids vs lafc,Away,0.52,1.93,2.3,52.55,Placerat,0.0
-2026-08-20,real salt lake vs dallas,Away,0.42,2.4,3.6,52.55,Placerat,0.0
-2026-08-20,vancouver whitecaps vs houston dynamo,Away,0.24,4.15,4.9,24.51,Placerat,0.0
-2026-08-20,portland timbers vs san diego fc,Away,0.45,2.24,3.0,87.82,Placerat,0.0
-2026-08-22,charlotte vs dc united,Home,0.59,1.71,1.91,52.55,Placerat,0.0
-2026-08-22,red bulls vs chicago fire,Away,0.53,1.89,2.25,52.55,Placerat,0.0
-2026-08-22,inter miami vs toronto,Away,0.2,5.06,7.5,38.97,Placerat,0.0
-2026-08-22,orlando city vs real salt lake,Away,0.31,3.19,3.5,20.44,Placerat,0.0
-2026-08-23,austin fc vs philadelphia union,Away,0.48,2.07,2.23,32.74,Placerat,0.0
-2026-08-23,st. louis city vs houston dynamo,Away,0.4,2.51,3.6,52.55,Placerat,0.0
-2026-08-23,vancouver whitecaps vs dallas,Away,0.24,4.16,5.5,37.69,Placerat,0.0
-2026-08-23,san diego fc vs colorado rapids,Home,0.56,1.78,1.96,87.55,Placerat,0.0
-2026-08-23,lafc vs portland timbers,Away,0.24,4.26,4.5,8.63,Placerat,0.0
-2026-08-23,san jose vs minnesota united,Away,0.42,2.38,3.25,52.55,Placerat,0.0
-2026-08-23,austin fc vs philadelphia union,Home,0.35,2.82,2.88,6.02,Placerat,0.0
-2026-08-23,san diego fc vs colorado rapids,Away,0.32,3.17,3.3,9.1,Placerat,0.0
-2026-08-23,new england revolution vs new york city,Away,0.43,2.31,2.75,52.55,Placerat,0.0
-2026-08-22,charlotte vs dc united,Away,0.25,3.94,4.0,2.45,Placerat,0.0
+2026-08-19,toronto vs charlotte,Away,0.45,2.22,2.94,52.55,Förlust,-52.55
+2026-08-19,orlando city vs chicago fire,Home,0.42,2.4,2.9,52.55,Förlust,-52.55
+2026-08-19,dc united vs new england revolution,Away,0.43,2.32,3.15,52.55,Vinst,112.98
+2026-08-19,cincinnati vs new york city,Away,0.37,2.69,3.13,40.16,Förlust,-40.16
+2026-08-19,philadelphia union vs inter miami,Away,0.53,1.88,2.64,52.55,Förlust,-52.55
+2026-08-19,red bulls vs nashville,Away,0.58,1.71,2.3,52.55,Vinst,68.31
+2026-08-20,kansas city vs st. louis city,Home,0.32,3.12,3.4,19.64,Förlust,-19.64
+2026-08-20,kansas city vs st. louis city,Away,0.51,1.95,1.98,10.58,Förlust,-10.58
+2026-08-20,colorado rapids vs lafc,Away,0.52,1.93,2.3,52.55,Förlust,-52.55
+2026-08-20,real salt lake vs dallas,Away,0.42,2.4,3.6,52.55,Vinst,136.63
+2026-08-20,vancouver whitecaps vs houston dynamo,Away,0.24,4.15,4.9,24.51,Vinst,95.59
+2026-08-20,portland timbers vs san diego fc,Away,0.45,2.24,3.0,87.82,Förlust,-87.82
+2026-08-22,charlotte vs dc united,Home,0.59,1.71,1.91,52.55,Vinst,47.82
+2026-08-22,red bulls vs chicago fire,Away,0.53,1.89,2.25,52.55,Förlust,-52.55
+2026-08-22,inter miami vs toronto,Away,0.2,5.06,7.5,38.97,Förlust,-38.97
+2026-08-22,orlando city vs real salt lake,Away,0.31,3.19,3.5,20.44,Förlust,-20.44
+2026-08-23,austin fc vs philadelphia union,Away,0.48,2.07,2.23,32.74,Förlust,-32.74
+2026-08-23,st. louis city vs houston dynamo,Away,0.4,2.51,3.6,52.55,Vinst,136.63
+2026-08-23,vancouver whitecaps vs dallas,Away,0.24,4.16,5.5,37.69,Förlust,-37.69
+2026-08-23,san diego fc vs colorado rapids,Home,0.56,1.78,1.96,87.55,Vinst,84.05
+2026-08-23,lafc vs portland timbers,Away,0.24,4.26,4.5,8.63,Vinst,30.21
+2026-08-23,san jose vs minnesota united,Away,0.42,2.38,3.25,52.55,Förlust,-52.55
+2026-08-23,austin fc vs philadelphia union,Home,0.35,2.82,2.88,6.02,Förlust,-6.02
+2026-08-23,san diego fc vs colorado rapids,Away,0.32,3.17,3.3,9.1,Förlust,-9.1
+2026-08-23,new england revolution vs new york city,Away,0.43,2.31,2.75,52.55,Förlust,-52.55
+2026-08-22,charlotte vs dc united,Away,0.25,3.94,4.0,2.45,Förlust,-2.45
