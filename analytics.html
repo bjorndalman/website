@@ -113,7 +113,7 @@
     </nav>
         
     <!-- HEADER -->
-    <header class="bg-slate-100 dark:bg-slate-900 py-24 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
+    <header class="bg-slate-100 dark:bg-slate-900 py-16 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
         <div class="mb-8">
             <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-sm hover:shadow-md border border-slate-200 dark:border-slate-700">
                 <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
@@ -130,8 +130,46 @@
     <!-- HUVUDINNEHÅLL -->
     <main class="max-w-5xl mx-auto px-6 py-16 space-y-16">
 
+        <!-- BILD-BANNER (MLS SOCCER ANALYTICS) -->
+        <section class="fade-in">
+            <div class="relative w-full h-[380px] md:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 flex flex-col justify-between p-6 md:p-10">
+                <!-- Bakgrundsbild -->
+                <img src="images/mls-stadium.jpg" alt="MLS Soccer Stadium" class="absolute inset-0 w-full h-full object-cover">
+                
+                <!-- Mörk overlay för läsbarhet -->
+                <div class="absolute inset-0 bg-black/40"></div>
+
+                <!-- Utfyllnad för flexbox -->
+                <div class="relative z-10"></div>
+
+                <!-- Centrerad rubrik & undertext på bilden -->
+                <div class="relative z-10 text-center my-auto">
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-md">
+                        MLS Soccer Analytics
+                    </h2>
+                    <p class="text-base md:text-xl text-slate-100 font-medium mt-2 drop-shadow">
+                        Enhanced AI system for high-precision match predictive modeling.
+                    </p>
+                </div>
+
+                <!-- Status-pill längst ned till höger på bilden -->
+                <div class="relative z-10 flex justify-end">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-xs font-medium text-slate-700 dark:text-slate-300 border border-white/20 shadow-lg">
+                        <span class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Pipeline Active
+                        </span>
+                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                        <span>Last Sync: <strong id="mls-last-sync" class="text-slate-900 dark:text-white">Loading...</strong></span>
+                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                        <span>Next Matchday: <strong id="mls-next-matchday" class="text-slate-900 dark:text-white">Loading...</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ANNOUNCEMENT: MLS SOCCER ANALYTICS UPDATE -->
-        <section class="fade-in mb-12">
+        <section class="fade-in">
             <div class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-transparent p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-900/50 shadow-xl relative overflow-hidden">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm animate-pulse">
@@ -176,27 +214,10 @@
             </div>
         </section>
 
-        <!-- MLS SOCCER ANALYTICS -->
+        <!-- MLS SOCCER ANALYTICS (GRAF OCH VÄRDEN) -->
         <section id="mls-soccer" class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
                 <div class="max-w-3xl mb-10">
-                    <div class="flex flex-wrap items-center gap-4 text-sm mb-4">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            Pipeline Active
-                        </span>
-
-                        <span class="text-slate-500 dark:text-slate-400">
-                            Last Sync: <strong id="mls-last-sync" class="text-slate-700 dark:text-slate-200">Loading...</strong>
-                        </span>
-
-                        <span class="text-slate-300 dark:text-slate-600">•</span>
-
-                        <span class="text-slate-500 dark:text-slate-400">
-                            Next Matchday: <strong id="mls-next-matchday" class="text-slate-700 dark:text-slate-200">Loading...</strong>
-                        </span>
-                    </div>
-
                     <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automated Live AI System for MLS Soccer Analytics</h3>
                     <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
                         This section showcases a fully automated, self-learning AI pipeline for <strong>MLS (Major League Soccer)</strong>, operating live in real-time to track bankroll development, dynamic betting strategies, and historical profit curves continuously.
