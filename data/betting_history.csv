@@ -102,3 +102,16 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-08-23,san diego fc vs colorado rapids,Away,0.32,3.17,3.3,9.1,Förlust,-9.1
 2026-08-23,new england revolution vs new york city,Away,0.43,2.31,2.75,52.55,Förlust,-52.55
 2026-08-22,charlotte vs dc united,Away,0.25,3.94,4.0,2.45,Förlust,-2.45
+2026-08-29,inter miami vs cf montreal,Draw,0.24,4.17,5.2,4.37,Förlust,-4.37
+2026-08-29,inter miami vs cf montreal,Away,0.24,4.16,6.5,7.62,Förlust,-7.62
+2026-08-30,nashville vs cincinnati,Away,0.26,3.8,4.1,1.87,Vinst,5.8
+2026-08-30,houston dynamo vs san jose,Draw,0.25,3.98,4.1,0.75,Förlust,-0.75
+2026-08-30,houston dynamo vs san jose,Away,0.3,3.37,4.25,5.95,Vinst,19.34
+2026-08-30,minnesota united vs orlando city,Draw,0.26,3.87,4.0,0.8,Förlust,-0.8
+2026-08-30,minnesota united vs orlando city,Away,0.37,2.73,3.7,9.82,Vinst,26.51
+2026-08-30,kansas city vs vancouver whitecaps,Home,0.17,5.85,6.25,0.96,Förlust,-0.96
+2026-08-30,kansas city vs vancouver whitecaps,Draw,0.21,4.72,4.8,0.33,Förlust,-0.33
+2026-08-30,colorado rapids vs real salt lake,Away,0.34,2.98,3.6,5.97,Förlust,-5.97
+2026-08-30,portland timbers vs austin fc,Draw,0.25,4.04,4.4,1.98,Förlust,-1.98
+2026-08-30,portland timbers vs austin fc,Away,0.27,3.67,5.0,6.72,Förlust,-6.72
+2026-08-30,st. louis city vs dallas,Away,0.32,3.13,3.6,4.34,Förlust,-4.34
