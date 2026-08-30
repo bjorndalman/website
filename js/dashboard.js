@@ -173,7 +173,8 @@ async function loadPipelineStatus() {
     if (!syncEl) return;
 
     try {
-        const response = await fetch(`${pathPrefix}data/pipeline_status.json?t=${Date.now()}`);
+        // Ändrat till stats.json
+        const response = await fetch(`${pathPrefix}data/stats.json?t=${Date.now()}`);
         if (!response.ok) return;
         const data = await response.json();
 
@@ -184,7 +185,6 @@ async function loadPipelineStatus() {
         console.warn("Kunde inte hämta pipeline-status:", error);
     }
 }
-
 async function loadKalmanRankings() {
     const topContainer = document.getElementById('top-teams');
     const bottomContainer = document.getElementById('bottom-teams');
