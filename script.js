@@ -109,7 +109,7 @@ const swedishData = {
       school: "K3 - Karlsborg",
       program: "Militärtjänst - Jägarutbildning",
       years: "",
-      description: '<img src="../images/jagar_badge.jpg" alt="JÄGARE-märke" style="height: 18px; vertical-align: middle; margin-right: 5px;"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag.'
+      description: '<img src="jagar_badge.jpg" alt="JÄGARE-märke" style="height: 18px; vertical-align: middle; margin-right: 5px;"> Genomförd avancerad militär grundutbildning som Jägare. Erfarenhet från Livregementets husarer (K3) i Karlsborg, där verksamheten präglas av högt ansvar, samarbete under press och arbete med avancerad teknik. Förbandet arbetar med underrättelseinhämtning, spaning och snabb insatsförmåga i komplexa miljöer, samt utbildning inom överlevnad och undsättning för internationella uppdrag.'
     }
   ],
   experience: [
