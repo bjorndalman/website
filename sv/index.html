@@ -6,10 +6,10 @@
     <title>Björn Dahlman | Portfolio</title>
 
     <link rel="canonical" href="https://dalmanium.se/sv/index.html" />
-
     <link rel="alternate" hreflang="sv" href="https://dalmanium.se/sv/index.html" />
     <link rel="alternate" hreflang="en" href="https://dalmanium.se/index.html" />
     <link rel="alternate" hreflang="x-default" href="https://dalmanium.se/index.html" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -64,8 +64,8 @@
 
                 <!-- Språkväljare (GB / SE) -->
                 <div class="language-switcher flex items-center gap-2 text-sm font-semibold">
-                    <a href="../index.html" class="hover:text-blue-600 text-slate-400 transition" aria-label="Switch to English">GB</a>
-                    <a href="index.html" class="text-slate-900 dark:text-white font-bold" aria-label="Växla till Svenska">SE</a>
+                    <a href="../index.html" class="hover:text-blue-600 text-slate-400 transition lang-icon" aria-label="Switch to English">GB</a>
+                    <a href="index.html" class="text-slate-900 dark:text-white font-bold lang-icon" aria-label="Växla till Svenska">SE</a>
                 </div>
 
                 <!-- Sociala ikoner (X & YouTube) -->
@@ -78,14 +78,14 @@
                     </a>
                 </div>
                 
-                <!-- Tema-knapp (Måne/Sol) -->
-                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block text-slate-700 dark:text-slate-300">
+                <!-- Tema-knapp (Måne/Sol Desktop) -->
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block text-slate-700 dark:text-slate-300" aria-label="Växla tema">
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
                 
                 <!-- Mobilmeny-knapp -->
-                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Öppna meny">
                     <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
                     <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
                 </button>
@@ -93,24 +93,24 @@
         </div>
     </nav>
     
-    <!-- Mobilmeny (Anpassad för de nya länkarna) -->
+    <!-- Mobilmeny -->
     <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
-            <a href="#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Om mig</a>
-            <a href="#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Kompetenser</a>
-            <a href="analytics.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Analytics</a>
-            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Media</a>
-            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Projekt</a>
-            <a href="#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Erfarenhet</a>
-            <a href="#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Utbildning</a>
+            <a href="#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Om mig</a>
+            <a href="#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Kompetenser</a>
+            <a href="analytics.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Analytics</a>
+            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projekt</a>
+            <a href="#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Erfarenhet</a>
+            <a href="#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Utbildning</a>
             
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Språk:</span>
-                <a href="../index.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition" onclick="closeMobileMenu();">GB</a>
-                <a href="index.html" class="font-bold text-slate-900 dark:text-white" onclick="closeMobileMenu();">SE</a>
+                <a href="../index.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition lang-icon">GB</a>
+                <a href="index.html" class="font-bold text-slate-900 dark:text-white lang-icon">SE</a>
             </div>
             
-            <button onclick="toggleTheme(); closeMobileMenu();" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
+            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
                 <i data-lucide="sun" class="w-5 h-5 mr-3 dark:hidden"></i>
                 <i data-lucide="moon" class="w-5 h-5 mr-3 hidden dark:block"></i>
                 Växla tema
@@ -209,9 +209,10 @@
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-10 text-center text-slate-500 dark:text-slate-400 text-sm">
-        <p>© 2025 <span id="footer-name"></span>. Alla rättigheter reserverade.</p>
+        <p>© <span id="copyright-year">2026</span> <span id="footer-name"></span>. Alla rättigheter reserverade.</p>
     </footer>
 
+    <!-- Välkomstmodal -->
     <div id="welcome-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/90 backdrop-blur-md hidden p-4">
         <div class="bg-white dark:bg-slate-900 border-2 border-blue-500/20 p-8 rounded-3xl max-w-sm w-full shadow-2xl relative overflow-hidden text-center">
             <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full"></div>
@@ -233,64 +234,44 @@
                 <button onclick="closeWelcomeModal()" class="w-full bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white py-4 rounded-xl font-bold transition-all transform active:scale-95 shadow-xl">
                     Jag förstår, visa portfolio
                 </button>
-                <p class="mt-4 text-xs text-slate-400">
-                    Klicka på "Download CV" i menyn efter att du stängt rutan.
-                </p>
             </div>
         </div>
     </div>
 
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../data/sv.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/charts.js"></script>
+    <script src="../js/dashboard.js"></script>
     <script src="../script.js"></script>
     <script>
-        // JAVASCRIPT-LOGIK FÖR LÖSENORD
         function handleWelcomeModal() {
             const rawHash = window.location.hash.substring(1);
             const navIds = ['about', 'skills', 'experience', 'education', 'contact'];
-    
+
             if (rawHash && !navIds.includes(rawHash)) {
                 const clientID = decodeURIComponent(rawHash);
                 const modal = document.getElementById('welcome-modal');
                 const nameSpan = document.getElementById('welcome-name');
                 const pwdSpan = document.getElementById('pdf-pwd');
-        
+
                 if (modal && nameSpan && pwdSpan) {
                     nameSpan.innerText = clientID;
-                    
-                    // Samma avkodning: "S29zdGVyMjAyNSE=" -> "Koster2025!"
                     const encodedPwd = "S29zdGVyMjAyNSE=";
                     pwdSpan.innerText = atob(encodedPwd);
-                    
                     modal.classList.remove('hidden');
                 }
             }
         }
 
         function closeWelcomeModal() {
-            document.getElementById('welcome-modal').classList.add('hidden');
-        }
-
-        function trackCV(device) {
-            const rawHash = window.location.hash.substring(1);
-            const clientID = rawHash ? decodeURIComponent(rawHash) : 'General_Visitor';
-
-            if (typeof gtag === 'function') {
-                gtag('event', 'cv_download', {
-                    'event_category': 'Recruitment',
-                    'event_label': 'SV_CV_Download_' + device,
-                    'client_tag': clientID
-                });
-            }
+            const modal = document.getElementById('welcome-modal');
+            if (modal) modal.classList.add('hidden');
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             handleWelcomeModal();
-    
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
-            document.getElementById('cv-sv-btn')?.addEventListener('click', () => trackCV('Desktop'));
-            document.getElementById('cv-sv-btn-mob')?.addEventListener('click', () => trackCV('Mobile'));
         });
     </script>
 </body>
