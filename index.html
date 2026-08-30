@@ -142,15 +142,29 @@
         </div>
     </nav>
 
-    <header class="hero-bg relative text-white text-center py-40 px-6 fade-in">
-        <div class="relative z-10 max-w-3xl mx-auto">
-            <h2 id="name" class="text-5xl md:text-6xl font-bold mb-4 tracking-tight"></h2>
-            <p id="title" class="text-xl md:text-2xl text-slate-200 font-light mb-8"></p>
-            <div class="flex justify-center gap-4">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition shadow-lg shadow-blue-500/30">
+    <!-- HERO SECTION WITH BACKGROUND IMAGE -->
+    <header class="hero-bg relative text-white text-center py-40 px-6 fade-in min-h-[500px] flex items-center justify-center">
+        <!-- Dark overlay for readable text -->
+        <div class="absolute inset-0 bg-slate-950/65 z-0"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight drop-shadow-md">
+                Björn Dahlman
+            </h1>
+        
+            <p class="text-xl md:text-2xl text-blue-300 font-medium tracking-wide">
+                Electrical Engineer | Hardware, Software & Systems
+            </p>
+
+            <p class="text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-sm">
+                Chalmers-educated engineer bridging physical hardware and embedded software. Broad experience spanning automotive architecture, software verification, high voltage, and power systems.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                <a href="#contact" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-semibold transition shadow-lg shadow-blue-600/30">
                     Contact Me
                 </a>
-                <a href="projects.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-medium transition">
+                <a href="projects.html" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-3.5 rounded-full font-semibold transition">
                     View Projects
                 </a>
             </div>
