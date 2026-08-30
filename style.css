@@ -41,12 +41,12 @@ img {
    ========================= */
 
 .hero-bg {
-    background-image: url('hero_bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Parallax-effekt */
+    background-image: url('hero_bg.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
     position: relative;
-    overflow: hidden;
+    min-height: 450px; /* Säkrar att herot faktiskt har en höjd */
 }
 
 .hero-bg::before {
@@ -56,9 +56,15 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Mörk överlappning */
+    background: rgba(0, 0, 0, 0.5); /* Mörkar ner bilden */
     backdrop-filter: blur(2px);
     z-index: 1;
+}
+
+/* Säkrar att all text och knappar hamnar OVANFÖR överlägget */
+.hero-bg > * {
+    position: relative;
+    z-index: 2;
 }
 
 /* =========================
