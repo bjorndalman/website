@@ -49,7 +49,7 @@ function parseCsvData(csvText, isBotChart = false) {
     if (isBotChart && lastRawDate) {
         const syncEl = document.getElementById('mls-last-sync');
         if (syncEl) {
-            syncEl.textContent = lastRawDate.split(' ')[0];
+            //syncEl.textContent = lastRawDate.split(' ')[0];
         }
     }
 
