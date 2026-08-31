@@ -434,10 +434,14 @@
                 
                 const data = await res.json();
                 
-                if (data.updated_at) {
-                    const syncElem = document.getElementById('stock-last-sync');
-                    if (syncElem) syncElem.innerText = data.updated_at;
-                }
+               // Hämta centralt datum från stats.json istället för ai_dashboard_data.json
+                fetch('data/stats.json?t=' + Date.now())
+                    .then(res => res.json())
+                    .then(stats => {
+                        const syncElem = document.getElementById('stock-last-sync');
+                        if (syncElem && stats.last_sync) syncElem.innerText = stats.last_sync;
+                    })
+                    .catch(err => console.warn("Kunde inte läsa stats.json för aktiedashboard", err));
 
                 if (data.summary) {
                     const bankroll = data.summary.current_bankroll || 100000;
