@@ -597,7 +597,20 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', loadStockAIDashboard);
-</script>
+    <!-- EXTERNA SKRIPT OCH INITIERING -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/dashboard.js?v=2"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Initiera Lucide-ikoner när sidan laddats
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>
