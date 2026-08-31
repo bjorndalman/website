@@ -1,242 +1,242 @@
 {
-  "updated_at": "2026-08-29",
+  "updated_at": "2026-08-31",
   "summary": {
     "start_capital": 100000.0,
-    "current_bankroll": 99575.9,
-    "cash_available": 99575.9,
-    "profit_sek": -424.1,
-    "profit_pct": -0.42
+    "current_bankroll": 99667.8,
+    "cash_available": 99667.8,
+    "profit_sek": -332.2,
+    "profit_pct": -0.33
   },
   "latest_trades_and_forecasts": [
     {
-      "date": "2026-08-29",
+      "date": "2026-08-31",
       "stock": "ABB.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 938.4,
-      "kalman_value": 935.03,
+      "price": 935.6,
+      "kalman_value": 933.75,
       "ai_investment": 0.0,
-      "argument": "Low daily volatility (-0.36%). Standard quantitative Kalman analysis applied."
+      "argument": "Low daily volatility (-0.3%). Standard quantitative Kalman analysis applied."
     },
     {
-      "date": "2026-08-29",
+      "date": "2026-08-31",
       "stock": "ALFA.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 576.6,
-      "kalman_value": 574.52,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (-0.1%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "ASSA-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 356.6,
-      "kalman_value": 354.19,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.25%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "AZN.ST",
-      "action": "BUY",
-      "status": "BUY",
-      "price": 1571.5,
-      "kalman_value": 1589.34,
-      "ai_investment": 9957.59,
-      "argument": "Slight negative movement under normal market conditions. (Q: 1.00x, R: 1.00x)"
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "ATCO-A.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 208.5,
-      "kalman_value": 205.92,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.92%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "BOL.ST",
-      "action": "BUY",
-      "status": "BUY",
-      "price": 566.8,
-      "kalman_value": 578.23,
-      "ai_investment": 9957.59,
-      "argument": "Notable drop indicating increased commodity volatility and downside risk. (Q: 1.40x, R: 1.10x)"
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "ELUX-B.ST",
-      "action": "BUY",
-      "status": "BUY",
-      "price": 28.1,
-      "kalman_value": 28.65,
-      "ai_investment": 9957.59,
-      "argument": "Moderate decline reflecting ongoing earnings pressure and market weakness. (Q: 1.30x, R: 1.10x)"
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "ERIC-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 96.2,
-      "kalman_value": 96.34,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.52%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "ESSITY-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 279.8,
-      "kalman_value": 280.07,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (-0.46%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "EVO.ST",
-      "action": "BUY",
-      "status": "BUY",
-      "price": 831.0,
-      "kalman_value": 841.69,
-      "ai_investment": 9957.59,
-      "argument": "Low daily volatility (-0.19%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "GETI-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 245.4,
-      "kalman_value": 245.57,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.16%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "HEXA-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 101.75,
-      "kalman_value": 101.54,
-      "ai_investment": 0.0,
-      "argument": "Positive price movement confirming a stable upward signal. (Q: 0.90x, R: 0.85x)"
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "HM-B.ST",
-      "action": "BUY",
-      "status": "BUY",
-      "price": 174.75,
-      "kalman_value": 179.63,
-      "ai_investment": 9957.59,
-      "argument": "Sharp drop showing heightened consumer retail earnings uncertainty. (Q: 1.30x, R: 1.10x)"
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "INVE-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 414.9,
-      "kalman_value": 414.06,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.04%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "KINV-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 62.2,
-      "kalman_value": 60.47,
-      "ai_investment": 0.0,
-      "argument": "Large price jump indicating strong momentum or major event risk. (Q: 1.80x, R: 0.80x)"
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "NDA-SE.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 193.8,
-      "kalman_value": 193.34,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (-0.13%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "SAND.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 394.1,
-      "kalman_value": 395.34,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (-0.1%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "SCA-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 112.8,
-      "kalman_value": 112.5,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.76%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "SEB-A.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 221.6,
-      "kalman_value": 220.63,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (-0.27%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "SKF-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 276.1,
-      "kalman_value": 274.42,
-      "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.25%). Standard quantitative Kalman analysis applied."
-    },
-    {
-      "date": "2026-08-29",
-      "stock": "SWED-A.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 373.2,
-      "kalman_value": 371.13,
+      "price": 575.2,
+      "kalman_value": 576.19,
       "ai_investment": 0.0,
       "argument": "Low daily volatility (-0.24%). Standard quantitative Kalman analysis applied."
     },
     {
-      "date": "2026-08-29",
-      "stock": "TELIA.ST",
-      "action": "BUY",
-      "status": "BUY",
-      "price": 43.44,
-      "kalman_value": 43.69,
-      "ai_investment": 9957.59,
-      "argument": "Low daily volatility (-0.84%). Standard quantitative Kalman analysis applied."
+      "date": "2026-08-31",
+      "stock": "ASSA-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 358.6,
+      "kalman_value": 356.11,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (0.56%). Standard quantitative Kalman analysis applied."
     },
     {
-      "date": "2026-08-29",
+      "date": "2026-08-31",
+      "stock": "AZN.ST",
+      "action": "BUY",
+      "status": "BUY",
+      "price": 1560.5,
+      "kalman_value": 1581.24,
+      "ai_investment": 9966.78,
+      "argument": "Low daily volatility (-0.7%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "ATCO-A.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 206.3,
+      "kalman_value": 206.19,
+      "ai_investment": 0.0,
+      "argument": "Slight negative move under normal market conditions. (Q: 1.00x, R: 1.00x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "BOL.ST",
+      "action": "BUY",
+      "status": "BUY",
+      "price": 562.8,
+      "kalman_value": 574.7,
+      "ai_investment": 9966.78,
+      "argument": "Low daily volatility (-0.71%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "ELUX-B.ST",
+      "action": "BUY",
+      "status": "BUY",
+      "price": 28.05,
+      "kalman_value": 28.33,
+      "ai_investment": 9966.78,
+      "argument": "Low daily volatility (-0.18%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "ERIC-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 96.46,
+      "kalman_value": 96.34,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (0.27%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "ESSITY-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 280.6,
+      "kalman_value": 280.73,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (0.29%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "EVO.ST",
+      "action": "BUY",
+      "status": "BUY",
+      "price": 836.0,
+      "kalman_value": 844.07,
+      "ai_investment": 9966.78,
+      "argument": "Low daily volatility (0.6%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "GETI-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 244.3,
+      "kalman_value": 245.3,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (-0.45%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "HEXA-B.ST",
+      "action": "BUY",
+      "status": "BUY",
+      "price": 100.15,
+      "kalman_value": 101.31,
+      "ai_investment": 9966.78,
+      "argument": "Moderate drop creating mild noise and short-term uncertainty. (Q: 1.20x, R: 1.10x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "HM-B.ST",
+      "action": "BUY",
+      "status": "BUY",
+      "price": 176.55,
+      "kalman_value": 178.09,
+      "ai_investment": 9966.78,
+      "argument": "Steady positive movement showing good signal clarity. (Q: 0.90x, R: 0.90x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "INVE-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 412.2,
+      "kalman_value": 413.34,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (-0.65%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "KINV-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 62.0,
+      "kalman_value": 61.22,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (-0.32%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "NDA-SE.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 197.15,
+      "kalman_value": 195.37,
+      "ai_investment": 0.0,
+      "argument": "Strong positive gain confirming clear upward signal quality. (Q: 1.10x, R: 0.80x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "SAND.ST",
+      "action": "BUY",
+      "status": "BUY",
+      "price": 386.8,
+      "kalman_value": 394.17,
+      "ai_investment": 9966.78,
+      "argument": "Noticeable decline indicating increased short-term process volatility. (Q: 1.30x, R: 1.10x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "SCA-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 114.85,
+      "kalman_value": 113.86,
+      "ai_investment": 0.0,
+      "argument": "Solid price jump indicating clear positive trend signal. (Q: 1.10x, R: 0.80x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "SEB-A.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 224.6,
+      "kalman_value": 222.5,
+      "ai_investment": 0.0,
+      "argument": "Stable upward trend supported by consistent banking sector performance. (Q: 0.90x, R: 0.85x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "SKF-B.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 278.8,
+      "kalman_value": 277.31,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (0.98%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "SWED-A.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 377.0,
+      "kalman_value": 373.4,
+      "ai_investment": 0.0,
+      "argument": "Moderate gain reflecting stable growth and clear price signal. (Q: 0.90x, R: 0.90x)"
+    },
+    {
+      "date": "2026-08-31",
+      "stock": "TELIA.ST",
+      "action": "HOLD",
+      "status": "HOLD",
+      "price": 43.82,
+      "kalman_value": 43.75,
+      "ai_investment": 0.0,
+      "argument": "Low daily volatility (0.87%). Standard quantitative Kalman analysis applied."
+    },
+    {
+      "date": "2026-08-31",
       "stock": "VOLV-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 346.4,
-      "kalman_value": 347.72,
+      "price": 346.8,
+      "kalman_value": 347.66,
       "ai_investment": 0.0,
-      "argument": "Minor price contraction under steady market trading conditions. (Q: 1.00x, R: 1.00x)"
+      "argument": "Low daily volatility (0.12%). Standard quantitative Kalman analysis applied."
     }
   ]
 }
