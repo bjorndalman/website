@@ -38,94 +38,80 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
+    <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
-            <!-- Logo / Profile Image -->
-            <a href="index.html" aria-label="Home">
-                <picture class="flex items-center">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            
+            <a href="index.html" aria-label="Hem">
+                <picture>
                     <source srcset="images/bjorn-dahlman.webp" type="image/webp">
-                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Initials - Logo" class="h-12 w-auto rounded-full object-cover">
+                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-16 w-auto">
                 </picture>
             </a>
             
-            <!-- Right Section / Navigation -->
             <div class="flex items-center gap-6">
-                <!-- Main Navigation (Desktop) -->
-                <ul id="main-nav" class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
                     <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
                     <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
-                    <li><a href="analytics.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition text-slate-900 dark:text-white font-semibold">Analytics</a></li>
+                    <li><a href="analytics.html" class="text-blue-600 dark:text-blue-400 font-bold transition">Analytics</a></li>
                     <li><a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a></li>
                     <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a></li>
                     <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
                     <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
                 </ul>
 
-                <!-- Language Switcher (GB / SE) -->
-                <div class="language-switcher flex items-center gap-2 text-sm font-semibold">
-                    <a href="analytics.html" class="text-slate-900 dark:text-white font-bold" aria-label="English">GB</a>
-                    <a href="sv/analytics.html" class="hover:text-blue-600 text-slate-400 transition" aria-label="Växla till Svenska">SE</a>
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="analytics.html" class="lang-icon hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                    <a href="sv/analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
                 </div>
 
-                <!-- Social Icons -->
-                <div class="social-icons hidden md:flex items-center gap-4 text-lg text-slate-700 dark:text-slate-300">
-                    <a href="https://x.com" target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
-                        <i class="fa-brands fa-x-twitter"></i> 
+                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i> 
                     </a>
-                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
                 
-                <!-- Theme Toggle Button -->
-                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block text-slate-700 dark:text-slate-300">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Toggle Theme">
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
                 
-                <!-- Mobile Menu Button -->
-                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden">
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Toggle Menu">
                     <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
                     <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
                 </button>
             </div>
         </div>
     </nav>
-    
-    <!-- Mobile Navigation Drawer -->
+
+    <!-- MOBILMENY -->
     <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
-            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">About</a>
-            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Skills</a>
-            <a href="analytics.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Analytics</a>
-            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Media</a>
-            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Projects</a>
-            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Experience</a>
-            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" onclick="closeMobileMenu();">Education</a>
+            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
+            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
+            <a href="analytics.html" class="block p-3 bg-slate-100 dark:bg-slate-800 rounded transition font-bold text-blue-600 dark:text-blue-400">Analytics</a>
+            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projects</a>
+            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Experience</a>
+            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Education</a>
             
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
-                <a href="analytics.html" class="font-bold text-slate-900 dark:text-white" onclick="closeMobileMenu();">GB</a>
-                <a href="sv/analytics.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition" onclick="closeMobileMenu();">SE</a>
+                <a href="analytics.html" class="lang-icon text-xl hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                <a href="sv/analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
             </div>
             
-            <button onclick="toggleTheme(); closeMobileMenu();" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">
-                <i data-lucide="sun" class="w-5 h-5 mr-3 dark:hidden"></i>
-                <i data-lucide="moon" class="w-5 h-5 mr-3 hidden dark:block"></i>
-                Toggle theme
+            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
+                <span>Toggle Theme</span>
             </button>
-            
-            <div class="flex gap-6 pt-4 border-t border-slate-200 dark:border-slate-800 text-xl">
-                <a href="https://x.com" target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="X (Twitter)">
-                    <i class="fa-brands fa-x-twitter"></i> 
-                </a>
-                <a href="https://www.youtube.com/@Dalmanium" target="_blank" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-            </div>
         </div>
     </nav>
-
+        
     <!-- HEADER -->
     <header class="bg-slate-100 dark:bg-slate-900 py-16 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
         <div class="mb-8">
@@ -137,35 +123,36 @@
         
         <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Analytics & Quantitative Models</h1>
         <p class="text-lg text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto px-6">
-            Real-time algorithmic data pipelines, predictive sports analytics, and automated financial trading systems.
+            Real-time algorithmic data pipelines, sports predictive analytics, and automated AI financial trading systems.
         </p>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- HUVUDINNEHÅLL -->
     <main class="max-w-5xl mx-auto px-6 py-16 space-y-16">
 
-        <!-- HERO BANNER (MLS SOCCER ANALYTICS) -->
+        <!-- BILD-BANNER (MLS SOCCER ANALYTICS) -->
         <section class="fade-in">
             <div class="relative w-full h-[380px] md:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 flex flex-col justify-between p-6 md:p-10">
-                <!-- Background Image -->
-                <img src="images/mls-stadium.jpg" alt="MLS Soccer Arena" class="absolute inset-0 w-full h-full object-cover">
+                <!-- Bakgrundsbild -->
+                <img src="images/mls-stadium.jpg" alt="MLS Soccer Stadium" class="absolute inset-0 w-full h-full object-cover">
                 
-                <!-- Dark Overlay -->
+                <!-- Mörk overlay för läsbarhet -->
                 <div class="absolute inset-0 bg-black/40"></div>
 
+                <!-- Utfyllnad för flexbox -->
                 <div class="relative z-10"></div>
 
-                <!-- Centered Title and Subtitle -->
+                <!-- Centrerad rubrik & undertext på bilden -->
                 <div class="relative z-10 text-center my-auto">
                     <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-md">
                         MLS Soccer Analytics
                     </h2>
                     <p class="text-base md:text-xl text-slate-100 font-medium mt-2 drop-shadow">
-                        Advanced AI system for high-precision match outcome modeling.
+                        Enhanced AI system for high-precision match predictive modeling.
                     </p>
                 </div>
 
-                <!-- Status Pill at Bottom Right -->
+                <!-- Status-pill längst ned till höger på bilden -->
                 <div class="relative z-10 flex justify-end">
                     <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-xs font-medium text-slate-700 dark:text-slate-300 border border-white/20 shadow-lg">
                         <span class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
@@ -186,7 +173,7 @@
             <div class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-transparent p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-900/50 shadow-xl relative overflow-hidden">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm animate-pulse">
-                        New!
+                        News!
                     </span>
                     <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
                         MLS System Update
@@ -198,7 +185,7 @@
                 </h3>
 
                 <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
-                    This section showcases a fully automated, self-learning AI pipeline for MLS (Major League Soccer), running live in real-time to continuously track bankroll growth, dynamic betting strategies, and historical profit curves.
+                    This section showcases a fully automated, self-learning AI pipeline for MLS (Major League Soccer), operating live in real-time to track bankroll development, dynamic betting strategies, and historical profit curves continuously.
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 backdrop-blur-sm text-sm">
@@ -227,13 +214,68 @@
             </div>
         </section>
 
+        <!-- MLS SOCCER ANALYTICS (GRAF OCH VÄRDEN) -->
+        <section id="mls-soccer" class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="max-w-3xl mb-10">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automated Live AI System for MLS Soccer Analytics</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
+                        This section showcases a fully automated, self-learning AI pipeline for <strong>MLS (Major League Soccer)</strong>, operating live in real-time to track bankroll development, dynamic betting strategies, and historical profit curves continuously.
+                    </p>
+                    
+                    <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> AI & Mathematical Framework
+                        </h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Adaptive Kalman Filter:</strong> Tracks goals, xG, and shots using stable Joseph's covariance.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Unsupervised Clustering:</strong> Groups teams dynamically to build performance baselines.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Self-Supervised EM:</strong> Auto-calibrates dynamic noise filtering via market odds.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Evolutionary Algorithms:</strong> Auto-tunes hyperparameters to secure long-term stability.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5 md:col-span-2">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Reinforcement Learning:</strong> Optimizes stake sizing (Q-Learning) for maximum EV growth.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Net Profit</span>
+                        <span id="bot-profit" class="text-3xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Total Bankroll</span>
+                        <span id="bot-bankroll" class="text-3xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full h-80 md:h-96 bg-slate-50/50 dark:bg-slate-800/20 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                    <canvas id="bot-profit-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
         <!-- LIVE TEAM RANKINGS -->
         <section id="mls-rankings" class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
                 <div class="mb-8">
                     <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Team Rankings</h3>
                     <p class="text-slate-600 dark:text-slate-400 mt-3 max-w-2xl">
-                        Real-time Kalman-calibrated team ratings. This list filters out noise and temporary slumps to identify MLS's most under- and overvalued teams compared to official league standings.
+                        Real-time Kalman-calibrated team strengths. This list filters out noise and temporary slumps to identify MLS's most undervalued and overvalued teams compared to official league standings.
                     </p>
                 </div>
 
@@ -241,7 +283,7 @@
                     <!-- Top 5 -->
                     <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
                         <h4 class="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-4 flex items-center gap-2">
-                            <i data-lucide="trending-up" class="w-5 h-5"></i> Top 5: Strongest by Kalman
+                            <i data-lucide="trending-up" class="w-5 h-5"></i> Top 5: Kalman Strongest
                         </h4>
                         <table class="w-full text-left">
                             <tbody id="top-teams" class="divide-y divide-emerald-200 dark:divide-emerald-800">
@@ -268,330 +310,294 @@
         <!-- AUTOMATED STOCK TRADING SYSTEM -->
         <section class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
-                <div class="max-w-2xl mb-10">
-                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full inline-block mb-3">Algorithmic Trading</span>
+                <div class="max-w-3xl mb-10">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+                            Algorithmic Trading & AI Quant
+                        </span>
+                        <span class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                            Updated: <strong id="stock-last-sync" class="text-slate-700 dark:text-slate-200">Loading...</strong>
+                        </span>
+                    </div>
+
                     <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automated Stock Trading System</h3>
                     <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
-                        This section showcases my fully automated algorithmic stock trading pipeline, operating live in real-time to continuously track portfolio performance, asset allocation, and historical profit curves.
+                        This section showcases my autonomous AI stock trading bot. Powered by a multi-variable Kalman Filter combined with LLM sentiment analysis, the system calculates stock fair values, determines real-time entry/exit signals, and manages portfolio allocations with full autonomy.
                     </p>
                     
                     <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Mathematical Framework
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Mathematical & AI Framework
                         </h4>
                         <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Multivariate:</strong> Evaluates composite market signals.</span>
+                                <span><strong>Multi-Variable Kalman:</strong> Tracks price velocity and fair market value.</span>
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Probabilistic Modeling:</strong> Calculates odds of price deviations.</span>
+                                <span><strong>LLM Reasoning:</strong> Evaluates news sentiment & macro context per stock.</span>
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Z-Score Evaluation:</strong> Measures fair value against market price.</span>
+                                <span><strong>Z-Score Evaluation:</strong> Measures statistical mispricing vs. fair value.</span>
                             </li>
                             <li class="flex items-start gap-1.5">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Kelly Criterion:</strong> Optimizes position sizing based on edge.</span>
+                                <span><strong>AI Capital Sizing:</strong> Dynamically adjusts position sizing based on conviction.</span>
                             </li>
                             <li class="flex items-start gap-1.5 md:col-span-2">
                                 <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Risk Control:</strong> Enforces strict portfolio limits and safety caps.</span>
+                                <span><strong>Risk Controls:</strong> Enforces portfolio caps (max 15% per position) to mitigate drawdowns.</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                <!-- KPI METRICS (4 KORT) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
                     <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Return</span>
-                        <span id="stock-return-pct" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Net Profit</span>
+                        <span id="stock-profit" class="text-2xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
                     </div>
                     <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
                         <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Total Bankroll</span>
-                        <span id="stock-bankroll" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                        <span id="stock-bankroll" class="text-2xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
                     </div>
                     <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
                         <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Invested</span>
-                        <span id="stock-invested" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                        <span id="stock-invested" class="text-2xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Return (%)</span>
+                        <span id="stock-return-pct" class="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">Loading...</span>
                     </div>
                 </div>
 
-                <div class="relative w-full h-80 md:h-96 bg-slate-50/50 dark:bg-slate-800/20 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 mb-10">
+                <!-- PROFIT GRAF -->
+                <div class="relative w-full h-80 md:h-96 bg-slate-50/50 dark:bg-slate-800/20 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 mb-12">
                     <canvas id="stock-profit-chart"></canvas>
                 </div>
 
-                <!-- LATEST TRADES AND FORECASTS TABLE -->
-                <div class="mt-8 border-t border-slate-200 dark:border-slate-800 pt-8">
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-between">
-                        <span>Latest Forecasts & Trade Signals</span>
-                        <span class="text-xs font-normal text-slate-500">Last Sync: <strong id="stock-last-sync" class="text-slate-700 dark:text-slate-300">-</strong></span>
-                    </h4>
-                    
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm">
-                            <thead class="text-xs uppercase bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700">
-                                <tr>
-                                    <th class="py-3 px-4">Date</th>
-                                    <th class="py-3 px-4">Stock</th>
-                                    <th class="py-3 px-4">Action</th>
-                                    <th class="py-3 px-4">Price</th>
-                                    <th class="py-3 px-4">Kalman Value</th>
-                                    <th class="py-3 px-4">Investment</th>
-                                    <th class="py-3 px-4">Rationale & Forecast</th>
+                <!-- AI TRADES, ARGUMENTS & FORECASTS TABELL -->
+                <div class="mt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h4 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">AI Trades, Arguments & Forecasts</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Real-time decisions, trade sizes, and LLM reasoning per stock.</p>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <table class="w-full text-left text-sm border-collapse bg-white dark:bg-slate-900">
+                            <thead>
+                                <tr class="bg-slate-100/70 dark:bg-slate-800/70 border-b border-slate-200 dark:border-slate-800 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                                    <th class="py-3.5 px-4">Date</th>
+                                    <th class="py-3.5 px-4">Stock</th>
+                                    <th class="py-3.5 px-4">Action</th>
+                                    <th class="py-3.5 px-4">Price</th>
+                                    <th class="py-3.5 px-4">Kalman Value</th>
+                                    <th class="py-3.5 px-4">AI Investment</th>
+                                    <th class="py-3.5 px-4 min-w-[280px]">AI Argument & Forecast</th>
                                 </tr>
                             </thead>
-                            <tbody id="stock-trades-body" class="divide-y divide-slate-200 dark:divide-slate-800">
+                            <tbody id="stock-trades-body" class="divide-y divide-slate-100 dark:divide-slate-800/60">
                                 <tr>
-                                    <td colspan="7" class="py-6 text-center text-slate-500">Loading trading data...</td>
+                                    <td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Loading live AI trading data...</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
             </div>
         </section>
 
     </main>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="script.js"></script>
+   <!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="data/en.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/dashboard.js?v=2"></script>
+<script src="script.js"></script>
+    
+    <!-- Byt ut ditt befintliga script-block längst ner i analytics.html mot detta: -->
+<script>
+    // 1. Variabel för att förhindra Chart.js "Canvas is already in use"-fel
+    let stockChartInstance = null;
 
-    <script>
-        let stockChartInstance = null;
+    if (window.lucide) {
+        lucide.createIcons();
+    }
 
-        if (window.lucide) {
-            lucide.createIcons();
-        }
-
-        /* 1. MLS DASHBOARD LOGIC */
-        async function loadMLSDashboard() {
-            try {
-                let res;
-                try {
-                    res = await fetch('data/mls_dashboard_data.json?t=' + Date.now());
-                    if (!res.ok) throw new Error();
-                } catch {
-                    res = await fetch('../data/mls_dashboard_data.json?t=' + Date.now());
-                }
-
-                if (!res.ok) throw new Error("Could not fetch mls_dashboard_data.json");
-                const data = await res.json();
-
-                const lastSync = data.updated_at || data.last_sync || data.timestamp || '-';
-                const nextMatchday = data.next_matchday || data.next_game || data.next_match || '-';
-
-                const syncElem = document.getElementById('mls-last-sync');
-                if (syncElem) syncElem.innerText = lastSync;
-
-                const matchdayElem = document.getElementById('mls-next-matchday');
-                if (matchdayElem) matchdayElem.innerText = nextMatchday;
-
-                // Render Top 5
-                const topBody = document.getElementById('top-teams');
-                const topList = data.top_teams || data.top_5 || (data.rankings && data.rankings.top) || [];
-                if (topBody) {
-                    if (topList.length === 0) {
-                        topBody.innerHTML = `<tr><td class="py-3 text-center text-xs text-slate-500">No team data available.</td></tr>`;
-                    } else {
-                        topBody.innerHTML = topList.slice(0, 5).map((team, idx) => {
-                            const name = typeof team === 'string' ? team : (team.name || team.team || team.Lag || 'Unknown Team');
-                            const score = typeof team === 'object' ? (team.score || team.kalman_rating || team.rating || team.points || '') : '';
-                            return `
-                                <tr class="hover:bg-emerald-100/40 dark:hover:bg-emerald-900/30 transition-colors">
-                                    <td class="py-2.5 px-2 font-bold text-emerald-700 dark:text-emerald-400 text-xs w-6">#${idx + 1}</td>
-                                    <td class="py-2.5 px-2 font-semibold text-slate-800 dark:text-slate-200 text-sm">${name}</td>
-                                    <td class="py-2.5 px-2 text-right font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400">${score}</td>
-                                </tr>
-                            `;
-                        }).join('');
-                    }
-                }
-
-                // Render Bottom 5
-                const bottomBody = document.getElementById('bottom-teams');
-                const bottomList = data.bottom_teams || data.bottom_5 || (data.rankings && data.rankings.bottom) || [];
-                if (bottomBody) {
-                    if (bottomList.length === 0) {
-                        bottomBody.innerHTML = `<tr><td class="py-3 text-center text-xs text-slate-500">No team data available.</td></tr>`;
-                    } else {
-                        bottomBody.innerHTML = bottomList.slice(0, 5).map((team, idx) => {
-                            const name = typeof team === 'string' ? team : (team.name || team.team || team.Lag || 'Unknown Team');
-                            const score = typeof team === 'object' ? (team.score || team.kalman_rating || team.rating || team.points || '') : '';
-                            return `
-                                <tr class="hover:bg-rose-100/40 dark:hover:bg-rose-900/30 transition-colors">
-                                    <td class="py-2.5 px-2 font-bold text-rose-700 dark:text-rose-400 text-xs w-6">#${idx + 1}</td>
-                                    <td class="py-2.5 px-2 font-semibold text-slate-800 dark:text-slate-200 text-sm">${name}</td>
-                                    <td class="py-2.5 px-2 text-right font-mono text-xs font-bold text-rose-700 dark:text-rose-400">${score}</td>
-                                </tr>
-                            `;
-                        }).join('');
-                    }
-                }
-
-            } catch (err) {
-                console.error("Error loading MLS Dashboard:", err);
-                const syncElem = document.getElementById('mls-last-sync');
-                if (syncElem) syncElem.innerText = 'Loading error';
-                const matchdayElem = document.getElementById('mls-next-matchday');
-                if (matchdayElem) matchdayElem.innerText = 'Loading error';
-            }
-        }
-
-        /* 2. STOCK AI DASHBOARD LOGIC */
-        async function loadStockAIDashboard() {
-            try {
-                let res;
-                try {
-                    res = await fetch('data/ai_dashboard_data.json?t=' + Date.now());
-                    if (!res.ok) throw new Error();
-                } catch {
-                    res = await fetch('../data/ai_dashboard_data.json?t=' + Date.now());
-                }
-
-                if (!res.ok) throw new Error("Could not fetch ai_dashboard_data.json");
-                const data = await res.json();
-
-                if (data.updated_at) {
-                    const syncElems = document.querySelectorAll('#stock-last-sync');
-                    syncElems.forEach(el => el.innerText = data.updated_at);
-                }
-
-                if (data.summary) {
-                    const bankroll = data.summary.current_bankroll || 100000;
-                    const profitPct = data.summary.profit_pct || 0;
-
-                    const bankrollElem = document.getElementById('stock-bankroll');
-                    if (bankrollElem) {
-                        bankrollElem.innerText = bankroll.toLocaleString('en-US') + ' SEK';
-                    }
-
-                    const pctElem = document.getElementById('stock-return-pct');
-                    if (pctElem) {
-                        pctElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
-                        pctElem.className = "text-2xl md:text-3xl font-extrabold " + 
-                            (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
-                    }
-                }
-
-                const tradesBody = document.getElementById('stock-trades-body');
-                if (!tradesBody) return;
-
-                const trades = data.latest_trades_and_forecasts || [];
-
-                if (trades.length === 0) {
-                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">No active trades recorded yet.</td></tr>`;
-                    const investedElem = document.getElementById('stock-invested');
-                    if (investedElem) investedElem.innerText = '0 SEK';
-                    return;
-                }
-
-                tradesBody.innerHTML = '';
-                let totalInvested = 0;
-
-                trades.slice().reverse().forEach(row => {
-                    const date = row['Date'] || row['date'] || row['Datum'] || '-';
-                    const stock = row['Stock'] || row['stock'] || row['Aktie'] || '-';
-                    const action = row['Action'] || row['action'] || row['Åtgärd'] || 'BUY';
-                    const price = row['Price'] || row['price'] || row['Kurs'] || row['Pris'] || 0;
-                    const kalman = row['Kalman Value'] || row['kalman_value'] || row['Kalman-värde'] || 0;
-                    const investment = row['AI Investment'] || row['investment'] || row['Investering'] || 0;
-                    const argument = row['AI Argument & Forecast'] || row['argument'] || row['rationale'] || '-';
-
-                    if (action.toUpperCase().includes('BUY')) {
-                        totalInvested += Number(investment) || 0;
-                    }
-
-                    const isBuy = action.toUpperCase().includes('BUY');
-                    const badgeClass = isBuy 
-                        ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' 
-                        : 'bg-rose-100 text-rose-800 dark:bg-rose-900/50 dark:text-rose-300';
-
-                    const tr = document.createElement('tr');
-                    tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors';
-                    tr.innerHTML = `
-                        <td class="py-3 px-4 font-mono text-xs text-slate-500">${date}</td>
-                        <td class="py-3 px-4 font-bold text-slate-900 dark:text-white">${stock}</td>
-                        <td class="py-3 px-4"><span class="px-2 py-1 rounded text-xs font-bold ${badgeClass}">${action}</span></td>
-                        <td class="py-3 px-4 font-mono">${typeof price === 'number' ? price.toFixed(2) : price} SEK</td>
-                        <td class="py-3 px-4 font-mono text-slate-600 dark:text-slate-400">${typeof kalman === 'number' ? kalman.toFixed(2) : kalman} SEK</td>
-                        <td class="py-3 px-4 font-mono font-semibold">${Number(investment).toLocaleString('en-US')} SEK</td>
-                        <td class="py-3 px-4 text-xs text-slate-600 dark:text-slate-400 max-w-xs truncate" title="${argument}">${argument}</td>
-                    `;
-                    tradesBody.appendChild(tr);
-                });
-
-                const investedElem = document.getElementById('stock-invested');
-                if (investedElem) {
-                    investedElem.innerText = totalInvested.toLocaleString('en-US') + ' SEK';
-                }
-
-                if (data.historical_profit || data.chart_data) {
-                    renderStockChart(data.historical_profit || data.chart_data);
-                }
-            } catch (err) {
-                console.error("Error loading Stock AI Dashboard:", err);
+    async function loadStockAIDashboard() {
+        try {
+            const res = await fetch('data/ai_dashboard_data.json?t=' + Date.now());
+            if (!res.ok) throw new Error("Could not fetch ai_dashboard_data.json");
+            
+            const data = await res.json();
+            
+            // Uppdatera synkdatum
+            if (data.updated_at) {
                 const syncElem = document.getElementById('stock-last-sync');
-                if (syncElem) syncElem.innerText = 'Loading error';
-            }
-        }
-
-        function renderStockChart(chartData) {
-            const ctx = document.getElementById('stock-profit-chart');
-            if (!ctx) return;
-
-            if (stockChartInstance) {
-                stockChartInstance.destroy();
+                if (syncElem) syncElem.innerText = data.updated_at;
             }
 
-            const labels = chartData.map(d => d.date || d.Date || d.timestamp || '');
-            const values = chartData.map(d => d.bankroll || d.profit || d.value || 0);
+            // Uppdatera KPI-mätare
+            if (data.summary) {
+                const bankroll = data.summary.current_bankroll || 100000;
+                const profit = data.summary.profit_sek || 0;
+                const profitPct = data.summary.profit_pct || 0;
 
-            stockChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Portfolio Value (SEK)',
-                        data: values,
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 2,
-                        pointHoverRadius: 5
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        x: {
-                            grid: { display: false },
-                            ticks: { maxTicksLimit: 8, font: { size: 10 } }
-                        },
-                        y: {
-                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
-                            ticks: { font: { size: 10 } }
-                        }
-                    }
+                const bankrollElem = document.getElementById('stock-bankroll');
+                if (bankrollElem) {
+                    bankrollElem.innerText = bankroll.toLocaleString('sv-SE') + ' SEK';
                 }
+                
+                const profitElem = document.getElementById('stock-profit');
+                if (profitElem) {
+                    profitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE') + ' SEK';
+                    profitElem.className = "text-2xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                }
+
+                const pctElem = document.getElementById('stock-return-pct');
+                if (pctElem) {
+                    pctElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
+                    pctElem.className = "text-2xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                }
+            }
+
+            // Bygg tabellen med affärer och AI-argument
+            const tradesBody = document.getElementById('stock-trades-body');
+            if (!tradesBody) return;
+
+            const trades = data.latest_trades_and_forecasts || [];
+
+            if (trades.length === 0) {
+                tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Inga aktiva affärer registrerade ännu.</td></tr>`;
+                const investedElem = document.getElementById('stock-invested');
+                if (investedElem) investedElem.innerText = '0 SEK';
+                return;
+            }
+
+            tradesBody.innerHTML = '';
+            let totalInvested = 0;
+
+            trades.slice().reverse().forEach(row => {
+                const date = row['Date'] || row['date'] || row['Datum'] || '-';
+                const stock = row['Stock'] || row['stock'] || row['Aktie'] || '-';
+                const action = row['Åtgärd'] || row['Action'] || row['action'] || 'BUY';
+                
+                const price = row['Price'] || row['price'] || row['Pris'] || '-';
+                const kalman = row['Kalman Value'] || row['kalman_value'] || row['Fair Value'] || '-';
+                const argument = row['AI Argument & Forecast'] || row['argument'] || row['Reasoning'] || '-';
+
+                const rawAmount = row['ai_investment'] 
+                    ?? row['position_size'] 
+                    ?? row['Rek. Investering (kr)'] 
+                    ?? row['AI Investering (kr)'] 
+                    ?? row['Trade Amount'] 
+                    ?? 0;
+                
+                const amount = parseFloat(rawAmount) || 0;
+                if (action === 'KÖP' || action === 'BUY') totalInvested += amount;
+
+                const formattedAmount = amount > 0 
+                    ? `${amount.toLocaleString('sv-SE')} SEK` 
+                    : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
+
+                let badgeClass = "badge badge-buy";
+                if (action === 'SÄLJ' || action === 'SELL') {
+                    badgeClass = "badge badge-sell";
+                } else if (action === 'STÅ ÖVER' || action === 'HOLD') {
+                    badgeClass = "badge badge-hold";
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition";
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 text-xs whitespace-nowrap text-slate-500 dark:text-slate-400">${date}</td>
+                    <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">${stock}</td>
+                    <td class="py-3.5 px-4 whitespace-nowrap"><span class="${badgeClass}">${action}</span></td>
+                    <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof price === 'number' ? price.toFixed(2) + ' SEK' : price}</td>
+                    <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${typeof kalman === 'number' ? kalman.toFixed(2) + ' SEK' : kalman}</td>
+                    <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
+                    <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${argument}</td>
+                `;
+                tradesBody.appendChild(tr);
             });
+
+            // 2. Rendera om Lucide-ikoner för dynamiska rader
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            const investedElem = document.getElementById('stock-invested');
+            if (investedElem) {
+                investedElem.innerText = totalInvested.toLocaleString('sv-SE') + ' SEK';
+            }
+
+            // 4. Rendera graf om historisk data finns
+            if (data.history && Array.isArray(data.history) && data.history.length > 0) {
+                renderStockChart(data.history);
+            }
+
+        } catch (err) {
+            console.error("Error loading AI Stock Dashboard:", err);
+            
+            // 3. Visa felmeddelande i tabellen om datan inte hittas
+            const tradesBody = document.getElementById('stock-trades-body');
+            if (tradesBody) {
+                tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-rose-500 font-medium">Kunde inte ladda data. Kontrollera att data/ai_dashboard_data.json finns.</td></tr>`;
+            }
+        }
+    }
+
+    function renderStockChart(historyData) {
+        const ctx = document.getElementById('stock-profit-chart');
+        if (!ctx) return;
+
+        // Förstör den gamla grafinstansen innan den nya skapas
+        if (stockChartInstance) {
+            stockChartInstance.destroy();
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadMLSDashboard();
-            loadStockAIDashboard();
+        const labels = historyData.map(item => item.date || item.Date || '');
+        const profitValues = historyData.map(item => item.profit || item.Profit || 0);
+
+        stockChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Net Profit (SEK)',
+                    data: profitValues,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 3,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { color: 'rgba(148, 163, 184, 0.1)' } }
+                }
+            }
         });
-    </script>
+    }
+
+    document.addEventListener('DOMContentLoaded', loadStockAIDashboard);
+</script>
 </body>
 </html>
