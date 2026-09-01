@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Björn Dahlman | Football Analytics & Predictive Models</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons & Google Analytics -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGSNWL658"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8GGSNWL658');
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            
+            <a href="index.html" aria-label="Hem">
+                <picture>
+                    <source srcset="images/bjorn-dahlman.webp" type="image/webp">
+                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-12 w-auto rounded-full object-cover">
+                </picture>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <!-- HUVUDMENY (Skrivbord) -->
+                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400 items-center">
+                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
+                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
+                    
+                    <!-- DROPDOWN: ANALYTICS -->
+                    <li class="relative group">
+                        <button class="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-bold transition py-2 focus:outline-none">
+                            <span>Analytics</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute left-0 top-full hidden group-hover:block w-48 bg-white dark:bg-slate-900 shadow-xl rounded-xl border border-slate-200 dark:border-slate-800 py-2 z-50">
+                            <a href="football-analytics.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-blue-600 dark:text-blue-400 font-semibold transition text-sm flex items-center gap-2">
+                                <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i> Football Analytics
+                            </a>
+                            <a href="stock-analytics.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition text-sm flex items-center gap-2">
+                                <i data-lucide="line-chart" class="w-4 h-4 text-emerald-500"></i> Financial Analytics
+                            </a>
+                        </div>
+                    </li>
+
+                    <li><a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a></li>
+                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
+                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
+                </ul>
+
+                <!-- SPRÅKVÄXLARE -->
+                <div class="language-switcher flex items-center gap-2 text-xl">
+                    <a href="football-analytics.html" class="lang-icon hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                    <a href="sv/football-analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+                </div>
+
+                <!-- SOCIALA IKONER -->
+                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
+                    <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i> 
+                    </a>
+                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <!-- TEMA-KNAPP -->
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <!-- MOBILMENY-KNAPP -->
+                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Toggle Menu">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILMENY -->
+    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
+            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
+            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
+            
+            <!-- MOBIL: ANALYTICS UNDERMENY -->
+            <div class="space-y-1 pl-3 border-l-2 border-slate-200 dark:border-slate-800 my-1">
+                <span class="block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Analytics</span>
+                <a href="football-analytics.html" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-blue-600 dark:text-blue-400 font-semibold rounded transition text-sm flex items-center gap-2">
+                    <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i> Football Analytics
+                </a>
+                <a href="stock-analytics.html" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition text-sm flex items-center gap-2">
+                    <i data-lucide="line-chart" class="w-4 h-4 text-emerald-500"></i> Financial Analytics
+                </a>
+            </div>
+
+            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Media</a>
+            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projects</a>
+            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Experience</a>
+            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Education</a>
+            
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
+                <a href="football-analytics.html" class="lang-icon text-xl hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
+                <a href="sv/football-analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+            </div>
+            
+            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
+                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
+                <span>Toggle Theme</span>
+            </button>
+        </div>
+    </nav>
+        
+    <!-- HEADER -->
+    <header class="bg-slate-100 dark:bg-slate-900 py-16 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
+        <div class="mb-8">
+            <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-sm hover:shadow-md border border-slate-200 dark:border-slate-700">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                Back to Portfolio
+            </a>
+        </div>
+        
+        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Football Predictive Models</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto px-6">
+            Real-time algorithmic sports data pipelines, expected goals (xG) modeling, and adaptive Kalman filters.
+        </p>
+    </header>
+
+    <!-- HUVUDINNEHÅLL -->
+    <main class="max-w-5xl mx-auto px-6 py-16 space-y-16">
+
+        <!-- BILD-BANNER (MLS SOCCER ANALYTICS) -->
+        <section class="fade-in">
+            <div class="relative w-full h-[380px] md:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 flex flex-col justify-between p-6 md:p-10">
+                <img src="images/mls-stadium.jpg" alt="MLS Soccer Stadium" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <div class="relative z-10"></div>
+
+                <div class="relative z-10 text-center my-auto">
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-md">
+                        MLS Soccer Analytics
+                    </h2>
+                    <p class="text-base md:text-xl text-slate-100 font-medium mt-2 drop-shadow">
+                        Enhanced AI system for high-precision match predictive modeling.
+                    </p>
+                </div>
+
+                <div class="relative z-10 flex justify-end">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-xs font-medium text-slate-700 dark:text-slate-300 border border-white/20 shadow-lg">
+                        <span class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Pipeline Active
+                        </span>
+                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                        <span>Last Sync: <strong id="mls-last-sync" class="text-slate-900 dark:text-white">Loading...</strong></span>
+                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                        <span>Next Matchday: <strong id="mls-next-matchday" class="text-slate-900 dark:text-white">Loading...</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANNOUNCEMENT -->
+        <section class="fade-in">
+            <div class="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-transparent p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-900/50 shadow-xl relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm animate-pulse">
+                        News!
+                    </span>
+                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        MLS System Update
+                    </span>
+                </div>
+
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
+                    Automated Live AI System for MLS Soccer Analytics
+                </h3>
+
+                <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
+                    This section showcases a fully automated, self-learning AI pipeline for MLS (Major League Soccer), operating live in real-time to track bankroll development, dynamic betting strategies, and historical profit curves continuously.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 backdrop-blur-sm text-sm">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="cpu" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Core Engine</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Adaptive Kalman Filter</strong>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="brain-circuit" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Optimization</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Reinforcement Learning</strong>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="activity" class="w-5 h-5 text-emerald-500 shrink-0"></i>
+                        <div>
+                            <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">Pipeline Status</span>
+                            <strong class="text-slate-800 dark:text-slate-200">Live & Self-Learning</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MLS SOCCER ANALYTICS (GRAF OCH VÄRDEN) -->
+        <section id="mls-soccer" class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="max-w-3xl mb-10">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automated Live AI System for MLS Soccer Analytics</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
+                        This section showcases a fully automated, self-learning AI pipeline for <strong>MLS (Major League Soccer)</strong>, operating live in real-time to track bankroll development, dynamic betting strategies, and historical profit curves continuously.
+                    </p>
+                    
+                    <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> AI & Mathematical Framework
+                        </h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Adaptive Kalman Filter:</strong> Tracks goals, xG, and shots using stable Joseph's covariance.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Unsupervised Clustering:</strong> Groups teams dynamically to build performance baselines.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Self-Supervised EM:</strong> Auto-calibrates dynamic noise filtering via market odds.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Evolutionary Algorithms:</strong> Auto-tunes hyperparameters to secure long-term stability.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5 md:col-span-2">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Reinforcement Learning:</strong> Optimizes stake sizing (Q-Learning) for maximum EV growth.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Net Profit</span>
+                        <span id="bot-profit" class="text-3xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Total Bankroll</span>
+                        <span id="bot-bankroll" class="text-3xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full h-80 md:h-96 bg-slate-50/50 dark:bg-slate-800/20 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                    <canvas id="bot-profit-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE TEAM RANKINGS -->
+        <section id="mls-rankings" class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="mb-8">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Live Team Rankings</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 max-w-2xl">
+                        Real-time Kalman-calibrated team strengths. This list filters out noise and temporary slumps to identify MLS's most undervalued and overvalued teams compared to official league standings.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
+                        <h4 class="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i> Top 5: Kalman Strongest
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="top-teams" class="divide-y divide-emerald-200 dark:divide-emerald-800">
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-rose-50/50 dark:bg-rose-950/20 p-6 rounded-2xl border border-rose-100 dark:border-rose-900/50">
+                        <h4 class="text-lg font-bold text-rose-800 dark:text-rose-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-down" class="w-5 h-5"></i> Bottom 5: Overvalued
+                        </h4>
+                        <table class="w-full text-left">
+                            <tbody id="bottom-teams" class="divide-y divide-rose-200 dark:divide-rose-800">
+                                <tr><td class="py-2">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- EXTERNA SKRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="data/en.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/dashboard.js?v=2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
