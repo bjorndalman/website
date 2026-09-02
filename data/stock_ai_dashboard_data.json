@@ -130,9 +130,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 553.8,
-      "kalman_value": 565.08,
+      "kalman_value": 565.48,
       "ai_investment": 10181.25,
-      "argument": "Moderate price decline increases short-term process volatility. (Q: 1.30x, R: 1.00x)"
+      "argument": "Moderate price decline indicating increased short-term process volatility. (Q: 1.40x, R: 1.10x)"
     },
     {
       "date": "2026-09-02",
@@ -170,9 +170,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 542.8,
-      "kalman_value": 557.12,
+      "kalman_value": 557.04,
       "ai_investment": 10181.25,
-      "argument": "Downside price pressure reflects cyclical market exposure. (Q: 1.20x, R: 1.00x)"
+      "argument": "Notable daily drop causing slightly elevated market volatility. (Q: 1.30x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -180,9 +180,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 27.08,
-      "kalman_value": 27.35,
+      "kalman_value": 27.36,
       "ai_investment": 10181.25,
-      "argument": "Minor price decline fits standard daily fluctuations. (Q: 1.00x, R: 1.00x)"
+      "argument": "Low price level with moderate negative price movement. (Q: 1.20x, R: 1.10x)"
     },
     {
       "date": "2026-09-02",
@@ -200,9 +200,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 274.9,
-      "kalman_value": 278.46,
+      "kalman_value": 278.42,
       "ai_investment": 10181.25,
-      "argument": "Defensive equity experiencing mild short-term downside pressure. (Q: 1.10x, R: 1.00x)"
+      "argument": "Moderate pullback adding to short-term uncertainty. (Q: 1.30x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -230,9 +230,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 97.14,
-      "kalman_value": 98.88,
+      "kalman_value": 98.87,
       "ai_investment": 10181.25,
-      "argument": "Standard daily move with low noise and steady signal. (Q: 1.00x, R: 1.00x)"
+      "argument": "Mild decline reflecting typical market noise. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -240,9 +240,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 171.85,
-      "kalman_value": 173.3,
+      "kalman_value": 173.28,
       "ai_investment": 10181.25,
-      "argument": "Moderate price drop remains within expected normal bounds. (Q: 1.00x, R: 1.00x)"
+      "argument": "Moderate weakness indicating minor short-term selling pressure. (Q: 1.20x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -262,7 +262,7 @@
       "price": 60.8,
       "kalman_value": 61.33,
       "ai_investment": 10181.25,
-      "argument": "Bucking market weakness with strong clear bullish momentum. (Q: 1.20x, R: 0.80x)"
+      "argument": "Positive gain contrasting broader market weakness shows strong signal. (Q: 1.30x, R: 0.80x)"
     },
     {
       "date": "2026-09-02",
@@ -282,7 +282,7 @@
       "price": 370.1,
       "kalman_value": 379.78,
       "ai_investment": 10181.25,
-      "argument": "Small price decline under normal market noise levels. (Q: 1.00x, R: 1.00x)"
+      "argument": "Minor price decline under normal market conditions. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -310,9 +310,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 265.0,
-      "kalman_value": 271.63,
+      "kalman_value": 271.87,
       "ai_investment": 10181.25,
-      "argument": "Negative momentum indicates moderate increase in short-term risk. (Q: 1.20x, R: 1.00x)"
+      "argument": "Downward movement increasing short-term process noise. (Q: 1.30x, R: 1.10x)"
     },
     {
       "date": "2026-09-02",
@@ -332,7 +332,7 @@
       "price": 44.6,
       "kalman_value": 44.17,
       "ai_investment": 0.0,
-      "argument": "Strong positive performance provides clear high-quality upward signal. (Q: 1.30x, R: 0.80x)"
+      "argument": "Strong positive gain demonstrating clear upward trend quality. (Q: 1.30x, R: 0.80x)"
     },
     {
       "date": "2026-09-02",
@@ -340,9 +340,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 338.3,
-      "kalman_value": 343.37,
+      "kalman_value": 343.55,
       "ai_investment": 10181.25,
-      "argument": "Sharp price movement increases volatility and event noise. (Q: 1.50x, R: 1.10x)"
+      "argument": "Sharp daily drop signaling elevated event risk and uncertainty. (Q: 1.50x, R: 1.20x)"
     }
   ]
 }
