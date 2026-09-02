@@ -11,7 +11,7 @@ async function loadStockAIDashboard() {
         // Identifiera om vi befinner oss i /sv/ eller rotmappen för korrekt relaterad sökväg
         const prefix = window.pathPrefix || (window.location.pathname.includes('/sv/') ? '../' : '');
         
-        // 1. Hämtar huvuddata för aktier
+        // 1. Hämtar huvuddata för aktier (med anti-cache timestamp)
         const res = await fetch(`${prefix}data/stock_ai_dashboard_data.json?t=` + Date.now());
         if (!res.ok) throw new Error("Could not fetch stock_ai_dashboard_data.json");
         
@@ -146,10 +146,16 @@ function renderStockChart(historyData) {
 
     if (stockChartInstance) {
         stockChartInstance.destroy();
+        stockChartInstance = null;
     }
 
     const labels = historyData.map(item => item.date || item.Date || '');
-    const profitValues = historyData.map(item => item.profit || item.Profit || 0);
+    const profitValues = historyData.map(item => item.profit !== undefined ? item.profit : (item.Profit || 0));
+
+    // Beräkna rimliga Y-axelsgränser för att förhindra konstig skalning vid få datapunkter
+    const minVal = Math.min(...profitValues);
+    const maxVal = Math.max(...profitValues);
+    const padding = Math.max(Math.abs(maxVal) * 0.1, 100);
 
     stockChartInstance = new Chart(ctx, {
         type: 'line',
@@ -162,8 +168,9 @@ function renderStockChart(historyData) {
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
                 tension: 0.3,
-                pointRadius: 3,
-                pointHoverRadius: 6
+                pointRadius: 5,
+                pointHoverRadius: 8,
+                pointBackgroundColor: '#10b981'
             }]
         },
         options: {
@@ -171,14 +178,42 @@ function renderStockChart(historyData) {
             maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
-                tooltip: { mode: 'index', intersect: false }
+                tooltip: { 
+                    mode: 'index', 
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            let value = context.parsed.y || 0;
+                            return ' Profit: ' + value.toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
+                        }
+                    }
+                }
             },
             scales: {
-                x: { grid: { display: false } },
-                y: { grid: { color: 'rgba(148, 163, 184, 0.1)' } }
+                x: { 
+                    grid: { display: false },
+                    ticks: { font: { size: 11 } }
+                },
+                y: { 
+                    suggestedMin: minVal - padding,
+                    suggestedMax: maxVal + padding,
+                    grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                    ticks: {
+                        callback: function(value) {
+                            return value.toLocaleString('sv-SE') + ' SEK';
+                        }
+                    }
+                }
             }
         }
     });
+
+    // Tvinga Chart.js att beräkna korrekt höjd/bredd direkt efter rendering
+    setTimeout(() => {
+        if (stockChartInstance) {
+            stockChartInstance.resize();
+        }
+    }, 100);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
