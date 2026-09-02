@@ -421,8 +421,8 @@
                 window.stockChartInstance.destroy();
             }
 
-            const labels = historyData.map(item => item.date || item.Date || '');
-            const profitValues = historyData.map(item => item.profit || item.Profit || 0);
+            const labels = historyData.map(item => item.date || item.Date || item.datum || '');
+            const profitValues = historyData.map(item => item.profit ?? item.Profit ?? item.vinst ?? item.bankroll ?? item.total_bankroll ?? 0);
 
             window.stockChartInstance = new Chart(ctx, {
                 type: 'line',
@@ -433,6 +433,7 @@
                         data: profitValues,
                         borderColor: '#10b981',
                         backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderWidth: 3,
                         fill: true,
                         tension: 0.3,
                         pointRadius: 3,
@@ -444,11 +445,26 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
-                        tooltip: { mode: 'index', intersect: false }
+                        tooltip: { 
+                            mode: 'index', 
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.raw.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+                                }
+                            }
+                        }
                     },
                     scales: {
                         x: { grid: { display: false } },
-                        y: { grid: { color: 'rgba(148, 163, 184, 0.1)' } }
+                        y: { 
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString('sv-SE') + ' SEK';
+                                }
+                            }
+                        }
                     }
                 }
             });
