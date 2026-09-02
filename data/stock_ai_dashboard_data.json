@@ -20,7 +20,7 @@
       "price": 934.6,
       "kalman_value": 936.06,
       "ai_investment": 0.0,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Minor daily price decline reflecting normal market fluctuation. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -70,7 +70,7 @@
       "price": 564.6,
       "kalman_value": 575.66,
       "ai_investment": 10181.25,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Moderate price drop within standard daily volatility limits. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -120,7 +120,7 @@
       "price": 243.9,
       "kalman_value": 245.79,
       "ai_investment": 10181.25,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Slight downward movement under typical market conditions. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -160,7 +160,7 @@
       "price": 61.38,
       "kalman_value": 61.97,
       "ai_investment": 10181.25,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Sharper price drop indicates elevated short-term volatility and risk. (Q: 1.60x, R: 1.10x)"
     },
     {
       "date": "2026-09-02",
@@ -178,9 +178,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 384.4,
-      "kalman_value": 393.48,
+      "kalman_value": 393.32,
       "ai_investment": 10181.25,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Increased selling pressure leading to higher daily price fluctuation. (Q: 1.30x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
