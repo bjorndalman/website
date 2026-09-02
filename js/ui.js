@@ -1,4 +1,4 @@
-// RETA DETTA HÖGST UPP I js/ui.js
+// js/ui.js - RETA DETTA HÖGST UPP I js/ui.js
 var isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
 var appData = {};
 var pathPrefix = isSwedishPage ? "../" : "";
@@ -17,8 +17,6 @@ function loadLanguageData() {
   pathPrefix = isSwedishPage ? "../" : "";
 }
 
-// ... resten av din funktioner (initTheme, toggleTheme, render, etc.) sparar du exakt som de är!
-
 function initTheme() {
   const stored = localStorage.getItem("theme");
   const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -34,19 +32,25 @@ function toggleTheme() {
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 
-  // Uppdatera alla aktiva Chart.js-instanser från window.chartInstances
+  const chartsToUpdate = [];
+  if (typeof botChartInstance !== 'undefined' && botChartInstance) chartsToUpdate.push(botChartInstance);
+  if (typeof stockChartInstance !== 'undefined' && stockChartInstance) chartsToUpdate.push(stockChartInstance);
   if (window.chartInstances) {
-    Object.values(window.chartInstances).forEach(chart => {
-      if (chart && chart.options && chart.options.scales) {
-        const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
-        const textColor = isDark ? '#94a3b8' : '#64748b';
-        if (chart.options.scales.x && chart.options.scales.x.ticks) chart.options.scales.x.ticks.color = textColor;
-        if (chart.options.scales.y && chart.options.scales.y.ticks) chart.options.scales.y.ticks.color = textColor;
-        if (chart.options.scales.y && chart.options.scales.y.grid) chart.options.scales.y.grid.color = gridColor;
-        chart.update();
-      }
+    Object.values(window.chartInstances).forEach(c => {
+      if (c && !chartsToUpdate.includes(c)) chartsToUpdate.push(c);
     });
   }
+
+  chartsToUpdate.forEach(chart => {
+    if (chart && chart.options && chart.options.scales) {
+      const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+      const textColor = isDark ? '#94a3b8' : '#64748b';
+      if (chart.options.scales.x && chart.options.scales.x.ticks) chart.options.scales.x.ticks.color = textColor;
+      if (chart.options.scales.y && chart.options.scales.y.ticks) chart.options.scales.y.ticks.color = textColor;
+      if (chart.options.scales.y && chart.options.scales.y.grid) chart.options.scales.y.grid.color = gridColor;
+      chart.update();
+    }
+  });
 }
 
 function setText(id, text) {
@@ -58,11 +62,10 @@ function renderDescription(descriptionData) {
   if (Array.isArray(descriptionData)) {
     return `<ul class="list-outside">${descriptionData.map(item => `<li class="mb-1 ml-4 list-disc">${item}</li>`).join('')}</ul>`;
   }
-  return descriptionData.replace(/\n/g, '<br>');
+  return descriptionData ? descriptionData.replace(/\n/g, '<br>') : '';
 }
 
 function render() {
-  // Säkerställ att appData och appData.profile finns innan rendrering
   if (!appData || !appData.profile) return;
 
   setText("name", appData.profile.name);
@@ -79,16 +82,18 @@ function render() {
     copyrightYear.textContent = new Date().getFullYear();
   }
 
-  if (appData.skills && document.getElementById("skills-list")) {
-    document.getElementById("skills-list").innerHTML = appData.skills.map(skill => `
+  const skillsContainer = document.getElementById("skills-list");
+  if (skillsContainer && appData.skills) {
+    skillsContainer.innerHTML = appData.skills.map(skill => `
       <span class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-blue-900 dark:hover:text-blue-300 transition cursor-default">
         ${skill}
       </span>
     `).join('');
   }
 
-  if (appData.experience && document.getElementById("experience-list")) {
-    document.getElementById("experience-list").innerHTML = appData.experience.map(exp => `
+  const expContainer = document.getElementById("experience-list");
+  if (expContainer && appData.experience) {
+    expContainer.innerHTML = appData.experience.map(exp => `
       <div class="relative pl-8 md:pl-0">
         <div class="hidden md:block absolute -left-[41px] top-1 w-5 h-5 bg-blue-600 rounded-full border-4 border-white dark:border-slate-950"></div>
         <h4 class="text-xl font-bold text-slate-900 dark:text-white">${exp.title}</h4>
@@ -102,8 +107,9 @@ function render() {
     `).join('');
   }
 
-  if (appData.education && document.getElementById("education-list")) {
-    document.getElementById("education-list").innerHTML = appData.education.map(edu => `
+  const eduContainer = document.getElementById("education-list");
+  if (eduContainer && appData.education) {
+    eduContainer.innerHTML = appData.education.map(edu => `
       <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
         <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
             <h4 class="text-lg font-bold text-slate-900 dark:text-white">${edu.school}</h4>
@@ -117,8 +123,9 @@ function render() {
     `).join('');
   }
 
-  if (appData.freetime && document.getElementById("freetime-list")) {
-    document.getElementById("freetime-list").innerHTML = appData.freetime.map((item, index) => `
+  const freeContainer = document.getElementById("freetime-list");
+  if (freeContainer && appData.freetime) {
+    freeContainer.innerHTML = appData.freetime.map((item, index) => `
       <li class="flex items-center">
         ${item} ${index < appData.freetime.length - 1 ? '<span class="mx-2 opacity-50">•</span>' : ''}
       </li>
