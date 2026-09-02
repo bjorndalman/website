@@ -25,9 +25,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 934.6,
-      "kalman_value": 936.05,
+      "kalman_value": 936.06,
       "ai_investment": 0.0,
-      "argument": "Moderate price drop consistent with broader market retreat. (Q: 1.10x, R: 1.00x)"
+      "argument": "Moderate price decline under normal market conditions. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -77,7 +77,7 @@
       "price": 564.6,
       "kalman_value": 575.59,
       "ai_investment": 10181.25,
-      "argument": "Slight price pullback under normal market volatility. (Q: 1.10x, R: 1.00x)"
+      "argument": "Slight downward move consistent with general market weakness. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -125,9 +125,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 243.9,
-      "kalman_value": 245.78,
+      "kalman_value": 245.79,
       "ai_investment": 10181.25,
-      "argument": "Moderate daily decline under standard market conditions. (Q: 1.10x, R: 1.00x)"
+      "argument": "Minor negative move showing standard daily price variance. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -167,7 +167,7 @@
       "price": 61.38,
       "kalman_value": 61.97,
       "ai_investment": 10181.25,
-      "argument": "Sharp price drop indicating elevated uncertainty and higher volatility. (Q: 1.60x, R: 1.10x)"
+      "argument": "Sharp daily drop indicates increased volatility and elevated risk. (Q: 1.60x, R: 1.10x)"
     },
     {
       "date": "2026-09-02",
@@ -185,9 +185,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 384.4,
-      "kalman_value": 393.32,
+      "kalman_value": 393.27,
       "ai_investment": 10181.25,
-      "argument": "Notable price drop showing moderate negative momentum. (Q: 1.30x, R: 1.00x)"
+      "argument": "Notable pullback reflecting heightened short-term selling pressure. (Q: 1.40x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
