@@ -1,3 +1,7 @@
+// 1. Säkerställ korrekt pathPrefix baserat på om sidan ligger i mappen /sv/ eller inte
+const pathPrefix = window.location.pathname.includes('/sv/') ? '../' : './';
+
+// 2. Ladda övergripande portföljdata
 async function loadPortfolioData() {
   try {
     const response = await fetch(`${pathPrefix}data/portfolio_summary.json?t=${Date.now()}`);
@@ -18,6 +22,49 @@ async function loadPortfolioData() {
   }
 }
 
+// 3. Ladda Fotbolls- / MLS-Dashboard (ÅTGÄRDAR "LOADING..." PÅ FOTBOLLSSIDAN)
+async function loadFootballAIDashboard() {
+  const profitElem = document.getElementById('mls-profit');
+  const bankrollElem = document.getElementById('mls-bankroll');
+  const returnElem = document.getElementById('mls-return-pct');
+  const betsBody = document.getElementById('mls-bets-body');
+
+  // Om vi inte är på fotbollssidan, avbryt
+  if (!profitElem && !bankrollElem && !betsBody) return;
+
+  try {
+    const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error("Kunde inte hämta football_ai_dashboard_data.json");
+
+    const data = await res.json();
+
+    if (data.summary) {
+      const bankroll = data.summary.current_bankroll || 10000;
+      const profitSek = data.summary.profit_sek || 0;
+      const profitPct = data.summary.profit_pct || 0;
+
+      if (bankrollElem) {
+        bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+      }
+
+      if (profitElem) {
+        profitElem.innerText = (profitSek >= 0 ? '+' : '') + profitSek.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+        profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitSek >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+      }
+
+      if (returnElem) {
+        returnElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
+        returnElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+      }
+    }
+  } catch (err) {
+    console.warn("Kunde inte ladda fotbollsdata:", err);
+    if (profitElem) profitElem.innerText = "0,00 SEK";
+    if (bankrollElem) bankrollElem.innerText = "0,00 SEK";
+  }
+}
+
+// 4. Ladda Aktie-Dashboard
 async function loadStockAIDashboard() {
   const tradesBody = document.getElementById('stock-trades-body');
   
@@ -27,13 +74,11 @@ async function loadStockAIDashboard() {
     
     const data = await res.json();
     
-    // Uppdatera synk-datum
     if (data.updated_at) {
       const syncElem = document.getElementById('stock-last-sync');
       if (syncElem) syncElem.innerText = data.updated_at;
     }
 
-    // Uppdatera kassa, avkastning och vinst/förlust från summary
     if (data.summary) {
       const bankroll = data.summary.current_bankroll || 100000;
       const profitPct = data.summary.profit_pct || 0;
@@ -53,6 +98,7 @@ async function loadStockAIDashboard() {
       const profitElem = document.getElementById('stock-profit');
       if (profitElem) {
         profitElem.innerText = (profitSek >= 0 ? '+' : '') + profitSek.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+        profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitSek >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
       }
     }
 
@@ -61,7 +107,7 @@ async function loadStockAIDashboard() {
     const trades = data.latest_trades_and_forecasts || [];
 
     if (trades.length === 0) {
-      tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">No active trades registered yet.</td></tr>`;
+      tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">Inga aktiva affärer registrerade ännu.</td></tr>`;
       const investedElem = document.getElementById('stock-invested');
       if (investedElem) investedElem.innerText = '0 SEK';
       return;
@@ -140,53 +186,17 @@ async function loadStockAIDashboard() {
   }
 }
 
-// Inaktivera denna funktion helt så att den inte skriver över värdena med gamla stock_stats.json
+// 5. Inaktiv funktion
 async function fetchStockStats() {
-    return;
+  return;
 }
 
-/*async function fetchStockStats() {
-    const returnEl = document.getElementById('stock-return-pct');
-    const profitEl = document.getElementById('stock-profit');
-    const bankrollEl = document.getElementById('stock-bankroll');
-    const investedEl = document.getElementById('stock-invested');
-
-    if (!returnEl && !profitEl && !bankrollEl && !investedEl) return;
-
-    try {
-        const response = await fetch(`${pathPrefix}data/stock_stats.json?t=${Date.now()}`);
-        if (!response.ok) return;
-        const data = await response.json();
-
-        if (returnEl && data.profit_pct && !data.profit_pct.includes('nan')) {
-            returnEl.textContent = data.profit_pct;
-            returnEl.className = data.is_positive 
-                ? "text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400" 
-                : "text-2xl md:text-3xl font-extrabold text-rose-600 dark:text-rose-400";
-        }
-
-        if (profitEl && data.net_profit_sek) {
-            profitEl.textContent = data.net_profit_sek;
-        }
-
-        if (bankrollEl && data.total_bankroll && !data.total_bankroll.includes('nan')) {
-            bankrollEl.textContent = data.total_bankroll;
-        }
-
-        if (investedEl && data.total_invested) {
-            investedEl.textContent = data.total_invested;
-        }
-    } catch (err) {
-        console.warn("Aktie-stats ej tillgängliga.", err);
-    }
-}*/
-
+// 6. Pipeline status för MLS
 async function loadPipelineStatus() {
     const syncEl = document.getElementById('mls-last-sync');
     if (!syncEl) return;
 
     try {
-        // Ändrat till stats.json
         const response = await fetch(`${pathPrefix}data/stats.json?t=${Date.now()}`);
         if (!response.ok) return;
         const data = await response.json();
@@ -198,6 +208,8 @@ async function loadPipelineStatus() {
         console.warn("Kunde inte hämta pipeline-status:", error);
     }
 }
+
+// 7. Kalman-rankings för MLS
 async function loadKalmanRankings() {
     const topContainer = document.getElementById('top-teams');
     const bottomContainer = document.getElementById('bottom-teams');
@@ -249,3 +261,12 @@ async function loadKalmanRankings() {
         console.warn("Kunde inte hämta Kalman-rankings:", err);
     }
 }
+
+// 8. Kör alla initieringsfunktioner när DOM är redo
+document.addEventListener('DOMContentLoaded', () => {
+  loadPortfolioData();
+  loadFootballAIDashboard();
+  loadStockAIDashboard();
+  loadPipelineStatus();
+  loadKalmanRankings();
+});
