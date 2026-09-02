@@ -1,23 +1,21 @@
 /**
  * stock-analytics-page.js
- * Hanterar datahämtning och visualisering för aktiedashboarden.
- * Återanvändbar för både engelska (stock-analytics.html) och svenska (sv/stock-analytics.html).
+ * Fullständigt responsiv visualisering för alla skärmstorlekar.
  */
 
 let stockChartInstance = null;
 
 async function loadStockAIDashboard() {
     try {
-        // Identifiera om vi befinner oss i /sv/ eller rotmappen för korrekt relaterad sökväg
         const prefix = window.pathPrefix || (window.location.pathname.includes('/sv/') ? '../' : '');
         
-        // 1. Hämtar huvuddata för aktier (med anti-cache timestamp)
-        const res = await fetch(`${prefix}data/stock_ai_dashboard_data.json?t=` + Date.now());
+        // Anti-cache fetch för att alltid hämta färsk data
+        const res = await fetch(`${prefix}data/stock_ai_dashboard_data.json?t=` + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error("Could not fetch stock_ai_dashboard_data.json");
         
         const data = await res.json();
 
-        // 2. Uppdatera synk-datum (med fallback till stats.json)
+        // 1. Uppdatera synk-datum
         const syncElem = document.getElementById('stock-last-sync');
         if (syncElem) {
             if (data.updated_at) {
@@ -30,7 +28,7 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // 3. Uppdatera KPI-rutor
+        // 2. Uppdatera KPI-rutor
         if (data.summary) {
             const bankroll = data.summary.current_bankroll || 100000;
             const profit = data.summary.profit_sek || 0;
@@ -54,7 +52,7 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // 4. Fyll i AI Trades-tabellen
+        // 3. Fyll i AI Trades-tabellen
         const tradesBody = document.getElementById('stock-trades-body');
         if (tradesBody) {
             const trades = data.latest_trades_and_forecasts || [];
@@ -126,7 +124,7 @@ async function loadStockAIDashboard() {
             lucide.createIcons();
         }
 
-        // 5. Rendera vinstgraf om historik finns
+        // 4. Rendera vinstgraf om historik finns
         if (data.history && Array.isArray(data.history) && data.history.length > 0) {
             renderStockChart(data.history);
         }
@@ -141,8 +139,8 @@ async function loadStockAIDashboard() {
 }
 
 function renderStockChart(historyData) {
-    const ctx = document.getElementById('stock-profit-chart');
-    if (!ctx) return;
+    const canvas = document.getElementById('stock-profit-chart');
+    if (!canvas) return;
 
     if (stockChartInstance) {
         stockChartInstance.destroy();
@@ -152,10 +150,13 @@ function renderStockChart(historyData) {
     const labels = historyData.map(item => item.date || item.Date || '');
     const profitValues = historyData.map(item => item.profit !== undefined ? item.profit : (item.Profit || 0));
 
-    // Beräkna rimliga Y-axelsgränser för att förhindra konstig skalning vid få datapunkter
+    // Beräkna dynamisk vaddering för Y-axeln baserat på skärmstorlek och datapunkter
     const minVal = Math.min(...profitValues);
     const maxVal = Math.max(...profitValues);
-    const padding = Math.max(Math.abs(maxVal) * 0.1, 100);
+    const isSinglePoint = profitValues.length === 1;
+    const padding = isSinglePoint ? 500 : Math.max((maxVal - minVal) * 0.2, 200);
+
+    const ctx = canvas.getContext('2d');
 
     stockChartInstance = new Chart(ctx, {
         type: 'line',
@@ -167,24 +168,21 @@ function renderStockChart(historyData) {
                 borderColor: '#10b981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
-                tension: 0.3,
-                pointRadius: 5,
-                pointHoverRadius: 8,
+                tension: 0.2,
+                pointRadius: 6,
+                pointHoverRadius: 9,
                 pointBackgroundColor: '#10b981'
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio: false, // Gör att den följer container-höjden i HTML
             plugins: {
                 legend: { display: false },
                 tooltip: { 
-                    mode: 'index', 
-                    intersect: false,
                     callbacks: {
                         label: function(context) {
-                            let value = context.parsed.y || 0;
-                            return ' Profit: ' + value.toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
+                            return ' Profit: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
                         }
                     }
                 }
@@ -192,33 +190,40 @@ function renderStockChart(historyData) {
             scales: {
                 x: { 
                     grid: { display: false },
-                    ticks: { font: { size: 11 } }
+                    ticks: {
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    }
                 },
                 y: { 
-                    suggestedMin: minVal - padding,
-                    suggestedMax: maxVal + padding,
-                    grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                    min: Math.floor(minVal - padding),
+                    max: Math.ceil(maxVal + padding),
                     ticks: {
+                        maxTicksLimit: window.innerWidth < 640 ? 5 : 8, // Färre steg på mobiler
                         callback: function(value) {
                             return value.toLocaleString('sv-SE') + ' SEK';
-                        }
-                    }
+                        },
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    },
+                    grid: { color: 'rgba(148, 163, 184, 0.1)' }
                 }
             }
         }
     });
 
-    // Tvinga Chart.js att beräkna korrekt höjd/bredd direkt efter rendering
-    setTimeout(() => {
-        if (stockChartInstance) {
-            stockChartInstance.resize();
-        }
-    }, 100);
+    // Lyssna på skärmändringar för att hålla grafen skarp på alla enheter
+    if (window.ResizeObserver && canvas.parentElement) {
+        const resizeObserver = new ResizeObserver(() => {
+            if (stockChartInstance) {
+                stockChartInstance.resize();
+            }
+        });
+        resizeObserver.observe(canvas.parentElement);
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (window.lucide) {
-        lucide.createIcons();
-    }
+// Kör vid laddning
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
     loadStockAIDashboard();
-});
+} else {
+    document.addEventListener('DOMContentLoaded', loadStockAIDashboard);
+}
