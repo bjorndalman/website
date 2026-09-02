@@ -1,5 +1,7 @@
-// 1. Säkerställ korrekt pathPrefix baserat på om sidan ligger i mappen /sv/ eller inte
-const pathPrefix = window.location.pathname.includes('/sv/') ? '../' : './';
+// Byt ut "const pathPrefix = ..." mot detta i dina JS-filer:
+if (typeof pathPrefix === 'undefined') {
+    var pathPrefix = window.location.pathname.includes('/sv/') ? '../' : './';
+}
 
 // 2. Ladda övergripande portföljdata
 async function loadPortfolioData() {
