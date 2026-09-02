@@ -1,7 +1,7 @@
 // RETA DETTA HÖGST UPP I js/ui.js
-isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
-appData = {};
-pathPrefix = isSwedishPage ? "../" : "";
+var isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
+var appData = {};
+var pathPrefix = isSwedishPage ? "../" : "";
 
 function loadLanguageData() {
   isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
