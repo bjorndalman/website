@@ -12,8 +12,10 @@ function destroyExistingChart(canvasId) {
     }
 }
 
-// Relativ sökvägshantering för rot vs /sv/
-const pathPrefix = window.location.pathname.includes('/sv/') ? '../' : './';
+// Byt ut "const pathPrefix = ..." mot detta i dina JS-filer:
+if (typeof pathPrefix === 'undefined') {
+    var pathPrefix = window.location.pathname.includes('/sv/') ? '../' : './';
+}
 
 // ==========================================
 // HÄMTA OCH RENDERA FOTBOLLSDATA (MLS)
