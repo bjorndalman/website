@@ -24,15 +24,18 @@ async function loadPortfolioData() {
   }
 }
 
-// 3. Ladda Fotbolls- / MLS-Dashboard (ÅTGÄRDAR "LOADING..." PÅ FOTBOLLSSIDAN)
+// 3. Ladda Fotbolls- / MLS-Dashboard
 async function loadFootballAIDashboard() {
-  const profitElem = document.getElementById('mls-profit');
-  const bankrollElem = document.getElementById('mls-bankroll');
-  const returnElem = document.getElementById('mls-return-pct');
-  const betsBody = document.getElementById('mls-bets-body');
+  // Stödjer både bot-*, mls-* och football-* ID-taggar
+  const profitElem = document.getElementById('bot-profit') || document.getElementById('mls-profit') || document.getElementById('football-profit');
+  const bankrollElem = document.getElementById('bot-bankroll') || document.getElementById('mls-bankroll') || document.getElementById('football-bankroll');
+  const returnElem = document.getElementById('bot-return-pct') || document.getElementById('mls-return-pct') || document.getElementById('football-return-pct');
+  const betsBody = document.getElementById('bot-bets-body') || document.getElementById('mls-bets-body') || document.getElementById('football-bets-body');
+  const syncElem = document.getElementById('mls-last-sync') || document.getElementById('bot-last-sync') || document.getElementById('football-last-sync');
+  const nextMatchdayElem = document.getElementById('mls-next-matchday') || document.getElementById('bot-next-matchday');
 
-  // Om vi inte är på fotbollssidan, avbryt
-  if (!profitElem && !bankrollElem && !betsBody) return;
+  // Om vi inte står på fotbollssidan, avbryt tyst
+  if (!profitElem && !bankrollElem && !betsBody && !syncElem) return;
 
   try {
     const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`);
@@ -40,10 +43,21 @@ async function loadFootballAIDashboard() {
 
     const data = await res.json();
 
+    // Senaste synk & nästa matchdag
+    if (syncElem) {
+      const syncDate = data.updated_at || (data.summary && data.summary.last_sync);
+      if (syncDate) syncElem.innerText = syncDate;
+    }
+
+    if (nextMatchdayElem && data.summary && data.summary.next_matchday) {
+      nextMatchdayElem.innerText = data.summary.next_matchday;
+    }
+
+    // KPI-nyckeltal (Nettovinst, Kassa, Avkastning)
     if (data.summary) {
-      const bankroll = data.summary.current_bankroll || 10000;
-      const profitSek = data.summary.profit_sek || 0;
-      const profitPct = data.summary.profit_pct || 0;
+      const bankroll = data.summary.current_bankroll ?? data.summary.total_bankroll ?? 10000;
+      const profitSek = data.summary.profit_sek ?? data.summary.net_profit ?? 0;
+      const profitPct = data.summary.profit_pct ?? data.summary.return_pct ?? 0;
 
       if (bankrollElem) {
         bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
@@ -51,12 +65,12 @@ async function loadFootballAIDashboard() {
 
       if (profitElem) {
         profitElem.innerText = (profitSek >= 0 ? '+' : '') + profitSek.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
-        profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitSek >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+        profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitSek >= 0 ? "text-emerald-500 dark:text-emerald-400" : "text-rose-500 dark:text-rose-400");
       }
 
       if (returnElem) {
         returnElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
-        returnElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+        returnElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-500 dark:text-emerald-400" : "text-rose-500 dark:text-rose-400");
       }
     }
   } catch (err) {
@@ -193,9 +207,9 @@ async function fetchStockStats() {
   return;
 }
 
-// 6. Pipeline status för MLS
+// 6. Pipeline status för MLS / Fotboll
 async function loadPipelineStatus() {
-    const syncEl = document.getElementById('mls-last-sync');
+    const syncEl = document.getElementById('mls-last-sync') || document.getElementById('bot-last-sync');
     if (!syncEl) return;
 
     try {
@@ -215,7 +229,7 @@ async function loadPipelineStatus() {
 async function loadKalmanRankings() {
     const topContainer = document.getElementById('top-teams');
     const bottomContainer = document.getElementById('bottom-teams');
-    const nextMatchdayEl = document.getElementById('mls-next-matchday');
+    const nextMatchdayEl = document.getElementById('mls-next-matchday') || document.getElementById('bot-next-matchday');
 
     if (!topContainer && !bottomContainer && !nextMatchdayEl) return;
 
