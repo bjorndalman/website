@@ -1,20 +1,20 @@
-// js/ui.js - RETA DETTA HÖGST UPP I js/ui.js
-var isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
-var appData = {};
-var pathPrefix = isSwedishPage ? "../" : "";
+// js/ui.js - Säkerställd mot återdeklarationer i globalt scope
+window.isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
+window.appData = window.appData || {};
+window.pathPrefix = window.isSwedishPage ? "../" : "";
 
 function loadLanguageData() {
-  isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
+  window.isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
   
-  if (isSwedishPage && typeof swedishData !== 'undefined') {
-    appData = swedishData;
+  if (window.isSwedishPage && typeof swedishData !== 'undefined') {
+    window.appData = swedishData;
   } else if (typeof portfolioData !== 'undefined') {
-    appData = portfolioData;
+    window.appData = portfolioData;
   } else if (typeof defaultData !== 'undefined') {
-    appData = defaultData;
+    window.appData = defaultData;
   }
   
-  pathPrefix = isSwedishPage ? "../" : "";
+  window.pathPrefix = window.isSwedishPage ? "../" : "";
 }
 
 function initTheme() {
@@ -35,6 +35,8 @@ function toggleTheme() {
   const chartsToUpdate = [];
   if (typeof botChartInstance !== 'undefined' && botChartInstance) chartsToUpdate.push(botChartInstance);
   if (typeof stockChartInstance !== 'undefined' && stockChartInstance) chartsToUpdate.push(stockChartInstance);
+  if (window.stockChartInstance) chartsToUpdate.push(window.stockChartInstance);
+  
   if (window.chartInstances) {
     Object.values(window.chartInstances).forEach(c => {
       if (c && !chartsToUpdate.includes(c)) chartsToUpdate.push(c);
@@ -66,16 +68,17 @@ function renderDescription(descriptionData) {
 }
 
 function render() {
-  if (!appData || !appData.profile) return;
+  const data = window.appData;
+  if (!data || !data.profile) return;
 
-  setText("name", appData.profile.name);
-  setText("footer-name", appData.profile.name);
-  setText("title", appData.profile.title);
-  setText("presentation", appData.profile.presentation);
-  setText("email", appData.profile.email);
+  setText("name", data.profile.name);
+  setText("footer-name", data.profile.name);
+  setText("title", data.profile.title);
+  setText("presentation", data.profile.presentation);
+  setText("email", data.profile.email);
 
   const emailLink = document.getElementById("email-link");
-  if (emailLink) emailLink.href = `mailto:${appData.profile.email}`;
+  if (emailLink) emailLink.href = `mailto:${data.profile.email}`;
 
   const copyrightYear = document.getElementById("copyright-year");
   if (copyrightYear && !copyrightYear.textContent) {
@@ -83,8 +86,8 @@ function render() {
   }
 
   const skillsContainer = document.getElementById("skills-list");
-  if (skillsContainer && appData.skills) {
-    skillsContainer.innerHTML = appData.skills.map(skill => `
+  if (skillsContainer && data.skills) {
+    skillsContainer.innerHTML = data.skills.map(skill => `
       <span class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-blue-900 dark:hover:text-blue-300 transition cursor-default">
         ${skill}
       </span>
@@ -92,8 +95,8 @@ function render() {
   }
 
   const expContainer = document.getElementById("experience-list");
-  if (expContainer && appData.experience) {
-    expContainer.innerHTML = appData.experience.map(exp => `
+  if (expContainer && data.experience) {
+    expContainer.innerHTML = data.experience.map(exp => `
       <div class="relative pl-8 md:pl-0">
         <div class="hidden md:block absolute -left-[41px] top-1 w-5 h-5 bg-blue-600 rounded-full border-4 border-white dark:border-slate-950"></div>
         <h4 class="text-xl font-bold text-slate-900 dark:text-white">${exp.title}</h4>
@@ -108,8 +111,8 @@ function render() {
   }
 
   const eduContainer = document.getElementById("education-list");
-  if (eduContainer && appData.education) {
-    eduContainer.innerHTML = appData.education.map(edu => `
+  if (eduContainer && data.education) {
+    eduContainer.innerHTML = data.education.map(edu => `
       <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
         <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
             <h4 class="text-lg font-bold text-slate-900 dark:text-white">${edu.school}</h4>
@@ -124,10 +127,10 @@ function render() {
   }
 
   const freeContainer = document.getElementById("freetime-list");
-  if (freeContainer && appData.freetime) {
-    freeContainer.innerHTML = appData.freetime.map((item, index) => `
+  if (freeContainer && data.freetime) {
+    freeContainer.innerHTML = data.freetime.map((item, index) => `
       <li class="flex items-center">
-        ${item} ${index < appData.freetime.length - 1 ? '<span class="mx-2 opacity-50">•</span>' : ''}
+        ${item} ${index < data.freetime.length - 1 ? '<span class="mx-2 opacity-50">•</span>' : ''}
       </li>
     `).join('');
   }
