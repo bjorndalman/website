@@ -147,6 +147,7 @@ async function fetchStockStats() {
     return;
 }
 
+
 async function loadFootballAIDashboard() {
     const profitElem = document.getElementById('bot-profit') || document.getElementById('mls-profit') || document.getElementById('football-profit');
     const bankrollElem = document.getElementById('bot-bankroll') || document.getElementById('mls-bankroll') || document.getElementById('football-bankroll');
@@ -162,16 +163,15 @@ async function loadFootballAIDashboard() {
 
     try {
         const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`);
-        if (!res.ok) throw new Error("Could not fetch football_ai_dashboard_data.json");
+        if (!res.ok) throw new Error(`HTTP Error ${res.status}: Kunde inte hämta football_ai_dashboard_data.json`);
         
         const data = await res.json();
 
-        if (syncElem) {
-            const syncDate = data.updated_at || (data.summary && data.summary.last_sync);
-            if (syncDate) syncElem.innerText = syncDate;
+        if (syncElem && (data.updated_at || data.summary?.last_sync)) {
+            syncElem.innerText = data.updated_at || data.summary.last_sync;
         }
 
-        if (nextMatchdayElem && data.summary && data.summary.next_matchday) {
+        if (nextMatchdayElem && data.summary?.next_matchday) {
             nextMatchdayElem.innerText = data.summary.next_matchday;
         }
 
@@ -216,18 +216,14 @@ async function loadFootballAIDashboard() {
             }
         }
 
-        // TILLÄGG: Anropar renderFootballChart ifall historik finns i JSON-datan
         if (data.history && Array.isArray(data.history) && typeof renderFootballChart === 'function') {
             renderFootballChart(data.history);
         }
 
     } catch (err) {
-        console.warn("Could not load football AI dashboard data:", err);
-        if (profitElem) profitElem.innerText = "0.00 SEK";
-        if (bankrollElem) bankrollElem.innerText = "0.00 SEK";
+        console.warn("Fotbolls-dashboard kunde inte läsa JSON:", err);
     }
 }
-
 async function loadPipelineStatus() {
     const syncEl = document.getElementById('mls-last-sync') || document.getElementById('bot-last-sync');
     if (!syncEl) return;
