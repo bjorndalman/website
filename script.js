@@ -42,28 +42,32 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (typeof loadKalmanRankings === 'function') loadKalmanRankings();
   if (typeof loadFootballAIDashboard === 'function') await loadFootballAIDashboard();
 
-  // 6. Rendera diagram från CSV (endast om elementen & funktionen finns på sidan)
+  // 6. Rendera diagram från CSV (endast om elementen finns OCH inte redan renderats via JSON)
   const prefix = typeof pathPrefix !== 'undefined' ? pathPrefix : '';
 
   if (document.getElementById('bot-profit-chart') && typeof loadAndRenderChart === 'function') {
-    botChartInstance = await loadAndRenderChart(
-        'bot-profit-chart',
-        prefix + 'data/portfolio_summary.csv',
-        'Bankroll',
-        '#2563eb',
-        'rgba(37, 99, 235, 0.25)',
-        typeof botChartInstance !== 'undefined' ? botChartInstance : null
-    );
+    if (!window.chartInstances || !window.chartInstances['bot-profit-chart']) {
+      botChartInstance = await loadAndRenderChart(
+          'bot-profit-chart',
+          prefix + 'data/portfolio_summary.csv',
+          'Bankroll',
+          '#2563eb',
+          'rgba(37, 99, 235, 0.25)',
+          typeof botChartInstance !== 'undefined' ? botChartInstance : null
+      );
+    }
   }
 
   if (document.getElementById('stock-profit-chart') && typeof loadAndRenderChart === 'function') {
-    stockChartInstance = await loadAndRenderChart(
-        'stock-profit-chart',
-        prefix + 'data/stock_portfolio_summary.csv',
-        'Stock Bankroll',
-        '#10b981',
-        'rgba(16, 185, 129, 0.25)',
-        typeof stockChartInstance !== 'undefined' ? stockChartInstance : null
-    );
+    if (!window.chartInstances || !window.chartInstances['stock-profit-chart']) {
+      stockChartInstance = await loadAndRenderChart(
+          'stock-profit-chart',
+          prefix + 'data/stock_portfolio_summary.csv',
+          'Stock Bankroll',
+          '#10b981',
+          'rgba(16, 185, 129, 0.25)',
+          typeof stockChartInstance !== 'undefined' ? stockChartInstance : null
+      );
+    }
   }
 });
