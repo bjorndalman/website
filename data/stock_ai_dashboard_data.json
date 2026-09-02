@@ -11,6 +11,13 @@
     "profit_pct": 1.81,
     "return_pct": 1.81
   },
+  "history": [
+    {
+      "date": "2026-09-02",
+      "bankroll": 101812.48,
+      "profit": 1812.48
+    }
+  ],
   "latest_trades_and_forecasts": [
     {
       "date": "2026-09-02",
@@ -18,9 +25,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 934.6,
-      "kalman_value": 936.06,
+      "kalman_value": 936.05,
       "ai_investment": 0.0,
-      "argument": "Minor daily price decline reflecting normal market fluctuation. (Q: 1.00x, R: 1.00x)"
+      "argument": "Moderate price drop consistent with broader market retreat. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -68,9 +75,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 564.6,
-      "kalman_value": 575.66,
+      "kalman_value": 575.59,
       "ai_investment": 10181.25,
-      "argument": "Moderate price drop within standard daily volatility limits. (Q: 1.00x, R: 1.00x)"
+      "argument": "Slight price pullback under normal market volatility. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -118,9 +125,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 243.9,
-      "kalman_value": 245.79,
+      "kalman_value": 245.78,
       "ai_investment": 10181.25,
-      "argument": "Slight downward movement under typical market conditions. (Q: 1.00x, R: 1.00x)"
+      "argument": "Moderate daily decline under standard market conditions. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -160,7 +167,7 @@
       "price": 61.38,
       "kalman_value": 61.97,
       "ai_investment": 10181.25,
-      "argument": "Sharper price drop indicates elevated short-term volatility and risk. (Q: 1.60x, R: 1.10x)"
+      "argument": "Sharp price drop indicating elevated uncertainty and higher volatility. (Q: 1.60x, R: 1.10x)"
     },
     {
       "date": "2026-09-02",
@@ -180,7 +187,7 @@
       "price": 384.4,
       "kalman_value": 393.32,
       "ai_investment": 10181.25,
-      "argument": "Increased selling pressure leading to higher daily price fluctuation. (Q: 1.30x, R: 1.00x)"
+      "argument": "Notable price drop showing moderate negative momentum. (Q: 1.30x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
