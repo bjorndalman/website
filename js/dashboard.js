@@ -305,3 +305,45 @@ async function loadKalmanRankings() {
         console.error("Fel vid inläsning av top_bottom_teams.json:", error);
     }
 }
+
+function renderFootballChart(historyData) {
+    const canvas = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
+    if (!canvas) return;
+
+    // Förbered data för Chart.js
+    const labels = historyData.map(item => item.date || item.datum || '');
+    const dataValues = historyData.map(item => item.bankroll || item.balance || item.vinst || 0);
+
+    // Om Chart.js redan finns på canvasen, förstör den gamla innan ny skapas
+    if (window.myFootballChart instanceof Chart) {
+        window.myFootballChart.destroy();
+    }
+
+    const ctx = canvas.getContext('2d');
+    window.myFootballChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Bankroll / Vinstkurva',
+                data: dataValues,
+                borderColor: '#10b981', // Emerald grön
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: { grid: { display: false } },
+                y: { grid: { color: 'rgba(200, 200, 200, 0.15)' } }
+            }
+        }
+    });
+}
