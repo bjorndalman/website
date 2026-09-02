@@ -207,6 +207,52 @@
             </div>
         </section>
 
+        <!-- NYCKELTAL / BANKROLL & VINST -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Nuvarande Bankroll</span>
+                <div id="bot-bankroll" class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Laddar...</div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Vinst (SEK)</span>
+                <div id="bot-profit" class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Laddar...</div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Avkastning (%)</span>
+                <div id="bot-return-pct" class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Laddar...</div>
+            </div>
+        </section>
+
+        <!-- VINSTGRAF -->
+        <section class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl fade-in">
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-6">Vinstkurva över tid</h3>
+            <div class="relative h-80 w-full">
+                <canvas id="bot-profit-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- SENASTE SPEL / BETS -->
+        <section class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl fade-in">
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-6">Senaste AI-analyser & Spel</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-500 uppercase">
+                            <th class="py-3 px-4">Datum</th>
+                            <th class="py-3 px-4">Match</th>
+                            <th class="py-3 px-4">Predikation</th>
+                            <th class="py-3 px-4">Odds</th>
+                            <th class="py-3 px-4">Insats</th>
+                            <th class="py-3 px-4">Motivering</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bot-bets-body" class="divide-y divide-slate-100 dark:divide-slate-800/60 text-sm">
+                        <tr><td colspan="6" class="py-6 text-center text-slate-500">Laddar spelhistorik...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <section id="mls-rankings" class="fade-in">
             <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
                 <div class="mb-8">
