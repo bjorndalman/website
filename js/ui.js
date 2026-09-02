@@ -34,16 +34,19 @@ function toggleTheme() {
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 
-  [botChartInstance, stockChartInstance].forEach(chart => {
-    if (chart) {
-      const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
-      const textColor = isDark ? '#94a3b8' : '#64748b';
-      chart.options.scales.x.ticks.color = textColor;
-      chart.options.scales.y.ticks.color = textColor;
-      chart.options.scales.y.grid.color = gridColor;
-      chart.update();
-    }
-  });
+  // Uppdatera alla aktiva Chart.js-instanser från window.chartInstances
+  if (window.chartInstances) {
+    Object.values(window.chartInstances).forEach(chart => {
+      if (chart && chart.options && chart.options.scales) {
+        const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+        const textColor = isDark ? '#94a3b8' : '#64748b';
+        if (chart.options.scales.x && chart.options.scales.x.ticks) chart.options.scales.x.ticks.color = textColor;
+        if (chart.options.scales.y && chart.options.scales.y.ticks) chart.options.scales.y.ticks.color = textColor;
+        if (chart.options.scales.y && chart.options.scales.y.grid) chart.options.scales.y.grid.color = gridColor;
+        chart.update();
+      }
+    });
+  }
 }
 
 function setText(id, text) {
@@ -59,6 +62,9 @@ function renderDescription(descriptionData) {
 }
 
 function render() {
+  // Säkerställ att appData och appData.profile finns innan rendrering
+  if (!appData || !appData.profile) return;
+
   setText("name", appData.profile.name);
   setText("footer-name", appData.profile.name);
   setText("title", appData.profile.title);
@@ -73,18 +79,16 @@ function render() {
     copyrightYear.textContent = new Date().getFullYear();
   }
 
-  const skillsContainer = document.getElementById("skills-list");
-  if (skillsContainer) {
-    skillsContainer.innerHTML = appData.skills.map(skill => `
+  if (appData.skills && document.getElementById("skills-list")) {
+    document.getElementById("skills-list").innerHTML = appData.skills.map(skill => `
       <span class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-blue-900 dark:hover:text-blue-300 transition cursor-default">
         ${skill}
       </span>
     `).join('');
   }
 
-  const expContainer = document.getElementById("experience-list");
-  if (expContainer) {
-    expContainer.innerHTML = appData.experience.map(exp => `
+  if (appData.experience && document.getElementById("experience-list")) {
+    document.getElementById("experience-list").innerHTML = appData.experience.map(exp => `
       <div class="relative pl-8 md:pl-0">
         <div class="hidden md:block absolute -left-[41px] top-1 w-5 h-5 bg-blue-600 rounded-full border-4 border-white dark:border-slate-950"></div>
         <h4 class="text-xl font-bold text-slate-900 dark:text-white">${exp.title}</h4>
@@ -98,9 +102,8 @@ function render() {
     `).join('');
   }
 
-  const eduContainer = document.getElementById("education-list");
-  if (eduContainer) {
-    eduContainer.innerHTML = appData.education.map(edu => `
+  if (appData.education && document.getElementById("education-list")) {
+    document.getElementById("education-list").innerHTML = appData.education.map(edu => `
       <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
         <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
             <h4 class="text-lg font-bold text-slate-900 dark:text-white">${edu.school}</h4>
@@ -114,9 +117,8 @@ function render() {
     `).join('');
   }
 
-  const freeContainer = document.getElementById("freetime-list");
-  if (freeContainer) {
-    freeContainer.innerHTML = appData.freetime.map((item, index) => `
+  if (appData.freetime && document.getElementById("freetime-list")) {
+    document.getElementById("freetime-list").innerHTML = appData.freetime.map((item, index) => `
       <li class="flex items-center">
         ${item} ${index < appData.freetime.length - 1 ? '<span class="mx-2 opacity-50">•</span>' : ''}
       </li>
