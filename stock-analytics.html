@@ -283,8 +283,9 @@
 
         async function loadStockAIDashboard() {
             try {
-                const res = await fetch('data/ai_dashboard_data.json?t=' + Date.now());
-                if (!res.ok) throw new Error("Could not fetch ai_dashboard_data.json");
+                // HÄMTAR FRÅN STOCK_AI_DASHBOARD_DATA.JSON
+                const res = await fetch('data/stock_ai_dashboard_data.json?t=' + Date.now());
+                if (!res.ok) throw new Error("Could not fetch stock_ai_dashboard_data.json");
                 
                 const data = await res.json();
 
@@ -406,7 +407,7 @@
                 console.error("Error loading AI Stock Dashboard:", err);
                 const tradesBody = document.getElementById('stock-trades-body');
                 if (tradesBody) {
-                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-rose-500 font-medium">Kunde inte ladda data. Kontrollera att data/ai_dashboard_data.json finns.</td></tr>`;
+                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-rose-500 font-medium">Kunde inte ladda data. Kontrollera att data/stock_ai_dashboard_data.json finns.</td></tr>`;
                 }
             }
         }
