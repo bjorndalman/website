@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Björn Dahlman | Algoritmisk Aktiehandel</title>
     
+    <!-- Favicon -->
+    <link rel="icon" href="../images/bjorn-dahlman.jpg" type="image/jpeg">
+    
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -264,7 +267,7 @@
 
     <!-- ANPASSAD LOGIK FÖR SVENSKA AKTIER -->
     <script>
-        let stockChartInstance = null;
+        let svStockChartInstance = null;
 
         async function loadStockAIDashboard() {
             try {
@@ -401,14 +404,14 @@
             const ctx = document.getElementById('stock-profit-chart');
             if (!ctx) return;
 
-            if (stockChartInstance) {
-                stockChartInstance.destroy();
+            if (svStockChartInstance) {
+                svStockChartInstance.destroy();
             }
 
             const labels = historyData.map(item => item.date || item.Date || '');
             const profitValues = historyData.map(item => item.profit || item.Profit || 0);
 
-            stockChartInstance = new Chart(ctx, {
+            svStockChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
