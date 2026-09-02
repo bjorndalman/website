@@ -40,8 +40,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (typeof loadPortfolioData === 'function') await loadPortfolioData();
   if (typeof loadStockAIDashboard === 'function') loadStockAIDashboard();
   if (typeof loadKalmanRankings === 'function') loadKalmanRankings();
+  if (typeof loadFootballAIDashboard === 'function') await loadFootballAIDashboard();
 
-  // 6. Rendera diagram (endast om elementen & funktionen finns på sidan)
+  // 6. Rendera diagram från CSV (endast om elementen & funktionen finns på sidan)
   const prefix = typeof pathPrefix !== 'undefined' ? pathPrefix : '';
 
   if (document.getElementById('bot-profit-chart') && typeof loadAndRenderChart === 'function') {
