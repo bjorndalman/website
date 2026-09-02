@@ -18,9 +18,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 934.6,
-      "kalman_value": 936.05,
+      "kalman_value": 936.06,
       "ai_investment": 0.0,
-      "argument": "Moderate negative daily pullback under standard market conditions. (Q: 1.10x, R: 1.00x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -68,9 +68,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 564.6,
-      "kalman_value": 575.56,
+      "kalman_value": 575.66,
       "ai_investment": 10181.25,
-      "argument": "Moderate daily decline indicating minor downside volatility. (Q: 1.15x, R: 1.00x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -118,9 +118,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 243.9,
-      "kalman_value": 245.78,
+      "kalman_value": 245.79,
       "ai_investment": 10181.25,
-      "argument": "Slight daily price drop within normal trading volatility. (Q: 1.10x, R: 1.00x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -158,9 +158,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 61.38,
-      "kalman_value": 61.92,
+      "kalman_value": 61.97,
       "ai_investment": 10181.25,
-      "argument": "Sharp daily drop signals increased volatility and downside event risk. (Q: 1.70x, R: 0.90x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
@@ -178,9 +178,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 384.4,
-      "kalman_value": 392.8,
+      "kalman_value": 393.48,
       "ai_investment": 10181.25,
-      "argument": "Notable daily price decline reflecting elevated process noise and weakness. (Q: 1.50x, R: 0.90x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-02",
