@@ -1,7 +1,15 @@
 // js/dashboard.js
 
+// Hjälpfunktion för att hämta rätt relativ eller absolut prefix
+function getPathPrefix() {
+    const isSwedish = (typeof window.isSwedishPage !== 'undefined') 
+        ? window.isSwedishPage 
+        : window.location.pathname.toLowerCase().includes('/sv/');
+    return isSwedish ? "../" : "./";
+}
+
 async function loadPortfolioData() {
-    const pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" : "./";
+    const pathPrefix = getPathPrefix();
     try {
         const response = await fetch(`${pathPrefix}data/portfolio_summary.json?t=${Date.now()}`);
         if (!response.ok) return;
@@ -23,11 +31,12 @@ async function loadPortfolioData() {
 
 async function loadStockAIDashboard() {
     const tradesBody = document.getElementById('stock-trades-body');
-    const pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" : "./";
+    const pathPrefix = getPathPrefix();
     
     try {
-        const res = await fetch(`${pathPrefix}data/ai_dashboard_data.json?t=${Date.now()}`);
-        if (!res.ok) throw new Error("Could not fetch ai_dashboard_data.json");
+        // Korrigerat filnamn till stock_ai_dashboard_data.json
+        const res = await fetch(`${pathPrefix}data/stock_ai_dashboard_data.json?t=${Date.now()}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}: Could not fetch stock_ai_dashboard_data.json`);
         
         const data = await res.json();
         
@@ -147,7 +156,6 @@ async function fetchStockStats() {
     return;
 }
 
-
 async function loadFootballAIDashboard() {
     const profitElem = document.getElementById('bot-profit') || document.getElementById('mls-profit') || document.getElementById('football-profit');
     const bankrollElem = document.getElementById('bot-bankroll') || document.getElementById('mls-bankroll') || document.getElementById('football-bankroll');
@@ -159,7 +167,7 @@ async function loadFootballAIDashboard() {
 
     if (!profitElem && !bankrollElem && !betsBody && !syncElem && !chartCanvas) return;
 
-    const pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" : "./";
+    const pathPrefix = getPathPrefix();
 
     try {
         const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`);
@@ -224,11 +232,12 @@ async function loadFootballAIDashboard() {
         console.warn("Fotbolls-dashboard kunde inte läsa JSON:", err);
     }
 }
+
 async function loadPipelineStatus() {
     const syncEl = document.getElementById('mls-last-sync') || document.getElementById('bot-last-sync');
     if (!syncEl) return;
 
-    const pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" : "./";
+    const pathPrefix = getPathPrefix();
 
     try {
         const response = await fetch(`${pathPrefix}data/stats.json?t=${Date.now()}`);
@@ -250,7 +259,7 @@ async function loadKalmanRankings() {
 
     if (!topContainer && !bottomContainer && !nextMatchdayEl) return;
 
-    const pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" : "./";
+    const pathPrefix = getPathPrefix();
 
     try {
         const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
