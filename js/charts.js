@@ -12,25 +12,27 @@ function destroyExistingChart(canvasId) {
     }
 }
 
-// Byt ut "const pathPrefix = ..." mot detta i dina JS-filer:
+// Byt ut pathPrefix vid behov
 if (typeof pathPrefix === 'undefined') {
     var pathPrefix = window.pathPrefix || (window.location.pathname.includes('/sv/') ? '../' : './');
 }
 
 // ==========================================
-// HÄMTA OCH RENDERA FOTBOLLSDATA (MLS)
+// HÄMTA OCH RENDERA FOTBOLLSDATA (MLS / AI)
 // ==========================================
 
 async function loadFootballAIDashboard() {
-    // Stödjer både mls-* och football-* ID:n
-    const profitElem = document.getElementById('mls-profit') || document.getElementById('football-profit');
-    const bankrollElem = document.getElementById('mls-bankroll') || document.getElementById('football-bankroll');
-    const returnElem = document.getElementById('mls-return-pct') || document.getElementById('football-return-pct');
-    const syncElem = document.getElementById('mls-last-sync') || document.getElementById('football-last-sync');
-    const betsBody = document.getElementById('mls-bets-body') || document.getElementById('football-bets-body');
+    // Stödjer bot-*, mls-* och football-* ID:n
+    const profitElem = document.getElementById('bot-profit') || document.getElementById('mls-profit') || document.getElementById('football-profit');
+    const bankrollElem = document.getElementById('bot-bankroll') || document.getElementById('mls-bankroll') || document.getElementById('football-bankroll');
+    const returnElem = document.getElementById('bot-return-pct') || document.getElementById('mls-return-pct') || document.getElementById('football-return-pct');
+    const syncElem = document.getElementById('mls-last-sync') || document.getElementById('bot-last-sync') || document.getElementById('football-last-sync');
+    const nextMatchdayElem = document.getElementById('mls-next-matchday') || document.getElementById('bot-next-matchday');
+    const betsBody = document.getElementById('bot-bets-body') || document.getElementById('mls-bets-body') || document.getElementById('football-bets-body');
+    const chartCanvas = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
 
     // Om vi inte står på fotbollssidan, avbryt tyst
-    if (!profitElem && !bankrollElem && !betsBody && !document.getElementById('football-profit-chart')) return;
+    if (!profitElem && !bankrollElem && !betsBody && !chartCanvas) return;
 
     try {
         const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`);
@@ -38,16 +40,21 @@ async function loadFootballAIDashboard() {
 
         const data = await res.json();
 
-        // 1. Senaste synkdatum
-        if (syncElem && data.updated_at) {
-            syncElem.innerText = data.updated_at;
+        // 1. Senaste synkdatum & Nästa omgång
+        if (syncElem) {
+            const syncDate = data.updated_at || (data.summary && data.summary.last_sync);
+            if (syncDate) syncElem.innerText = syncDate;
+        }
+
+        if (nextMatchdayElem && data.summary && data.summary.next_matchday) {
+            nextMatchdayElem.innerText = data.summary.next_matchday;
         }
 
         // 2. KPI-nyckeltal (Nettovinst, Kassa, Avkastning)
         if (data.summary) {
-            const bankroll = data.summary.current_bankroll || 10000;
-            const profitSek = data.summary.profit_sek || 0;
-            const profitPct = data.summary.profit_pct || 0;
+            const bankroll = data.summary.current_bankroll ?? data.summary.total_bankroll ?? 10000;
+            const profitSek = data.summary.profit_sek ?? data.summary.net_profit ?? 0;
+            const profitPct = data.summary.profit_pct ?? data.summary.return_pct ?? 0;
 
             if (bankrollElem) {
                 bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
@@ -55,12 +62,12 @@ async function loadFootballAIDashboard() {
 
             if (profitElem) {
                 profitElem.innerText = (profitSek >= 0 ? '+' : '') + profitSek.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
-                profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitSek >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                profitElem.className = "text-2xl md:text-3xl font-extrabold " + (profitSek >= 0 ? "text-emerald-500" : "text-rose-500");
             }
 
             if (returnElem) {
                 returnElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
-                returnElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                returnElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-500" : "text-rose-500");
             }
         }
 
@@ -104,14 +111,14 @@ async function loadFootballAIDashboard() {
 // ==========================================
 
 function renderFootballChart(historyData) {
-    const ctx = document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
+    const ctx = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
     if (!ctx) return;
 
     const canvasId = ctx.id;
     destroyExistingChart(canvasId);
 
     const labels = historyData.map(item => item.date || item.Date || '');
-    const profitValues = historyData.map(item => item.profit || item.Profit || 0);
+    const profitValues = historyData.map(item => item.profit ?? item.Profit ?? 0);
 
     window.chartInstances[canvasId] = new Chart(ctx, {
         type: 'line',
@@ -120,8 +127,8 @@ function renderFootballChart(historyData) {
             datasets: [{
                 label: 'Football Net Profit (SEK)',
                 data: profitValues,
-                borderColor: '#3b82f6', // Blå färg för fotboll
-                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                borderColor: '#10b981', // Grön färg för vinstkurvan
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
                 tension: 0.3,
                 pointRadius: 3,
