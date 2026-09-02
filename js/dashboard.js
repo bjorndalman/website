@@ -27,24 +27,32 @@ async function loadStockAIDashboard() {
     
     const data = await res.json();
     
+    // Uppdatera synk-datum
     if (data.updated_at) {
       const syncElem = document.getElementById('stock-last-sync');
       if (syncElem) syncElem.innerText = data.updated_at;
     }
 
+    // Uppdatera kassa, avkastning och vinst/förlust från summary
     if (data.summary) {
       const bankroll = data.summary.current_bankroll || 100000;
       const profitPct = data.summary.profit_pct || 0;
+      const profitSek = data.summary.profit_sek || 0;
 
       const bankrollElem = document.getElementById('stock-bankroll');
       if (bankrollElem) {
-        bankrollElem.innerText = bankroll.toLocaleString('sv-SE') + ' SEK';
+        bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
       }
       
       const returnElem = document.getElementById('stock-return-pct');
       if (returnElem) {
         returnElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
         returnElem.className = "text-2xl md:text-3xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+      }
+
+      const profitElem = document.getElementById('stock-profit');
+      if (profitElem) {
+        profitElem.innerText = (profitSek >= 0 ? '+' : '') + profitSek.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
       }
     }
 
@@ -132,7 +140,12 @@ async function loadStockAIDashboard() {
   }
 }
 
+// Inaktivera denna funktion helt så att den inte skriver över värdena med gamla stock_stats.json
 async function fetchStockStats() {
+    return;
+}
+
+/*async function fetchStockStats() {
     const returnEl = document.getElementById('stock-return-pct');
     const profitEl = document.getElementById('stock-profit');
     const bankrollEl = document.getElementById('stock-bankroll');
@@ -166,7 +179,7 @@ async function fetchStockStats() {
     } catch (err) {
         console.warn("Aktie-stats ej tillgängliga.", err);
     }
-}
+}*/
 
 async function loadPipelineStatus() {
     const syncEl = document.getElementById('mls-last-sync');
