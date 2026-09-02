@@ -269,16 +269,15 @@
         </section>
 
     </main>
-    
-    <!-- EXTERNA SKRIPT -->
+        
+    <!-- EXTERNA SKRIPT (Laddas i ordning innan din anpassade logik) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="data/en.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/charts.js"></script>
-    <!-- <script src="js/dashboard.js?v=2"></script> -->
     <script src="script.js"></script>
 
-   <!-- ANPASSAD LOGIK FÖR AKTIER -->
+    <!-- ANPASSAD LOGIK FÖR AKTIER (Körs när DOM-trädet är färdigbyggt) -->
     <script>
         let stockChartInstance = null;
 
