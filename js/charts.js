@@ -14,7 +14,7 @@ function destroyExistingChart(canvasId) {
 
 // Byt ut "const pathPrefix = ..." mot detta i dina JS-filer:
 if (typeof pathPrefix === 'undefined') {
-    var pathPrefix = window.location.pathname.includes('/sv/') ? '../' : './';
+    var pathPrefix = window.pathPrefix || (window.location.pathname.includes('/sv/') ? '../' : './');
 }
 
 // ==========================================
