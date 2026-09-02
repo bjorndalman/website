@@ -229,7 +229,7 @@
                     </div>
                 </div>
 
-               <!-- Responsiv container som anpassar sig perfekt efter alla skärmar -->
+                <!-- Responsiv container som anpassar sig perfekt efter alla skärmar -->
                 <div class="w-full relative min-h-[260px] h-[35vh] max-h-[450px]">
                     <canvas id="stock-profit-chart"></canvas>
                 </div>
@@ -274,18 +274,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="data/en.js"></script>
     <script src="js/ui.js"></script>
-    <script src="js/charts.js"></script>
     <script src="script.js"></script>
 
-    <!-- ANPASSAD LOGIK FÖR AKTIER -->
+    <!-- ANPASSAD LOGIK FÖR AKTIER (FULLT RESPONSIV) -->
     <script>
-        // Använd window-objektet för att förhindra krockar med globala variabler
         window.stockChartInstance = window.stockChartInstance || null;
 
         async function loadStockAIDashboard() {
             try {
                 // HÄMTAR FRÅN STOCK_AI_DASHBOARD_DATA.JSON
-                const res = await fetch('data/stock_ai_dashboard_data.json?t=' + Date.now());
+                const res = await fetch('data/stock_ai_dashboard_data.json?t=' + Date.now(), { cache: 'no-store' });
                 if (!res.ok) throw new Error("Could not fetch stock_ai_dashboard_data.json");
                 
                 const data = await res.json();
@@ -334,7 +332,7 @@
                 if (trades.length === 0) {
                     tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Inga aktiva affärer registrerade ännu.</td></tr>`;
                     const investedElem = document.getElementById('stock-invested');
-                    if (investedElem) investedElem.innerText = '0 SEK';
+                    if (investedElem) investedElem.innerText = '0,00 SEK';
                     return;
                 }
 
@@ -344,7 +342,7 @@
                 trades.forEach(row => {
                     const date = row['date'] || row['Date'] || row['Datum'] || '-';
                     const stock = row['stock'] || row['Stock'] || row['Aktie'] || '-';
-                    const action = (row['action'] || row['Action'] || row['status'] || 'BUY').toUpperCase();
+                    const action = String(row['action'] || row['Action'] || row['status'] || 'BUY').toUpperCase();
                     
                     const price = row['price'] ?? row['Price'] ?? row['Pris'] ?? '-';
                     const kalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Fair Value'] ?? '-';
@@ -408,21 +406,30 @@
                 console.error("Error loading AI Stock Dashboard:", err);
                 const tradesBody = document.getElementById('stock-trades-body');
                 if (tradesBody) {
-                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-rose-500 font-medium">Kunde inte ladda data. Kontrollera att data/stock_ai_dashboard_data.json finns.</td></tr>`;
+                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-rose-500 font-medium">Could not load data. Check data/stock_ai_dashboard_data.json.</td></tr>`;
                 }
             }
         }
 
         function renderStockChart(historyData) {
-            const ctx = document.getElementById('stock-profit-chart');
-            if (!ctx) return;
+            const canvas = document.getElementById('stock-profit-chart');
+            if (!canvas) return;
 
             if (window.stockChartInstance) {
                 window.stockChartInstance.destroy();
+                window.stockChartInstance = null;
             }
 
             const labels = historyData.map(item => item.date || item.Date || item.datum || '');
             const profitValues = historyData.map(item => item.profit ?? item.Profit ?? item.vinst ?? item.bankroll ?? item.total_bankroll ?? 0);
+
+            // Beräkna dynamisk Y-axelvaddering så att den fungerar snyggt oavsett antal datapunkter
+            const minVal = Math.min(...profitValues);
+            const maxVal = Math.max(...profitValues);
+            const isSinglePoint = profitValues.length === 1;
+            const padding = isSinglePoint ? 500 : Math.max((maxVal - minVal) * 0.2, 200);
+
+            const ctx = canvas.getContext('2d');
 
             window.stockChartInstance = new Chart(ctx, {
                 type: 'line',
@@ -435,9 +442,10 @@
                         backgroundColor: 'rgba(16, 185, 129, 0.1)',
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.3,
-                        pointRadius: 3,
-                        pointHoverRadius: 6
+                        tension: 0.2,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        pointBackgroundColor: '#10b981'
                     }]
                 },
                 options: {
@@ -450,24 +458,41 @@
                             intersect: false,
                             callbacks: {
                                 label: function(context) {
-                                    return context.raw.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+                                    return ' Profit: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                                 }
                             }
                         }
                     },
                     scales: {
-                        x: { grid: { display: false } },
+                        x: { 
+                            grid: { display: false },
+                            ticks: { font: { size: window.innerWidth < 640 ? 10 : 12 } }
+                        },
                         y: { 
+                            min: Math.floor(minVal - padding),
+                            max: Math.ceil(maxVal + padding),
                             grid: { color: 'rgba(148, 163, 184, 0.1)' },
                             ticks: {
+                                maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
                                 callback: function(value) {
                                     return value.toLocaleString('sv-SE') + ' SEK';
-                                }
+                                },
+                                font: { size: window.innerWidth < 640 ? 10 : 12 }
                             }
                         }
                     }
                 }
             });
+
+            // Lyssna på fönsterändringar för perfekt omritning på alla skärmar
+            if (window.ResizeObserver && canvas.parentElement) {
+                const resizeObserver = new ResizeObserver(() => {
+                    if (window.stockChartInstance) {
+                        window.stockChartInstance.resize();
+                    }
+                });
+                resizeObserver.observe(canvas.parentElement);
+            }
         }
 
         function initStockDashboard() {
