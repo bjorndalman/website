@@ -1,6 +1,6 @@
 // Byt ut "const pathPrefix = ..." mot detta i dina JS-filer:
 if (typeof pathPrefix === 'undefined') {
-    var pathPrefix = window.location.pathname.includes('/sv/') ? '../' : './';
+    var pathPrefix = window.pathPrefix || (window.location.pathname.includes('/sv/') ? '../' : './');
 }
 
 // 2. Ladda övergripande portföljdata
