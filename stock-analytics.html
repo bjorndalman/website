@@ -275,7 +275,6 @@
     <script src="data/en.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/charts.js"></script>
-    <script src="js/dashboard.js?v=2"></script>
     <script src="script.js"></script>
 
     <!-- ANPASSAD LOGIK FÖR AKTIER -->
@@ -356,11 +355,12 @@
                         ? `${amount.toLocaleString('sv-SE')} SEK` 
                         : (row['ai_investment'] || row['Rek. Investering (kr)'] || '-');
 
-                    let badgeClass = "badge badge-buy";
+                    let badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800";
+
                     if (action === 'SÄLJ' || action === 'SELL') {
-                        badgeClass = "badge badge-sell";
+                        badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-300 dark:border-rose-800";
                     } else if (action === 'STÅ ÖVER' || action === 'HOLD') {
-                        badgeClass = "badge badge-hold";
+                        badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700";
                     }
 
                     const tr = document.createElement('tr');
