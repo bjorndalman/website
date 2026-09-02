@@ -312,7 +312,7 @@ function renderFootballChart(historyData) {
 
     // Förbered data för Chart.js
     const labels = historyData.map(item => item.date || item.datum || '');
-    const dataValues = historyData.map(item => item.bankroll || item.balance || item.vinst || 0);
+    const dataValues = historyData.map(item => item.bankroll ?? item.total_bankroll ?? item.balance ?? item.vinst ?? item.profit ?? item.amount ?? 0);
 
     // Om Chart.js redan finns på canvasen, förstör den gamla innan ny skapas
     if (window.myFootballChart instanceof Chart) {
