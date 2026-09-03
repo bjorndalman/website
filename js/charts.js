@@ -90,7 +90,10 @@ function renderStockChart(dataInput) {
                     grid: { display: false },
                     ticks: { 
                         color: textColor,
-                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                        font: { size: window.innerWidth < 640 ? 10 : 12 },
+                        autoSkip: true,
+                        maxTicksLimit: window.innerWidth < 640 ? 6 : 10,
+                        maxRotation: 45
                     }
                 },
                 y: {
@@ -162,7 +165,10 @@ function renderBotChart(csvText) {
                     grid: { display: false },
                     ticks: { 
                         color: textColor,
-                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                        font: { size: window.innerWidth < 640 ? 10 : 12 },
+                        autoSkip: true,
+                        maxTicksLimit: window.innerWidth < 640 ? 6 : 10,
+                        maxRotation: 45
                     }
                 },
                 y: {
@@ -207,7 +213,23 @@ function renderFootballChart(historyData) {
     destroyExistingChart(ctx.id);
 
     const labels = historyData.map(item => item.date || item.Date || item.datum || '');
-    const profitValues = historyData.map(item => item.profit ?? item.Profit ?? 0);
+
+    // Kontrollera om bankrullen skickas med varierande värden i JSON
+    const hasDynamicBankroll = historyData.some(item => item.bankroll && item.bankroll !== 10000);
+
+    let runningBankroll = 10000;
+    const profitValues = historyData.map(item => {
+        if (hasDynamicBankroll && item.bankroll !== undefined) return item.bankroll;
+        if (item.total_bankroll !== undefined && item.total_bankroll !== 10000) return item.total_bankroll;
+        if (item.balance !== undefined && item.balance !== 10000) return item.balance;
+        if (item.cum_profit !== undefined) return 10000 + parseFloat(item.cum_profit);
+        if (item.cumulative_profit !== undefined) return 10000 + parseFloat(item.cumulative_profit);
+
+        // Ackumulera enskild vinst per match från startkapitalet (10 000 SEK)
+        const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? 0);
+        runningBankroll += p;
+        return runningBankroll;
+    });
 
     const isDark = document.documentElement.classList.contains("dark");
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
@@ -218,10 +240,10 @@ function renderFootballChart(historyData) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Football Net Profit (SEK)',
+                label: 'Football Bankroll (SEK)',
                 data: profitValues,
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
                 fill: true,
                 tension: 0.3,
                 pointRadius: window.innerWidth < 640 ? 2 : 4,
@@ -232,14 +254,24 @@ function renderFootballChart(historyData) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: false }
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ' Bankrulle: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
+                        }
+                    }
+                }
             },
             scales: {
                 x: {
                     grid: { display: false },
                     ticks: { 
                         color: textColor,
-                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                        font: { size: window.innerWidth < 640 ? 10 : 12 },
+                        autoSkip: true,
+                        maxTicksLimit: window.innerWidth < 640 ? 6 : 10,
+                        maxRotation: 45
                     }
                 },
                 y: {
@@ -247,6 +279,9 @@ function renderFootballChart(historyData) {
                     ticks: { 
                         color: textColor,
                         maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
+                        callback: function(value) {
+                            return value.toLocaleString('sv-SE') + ' SEK';
+                        },
                         font: { size: window.innerWidth < 640 ? 10 : 12 }
                     }
                 }
