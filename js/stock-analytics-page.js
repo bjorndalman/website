@@ -9,13 +9,13 @@ async function loadStockAIDashboard() {
     try {
         const prefix = window.pathPrefix || (window.location.pathname.includes('/sv/') ? '../' : '');
         
-        // Anti-cache fetch för att alltid hämta färsk data
+        // Anti-cache fetch för färsk data
         const res = await fetch(`${prefix}data/stock_ai_dashboard_data.json?t=` + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error("Could not fetch stock_ai_dashboard_data.json");
         
         const data = await res.json();
 
-        // 1. Uppdatera synk-datum
+        // 1. Synk-datum
         const syncElem = document.getElementById('stock-last-sync');
         if (syncElem) {
             if (data.updated_at) {
@@ -28,11 +28,12 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // 2. Uppdatera KPI-rutor
+        // 2. KPI-rutor & Sammanfattning
         if (data.summary) {
-            const bankroll = data.summary.current_bankroll || 100000;
-            const profit = data.summary.profit_sek || 0;
-            const profitPct = data.summary.profit_pct || 0;
+            const bankroll = data.summary.current_bankroll ?? data.summary.total_bankroll ?? 100000;
+            const profit = data.summary.profit_sek ?? data.summary.net_profit ?? 0;
+            const profitPct = data.summary.profit_pct ?? data.summary.return_pct ?? 0;
+            const investedVal = data.summary.invested;
 
             const bankrollElem = document.getElementById('stock-bankroll');
             if (bankrollElem) {
@@ -50,9 +51,15 @@ async function loadStockAIDashboard() {
                 pctElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
                 pctElem.className = "text-2xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
             }
+
+            // Använd investerat kapital direkt från summary om det finns
+            const investedElem = document.getElementById('stock-invested');
+            if (investedElem && investedVal !== undefined) {
+                investedElem.innerText = investedVal.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+            }
         }
 
-        // 3. Fyll i AI Trades-tabellen
+        // 3. Fyll i AI Trades-tabellen (Senaste överst)
         const tradesBody = document.getElementById('stock-trades-body');
         if (tradesBody) {
             const trades = data.latest_trades_and_forecasts || [];
@@ -60,19 +67,20 @@ async function loadStockAIDashboard() {
             if (trades.length === 0) {
                 tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Inga aktiva affärer registrerade ännu.</td></tr>`;
                 const investedElem = document.getElementById('stock-invested');
-                if (investedElem) investedElem.innerText = '0,00 SEK';
+                if (investedElem && !data.summary?.invested) investedElem.innerText = '0,00 SEK';
             } else {
                 tradesBody.innerHTML = '';
-                let totalInvested = 0;
+                let calculatedInvested = 0;
 
-                trades.forEach(row => {
+                // Vänd arrayen så nyaste affärer visas överst
+                trades.slice().reverse().forEach(row => {
                     const date = row['date'] || row['Date'] || row['Datum'] || '-';
-                    const stock = row['stock'] || row['Stock'] || row['Aktie'] || '-';
-                    const action = String(row['action'] || row['Action'] || row['status'] || 'BUY').toUpperCase();
+                    const stock = row['stock'] || row['Stock'] || row['Aktie'] || row['symbol'] || row['ticker'] || '-';
+                    const action = String(row['action'] || row['Action'] || row['status'] || row['Åtgärd'] || 'BUY').toUpperCase();
                     
-                    const price = row['price'] ?? row['Price'] ?? row['Pris'] ?? '-';
+                    const price = row['price'] ?? row['Price'] ?? row['Pris'] ?? row['close_price'] ?? '-';
                     const kalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Fair Value'] ?? '-';
-                    const argument = row['argument'] || row['AI Argument & Forecast'] || row['Reasoning'] || '-';
+                    const argument = row['argument'] || row['AI Argument & Forecast'] || row['Reasoning'] || row['Motivering'] || '-';
 
                     const rawAmount = row['ai_investment'] 
                         ?? row['position_size'] 
@@ -81,7 +89,7 @@ async function loadStockAIDashboard() {
                     
                     const amount = parseFloat(rawAmount) || 0;
                     if (action === 'BUY' || action === 'KÖP') {
-                        totalInvested += amount;
+                        calculatedInvested += amount;
                     }
 
                     const formattedAmount = amount > 0 
@@ -90,14 +98,17 @@ async function loadStockAIDashboard() {
 
                     let badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800";
 
-                    if (action === 'SÄLJ' || action === 'SELL') {
+                    if (action === 'SÄLJ' || action === 'SELL' || action === 'CLOSED') {
                         badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-300 dark:border-rose-800";
-                    } else if (action === 'STÅ ÖVER' || action === 'HOLD') {
+                    } else if (action === 'STÅ ÖVER' || action === 'HOLD' || action === 'PAUSED') {
                         badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700";
                     }
 
-                    const formattedPrice = typeof price === 'number' ? price.toFixed(2) + ' SEK' : price;
-                    const formattedKalman = typeof kalman === 'number' ? kalman.toFixed(2) + ' SEK' : kalman;
+                    const parsedPrice = parseFloat(price);
+                    const formattedPrice = !isNaN(parsedPrice) ? `${parsedPrice.toFixed(2)} SEK` : price;
+
+                    const parsedKalman = parseFloat(kalman);
+                    const formattedKalman = !isNaN(parsedKalman) ? `${parsedKalman.toFixed(2)} SEK` : kalman;
 
                     const tr = document.createElement('tr');
                     tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition";
@@ -113,9 +124,10 @@ async function loadStockAIDashboard() {
                     tradesBody.appendChild(tr);
                 });
 
+                // Fallback till manuell beräkning om invested saknas i summary
                 const investedElem = document.getElementById('stock-invested');
-                if (investedElem) {
-                    investedElem.innerText = totalInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+                if (investedElem && data.summary?.invested === undefined) {
+                    investedElem.innerText = calculatedInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                 }
             }
         }
@@ -147,13 +159,12 @@ function renderStockChart(historyData) {
         stockChartInstance = null;
     }
 
-    const labels = historyData.map(item => item.date || item.Date || '');
-    const profitValues = historyData.map(item => item.profit !== undefined ? item.profit : (item.Profit || 0));
+    const labels = historyData.map(item => item.date || item.Date || item.datum || '');
+    const dataValues = historyData.map(item => item.bankroll ?? item.total_bankroll ?? item.profit ?? item.Profit ?? item.profit_sek ?? 0);
 
-    // Beräkna dynamisk vaddering för Y-axeln baserat på skärmstorlek och datapunkter
-    const minVal = Math.min(...profitValues);
-    const maxVal = Math.max(...profitValues);
-    const isSinglePoint = profitValues.length === 1;
+    const minVal = Math.min(...dataValues);
+    const maxVal = Math.max(...dataValues);
+    const isSinglePoint = dataValues.length === 1;
     const padding = isSinglePoint ? 500 : Math.max((maxVal - minVal) * 0.2, 200);
 
     const ctx = canvas.getContext('2d');
@@ -163,26 +174,26 @@ function renderStockChart(historyData) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Net Profit (SEK)',
-                data: profitValues,
+                label: 'Bankroll (SEK)',
+                data: dataValues,
                 borderColor: '#10b981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
                 tension: 0.2,
-                pointRadius: 6,
-                pointHoverRadius: 9,
+                pointRadius: 5,
+                pointHoverRadius: 8,
                 pointBackgroundColor: '#10b981'
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false, // Gör att den följer container-höjden i HTML
+            maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
                 tooltip: { 
                     callbacks: {
                         label: function(context) {
-                            return ' Profit: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
+                            return ' Värde: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
                         }
                     }
                 }
@@ -198,7 +209,7 @@ function renderStockChart(historyData) {
                     min: Math.floor(minVal - padding),
                     max: Math.ceil(maxVal + padding),
                     ticks: {
-                        maxTicksLimit: window.innerWidth < 640 ? 5 : 8, // Färre steg på mobiler
+                        maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
                         callback: function(value) {
                             return value.toLocaleString('sv-SE') + ' SEK';
                         },
@@ -209,16 +220,6 @@ function renderStockChart(historyData) {
             }
         }
     });
-
-    // Lyssna på skärmändringar för att hålla grafen skarp på alla enheter
-    if (window.ResizeObserver && canvas.parentElement) {
-        const resizeObserver = new ResizeObserver(() => {
-            if (stockChartInstance) {
-                stockChartInstance.resize();
-            }
-        });
-        resizeObserver.observe(canvas.parentElement);
-    }
 }
 
 // Kör vid laddning
