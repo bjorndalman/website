@@ -346,7 +346,6 @@ function renderFootballChart(historyData) {
 }
 
 function renderStockChart(historyData) {
-    // Isolerat ID för aktiegrafen för att undvika krockar med fotbollsgrafen
     const canvas = document.getElementById('stock-profit-chart');
     if (!canvas) return;
 
@@ -401,3 +400,14 @@ function renderStockChart(historyData) {
         }
     });
 }
+
+// =========================================================================
+// AUTOMATISK INLÄSNING NÄR SIDAN LADDATS (Detta saknades!)
+// =========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    loadPortfolioData();
+    loadStockAIDashboard();
+    loadFootballAIDashboard();
+    loadPipelineStatus();
+    loadKalmanRankings();
+});
