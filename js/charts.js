@@ -1,32 +1,56 @@
-// RETA DETTA HÖGST UPP I js/charts.js
+/**
+ * js/charts.js
+ * Centraliserad hantering och rendering av grafer (CSV & JSON-stöd)
+ */
+
 var pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" : "./";
 var botChartInstance = null;
 var stockChartInstance = null;
 
+// Säker förstöring av befintliga grafer för att förhindra "Canvas is already in use"-fel
 function destroyExistingChart(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    // 1. Kolla om Chart.js har en registrerad instans direkt på canvasen
+    if (typeof Chart !== 'undefined' && Chart.getChart) {
+        const existingChart = Chart.getChart(canvas);
+        if (existingChart) {
+            existingChart.destroy();
+        }
+    }
+
+    // 2. Rensa från globala spårningsobjekt
     if (window.chartInstances && window.chartInstances[canvasId]) {
-        window.chartInstances[canvasId].destroy();
+        try { window.chartInstances[canvasId].destroy(); } catch (e) {}
         delete window.chartInstances[canvasId];
     }
 }
 
-function renderStockChart(csvText) {
+// Polymorf funktion: Hanterar BÅDE CSV-strängar och JSON-arrayer
+function renderStockChart(dataInput) {
     const ctx = document.getElementById('stock-profit-chart');
     if (!ctx) return null;
-    
+
     destroyExistingChart('stock-profit-chart');
 
-    const lines = csvText.trim().split('\n');
-    const labels = [];
-    const data = [];
-    
-    // Hoppar över rubrikraden (i = 1)
-    for (let i = 1; i < lines.length; i++) {
-        const parts = lines[i].split(',');
-        if (parts.length >= 2) {
-            labels.push(parts[0].trim());
-            data.push(parseFloat(parts[1].trim()));
+    let labels = [];
+    let data = [];
+
+    if (typeof dataInput === 'string') {
+        // Parse CSV-data
+        const lines = dataInput.trim().split('\n');
+        for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(',');
+            if (parts.length >= 2) {
+                labels.push(parts[0].trim());
+                data.push(parseFloat(parts[1].trim()));
+            }
         }
+    } else if (Array.isArray(dataInput)) {
+        // Parse JSON-array
+        labels = dataInput.map(item => item.date || item.Date || item.datum || '');
+        data = dataInput.map(item => item.bankroll ?? item.total_bankroll ?? item.profit ?? item.Profit ?? item.profit_sek ?? 0);
     }
 
     const isDark = document.documentElement.classList.contains("dark");
@@ -38,30 +62,47 @@ function renderStockChart(csvText) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Stock Bankroll',
+                label: 'Stock Bankroll (SEK)',
                 data: data,
                 borderColor: '#10b981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
                 tension: 0.3,
-                pointRadius: 2,
-                pointHoverRadius: 5
+                pointRadius: window.innerWidth < 640 ? 2 : 4,
+                pointHoverRadius: 6
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: false }
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ' Värde: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
+                        }
+                    }
+                }
             },
             scales: {
                 x: {
                     grid: { display: false },
-                    ticks: { color: textColor }
+                    ticks: { 
+                        color: textColor,
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    }
                 },
                 y: {
                     grid: { color: gridColor },
-                    ticks: { color: textColor }
+                    ticks: { 
+                        color: textColor,
+                        maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
+                        callback: function(value) {
+                            return value.toLocaleString('sv-SE') + ' SEK';
+                        },
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    }
                 }
             }
         }
@@ -76,13 +117,13 @@ function renderStockChart(csvText) {
 function renderBotChart(csvText) {
     const ctx = document.getElementById('bot-profit-chart');
     if (!ctx) return null;
-    
+
     destroyExistingChart('bot-profit-chart');
 
     const lines = csvText.trim().split('\n');
     const labels = [];
     const data = [];
-    
+
     for (let i = 1; i < lines.length; i++) {
         const parts = lines[i].split(',');
         if (parts.length >= 2) {
@@ -106,8 +147,8 @@ function renderBotChart(csvText) {
                 backgroundColor: 'rgba(37, 99, 235, 0.1)',
                 fill: true,
                 tension: 0.3,
-                pointRadius: 2,
-                pointHoverRadius: 5
+                pointRadius: window.innerWidth < 640 ? 2 : 4,
+                pointHoverRadius: 6
             }]
         },
         options: {
@@ -119,11 +160,18 @@ function renderBotChart(csvText) {
             scales: {
                 x: {
                     grid: { display: false },
-                    ticks: { color: textColor }
+                    ticks: { 
+                        color: textColor,
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    }
                 },
                 y: {
                     grid: { color: gridColor },
-                    ticks: { color: textColor }
+                    ticks: { 
+                        color: textColor,
+                        maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    }
                 }
             }
         }
@@ -158,7 +206,7 @@ function renderFootballChart(historyData) {
 
     destroyExistingChart(ctx.id);
 
-    const labels = historyData.map(item => item.date || item.Date || '');
+    const labels = historyData.map(item => item.date || item.Date || item.datum || '');
     const profitValues = historyData.map(item => item.profit ?? item.Profit ?? 0);
 
     const isDark = document.documentElement.classList.contains("dark");
@@ -176,7 +224,7 @@ function renderFootballChart(historyData) {
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
                 tension: 0.3,
-                pointRadius: 3,
+                pointRadius: window.innerWidth < 640 ? 2 : 4,
                 pointHoverRadius: 6
             }]
         },
@@ -189,11 +237,18 @@ function renderFootballChart(historyData) {
             scales: {
                 x: {
                     grid: { display: false },
-                    ticks: { color: textColor }
+                    ticks: { 
+                        color: textColor,
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    }
                 },
                 y: {
                     grid: { color: gridColor },
-                    ticks: { color: textColor }
+                    ticks: { 
+                        color: textColor,
+                        maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
+                        font: { size: window.innerWidth < 640 ? 10 : 12 }
+                    }
                 }
             }
         }
