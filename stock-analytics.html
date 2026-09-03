@@ -280,6 +280,16 @@
     <script>
         window.stockChartInstance = window.stockChartInstance || null;
 
+        function escapeHTML(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         async function loadStockAIDashboard() {
             try {
                 // HÄMTAR FRÅN STOCK_AI_DASHBOARD_DATA.JSON
@@ -297,7 +307,7 @@
                         fetch('data/stats.json?t=' + Date.now())
                             .then(r => r.json())
                             .then(stats => { if (stats.last_sync) syncElem.innerText = stats.last_sync; })
-                            .catch(err => console.warn("Kunde inte läsa stats.json", err));
+                            .catch(err => console.warn("Could not read stats.json", err));
                     }
                 }
 
@@ -330,14 +340,14 @@
                 const trades = data.latest_trades_and_forecasts || [];
 
                 if (trades.length === 0) {
-                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Inga aktiva affärer registrerade ännu.</td></tr>`;
+                    tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">No active trades recorded yet.</td></tr>`;
                     const investedElem = document.getElementById('stock-invested');
                     if (investedElem) investedElem.innerText = '0,00 SEK';
                     return;
                 }
 
                 tradesBody.innerHTML = '';
-                let totalInvested = 0;
+                let totalInvestedFromTrades = 0;
 
                 trades.forEach(row => {
                     const date = row['date'] || row['Date'] || row['Datum'] || '-';
@@ -355,7 +365,7 @@
                     
                     const amount = parseFloat(rawAmount) || 0;
                     if (action === 'BUY' || action === 'KÖP') {
-                        totalInvested += amount;
+                        totalInvestedFromTrades += amount;
                     }
 
                     const formattedAmount = amount > 0 
@@ -370,19 +380,19 @@
                         badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700";
                     }
 
-                    const formattedPrice = typeof price === 'number' ? price.toFixed(2) + ' SEK' : price;
-                    const formattedKalman = typeof kalman === 'number' ? kalman.toFixed(2) + ' SEK' : kalman;
+                    const formattedPrice = typeof price === 'number' ? price.toFixed(2) + ' SEK' : escapeHTML(price);
+                    const formattedKalman = typeof kalman === 'number' ? kalman.toFixed(2) + ' SEK' : escapeHTML(kalman);
 
                     const tr = document.createElement('tr');
                     tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition";
                     tr.innerHTML = `
-                        <td class="py-3.5 px-4 text-xs whitespace-nowrap text-slate-500 dark:text-slate-400">${date}</td>
-                        <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">${stock}</td>
-                        <td class="py-3.5 px-4 whitespace-nowrap"><span class="${badgeClass}">${action}</span></td>
+                        <td class="py-3.5 px-4 text-xs whitespace-nowrap text-slate-500 dark:text-slate-400">${escapeHTML(date)}</td>
+                        <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">${escapeHTML(stock)}</td>
+                        <td class="py-3.5 px-4 whitespace-nowrap"><span class="${badgeClass}">${escapeHTML(action)}</span></td>
                         <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${formattedPrice}</td>
                         <td class="py-3.5 px-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">${formattedKalman}</td>
                         <td class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">${formattedAmount}</td>
-                        <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${argument}</td>
+                        <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${escapeHTML(argument)}</td>
                     `;
                     tradesBody.appendChild(tr);
                 });
@@ -394,6 +404,7 @@
                 // 4. Uppdatera rådande totalt investerat kapital
                 const investedElem = document.getElementById('stock-invested');
                 if (investedElem) {
+                    const totalInvested = (data.summary && (data.summary.total_invested ?? data.summary.invested_sek)) ?? totalInvestedFromTrades;
                     investedElem.innerText = totalInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                 }
 
@@ -415,19 +426,26 @@
             const canvas = document.getElementById('stock-profit-chart');
             if (!canvas) return;
 
-            if (window.stockChartInstance) {
-                window.stockChartInstance.destroy();
-                window.stockChartInstance = null;
+            // Säker rensning av befintlig Chart.js-instans för att undvika "Canvas is already in use"-fel
+            if (typeof Chart !== 'undefined' && Chart.getChart) {
+                const existingChart = Chart.getChart(canvas);
+                if (existingChart) {
+                    existingChart.destroy();
+                }
             }
 
             const labels = historyData.map(item => item.date || item.Date || item.datum || '');
             const profitValues = historyData.map(item => item.profit ?? item.Profit ?? item.vinst ?? item.bankroll ?? item.total_bankroll ?? 0);
 
-            // Beräkna dynamisk Y-axelvaddering så att den fungerar snyggt oavsett antal datapunkter
-            const minVal = Math.min(...profitValues);
-            const maxVal = Math.max(...profitValues);
+            // Beräkna dynamisk Y-axelvaddering
+            const minVal = profitValues.length ? Math.min(...profitValues) : 0;
+            const maxVal = profitValues.length ? Math.max(...profitValues) : 0;
             const isSinglePoint = profitValues.length === 1;
             const padding = isSinglePoint ? 500 : Math.max((maxVal - minVal) * 0.2, 200);
+
+            const isDark = document.documentElement.classList.contains("dark");
+            const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)';
+            const textColor = isDark ? '#94a3b8' : '#64748b';
 
             const ctx = canvas.getContext('2d');
 
@@ -443,7 +461,7 @@
                         borderWidth: 3,
                         fill: true,
                         tension: 0.2,
-                        pointRadius: 5,
+                        pointRadius: window.innerWidth < 640 ? 3 : 5,
                         pointHoverRadius: 8,
                         pointBackgroundColor: '#10b981'
                     }]
@@ -466,13 +484,17 @@
                     scales: {
                         x: { 
                             grid: { display: false },
-                            ticks: { font: { size: window.innerWidth < 640 ? 10 : 12 } }
+                            ticks: { 
+                                color: textColor,
+                                font: { size: window.innerWidth < 640 ? 10 : 12 } 
+                            }
                         },
                         y: { 
                             min: Math.floor(minVal - padding),
                             max: Math.ceil(maxVal + padding),
-                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            grid: { color: gridColor },
                             ticks: {
+                                color: textColor,
                                 maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
                                 callback: function(value) {
                                     return value.toLocaleString('sv-SE') + ' SEK';
@@ -483,16 +505,6 @@
                     }
                 }
             });
-
-            // Lyssna på fönsterändringar för perfekt omritning på alla skärmar
-            if (window.ResizeObserver && canvas.parentElement) {
-                const resizeObserver = new ResizeObserver(() => {
-                    if (window.stockChartInstance) {
-                        window.stockChartInstance.resize();
-                    }
-                });
-                resizeObserver.observe(canvas.parentElement);
-            }
         }
 
         function initStockDashboard() {
