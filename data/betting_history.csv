@@ -141,3 +141,8 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-09-05,toronto vs chicago fire,Home,0.37,2.69,2.8,1.77,Förlust,-1.77
 2026-09-05,toronto vs chicago fire,Away,0.45,2.22,2.3,2.12,Vinst,2.76
 2026-09-06,austin fc vs san jose,Away,0.39,2.57,2.75,2.9,Förlust,-2.9
+2026-09-05,philadelphia union vs cf montreal,Home,0.69,1.44,1.45,0.95,Vinst,0.43
+2026-09-05,cincinnati vs dc united,Home,0.66,1.51,1.56,4.38,Förlust,-4.38
+2026-09-06,austin fc vs san jose,Home,0.47,2.12,2.3,4.94,Vinst,6.42
+2026-09-06,dallas vs kansas city,Home,0.7,1.42,1.44,2.07,Vinst,0.91
+2026-09-06,vancouver whitecaps vs st. louis city,Home,0.73,1.37,1.44,9.0,Vinst,3.96

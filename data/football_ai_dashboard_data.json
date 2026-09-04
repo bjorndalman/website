@@ -1,58 +1,13 @@
 {
-  "updated_at": "2026-09-04 15:54",
+  "updated_at": "2026-09-04 20:24",
   "summary": {
     "current_bankroll": 11195.45,
     "profit_sek": 1195.45,
     "profit_pct": 11.95,
     "next_matchday": "2026-09-04",
-    "last_sync": "2026-09-04 15:54"
+    "last_sync": "2026-09-04 20:24"
   },
   "latest_bets": [
-    {
-      "date": "2026-09-05",
-      "match": "orlando city vs san diego fc",
-      "prediction": "Away",
-      "odds": 2.8,
-      "stake": 7.79,
-      "status": "Placerat",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.4)"
-    },
-    {
-      "date": "2026-09-06",
-      "match": "dallas vs kansas city",
-      "prediction": "Draw",
-      "odds": 5.0,
-      "stake": 2.67,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.23)"
-    },
-    {
-      "date": "2026-09-06",
-      "match": "dallas vs kansas city",
-      "prediction": "Away",
-      "odds": 6.25,
-      "stake": 6.68,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.24)"
-    },
-    {
-      "date": "2026-09-06",
-      "match": "real salt lake vs lafc",
-      "prediction": "Away",
-      "odds": 2.6,
-      "stake": 9.52,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.46)"
-    },
-    {
-      "date": "2026-09-06",
-      "match": "portland timbers vs minnesota united",
-      "prediction": "Away",
-      "odds": 3.1,
-      "stake": 5.61,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.37)"
-    },
     {
       "date": "2026-09-06",
       "match": "vancouver whitecaps vs st. louis city",
@@ -97,6 +52,51 @@
       "stake": 2.9,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.39)"
+    },
+    {
+      "date": "2026-09-05",
+      "match": "philadelphia union vs cf montreal",
+      "prediction": "Home",
+      "odds": 1.45,
+      "stake": 0.95,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.69)"
+    },
+    {
+      "date": "2026-09-05",
+      "match": "cincinnati vs dc united",
+      "prediction": "Home",
+      "odds": 1.56,
+      "stake": 4.38,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.66)"
+    },
+    {
+      "date": "2026-09-06",
+      "match": "austin fc vs san jose",
+      "prediction": "Home",
+      "odds": 2.3,
+      "stake": 4.94,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.47)"
+    },
+    {
+      "date": "2026-09-06",
+      "match": "dallas vs kansas city",
+      "prediction": "Home",
+      "odds": 1.44,
+      "stake": 2.07,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.7)"
+    },
+    {
+      "date": "2026-09-06",
+      "match": "vancouver whitecaps vs st. louis city",
+      "prediction": "Home",
+      "odds": 1.44,
+      "stake": 9.0,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.73)"
     }
   ],
   "history": [
