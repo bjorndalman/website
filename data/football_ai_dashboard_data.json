@@ -1,40 +1,13 @@
 {
-  "updated_at": "2026-09-04 03:22",
+  "updated_at": "2026-09-04 10:48",
   "summary": {
     "current_bankroll": 11195.45,
     "profit_sek": 1195.45,
     "profit_pct": 11.95,
     "next_matchday": "2026-09-04",
-    "last_sync": "2026-09-04 03:22"
+    "last_sync": "2026-09-04 10:48"
   },
   "latest_bets": [
-    {
-      "date": "2026-09-05",
-      "match": "charlotte vs houston dynamo",
-      "prediction": "Home",
-      "odds": 2.25,
-      "stake": 4.31,
-      "status": "Placerat",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.48)"
-    },
-    {
-      "date": "2026-09-05",
-      "match": "cincinnati vs dc united",
-      "prediction": "Draw",
-      "odds": 4.5,
-      "stake": 1.99,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.24)"
-    },
-    {
-      "date": "2026-09-05",
-      "match": "cincinnati vs dc united",
-      "prediction": "Away",
-      "odds": 5.0,
-      "stake": 8.02,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.29)"
-    },
     {
       "date": "2026-09-05",
       "match": "orlando city vs san diego fc",
@@ -97,6 +70,33 @@
       "stake": 7.06,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.22)"
+    },
+    {
+      "date": "2026-09-05",
+      "match": "toronto vs chicago fire",
+      "prediction": "Home",
+      "odds": 2.8,
+      "stake": 1.77,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.37)"
+    },
+    {
+      "date": "2026-09-05",
+      "match": "toronto vs chicago fire",
+      "prediction": "Away",
+      "odds": 2.3,
+      "stake": 2.12,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.45)"
+    },
+    {
+      "date": "2026-09-06",
+      "match": "austin fc vs san jose",
+      "prediction": "Away",
+      "odds": 2.75,
+      "stake": 2.9,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.39)"
     }
   ],
   "history": [
