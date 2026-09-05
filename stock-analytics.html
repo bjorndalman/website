@@ -54,7 +54,19 @@
                 <a href="index.html#projects" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">Projects</a>
             </nav>
             <div class="flex items-center space-x-3">
-                <button id="theme-toggle" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <!-- Language Selector Button matching Swedish version -->
+                <a href="stock-analytics.html" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    GB SE
+                </a>
+                <!-- Social / Utility Buttons matching Swedish version -->
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="X Profile">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="YouTube Channel">
+                    <i data-lucide="youtube" class="w-4 h-4"></i>
+                </a>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle Theme">
                     <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                 </button>
@@ -451,6 +463,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             loadStockAIDashboard();
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     </script>
 </body>
