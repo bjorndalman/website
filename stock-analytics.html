@@ -379,8 +379,15 @@
                 }
 
                 tradesBody.innerHTML = '';
-                let calculatedInvested = 0;
+                // Replace the trades processing loop in your script with this updated logic:
 
+                let calculatedInvested = 0;
+                const totalBankroll = data.summary?.current_bankroll ?? data.summary?.total_bankroll ?? 100000;
+                const activeTradesCount = trades.filter(r => {
+                    const act = String(r['action'] || r['Action'] || r['status'] || 'BUY').toUpperCase();
+                    return act !== 'SÄLJ' && act !== 'SELL' && act !== 'CLOSED';
+                }).length || trades.length;
+                
                 trades.slice().reverse().forEach(row => {
                     const date = row['date'] || row['Date'] || row['Datum'] || '-';
                     const stock = row['stock'] || row['Stock'] || row['Aktie'] || row['symbol'] || row['ticker'] || '-';
@@ -389,35 +396,41 @@
                     const price = row['price'] ?? row['Price'] ?? row['Pris'] ?? row['close_price'] ?? '-';
                     const kalman = row['kalman_value'] ?? row['Kalman Value'] ?? row['Fair Value'] ?? '-';
                     const argument = row['argument'] || row['AI Argument & Forecast'] || row['Reasoning'] || row['Motivering'] || '-';
-
-                    const rawAmount = row['ai_investment'] 
+                
+                    let rawAmount = row['ai_investment'] 
                         ?? row['position_size'] 
                         ?? row['Rek. Investering (kr)'] 
                         ?? 0;
                     
-                    const amount = parseFloat(rawAmount) || 0;
-                    if (action === 'BUY' || action === 'KÖP') {
+                    let amount = parseFloat(rawAmount) || 0;
+                
+                    // If action is HOLD or BUY and amount is 0, allocate proportional bankroll for active positions
+                    if ((action === 'BUY' || action === 'KÖP' || action === 'HOLD') && amount === 0) {
+                        amount = totalBankroll / activeTradesCount;
+                    }
+                
+                    if (action === 'BUY' || action === 'KÖP' || action === 'HOLD') {
                         calculatedInvested += amount;
                     }
-
+                
                     const formattedAmount = amount > 0 
                         ? `${amount.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} SEK` 
                         : '0,00 SEK';
-
+                
                     let badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800";
-
+                
                     if (action === 'SÄLJ' || action === 'SELL' || action === 'CLOSED') {
                         badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-300 dark:border-rose-800";
                     } else if (action === 'STÅ ÖVER' || action === 'HOLD' || action === 'PAUSED') {
                         badgeClass = "px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700";
                     }
-
+                
                     const parsedPrice = parseFloat(price);
                     const formattedPrice = !isNaN(parsedPrice) ? `${parsedPrice.toFixed(2)} SEK` : escapeHTML(price);
-
+                
                     const parsedKalman = parseFloat(kalman);
                     const formattedKalman = !isNaN(parsedKalman) ? `${parsedKalman.toFixed(2)} SEK` : escapeHTML(kalman);
-
+                
                     const tr = document.createElement('tr');
                     tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition";
                     tr.innerHTML = `
