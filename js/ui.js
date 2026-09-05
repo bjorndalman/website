@@ -182,3 +182,10 @@ function initScrollAnimations() {
 
   fadeElements.forEach(el => observer.observe(el));
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadLanguageData();
+    render();
+    initTheme();
+    initScrollAnimations();
+});
