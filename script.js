@@ -36,10 +36,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 5. Starta animationer och hämta dashboard-data säkert
   if (typeof initScrollAnimations === 'function') initScrollAnimations();
-  if (typeof loadPipelineStatus === 'function') loadPipelineStatus();
+  if (typeof loadPipelineStatus === 'function') await loadPipelineStatus();
   if (typeof loadPortfolioData === 'function') await loadPortfolioData();
-  if (typeof loadStockAIDashboard === 'function') loadStockAIDashboard();
-  if (typeof loadKalmanRankings === 'function') loadKalmanRankings();
+  
+  // FIXERING: Lagt till await så att JSON-datan garanterat hinner ladda och rita innan steg 6 körs!
+  if (typeof loadStockAIDashboard === 'function') await loadStockAIDashboard();
+  if (typeof loadKalmanRankings === 'function') await loadKalmanRankings();
   if (typeof loadFootballAIDashboard === 'function') await loadFootballAIDashboard();
 
   // 6. Rendera diagram från CSV (endast om elementen finns OCH inte redan renderats via JSON)
