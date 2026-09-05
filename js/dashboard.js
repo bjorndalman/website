@@ -17,7 +17,7 @@ function isEnglishPage() {
 async function loadPortfolioData() {
     const pathPrefix = getPathPrefix();
     try {
-        const response = await fetch(`${pathPrefix}data/portfolio_summary.json?t=${Date.now()}`);
+        const response = await fetch(`${pathPrefix}data/portfolio_summary.json?t=${Date.now()}`, { cache: 'no-store' });
         if (!response.ok) return;
         const data = await response.json();
 
@@ -41,7 +41,7 @@ async function loadStockAIDashboard() {
     const isEnglish = isEnglishPage();
     
     try {
-        const res = await fetch(`${pathPrefix}data/stock_ai_dashboard_data.json?t=${Date.now()}`);
+        const res = await fetch(`${pathPrefix}data/stock_ai_dashboard_data.json?t=${Date.now()}`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}: Could not fetch stock_ai_dashboard_data.json`);
         
         const data = await res.json();
@@ -150,18 +150,10 @@ async function loadStockAIDashboard() {
         }
 
         const historyData = data.history || data.bankroll_history || data.chart_data || (Array.isArray(data) ? data : null);
-        const renderStock = () => {
-            if (historyData && typeof renderStockChart === 'function') {
-                renderStockChart(historyData);
-            } else if (typeof loadAndRenderChart === 'function') {
-                loadAndRenderChart('stock-profit-chart', `${pathPrefix}data/stock_ai_dashboard_data.json`);
-            }
-        };
-
-        if (typeof renderStockChart === 'function') {
-            renderStock();
-        } else {
-            setTimeout(renderStock, 150);
+        if (historyData && typeof renderStockChart === 'function') {
+            renderStockChart(historyData);
+        } else if (typeof loadAndRenderChart === 'function') {
+            loadAndRenderChart('stock-profit-chart', `${pathPrefix}data/stock_ai_dashboard_data.json`);
         }
 
     } catch (err) {
@@ -188,7 +180,7 @@ async function loadFootballAIDashboard() {
     const isEnglish = isEnglishPage();
 
     try {
-        const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`);
+        const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP Error ${res.status}: Kunde inte hämta football_ai_dashboard_data.json`);
         
         const data = await res.json();
@@ -244,19 +236,11 @@ async function loadFootballAIDashboard() {
         }
 
         const historyData = data.history || data.bankroll_history || data.chart_data || (Array.isArray(data) ? data : null);
-        const renderFootball = () => {
-            if (historyData && typeof renderFootballChart === 'function') {
-                renderFootballChart(historyData);
-            } else if (typeof loadAndRenderChart === 'function') {
-                const canvasId = chartCanvas ? chartCanvas.id : 'bot-profit-chart';
-                loadAndRenderChart(canvasId, `${pathPrefix}data/football_ai_dashboard_data.json`);
-            }
-        };
-
-        if (typeof renderFootballChart === 'function') {
-            renderFootball();
-        } else {
-            setTimeout(renderFootball, 150);
+        if (historyData && typeof renderFootballChart === 'function') {
+            renderFootballChart(historyData);
+        } else if (typeof loadAndRenderChart === 'function') {
+            const canvasId = chartCanvas ? chartCanvas.id : 'bot-profit-chart';
+            loadAndRenderChart(canvasId, `${pathPrefix}data/football_ai_dashboard_data.json`);
         }
 
     } catch (err) {
@@ -271,7 +255,7 @@ async function loadPipelineStatus() {
     const pathPrefix = getPathPrefix();
 
     try {
-        const response = await fetch(`${pathPrefix}data/stats.json?t=${Date.now()}`);
+        const response = await fetch(`${pathPrefix}data/stats.json?t=${Date.now()}`, { cache: 'no-store' });
         if (!response.ok) return;
         const data = await response.json();
 
@@ -293,7 +277,7 @@ async function loadKalmanRankings() {
     const pathPrefix = getPathPrefix();
 
     try {
-        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`);
+        const response = await fetch(`${pathPrefix}data/top_bottom_teams.json?t=${Date.now()}`, { cache: 'no-store' });
         if (!response.ok) return;
         
         const data = await response.json();
@@ -337,10 +321,4 @@ async function loadKalmanRankings() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadPortfolioData();
-    loadStockAIDashboard();
-    loadFootballAIDashboard();
-    loadPipelineStatus();
-    loadKalmanRankings();
-});
+// BORTTAGET: document.addEventListener('DOMContentLoaded', ...) för att förhindra dubbel initiering tillsammans med script.js.
