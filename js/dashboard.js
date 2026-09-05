@@ -8,6 +8,10 @@ function getPathPrefix() {
     return isSwedish ? "../" : "./";
 }
 
+function isEnglishPage() {
+    return window.location.pathname.toLowerCase().includes('/en/') || document.documentElement.lang === 'en';
+}
+
 async function loadPortfolioData() {
     const pathPrefix = getPathPrefix();
     try {
@@ -32,6 +36,7 @@ async function loadPortfolioData() {
 async function loadStockAIDashboard() {
     const tradesBody = document.getElementById('stock-trades-body');
     const pathPrefix = getPathPrefix();
+    const isEnglish = isEnglishPage();
     
     try {
         const res = await fetch(`${pathPrefix}data/stock_ai_dashboard_data.json?t=${Date.now()}`);
@@ -77,7 +82,8 @@ async function loadStockAIDashboard() {
 
         if (tradesBody) {
             if (trades.length === 0) {
-                tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">Inga aktiva affärer registrerade ännu.</td></tr>`;
+                const emptyMsg = isEnglish ? "No active trades registered yet." : "Inga aktiva affärer registrerade ännu.";
+                tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">${emptyMsg}</td></tr>`;
             } else {
                 tradesBody.innerHTML = '';
                 const actionMap = {
@@ -141,7 +147,6 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // Rendera aktiegrafen inuti try-blocket
         if (data.history && Array.isArray(data.history) && typeof renderStockChart === 'function') {
             renderStockChart(data.history);
         }
@@ -167,6 +172,7 @@ async function loadFootballAIDashboard() {
     if (!profitElem && !bankrollElem && !betsBody && !syncElem && !chartCanvas) return;
 
     const pathPrefix = getPathPrefix();
+    const isEnglish = isEnglishPage();
 
     try {
         const res = await fetch(`${pathPrefix}data/football_ai_dashboard_data.json?t=${Date.now()}`);
@@ -204,7 +210,8 @@ async function loadFootballAIDashboard() {
 
         if (betsBody && data.latest_bets) {
             if (data.latest_bets.length === 0) {
-                betsBody.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-slate-500">Inga aktiva spel registrerade ännu.</td></tr>`;
+                const emptyBetsMsg = isEnglish ? "No active bets registered yet." : "Inga aktiva spel registrerade ännu.";
+                betsBody.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-slate-500">${emptyBetsMsg}</td></tr>`;
             } else {
                 betsBody.innerHTML = '';
                 data.latest_bets.slice().reverse().forEach(row => {
@@ -401,9 +408,6 @@ function renderStockChart(historyData) {
     });
 }
 
-// =========================================================================
-// AUTOMATISK INLÄSNING NÄR SIDAN LADDATS (Detta saknades!)
-// =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     loadPortfolioData();
     loadStockAIDashboard();
