@@ -99,52 +99,70 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <section>
-            <!-- Back Button & Header Intro -->
-             <div class="mb-8">
+     <!-- HEADER -->
+    <header class="bg-slate-100 dark:bg-slate-900 py-16 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
+        <div class="mb-8">
             <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-sm hover:shadow-md border border-slate-200 dark:border-slate-700">
                 <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
-                Back to portfolio
+                Back to Portfolio
             </a>
         </div>
-		
-		<h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Finansiell Analys & AI-Kvantmodellering</h1>
+        
+        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Financial Analytics & AI Quant</h1>
         <p class="text-lg text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto px-6">
-            Autonomous AI trading algorithms utilizing multivariable Kalman filters combined with LLM sentiment analysis for real-time fair value forecasting and dynamic portfolio allocation..
+            Autonomous AI trading algorithms, Kalman filter state-space modeling, and LLM sentiment reasoning.
         </p>
+    </header>
+
+    <!-- HUVUDINNEHÅLL -->
+    <main class="max-w-5xl mx-auto px-6 py-16 space-y-16">
+
+        <!-- AUTOMATED STOCK TRADING SYSTEM -->
+        <section class="fade-in">
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="max-w-3xl mb-10">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+                            Algorithmic Trading & AI Quant
+                        </span>
+                        <span class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                            Updated: <strong id="stock-last-sync" class="text-slate-700 dark:text-slate-200">Loading...</strong>
+                        </span>
                     </div>
-                    <div class="flex items-center space-x-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 self-start md:self-auto">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>Live Sync: <span id="stock-last-sync">-</span></span>
+
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automated Stock Trading System</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
+                        This section showcases my autonomous AI stock trading bot. Powered by a multi-variable Kalman Filter combined with LLM sentiment analysis, the system calculates stock fair values, determines real-time entry/exit signals, and manages portfolio allocations with full autonomy.
+                    </p>
+                    
+                    <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Mathematical & AI Framework
+                        </h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Multi-Variable Kalman:</strong> Tracks price velocity and fair market value.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>LLM Reasoning:</strong> Evaluates news sentiment & macro context per stock.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Z-Score Evaluation:</strong> Measures statistical mispricing vs. fair value.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>AI Capital Sizing:</strong> Dynamically adjusts position sizing based on conviction.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5 md:col-span-2">
+                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+                                <span><strong>Risk Controls:</strong> Enforces portfolio caps (max 15% per position) to mitigate drawdowns.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Mathematical & AI Framework Box -->
-                <div class="mt-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 rounded-2xl shadow-sm">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">MATHEMATICAL & AI FRAMEWORK</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-600 dark:text-slate-400">
-                        <div class="flex items-start space-x-2">
-                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                            <span><strong>Multivariable Kalman Filter:</strong> Tracks true price states and minimizes market noise.</span>
-                        </div>
-                        <div class="flex items-start space-x-2">
-                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                            <span><strong>LLM Reasoning:</strong> Evaluates sentiment and macroeconomic catalysts per asset.</span>
-                        </div>
-                        <div class="flex items-start space-x-2">
-                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                            <span><strong>Z-Score Valuation:</strong> Evaluates mispricing models relative to historical variance.</span>
-                        </div>
-                        <div class="flex items-start space-x-2">
-                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                            <span><strong>AI Capital Allocation:</strong> Adjusts position sizing automatically based on confidence.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- KPI Cards Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
                 <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 rounded-2xl shadow-sm">
