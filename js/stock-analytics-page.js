@@ -140,12 +140,12 @@ async function loadStockAIDashboard() {
                     tradesBody.appendChild(tr);
                 });
 
-                // Beräkna totalt investerat som summan av unika aktiva positioner
+               // Beräkna totalt investerat som summan av unika aktiva positioner
                 const calculatedInvested = Object.values(activePositions).reduce((sum, val) => sum + val, 0);
 
-                // Sätt värdet på "Invested" om det inte redan sattes via summary
+                // Tvinga alltid fram det korrekta beräknade värdet för aktiva positioner
                 const investedElem = document.getElementById('stock-invested');
-                if (investedElem && (data.summary?.invested === undefined || data.summary?.invested === null)) {
+                if (investedElem) {
                     investedElem.innerText = calculatedInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                 }
             }
