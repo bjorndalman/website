@@ -35,6 +35,16 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
     let labels = [];
     let rawItems = [];
 
+    // Om dataInput är en JSON-sträng, parsa den till ett objekt
+    if (typeof dataInput === 'string' && (dataInput.trim().startsWith('{') || dataInput.trim().startsWith('['))) {
+        try { dataInput = JSON.parse(dataInput); } catch (e) {}
+    }
+
+    // Om dataInput är ett JSON-objekt med under-array (t.ex. { history: [...] })
+    if (dataInput && typeof dataInput === 'object' && !Array.isArray(dataInput)) {
+        dataInput = dataInput.history || dataInput.data || dataInput.trades || dataInput.bets || [];
+    }
+
     if (typeof dataInput === 'string') {
         const lines = dataInput.trim().split('\n');
         for (let i = 1; i < lines.length; i++) {
@@ -45,7 +55,7 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
             }
         }
     } else if (Array.isArray(dataInput)) {
-        labels = dataInput.map(item => item.date || item.Date || item.datum || '');
+        labels = dataInput.map(item => item.date || item.Date || item.datum || item.time || '');
         rawItems = dataInput;
     }
 
@@ -61,8 +71,8 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
 
         const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? item.value ?? 0);
         
-        // Om datan i arrayen redan är absoluta portföljvärden över basbankrullen
-        if (rawItems.length > 0 && rawItems.every(i => (i.bankroll || i.total_bankroll || i.balance || i.value || 0) >= baseBankroll)) {
+        // Om värdet i filen redan är total bankrulle (t.ex. runt startkapitalet)
+        if (p > baseBankroll * 0.3) {
             return p;
         }
 
@@ -228,7 +238,7 @@ function renderStockChart(dataInput) {
     return newChart;
 }
 
-// Hjälpfunktion för att ladda CSV-filer direkt med korrekt sökväg
+// Hjälpfunktion för att ladda CSV/JSON-filer direkt med korrekt sökväg
 async function loadAndRenderChart(canvasId, csvUrl, label, borderColor, backgroundColor, currentInstance) {
     try {
         const finalUrl = (window.pathPrefix && !csvUrl.startsWith(window.pathPrefix) && !csvUrl.startsWith('http')) 
@@ -237,15 +247,15 @@ async function loadAndRenderChart(canvasId, csvUrl, label, borderColor, backgrou
 
         const response = await fetch(finalUrl + '?t=' + Date.now());
         if (!response.ok) return null;
-        const csvText = await response.text();
+        const text = await response.text();
 
         if (canvasId === 'stock-profit-chart') {
-            return renderStockChart(csvText);
-        } else if (canvasId === 'bot-profit-chart' || canvasId === 'football-profit-chart') {
-            return renderFootballChart(csvText);
+            return renderStockChart(text);
+        } else {
+            return renderFootballChart(text);
         }
     } catch (e) {
-        console.error("Fel vid inläsning av chart CSV:", e);
+        console.error("Fel vid inläsning av chart data:", e);
     }
     return null;
 }
