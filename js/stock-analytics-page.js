@@ -35,6 +35,7 @@ async function loadStockAIDashboard() {
             const profitPct = data.summary.profit_pct || 0;
             const sharpe = data.summary.sharpe_ratio ?? 0;
             const drawdown = data.summary.max_drawdown ?? 0;
+            const investedVal = data.summary.invested;
         
             const bankrollElem = document.getElementById('stock-bankroll');
             if (bankrollElem) bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
@@ -61,7 +62,13 @@ async function loadStockAIDashboard() {
                 drawdownElem.innerText = (typeof drawdown === 'number' ? drawdown.toFixed(2) : drawdown) + '%';
                 drawdownElem.className = "text-lg sm:text-xl font-extrabold " + (drawdown === 0 ? "text-emerald-600 dark:text-emerald-400" : "text-slate-900 dark:text-white");
             }
+
+            const investedElem = document.getElementById('stock-invested');
+            if (investedElem && investedVal !== undefined && investedVal !== null) {
+                investedElem.innerText = Number(investedVal).toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+            }
         }
+
         // 3. Fyll i AI Trades-tabellen (Senaste överst)
         const tradesBody = document.getElementById('stock-trades-body');
         if (tradesBody) {
@@ -73,9 +80,11 @@ async function loadStockAIDashboard() {
                 if (investedElem && !data.summary?.invested) investedElem.innerText = '0,00 SEK';
             } else {
                 tradesBody.innerHTML = '';
-                let calculatedInvested = 0;
+                
+                // Spåra unika aktiva positioner per bolag för att undvika överstigning av bankroll
+                const activePositions = {};
 
-                // Vänd arrayen så nyaste affärer visas överst
+                // Vänd arrayen så nyaste affärer visas överst i tabellen
                 trades.slice().reverse().forEach(row => {
                     const date = row['date'] || row['Date'] || row['Datum'] || '-';
                     const stock = row['stock'] || row['Stock'] || row['Aktie'] || row['symbol'] || row['ticker'] || '-';
@@ -91,8 +100,12 @@ async function loadStockAIDashboard() {
                         ?? 0;
                     
                     const amount = parseFloat(rawAmount) || 0;
-                    if (action === 'BUY' || action === 'KÖP') {
-                        calculatedInvested += amount;
+
+                    // Uppdatera aktiv position per symbol (sätt till 0 vid sälj/stängd, annars summan)
+                    if (action === 'SÄLJ' || action === 'SELL' || action === 'CLOSED') {
+                        activePositions[stock] = 0;
+                    } else if (action === 'BUY' || action === 'KÖP' || action === 'HOLD') {
+                        activePositions[stock] = amount;
                     }
 
                     const formattedAmount = amount > 0 
@@ -127,9 +140,12 @@ async function loadStockAIDashboard() {
                     tradesBody.appendChild(tr);
                 });
 
-                // Fallback till manuell beräkning om invested saknas i summary
+                // Beräkna totalt investerat som summan av unika aktiva positioner
+                const calculatedInvested = Object.values(activePositions).reduce((sum, val) => sum + val, 0);
+
+                // Sätt värdet på "Invested" om det inte redan sattes via summary
                 const investedElem = document.getElementById('stock-invested');
-                if (investedElem && data.summary?.invested === undefined) {
+                if (investedElem && (data.summary?.invested === undefined || data.summary?.invested === null)) {
                     investedElem.innerText = calculatedInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                 }
             }
