@@ -197,7 +197,7 @@
                     </div>
                 </div>
 
-               <!-- KPI METRICS -->
+                <!-- KPI METRICS -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
                     <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
                         <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block mb-1">Nettovinst</span>
@@ -275,8 +275,6 @@
 
     <!-- ANPASSAD LOGIK FÖR SVENSKA AKTIER -->
     <script>
-        let svStockChartInstance = null;
-
         async function loadStockAIDashboard() {
             try {
                 const res = await fetch('../data/stock_ai_dashboard_data.json?t=' + Date.now());
@@ -407,8 +405,8 @@
                     investedElem.innerText = totalInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                 }
 
-                // 5. Rendera vinstgraf om historik finns
-                if (data.history && Array.isArray(data.history) && data.history.length > 0) {
+                // 5. Rendera vinstgrafen med den centrala funktionen i js/charts.js
+                if (data.history && Array.isArray(data.history) && data.history.length > 0 && typeof renderStockChart === 'function') {
                     renderStockChart(data.history);
                 }
 
@@ -419,47 +417,6 @@
                     tradesBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-rose-500 font-medium">Kunde inte ladda data. Kontrollera att ../data/stock_ai_dashboard_data.json finns.</td></tr>`;
                 }
             }
-        }
-
-        function renderStockChart(historyData) {
-            const ctx = document.getElementById('stock-profit-chart');
-            if (!ctx) return;
-
-            if (svStockChartInstance) {
-                svStockChartInstance.destroy();
-            }
-
-            const labels = historyData.map(item => item.date || item.Date || '');
-            const profitValues = historyData.map(item => item.profit || item.Profit || 0);
-
-            svStockChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Nettovinst (SEK)',
-                        data: profitValues,
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 3,
-                        pointHoverRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: { mode: 'index', intersect: false }
-                    },
-                    scales: {
-                        x: { grid: { display: false } },
-                        y: { grid: { color: 'rgba(148, 163, 184, 0.1)' } }
-                    }
-                }
-            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
