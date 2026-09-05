@@ -147,6 +147,7 @@ async function loadStockAIDashboard() {
             }
         }
 
+        // Anropar den centraliserade renderStockChart från js/charts.js
         if (data.history && Array.isArray(data.history) && typeof renderStockChart === 'function') {
             renderStockChart(data.history);
         }
@@ -230,6 +231,7 @@ async function loadFootballAIDashboard() {
             }
         }
 
+        // Anropar den centraliserade renderFootballChart från js/charts.js
         if (data.history && Array.isArray(data.history) && typeof renderFootballChart === 'function') {
             renderFootballChart(data.history);
         }
@@ -310,102 +312,6 @@ async function loadKalmanRankings() {
     } catch (error) {
         console.error("Fel vid inläsning av top_bottom_teams.json:", error);
     }
-}
-
-function renderFootballChart(historyData) {
-    const canvas = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
-    if (!canvas) return;
-
-    const labels = historyData.map(item => item.date || item.datum || '');
-    const dataValues = historyData.map(item => item.bankroll ?? item.total_bankroll ?? item.balance ?? item.vinst ?? item.profit ?? item.amount ?? 0);
-
-    if (window.myFootballChart instanceof Chart) {
-        window.myFootballChart.destroy();
-    }
-
-    const ctx = canvas.getContext('2d');
-    window.myFootballChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Bankroll / Vinstkurva',
-                data: dataValues,
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                borderWidth: 2,
-                fill: true,
-                tension: 0.2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false }
-            },
-            scales: {
-                x: { grid: { display: false } },
-                y: { grid: { color: 'rgba(200, 200, 200, 0.15)' } }
-            }
-        }
-    });
-}
-
-function renderStockChart(historyData) {
-    const canvas = document.getElementById('stock-profit-chart');
-    if (!canvas) return;
-
-    const labels = historyData.map(item => item.date || item.datum || '');
-    const dataValues = historyData.map(item => item.bankroll ?? item.total_bankroll ?? item.balance ?? item.profit_sek ?? item.vinst ?? 0);
-
-    if (window.myStockChart instanceof Chart) {
-        window.myStockChart.destroy();
-    }
-
-    const ctx = canvas.getContext('2d');
-    window.myStockChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Total Bankroll',
-                data: dataValues,
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                borderWidth: 3,
-                fill: true,
-                tension: 0.2,
-                pointRadius: 3,
-                pointHoverRadius: 6
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return context.raw.toLocaleString('sv-SE') + ' SEK';
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: { grid: { display: false } },
-                y: { 
-                    grid: { color: 'rgba(200, 200, 200, 0.15)' },
-                    ticks: {
-                        callback: function(value) {
-                            return value.toLocaleString('sv-SE') + ' SEK';
-                        }
-                    }
-                }
-            }
-        }
-    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
