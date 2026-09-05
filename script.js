@@ -47,26 +47,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (document.getElementById('bot-profit-chart') && typeof loadAndRenderChart === 'function') {
     if (!window.chartInstances || !window.chartInstances['bot-profit-chart']) {
-      botChartInstance = await loadAndRenderChart(
+      window.botChartInstance = await loadAndRenderChart(
           'bot-profit-chart',
           prefix + 'data/portfolio_summary.csv',
           'Bankroll',
           '#2563eb',
           'rgba(37, 99, 235, 0.25)',
-          typeof botChartInstance !== 'undefined' ? botChartInstance : null
+          window.botChartInstance || null
       );
     }
   }
 
   if (document.getElementById('stock-profit-chart') && typeof loadAndRenderChart === 'function') {
     if (!window.chartInstances || !window.chartInstances['stock-profit-chart']) {
-      stockChartInstance = await loadAndRenderChart(
+      window.stockChartInstance = await loadAndRenderChart(
           'stock-profit-chart',
           prefix + 'data/stock_portfolio_summary.csv',
           'Stock Bankroll',
           '#10b981',
           'rgba(16, 185, 129, 0.25)',
-          typeof stockChartInstance !== 'undefined' ? stockChartInstance : null
+          window.stockChartInstance || null
       );
     }
   }
