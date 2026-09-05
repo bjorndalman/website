@@ -2,6 +2,9 @@
 
 // Hjälpfunktion för att hämta rätt relativ eller absolut prefix
 function getPathPrefix() {
+    if (typeof window.pathPrefix !== 'undefined' && window.pathPrefix !== '') {
+        return window.pathPrefix;
+    }
     const isSwedish = (typeof window.isSwedishPage !== 'undefined') 
         ? window.isSwedishPage 
         : window.location.pathname.toLowerCase().includes('/sv/');
@@ -147,9 +150,20 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // Anropar den centraliserade renderStockChart från js/charts.js
-        if (data.history && Array.isArray(data.history) && typeof renderStockChart === 'function') {
-            renderStockChart(data.history);
+        // Flexibel historik-hämtning & säkerställt anrop till renderStockChart
+        const historyData = data.history || data.bankroll_history || data.chart_data || (Array.isArray(data) ? data : null);
+        const renderStock = () => {
+            if (historyData && typeof renderStockChart === 'function') {
+                renderStockChart(historyData);
+            } else if (typeof loadAndRenderChart === 'function') {
+                loadAndRenderChart('stock-profit-chart', `${pathPrefix}data/stock_ai_dashboard_data.json`);
+            }
+        };
+
+        if (typeof renderStockChart === 'function') {
+            renderStock();
+        } else {
+            setTimeout(renderStock, 150);
         }
 
     } catch (err) {
@@ -231,9 +245,21 @@ async function loadFootballAIDashboard() {
             }
         }
 
-        // Anropar den centraliserade renderFootballChart från js/charts.js
-        if (data.history && Array.isArray(data.history) && typeof renderFootballChart === 'function') {
-            renderFootballChart(data.history);
+        // Flexibel historik-hämtning & säkerställt anrop till renderFootballChart
+        const historyData = data.history || data.bankroll_history || data.chart_data || (Array.isArray(data) ? data : null);
+        const renderFootball = () => {
+            if (historyData && typeof renderFootballChart === 'function') {
+                renderFootballChart(historyData);
+            } else if (typeof loadAndRenderChart === 'function') {
+                const canvasId = chartCanvas ? chartCanvas.id : 'bot-profit-chart';
+                loadAndRenderChart(canvasId, `${pathPrefix}data/football_ai_dashboard_data.json`);
+            }
+        };
+
+        if (typeof renderFootballChart === 'function') {
+            renderFootball();
+        } else {
+            setTimeout(renderFootball, 150);
         }
 
     } catch (err) {
