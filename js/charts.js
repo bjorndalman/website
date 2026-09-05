@@ -3,12 +3,13 @@
  * Centraliserad hantering och rendering av grafer (CSV & JSON-stöd)
  */
 
-var pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" : "./";
+// Använd gemensam pathPrefix från fönstret om den finns, annars känn av via URL
+window.pathPrefix = window.pathPrefix || (window.location.pathname.toLowerCase().includes('/sv/') ? "../" : "");
 var botChartInstance = null;
 var stockChartInstance = null;
 
 function isEnglishPage() {
-    return window.location.pathname.toLowerCase().includes('/en/') || document.documentElement.lang === 'en';
+    return window.location.pathname.toLowerCase().includes('/en/') || (!window.location.pathname.toLowerCase().includes('/sv/') && document.documentElement.lang === 'en');
 }
 
 // Säker förstöring av befintliga grafer för att förhindra "Canvas is already in use"-fel
@@ -146,30 +147,15 @@ function renderBotChart(dataInput) {
     return renderFootballChart(dataInput);
 }
 
-// Graf för aktier/börs
+// Graf för aktier/börs (använder nu också processBankrollData för korrekt ackumulering)
 function renderStockChart(dataInput) {
     const ctx = document.getElementById('stock-profit-chart');
     if (!ctx) return null;
 
     destroyExistingChart('stock-profit-chart');
 
-    let labels = [];
-    let data = [];
+    const { labels, profitValues } = processBankrollData(dataInput);
     const isEnglish = isEnglishPage();
-
-    if (typeof dataInput === 'string') {
-        const lines = dataInput.trim().split('\n');
-        for (let i = 1; i < lines.length; i++) {
-            const parts = lines[i].split(',');
-            if (parts.length >= 2) {
-                labels.push(parts[0].trim());
-                data.push(parseFloat(parts[1].trim()));
-            }
-        }
-    } else if (Array.isArray(dataInput)) {
-        labels = dataInput.map(item => item.date || item.Date || item.datum || '');
-        data = dataInput.map(item => item.bankroll ?? item.total_bankroll ?? item.profit ?? item.Profit ?? item.profit_sek ?? 0);
-    }
 
     const isDark = document.documentElement.classList.contains("dark");
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
@@ -181,7 +167,7 @@ function renderStockChart(dataInput) {
             labels: labels,
             datasets: [{
                 label: 'Stock Bankroll (SEK)',
-                data: data,
+                data: profitValues,
                 borderColor: '#10b981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
@@ -236,10 +222,14 @@ function renderStockChart(dataInput) {
     return newChart;
 }
 
-// Hjälpfunktion för att ladda CSV-filer direkt om någon sida fortfarande kräver det
+// Hjälpfunktion för att ladda CSV-filer direkt med korrekt sökväg
 async function loadAndRenderChart(canvasId, csvUrl, label, borderColor, backgroundColor, currentInstance) {
     try {
-        const response = await fetch(csvUrl + '?t=' + Date.now());
+        const finalUrl = (window.pathPrefix && !csvUrl.startsWith(window.pathPrefix) && !csvUrl.startsWith('http')) 
+            ? window.pathPrefix + csvUrl 
+            : csvUrl;
+
+        const response = await fetch(finalUrl + '?t=' + Date.now());
         if (!response.ok) return null;
         const csvText = await response.text();
 
