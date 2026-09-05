@@ -30,7 +30,7 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // 2. Uppdatera KPI-rutor (Korrekt Invested direkt från JSON)
+        // 2. Uppdatera KPI-rutor
         if (data.summary) {
             const bankroll = data.summary.current_bankroll || 100000;
             const profit = data.summary.profit_sek || 0;
@@ -160,7 +160,20 @@ function renderStockChart(historyData, isEnglish) {
     }
 
     const labels = historyData.map(item => item.date || item.Date || item.datum || '');
-    const dataValues = historyData.map(item => item.bankroll ?? item.total_bankroll ?? item.profit ?? item.Profit ?? item.profit_sek ?? 0);
+    
+    // Robust beräkning av värden: Säkerställer att om JSON endast sparar vinst (t.ex. profit_sek), 
+    // så läggs startkapitalet (100 000 SEK) på så att grafen visar totalt portföljvärde.
+    const dataValues = historyData.map(item => {
+        if (item.bankroll !== undefined) return Number(item.bankroll);
+        if (item.total_bankroll !== undefined) return Number(item.total_bankroll);
+        
+        const profit = Number(item.profit ?? item.Profit ?? item.profit_sek ?? 0);
+        // Om värdet är litet (t.ex. < 10000) och inget explicit bankroll-fält finns antas det vara nettovinst
+        if (Math.abs(profit) < 50000 && !item.bankroll && !item.total_bankroll) {
+            return 100000 + profit;
+        }
+        return profit || 100000;
+    });
 
     const minVal = Math.min(...dataValues);
     const maxVal = Math.max(...dataValues);
