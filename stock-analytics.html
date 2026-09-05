@@ -379,14 +379,14 @@
                 }
 
                 tradesBody.innerHTML = '';
-                // Replace the trades processing loop in your script with this updated logic:
+                 // Update this section where summary and calculatedInvested are handled:
 
                 let calculatedInvested = 0;
                 const totalBankroll = data.summary?.current_bankroll ?? data.summary?.total_bankroll ?? 100000;
-                const activeTradesCount = trades.filter(r => {
+                const activeTrades = trades.filter(r => {
                     const act = String(r['action'] || r['Action'] || r['status'] || 'BUY').toUpperCase();
                     return act !== 'SÄLJ' && act !== 'SELL' && act !== 'CLOSED';
-                }).length || trades.length;
+                });
                 
                 trades.slice().reverse().forEach(row => {
                     const date = row['date'] || row['Date'] || row['Datum'] || '-';
@@ -404,9 +404,9 @@
                     
                     let amount = parseFloat(rawAmount) || 0;
                 
-                    // If action is HOLD or BUY and amount is 0, allocate proportional bankroll for active positions
-                    if ((action === 'BUY' || action === 'KÖP' || action === 'HOLD') && amount === 0) {
-                        amount = totalBankroll / activeTradesCount;
+                    // If active (HOLD/BUY) but amount is 0, distribute bankroll evenly across active positions
+                    if (amount === 0 && (action === 'BUY' || action === 'KÖP' || action === 'HOLD')) {
+                        amount = totalBankroll / (activeTrades.length || trades.length || 1);
                     }
                 
                     if (action === 'BUY' || action === 'KÖP' || action === 'HOLD') {
@@ -444,15 +444,13 @@
                     `;
                     tradesBody.appendChild(tr);
                 });
-
-                if (window.lucide) {
-                    lucide.createIcons();
-                }
-
-                // Fallback för investerat kapital
+                
+                // Force update the Invested KPI element using the calculated total
                 const investedElem = document.getElementById('stock-invested');
-                if (investedElem && data.summary?.invested === undefined) {
-                    investedElem.innerText = calculatedInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+                if (investedElem) {
+                    const summaryInvested = Number(data.summary?.invested) || 0;
+                    const finalInvested = summaryInvested > 0 ? summaryInvested : calculatedInvested;
+                    investedElem.innerText = finalInvested.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                 }
 
                 // 4. Rendera vinstgraf om historik finns
