@@ -150,9 +150,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 96.32,
-      "kalman_value": 97.52,
-      "ai_investment": 10020.63,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "kalman_value": 97.51,
+      "ai_investment": 10020.15,
+      "argument": "Moderate drop indicates mild selling pressure and slight uncertainty. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-09-05",
@@ -160,9 +160,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 175.5,
-      "kalman_value": 173.59,
+      "kalman_value": 173.71,
       "ai_investment": 0.0,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Steady upward movement shows solid bullish signal quality. (Q: 1.00x, R: 0.85x)"
     },
     {
       "date": "2026-09-05",
@@ -181,8 +181,8 @@
       "status": "BUY",
       "price": 61.02,
       "kalman_value": 61.56,
-      "ai_investment": 10096.66,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "ai_investment": 10092.09,
+      "argument": "Sharp daily decline signals elevated downside risk and process noise. (Q: 1.60x, R: 1.10x)"
     },
     {
       "date": "2026-09-05",
@@ -200,9 +200,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 390.1,
-      "kalman_value": 383.27,
+      "kalman_value": 384.24,
       "ai_investment": 0.0,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Strong gains reflect a robust bullish trend and high signal quality. (Q: 1.50x, R: 0.75x)"
     },
     {
       "date": "2026-09-05",
@@ -210,9 +210,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 116.0,
-      "kalman_value": 115.45,
+      "kalman_value": 115.49,
       "ai_investment": 0.0,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Consistent positive gain confirms stable upward momentum. (Q: 1.00x, R: 0.85x)"
     },
     {
       "date": "2026-09-05",
@@ -230,9 +230,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 274.5,
-      "kalman_value": 272.21,
+      "kalman_value": 272.35,
       "ai_investment": 0.0,
-      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
+      "argument": "Good daily performance indicating reliable positive signal quality. (Q: 1.00x, R: 0.85x)"
     },
     {
       "date": "2026-09-05",
