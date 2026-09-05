@@ -152,7 +152,7 @@
       "price": 96.32,
       "kalman_value": 97.51,
       "ai_investment": 10020.15,
-      "argument": "Moderate drop indicates mild selling pressure and slight uncertainty. (Q: 1.10x, R: 1.00x)"
+      "argument": "Moderate price drop indicates slight negative momentum and minor uncertainty. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-09-05",
@@ -160,9 +160,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 175.5,
-      "kalman_value": 173.71,
+      "kalman_value": 173.73,
       "ai_investment": 0.0,
-      "argument": "Steady upward movement shows solid bullish signal quality. (Q: 1.00x, R: 0.85x)"
+      "argument": "Steady upward move signals strong buying interest and reliable signal quality. (Q: 0.80x, R: 0.80x)"
     },
     {
       "date": "2026-09-05",
@@ -180,9 +180,9 @@
       "action": "BUY",
       "status": "BUY",
       "price": 61.02,
-      "kalman_value": 61.56,
-      "ai_investment": 10092.09,
-      "argument": "Sharp daily decline signals elevated downside risk and process noise. (Q: 1.60x, R: 1.10x)"
+      "kalman_value": 61.57,
+      "ai_investment": 10092.56,
+      "argument": "Sharp price drop reflects increased volatility and heightened short-term risk. (Q: 1.50x, R: 1.10x)"
     },
     {
       "date": "2026-09-05",
@@ -200,9 +200,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 390.1,
-      "kalman_value": 384.24,
+      "kalman_value": 384.2,
       "ai_investment": 0.0,
-      "argument": "Strong gains reflect a robust bullish trend and high signal quality. (Q: 1.50x, R: 0.75x)"
+      "argument": "Strong price gain highlights solid positive momentum and high signal quality. (Q: 1.40x, R: 0.75x)"
     },
     {
       "date": "2026-09-05",
@@ -210,9 +210,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 116.0,
-      "kalman_value": 115.49,
+      "kalman_value": 115.48,
       "ai_investment": 0.0,
-      "argument": "Consistent positive gain confirms stable upward momentum. (Q: 1.00x, R: 0.85x)"
+      "argument": "Consistent gains reflect stable market demand and clear positive momentum. (Q: 0.85x, R: 0.85x)"
     },
     {
       "date": "2026-09-05",
@@ -230,9 +230,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 274.5,
-      "kalman_value": 272.35,
+      "kalman_value": 272.33,
       "ai_investment": 0.0,
-      "argument": "Good daily performance indicating reliable positive signal quality. (Q: 1.00x, R: 0.85x)"
+      "argument": "Positive price action confirms steady bullish momentum with low noise. (Q: 0.85x, R: 0.85x)"
     },
     {
       "date": "2026-09-05",
