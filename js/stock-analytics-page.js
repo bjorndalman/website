@@ -28,50 +28,38 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // 2. KPI-rutor & Sammanfattning
+         // 2. Uppdatera KPI-rutor
         if (data.summary) {
-            const bankroll = data.summary.current_bankroll ?? data.summary.total_bankroll ?? 100000;
-            const profit = data.summary.profit_sek ?? data.summary.net_profit ?? 0;
-            const profitPct = data.summary.profit_pct ?? data.summary.return_pct ?? 0;
-            const investedVal = data.summary.invested;
-
+            const bankroll = data.summary.current_bankroll || 100000;
+            const profit = data.summary.profit_sek || 0;
+            const profitPct = data.summary.profit_pct || 0;
+            const sharpe = data.summary.sharpe_ratio ?? 0;
+            const drawdown = data.summary.max_drawdown ?? 0;
+        
             const bankrollElem = document.getElementById('stock-bankroll');
-            if (bankrollElem) {
-                bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
-            }
+            if (bankrollElem) bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
             
             const profitElem = document.getElementById('stock-profit');
             if (profitElem) {
                 profitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                 profitElem.className = "text-2xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
             }
-
+        
             const pctElem = document.getElementById('stock-return-pct');
             if (pctElem) {
                 pctElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
                 pctElem.className = "text-2xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
             }
-
-            // Använd investerat kapital direkt från summary om det finns
-            const investedElem = document.getElementById('stock-invested');
-            if (investedElem && investedVal !== undefined) {
-                investedElem.innerText = investedVal.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+        
+            const sharpeElem = document.getElementById('stock-sharpe');
+            if (sharpeElem) {
+                sharpeElem.innerText = typeof sharpe === 'number' ? sharpe.toFixed(2) : sharpe;
             }
-
-            // Nya avancerade nyckeltal (Sharpe, Max Drawdown & Net Profit)
-            const sharpeElem = document.getElementById('sharpe-ratio');
-            if (sharpeElem && data.summary.sharpe_ratio !== undefined) {
-                sharpeElem.innerText = Number(data.summary.sharpe_ratio).toFixed(2);
-            }
-
-            const maxDdElem = document.getElementById('max-drawdown');
-            if (maxDdElem && data.summary.max_drawdown_pct !== undefined) {
-                maxDdElem.innerText = Number(data.summary.max_drawdown_pct).toFixed(2) + '%';
-            }
-
-            const netProfitElem = document.getElementById('net-profit');
-            if (netProfitElem && data.summary.net_profit !== undefined) {
-                netProfitElem.innerText = data.summary.net_profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+        
+            const drawdownElem = document.getElementById('stock-drawdown');
+            if (drawdownElem) {
+                drawdownElem.innerText = (typeof drawdown === 'number' ? drawdown.toFixed(2) : drawdown) + '%';
+                drawdownElem.className = "text-2xl font-extrabold " + (drawdown === 0 ? "text-emerald-600 dark:text-emerald-400" : "text-slate-900 dark:text-white");
             }
         }
 
