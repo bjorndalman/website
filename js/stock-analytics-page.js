@@ -57,6 +57,22 @@ async function loadStockAIDashboard() {
             if (investedElem && investedVal !== undefined) {
                 investedElem.innerText = investedVal.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
             }
+
+            // Nya avancerade nyckeltal (Sharpe, Max Drawdown & Net Profit)
+            const sharpeElem = document.getElementById('sharpe-ratio');
+            if (sharpeElem && data.summary.sharpe_ratio !== undefined) {
+                sharpeElem.innerText = Number(data.summary.sharpe_ratio).toFixed(2);
+            }
+
+            const maxDdElem = document.getElementById('max-drawdown');
+            if (maxDdElem && data.summary.max_drawdown_pct !== undefined) {
+                maxDdElem.innerText = Number(data.summary.max_drawdown_pct).toFixed(2) + '%';
+            }
+
+            const netProfitElem = document.getElementById('net-profit');
+            if (netProfitElem && data.summary.net_profit !== undefined) {
+                netProfitElem.innerText = data.summary.net_profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+            }
         }
 
         // 3. Fyll i AI Trades-tabellen (Senaste överst)
