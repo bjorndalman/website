@@ -331,10 +331,10 @@
                         bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                     }
                     
-                    const profitElem = document.getElementById('stock-profit');
-                    if (profitElem) {
-                        profitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
-                        profitElem.className = "text-xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                    const netProfitElem = document.getElementById('net-profit');
+                    if (netProfitElem) {
+                        netProfitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+                        netProfitElem.className = "text-xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
                     }
 
                     const pctElem = document.getElementById('stock-return-pct');
@@ -352,11 +352,6 @@
                     const maxDdElem = document.getElementById('max-drawdown');
                     if (maxDdElem && data.summary.max_drawdown_pct !== undefined) {
                         maxDdElem.innerText = Number(data.summary.max_drawdown_pct).toFixed(2) + '%';
-                    }
-
-                    const netProfitElem = document.getElementById('net-profit');
-                    if (netProfitElem && data.summary.net_profit !== undefined) {
-                        netProfitElem.innerText = data.summary.net_profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                     }
 
                     const investedElem = document.getElementById('stock-invested');
@@ -379,7 +374,6 @@
                 }
 
                 tradesBody.innerHTML = '';
-                 // Update this section where summary and calculatedInvested are handled:
 
                 let calculatedInvested = 0;
                 const totalBankroll = data.summary?.current_bankroll ?? data.summary?.total_bankroll ?? 100000;
@@ -401,7 +395,7 @@
                         ?? row['position_size'] 
                         ?? row['Rek. Investering (kr)'] 
                         ?? 0;
-                    
+                
                     let amount = parseFloat(rawAmount) || 0;
                 
                     // If active (HOLD/BUY) but amount is 0, distribute bankroll evenly across active positions
@@ -484,84 +478,84 @@
             const minVal = dataValues.length ? Math.min(...dataValues) : 0;
             const maxVal = dataValues.length ? Math.max(...dataValues) : 0;
             const isSinglePoint = dataValues.length === 1;
-            const padding = isSinglePoint ? 500 : Math.max((maxVal - minVal) * 0.2, 200);
 
-            const isDark = document.documentElement.classList.contains("dark");
-            const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)';
-            const textColor = isDark ? '#94a3b8' : '#64748b';
+            const isDarkMode = document.documentElement.classList.contains('dark');
+            const lineColor = '#10b981'; // emerald-500
+            const fillColor = 'rgba(16, 185, 129, 0.1)';
 
-            const ctx = canvas.getContext('2d');
-
-            window.stockChartInstance = new Chart(ctx, {
+            window.stockChartInstance = new Chart(canvas, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Bankroll (SEK)',
+                        label: 'Portfolio Value (SEK)',
                         data: dataValues,
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        borderWidth: 3,
+                        borderColor: lineColor,
+                        backgroundColor: fillColor,
+                        borderWidth: 2.5,
                         fill: true,
-                        tension: 0.2,
-                        pointRadius: window.innerWidth < 640 ? 3 : 5,
-                        pointHoverRadius: 8,
-                        pointBackgroundColor: '#10b981'
+                        tension: 0.3,
+                        pointRadius: isSinglePoint ? 5 : 2,
+                        pointHoverRadius: 6
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: false },
-                        tooltip: { 
-                            mode: 'index', 
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
                             intersect: false,
                             callbacks: {
                                 label: function(context) {
-                                    return ' Value: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+                                    let value = context.parsed.y || 0;
+                                    return 'Value: ' + value.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                                 }
                             }
                         }
                     },
                     scales: {
-                        x: { 
-                            grid: { display: false },
-                            ticks: { 
-                                color: textColor,
-                                font: { size: window.innerWidth < 640 ? 10 : 12 } 
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: isDarkMode ? '#94a3b8' : '#64748b',
+                                font: { family: 'Inter', size: 11 }
                             }
                         },
-                        y: { 
-                            min: Math.floor(minVal - padding),
-                            max: Math.ceil(maxVal + padding),
-                            grid: { color: gridColor },
+                        y: {
+                            grid: {
+                                color: isDarkMode ? 'rgba(51, 65, 85, 0.4)' : 'rgba(226, 232, 240, 0.8)',
+                                drawBorder: false
+                            },
                             ticks: {
-                                color: textColor,
-                                maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
+                                color: isDarkMode ? '#94a3b8' : '#64748b',
+                                font: { family: 'Inter', size: 11 },
                                 callback: function(value) {
                                     return value.toLocaleString('sv-SE') + ' SEK';
-                                },
-                                font: { size: window.innerWidth < 640 ? 10 : 12 }
-                            }
+                                }
+                            },
+                            suggestedMin: isSinglePoint ? minVal * 0.95 : undefined,
+                            suggestedMax: isSinglePoint ? maxVal * 1.05 : undefined
                         }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
                     }
                 }
             });
         }
 
-        function initStockDashboard() {
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+        document.addEventListener('DOMContentLoaded', () => {
             loadStockAIDashboard();
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initStockDashboard);
-        } else {
-            initStockDashboard();
-        }
+        });
     </script>
 </body>
 </html>
