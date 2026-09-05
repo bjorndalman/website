@@ -1,22 +1,13 @@
 {
-  "updated_at": "2026-09-05 10:06",
+  "updated_at": "2026-09-05 14:45",
   "summary": {
     "current_bankroll": 11213.01,
     "profit_sek": 1213.01,
     "profit_pct": 12.13,
     "next_matchday": "2026-09-05",
-    "last_sync": "2026-09-05 10:06"
+    "last_sync": "2026-09-05 14:45"
   },
   "latest_bets": [
-    {
-      "date": "2026-09-06",
-      "match": "vancouver whitecaps vs st. louis city",
-      "prediction": "Away",
-      "odds": 7.0,
-      "stake": 7.06,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.22)"
-    },
     {
       "date": "2026-09-05",
       "match": "toronto vs chicago fire",
@@ -97,6 +88,15 @@
       "stake": 0.45,
       "status": "Placerat",
       "reasoning": "Kalman AI EV-spel (Prob: 0.35)"
+    },
+    {
+      "date": "2026-09-06",
+      "match": "portland timbers vs minnesota united",
+      "prediction": "Home",
+      "odds": 2.2,
+      "stake": 2.49,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.47)"
     }
   ],
   "history": [
