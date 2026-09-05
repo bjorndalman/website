@@ -30,8 +30,8 @@ function destroyExistingChart(canvasId) {
     }
 }
 
-// Hjälpfunktion för att beräkna ackumulerad bankrulle från historik (JSON eller CSV)
-function processBankrollData(dataInput) {
+// Hjälpfunktion för att beräkna ackumulerad bankrulle från historik (JSON eller CSV) med stöd för unikt startkapital
+function processBankrollData(dataInput, baseBankroll = 10000) {
     let labels = [];
     let rawItems = [];
 
@@ -49,17 +49,23 @@ function processBankrollData(dataInput) {
         rawItems = dataInput;
     }
 
-    const hasDynamicBankroll = rawItems.some(item => item.bankroll && item.bankroll !== 10000);
+    const hasDynamicBankroll = rawItems.some(item => (item.bankroll && item.bankroll !== baseBankroll) || (item.total_bankroll && item.total_bankroll !== baseBankroll));
 
-    let runningBankroll = 10000;
+    let runningBankroll = baseBankroll;
     const profitValues = rawItems.map(item => {
         if (hasDynamicBankroll && item.bankroll !== undefined) return item.bankroll;
-        if (item.total_bankroll !== undefined && item.total_bankroll !== 10000) return item.total_bankroll;
-        if (item.balance !== undefined && item.balance !== 10000) return item.balance;
-        if (item.cum_profit !== undefined) return 10000 + parseFloat(item.cum_profit);
-        if (item.cumulative_profit !== undefined) return 10000 + parseFloat(item.cumulative_profit);
+        if (item.total_bankroll !== undefined && item.total_bankroll !== baseBankroll) return item.total_bankroll;
+        if (item.balance !== undefined && item.balance !== baseBankroll) return item.balance;
+        if (item.cum_profit !== undefined) return baseBankroll + parseFloat(item.cum_profit);
+        if (item.cumulative_profit !== undefined) return baseBankroll + parseFloat(item.cumulative_profit);
 
-        const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? 0);
+        const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? item.value ?? 0);
+        
+        // Om datan i arrayen redan är absoluta portföljvärden över basbankrullen
+        if (rawItems.length > 0 && rawItems.every(i => (i.bankroll || i.total_bankroll || i.balance || i.value || 0) >= baseBankroll)) {
+            return p;
+        }
+
         runningBankroll += p;
         return runningBankroll;
     });
@@ -67,14 +73,14 @@ function processBankrollData(dataInput) {
     return { labels, profitValues };
 }
 
-// Universell rendering för fotbolls-/MLS-botten
+// Universell rendering för fotbolls-/MLS-botten (startkapital 10 000 SEK)
 function renderFootballChart(dataInput) {
     const ctx = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
     if (!ctx) return null;
 
     destroyExistingChart(ctx.id);
 
-    const { labels, profitValues } = processBankrollData(dataInput);
+    const { labels, profitValues } = processBankrollData(dataInput, 10000);
     const isEnglish = isEnglishPage();
 
     const isDark = document.documentElement.classList.contains("dark");
@@ -88,7 +94,7 @@ function renderFootballChart(dataInput) {
             datasets: [{
                 label: 'Bankroll (SEK)',
                 data: profitValues,
-                borderColor: '#10b981', // Emerald Grön
+                borderColor: '#10b981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 fill: true,
                 tension: 0.3,
@@ -147,14 +153,14 @@ function renderBotChart(dataInput) {
     return renderFootballChart(dataInput);
 }
 
-// Graf för aktier/börs (använder nu också processBankrollData för korrekt ackumulering)
+// Graf för aktier/börs (använder korrekt startkapital 100 000 SEK)
 function renderStockChart(dataInput) {
     const ctx = document.getElementById('stock-profit-chart');
     if (!ctx) return null;
 
     destroyExistingChart('stock-profit-chart');
 
-    const { labels, profitValues } = processBankrollData(dataInput);
+    const { labels, profitValues } = processBankrollData(dataInput, 100000);
     const isEnglish = isEnglishPage();
 
     const isDark = document.documentElement.classList.contains("dark");
