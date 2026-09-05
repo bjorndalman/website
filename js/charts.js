@@ -7,6 +7,10 @@ var pathPrefix = typeof isSwedishPage !== 'undefined' && isSwedishPage ? "../" :
 var botChartInstance = null;
 var stockChartInstance = null;
 
+function isEnglishPage() {
+    return window.location.pathname.toLowerCase().includes('/en/') || document.documentElement.lang === 'en';
+}
+
 // Säker förstöring av befintliga grafer för att förhindra "Canvas is already in use"-fel
 function destroyExistingChart(canvasId) {
     const canvas = document.getElementById(canvasId);
@@ -70,6 +74,7 @@ function renderFootballChart(dataInput) {
     destroyExistingChart(ctx.id);
 
     const { labels, profitValues } = processBankrollData(dataInput);
+    const isEnglish = isEnglishPage();
 
     const isDark = document.documentElement.classList.contains("dark");
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
@@ -98,7 +103,8 @@ function renderFootballChart(dataInput) {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            return ' Bankrulle: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
+                            const labelText = isEnglish ? ' Bankroll: ' : ' Bankrulle: ';
+                            return labelText + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
                         }
                     }
                 }
@@ -149,6 +155,7 @@ function renderStockChart(dataInput) {
 
     let labels = [];
     let data = [];
+    const isEnglish = isEnglishPage();
 
     if (typeof dataInput === 'string') {
         const lines = dataInput.trim().split('\n');
@@ -191,7 +198,8 @@ function renderStockChart(dataInput) {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            return ' Värde: ' + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
+                            const labelText = isEnglish ? ' Value: ' : ' Värde: ';
+                            return labelText + (context.parsed.y || 0).toLocaleString('sv-SE', { minimumFractionDigits: 2 }) + ' SEK';
                         }
                     }
                 }
