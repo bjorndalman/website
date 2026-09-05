@@ -21,8 +21,8 @@
             </p>
             
             <!-- Timer-meddelande -->
-            <p class="text-xs text-blue-400/80 pt-2 font-mono">
-                Omdirigerar automatiskt till Fotbollsanalys om <span id="timer" class="font-bold text-blue-400">5</span> sekunder...
+            <p id="redirect-notice" class="text-xs text-blue-400/80 pt-2 font-mono transition-opacity duration-300">
+                Omdirigerar automatiskt till Fotbollsanalys om <span id="timer" class="font-bold text-blue-400">5</span> sekunder... (Klicka var som helst för att stanna kvar)
             </p>
         </div>
 
@@ -76,11 +76,10 @@
     </div>
 
     <script>
-        // Standardmål för automatiskt val
         const defaultTarget = "football-analytics.html";
         let secondsLeft = 5;
-
         const timerElement = document.getElementById("timer");
+        const redirectNotice = document.getElementById("redirect-notice");
 
         const countdown = setInterval(() => {
             secondsLeft--;
@@ -92,6 +91,17 @@
                 window.location.href = defaultTarget;
             }
         }, 1000);
+
+        // Avbryt omdirigering direkt om användaren interagerar med sidan
+        ['click', 'mousemove', 'keydown', 'touchstart'].forEach(eventType => {
+            window.addEventListener(eventType, () => {
+                clearInterval(countdown);
+                if (redirectNotice) {
+                    redirectNotice.style.opacity = '0';
+                    setTimeout(() => redirectNotice.remove(), 300);
+                }
+            }, { once: true });
+        });
 
         // Initiera Lucide-ikoner
         if (typeof lucide !== 'undefined') {
