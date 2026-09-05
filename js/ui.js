@@ -64,7 +64,10 @@ function renderDescription(descriptionData) {
   if (Array.isArray(descriptionData)) {
     return `<ul class="list-outside">${descriptionData.map(item => `<li class="mb-1 ml-4 list-disc">${item}</li>`).join('')}</ul>`;
   }
-  return descriptionData ? descriptionData.replace(/\n/g, '<br>') : '';
+  if (typeof descriptionData === 'string') {
+    return descriptionData.replace(/\n/g, '<br>');
+  }
+  return descriptionData ? String(descriptionData) : '';
 }
 
 function render() {
