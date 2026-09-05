@@ -1,4 +1,5 @@
 // js/ui.js - Säkerställd mot återdeklarationer i globalt scope
+
 window.isSwedishPage = window.location.pathname.toLowerCase().includes('/sv/');
 window.appData = window.appData || {};
 window.pathPrefix = window.isSwedishPage ? "../" : "";
