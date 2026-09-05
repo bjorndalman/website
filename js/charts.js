@@ -139,6 +139,7 @@ function renderFootballChart(dataInput) {
                 },
                 y: {
                     grid: { color: gridColor },
+                    suggestedMin: 10000,
                     ticks: { 
                         color: textColor,
                         maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
@@ -163,7 +164,7 @@ function renderBotChart(dataInput) {
     return renderFootballChart(dataInput);
 }
 
-// Graf för aktier/börs (använder korrekt startkapital 100 000 SEK)
+// Graf för aktier/börs (använder korrekt startkapital 100 000 SEK & anpassad Y-axel)
 function renderStockChart(dataInput) {
     const ctx = document.getElementById('stock-profit-chart');
     if (!ctx) return null;
@@ -218,9 +219,11 @@ function renderStockChart(dataInput) {
                     }
                 },
                 y: {
+                    suggestedMin: 100000,
                     grid: { color: gridColor },
                     ticks: { 
                         color: textColor,
+                        stepSize: 500,
                         maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
                         callback: function(value) {
                             return value.toLocaleString('sv-SE') + ' SEK';
