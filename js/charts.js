@@ -5,8 +5,11 @@
 
 // Använd gemensam pathPrefix från fönstret om den finns, annars känn av via URL
 window.pathPrefix = window.pathPrefix || (window.location.pathname.toLowerCase().includes('/sv/') ? "../" : "");
-var botChartInstance = null;
-var stockChartInstance = null;
+
+// Initiera globala instanser på window-objektet för att undvika namnkollisioner
+window.botChartInstance = window.botChartInstance || null;
+window.stockChartInstance = window.stockChartInstance || null;
+window.chartInstances = window.chartInstances || {};
 
 function isEnglishPage() {
     return window.location.pathname.toLowerCase().includes('/en/') || (!window.location.pathname.toLowerCase().includes('/sv/') && document.documentElement.lang === 'en');
@@ -153,9 +156,8 @@ function renderFootballChart(dataInput) {
         }
     });
 
-    if (!window.chartInstances) window.chartInstances = {};
     window.chartInstances[ctx.id] = newChart;
-    botChartInstance = newChart;
+    window.botChartInstance = newChart;
     return newChart;
 }
 
@@ -235,9 +237,8 @@ function renderStockChart(dataInput) {
         }
     });
 
-    if (!window.chartInstances) window.chartInstances = {};
     window.chartInstances['stock-profit-chart'] = newChart;
-    stockChartInstance = newChart;
+    window.stockChartInstance = newChart;
     return newChart;
 }
 
