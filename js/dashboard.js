@@ -1,6 +1,5 @@
 // js/dashboard.js
 
-// Hjälpfunktion för att hämta rätt relativ eller absolut prefix
 function getPathPrefix() {
     if (typeof window.pathPrefix !== 'undefined' && window.pathPrefix !== '') {
         return window.pathPrefix;
@@ -150,7 +149,6 @@ async function loadStockAIDashboard() {
             }
         }
 
-        // Flexibel historik-hämtning & säkerställt anrop till renderStockChart
         const historyData = data.history || data.bankroll_history || data.chart_data || (Array.isArray(data) ? data : null);
         const renderStock = () => {
             if (historyData && typeof renderStockChart === 'function') {
@@ -245,7 +243,6 @@ async function loadFootballAIDashboard() {
             }
         }
 
-        // Flexibel historik-hämtning & säkerställt anrop till renderFootballChart
         const historyData = data.history || data.bankroll_history || data.chart_data || (Array.isArray(data) ? data : null);
         const renderFootball = () => {
             if (historyData && typeof renderFootballChart === 'function') {
