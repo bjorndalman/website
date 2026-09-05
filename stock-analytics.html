@@ -3,29 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Björn Dahlman | Stock Trading & AI Quant Models</title>
-    
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                }
-            }
-        }
-    </script>
-    
-    <!-- Lucide Icons & Google Analytics -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Financial Analytics & AI Quant - Stock Trading</title>
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGSNWL658"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -33,249 +12,139 @@
         gtag('js', new Date());
         gtag('config', 'G-8GGSNWL658');
     </script>
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
-
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            
-            <a href="index.html" aria-label="Hem">
-                <picture>
-                    <source srcset="images/bjorn-dahlman.webp" type="image/webp">
-                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-12 w-auto rounded-full object-cover">
-                </picture>
-            </a>
-            
-            <div class="flex items-center gap-6">
-                <!-- HUVUDMENY (Skrivbord) -->
-                <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400 items-center">
-                    <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
-                    <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
-                    
-                    <!-- DROPDOWN: ANALYTICS -->
-                    <li class="relative group">
-                        <button class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold transition py-2 focus:outline-none">
-                            <span>Analytics</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
-                        </button>
-                        <div class="absolute left-0 top-full hidden group-hover:block w-48 bg-white dark:bg-slate-900 shadow-xl rounded-xl border border-slate-200 dark:border-slate-800 py-2 z-50">
-                            <a href="football-analytics.html" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition text-sm flex items-center gap-2">
-                                <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i> Football Analytics
-                            </a>
-                            <a href="stock-analytics.html" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-semibold transition text-sm flex items-center gap-2">
-                                <i data-lucide="line-chart" class="w-4 h-4 text-emerald-500"></i> Financial Analytics
-                            </a>
-                        </div>
-                    </li>
-
-                    <li><a href="media.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Media</a></li>
-                    <li><a href="projects.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a></li>
-                    <li><a href="index.html#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a></li>
-                    <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
-                </ul>
-
-                <!-- SPRÅKVÄXLARE -->
-                <div class="language-switcher flex items-center gap-2 text-xl">
-                    <a href="stock-analytics.html" class="lang-icon hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
-                    <a href="sv/stock-analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">AI Quant</a>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="index.html#about" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">About</a>
+                <a href="index.html#skills" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">Skills</a>
+                <div class="relative group">
+                    <button class="flex items-center space-x-1 hover:text-emerald-600 dark:hover:text-emerald-400 transition py-2">
+                        <span>Analytics</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <div class="absolute left-0 mt-0 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+                        <a href="football-analytics.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Football Analytics</a>
+                        <a href="stock-analytics.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-emerald-600 dark:text-emerald-400 font-semibold">Stock Analytics</a>
+                    </div>
                 </div>
-
-                <!-- SOCIALA IKONER -->
-                <div class="social-icons hidden md:flex items-center gap-4 text-xl">
-                    <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
-                        <i class="fab fa-x-twitter"></i> 
-                    </a>
-                    <a href="https://www.youtube.com/@Dalmanium" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 dark:hover:text-red-400 transition" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                
-                <!-- TEMA-KNAPP -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Toggle Theme">
+                <a href="index.html#projects" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">Projects</a>
+            </nav>
+            <div class="flex items-center space-x-3">
+                <button id="theme-toggle" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-                </button>
-                
-                <!-- MOBILMENY-KNAPP -->
-                <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Toggle Menu">
-                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
-                    <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
                 </button>
             </div>
         </div>
-    </nav>
-
-    <!-- MOBILMENY -->
-    <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden">
-        <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300">
-            <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
-            <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
-            
-            <!-- MOBIL: ANALYTICS UNDERMENY -->
-            <div class="space-y-1 pl-3 border-l-2 border-slate-200 dark:border-slate-800 my-1">
-                <span class="block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Analytics</span>
-                <a href="football-analytics.html" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition text-sm flex items-center gap-2">
-                    <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i> Football Analytics
-                </a>
-                <a href="stock-analytics.html" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-semibold rounded transition text-sm flex items-center gap-2">
-                    <i data-lucide="line-chart" class="w-4 h-4 text-emerald-500"></i> Financial Analytics
-                </a>
-            </div>
-
-            <a href="media.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Media</a>
-            <a href="projects.html" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Projects</a>
-            <a href="index.html#experience" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Experience</a>
-            <a href="index.html#education" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Education</a>
-            
-            <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-                <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
-                <a href="stock-analytics.html" class="lang-icon text-xl hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
-                <a href="sv/stock-analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
-            </div>
-            
-            <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
-                <i data-lucide="sun" class="w-5 h-5 mr-3 hidden dark:block"></i>
-                <i data-lucide="moon" class="w-5 h-5 mr-3 block dark:hidden"></i>
-                <span>Toggle Theme</span>
-            </button>
-        </div>
-    </nav>
-        
-    <!-- HEADER -->
-    <header class="bg-slate-100 dark:bg-slate-900 py-16 mt-[72px] text-center border-b border-slate-200/60 dark:border-slate-800/60">
-        <div class="mb-8">
-            <a href="index.html" class="bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-full font-medium transition inline-flex items-center shadow-sm hover:shadow-md border border-slate-200 dark:border-slate-700">
-                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
-                Back to Portfolio
-            </a>
-        </div>
-        
-        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Financial Analytics & AI Quant</h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto px-6">
-            Autonomous AI trading algorithms, Kalman filter state-space modeling, and LLM sentiment reasoning.
-        </p>
     </header>
 
-    <!-- HUVUDINNEHÅLL -->
-    <main class="max-w-6xl mx-auto px-6 py-16 space-y-16">
-
-        <!-- AUTOMATED STOCK TRADING SYSTEM -->
-        <section class="fade-in">
-            <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
-                <div class="max-w-3xl mb-10">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
-                            Algorithmic Trading & AI Quant
-                        </span>
-                        <span class="text-xs font-medium text-slate-500 dark:text-slate-400">
-                            Updated: <strong id="stock-last-sync" class="text-slate-700 dark:text-slate-200">Loading...</strong>
-                        </span>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section>
+            <!-- Header Section -->
+            <div class="mb-8">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Financial Analytics & AI Quant</h1>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">Autonomous AI trading algorithms utilizing Kalman filtering and LLM sentiment analysis for real-time market forecasting and execution.</p>
                     </div>
-
-                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Automated Stock Trading System</h3>
-                    <p class="text-slate-600 dark:text-slate-400 mt-3 text-base leading-relaxed">
-                        This section showcases my autonomous AI stock trading bot. Powered by a multi-variable Kalman Filter combined with LLM sentiment analysis, the system calculates stock fair values, determines real-time entry/exit signals, and manages portfolio allocations with full autonomy.
-                    </p>
-                    
-                    <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Mathematical & AI Framework
-                        </h4>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-600 dark:text-slate-400">
-                            <li class="flex items-start gap-1.5">
-                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Multi-Variable Kalman:</strong> Tracks price velocity and fair market value.</span>
-                            </li>
-                            <li class="flex items-start gap-1.5">
-                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>LLM Reasoning:</strong> Evaluates news sentiment & macro context per stock.</span>
-                            </li>
-                            <li class="flex items-start gap-1.5">
-                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Z-Score Evaluation:</strong> Measures statistical mispricing vs. fair value.</span>
-                            </li>
-                            <li class="flex items-start gap-1.5">
-                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>AI Capital Sizing:</strong> Dynamically adjusts position sizing based on conviction.</span>
-                            </li>
-                            <li class="flex items-start gap-1.5 md:col-span-2">
-                                <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                                <span><strong>Risk Controls:</strong> Enforces portfolio caps (max 15% per position) to mitigate drawdowns.</span>
-                            </li>
-                        </ul>
+                    <div class="flex items-center space-x-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 self-start md:self-auto">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Live Sync: <span id="stock-last-sync">-</span></span>
                     </div>
                 </div>
+            </div>
 
-                <!-- KPI METRICS (6-col grid för alla nyckeltal inklusive Sharpe & Drawdown) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-10">
-                    <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Net Profit</span>
-                        <span id="net-profit" class="text-xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
-                    </div>
-                    <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Total Bankroll</span>
-                        <span id="stock-bankroll" class="text-xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
-                    </div>
-                    <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Invested</span>
-                        <span id="stock-invested" class="text-xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
-                    </div>
-                    <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Return (%)</span>
-                        <span id="stock-return-pct" class="text-xl font-extrabold text-emerald-600 dark:text-emerald-400">Loading...</span>
-                    </div>
-                    <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Sharpe Ratio</span>
-                        <span id="sharpe-ratio" class="text-xl font-extrabold text-slate-900 dark:text-white">Loading...</span>
-                    </div>
-                    <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800/80">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Max Drawdown</span>
-                        <span id="max-drawdown" class="text-xl font-extrabold text-rose-600 dark:text-rose-400">Loading...</span>
-                    </div>
+            <!-- KPI Cards Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 rounded-2xl shadow-sm">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Net Profit</p>
+                    <p id="net-profit" class="text-xl font-extrabold text-slate-900 dark:text-white mt-1">-</p>
                 </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 rounded-2xl shadow-sm">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Bankroll</p>
+                    <p id="stock-bankroll" class="text-xl font-extrabold text-slate-900 dark:text-white mt-1">-</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 rounded-2xl shadow-sm">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Invested</p>
+                    <p id="stock-invested" class="text-xl font-extrabold text-slate-900 dark:text-white mt-1">-</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 rounded-2xl shadow-sm">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Return (%)</p>
+                    <p id="stock-return-pct" class="text-xl font-extrabold text-slate-900 dark:text-white mt-1">-</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 rounded-2xl shadow-sm">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Sharpe Ratio</p>
+                    <p id="sharpe-ratio" class="text-xl font-extrabold text-slate-900 dark:text-white mt-1">-</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 rounded-2xl shadow-sm">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Max Drawdown</p>
+                    <p id="max-drawdown" class="text-xl font-extrabold text-slate-900 dark:text-white mt-1">-</p>
+                </div>
+            </div>
 
-                <!-- Responsiv container som anpassar sig perfekt efter alla skärmar -->
-                <div class="w-full relative min-h-[260px] h-[35vh] max-h-[450px]">
+            <!-- Chart Container -->
+            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 rounded-2xl shadow-sm mb-8">
+                <div class="h-80 w-full">
                     <canvas id="stock-profit-chart"></canvas>
                 </div>
+            </div>
 
-                <!-- AI TRADES TABELL -->
-                <div class="mt-8">
-                    <div class="flex items-center justify-between mb-6">
-                        <div>
-                            <h4 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">AI Trades, Arguments & Forecasts</h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Real-time decisions, trade sizes, and LLM reasoning per stock.</p>
-                        </div>
-                    </div>
-
-                    <div class="overflow-x-auto rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
-                        <table class="w-full text-left text-sm border-collapse bg-white dark:bg-slate-900">
-                            <thead>
-                                <tr class="bg-slate-100/70 dark:bg-slate-800/70 border-b border-slate-200 dark:border-slate-800 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                                    <th class="py-3.5 px-4">Date</th>
-                                    <th class="py-3.5 px-4">Stock</th>
-                                    <th class="py-3.5 px-4">Action</th>
-                                    <th class="py-3.5 px-4">Price</th>
-                                    <th class="py-3.5 px-4">Kalman Value</th>
-                                    <th class="py-3.5 px-4">AI Investment</th>
-                                    <th class="py-3.5 px-4 min-w-[280px]">AI Argument & Forecast</th>
-                                </tr>
-                            </thead>
-                            <tbody id="stock-trades-body" class="divide-y divide-slate-100 dark:divide-slate-800/60">
-                                <tr>
-                                    <td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Loading live AI trading data...</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!-- AI Trades Tabell -->
+            <div class="mt-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">AI Trades, Arguments & Forecasts</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Real-time decisions, trade sizes, and LLM reasoning per stock.</p>
                     </div>
                 </div>
 
+                <div class="overflow-x-auto rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                    <table class="w-full text-left text-sm border-collapse bg-white dark:bg-slate-900">
+                        <thead>
+                            <tr class="bg-slate-100/70 dark:bg-slate-800/70 border-b border-slate-200 dark:border-slate-800 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                                <th class="py-3.5 px-4">Date</th>
+                                <th class="py-3.5 px-4">Stock</th>
+                                <th class="py-3.5 px-4">Action</th>
+                                <th class="py-3.5 px-4">Price</th>
+                                <th class="py-3.5 px-4">Kalman Value</th>
+                                <th class="py-3.5 px-4">AI Investment</th>
+                                <th class="py-3.5 px-4 min-w-[280px]">AI Argument & Forecast</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stock-trades-body" class="divide-y divide-slate-100 dark:divide-slate-800/60">
+                            <tr>
+                                <td colspan="7" class="py-6 text-center text-slate-500 dark:text-slate-400">Loading live AI trading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
-
     </main>
         
     <!-- EXTERNA SKRIPT -->
@@ -375,13 +244,22 @@
 
                 tradesBody.innerHTML = '';
 
-                let calculatedInvested = 0;
-                const totalBankroll = data.summary?.current_bankroll ?? data.summary?.total_bankroll ?? 100000;
-                const activeTrades = trades.filter(r => {
-                    const act = String(r['action'] || r['Action'] || r['status'] || 'BUY').toUpperCase();
-                    return act !== 'SÄLJ' && act !== 'SELL' && act !== 'CLOSED';
+                // Hämta endast den senaste raden per unik aktie för att räkna totalt investerat belopp korrekt utan dubbelräkning
+                const latestStockMap = {};
+                trades.forEach(row => {
+                    const stock = row['stock'] || row['Stock'] || row['Aktie'] || row['symbol'] || row['ticker'] || '-';
+                    latestStockMap[stock] = row;
                 });
-                
+
+                let calculatedInvested = 0;
+                Object.values(latestStockMap).forEach(row => {
+                    const action = String(row['action'] || row['Action'] || row['status'] || row['Åtgärd'] || 'BUY').toUpperCase();
+                    if (action !== 'SÄLJ' && action !== 'SELL' && action !== 'CLOSED' && action !== 'STÅ ÖVER' && action !== 'PAUSED') {
+                        const amount = parseFloat(row['ai_investment'] ?? row['position_size'] ?? row['Rek. Investering (kr)'] ?? 0);
+                        calculatedInvested += amount;
+                    }
+                });
+
                 trades.slice().reverse().forEach(row => {
                     const date = row['date'] || row['Date'] || row['Datum'] || '-';
                     const stock = row['stock'] || row['Stock'] || row['Aktie'] || row['symbol'] || row['ticker'] || '-';
@@ -397,15 +275,6 @@
                         ?? 0;
                 
                     let amount = parseFloat(rawAmount) || 0;
-                
-                    // If active (HOLD/BUY) but amount is 0, distribute bankroll evenly across active positions
-                    if (amount === 0 && (action === 'BUY' || action === 'KÖP' || action === 'HOLD')) {
-                        amount = totalBankroll / (activeTrades.length || trades.length || 1);
-                    }
-                
-                    if (action === 'BUY' || action === 'KÖP' || action === 'HOLD') {
-                        calculatedInvested += amount;
-                    }
                 
                     const formattedAmount = amount > 0 
                         ? `${amount.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} SEK` 
@@ -439,7 +308,6 @@
                     tradesBody.appendChild(tr);
                 });
                 
-                // Force update the Invested KPI element using the calculated total
                 const investedElem = document.getElementById('stock-invested');
                 if (investedElem) {
                     const summaryInvested = Number(data.summary?.invested) || 0;
