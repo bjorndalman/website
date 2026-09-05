@@ -28,7 +28,7 @@ async function loadStockAIDashboard() {
             }
         }
 
-         // 2. Uppdatera KPI-rutor
+        // 2. Uppdatera KPI-rutor
         if (data.summary) {
             const bankroll = data.summary.current_bankroll || 100000;
             const profit = data.summary.profit_sek || 0;
@@ -42,13 +42,13 @@ async function loadStockAIDashboard() {
             const profitElem = document.getElementById('stock-profit');
             if (profitElem) {
                 profitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
-                profitElem.className = "text-2xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                profitElem.className = "text-lg sm:text-xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
             }
         
             const pctElem = document.getElementById('stock-return-pct');
             if (pctElem) {
                 pctElem.innerText = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
-                pctElem.className = "text-2xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
+                pctElem.className = "text-lg sm:text-xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
             }
         
             const sharpeElem = document.getElementById('stock-sharpe');
@@ -59,10 +59,9 @@ async function loadStockAIDashboard() {
             const drawdownElem = document.getElementById('stock-drawdown');
             if (drawdownElem) {
                 drawdownElem.innerText = (typeof drawdown === 'number' ? drawdown.toFixed(2) : drawdown) + '%';
-                drawdownElem.className = "text-2xl font-extrabold " + (drawdown === 0 ? "text-emerald-600 dark:text-emerald-400" : "text-slate-900 dark:text-white");
+                drawdownElem.className = "text-lg sm:text-xl font-extrabold " + (drawdown === 0 ? "text-emerald-600 dark:text-emerald-400" : "text-slate-900 dark:text-white");
             }
         }
-
         // 3. Fyll i AI Trades-tabellen (Senaste överst)
         const tradesBody = document.getElementById('stock-trades-body');
         if (tradesBody) {
