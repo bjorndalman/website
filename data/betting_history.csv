@@ -128,10 +128,10 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-09-04,new york city vs nashville,Away,0.56,1.78,2.65,14.95,Förlust,-14.95
 2026-09-05,philadelphia union vs cf montreal,Draw,0.23,4.3,4.75,2.06,Förlust,-2.06
 2026-09-05,philadelphia union vs cf montreal,Away,0.24,4.09,6.25,7.51,Förlust,-7.51
-2026-09-05,charlotte vs houston dynamo,Home,0.48,2.1,2.25,4.31,Placerat,0.0
+2026-09-05,charlotte vs houston dynamo,Home,0.48,2.1,2.25,4.31,Förlust,-4.31
 2026-09-05,cincinnati vs dc united,Draw,0.24,4.12,4.5,1.99,Förlust,-1.99
 2026-09-05,cincinnati vs dc united,Away,0.29,3.5,5.0,8.02,Vinst,32.08
-2026-09-05,orlando city vs san diego fc,Away,0.4,2.5,2.8,7.79,Placerat,0.0
+2026-09-05,orlando city vs san diego fc,Away,0.4,2.5,2.8,7.79,Förlust,-7.79
 2026-09-06,dallas vs kansas city,Draw,0.23,4.37,5.0,2.67,Förlust,-2.67
 2026-09-06,dallas vs kansas city,Away,0.24,4.25,6.25,6.68,Förlust,-6.68
 2026-09-06,real salt lake vs lafc,Away,0.46,2.16,2.6,9.52,Vinst,15.23
@@ -146,5 +146,15 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-09-06,austin fc vs san jose,Home,0.47,2.12,2.3,4.94,Vinst,6.42
 2026-09-06,dallas vs kansas city,Home,0.7,1.42,1.44,2.07,Vinst,0.91
 2026-09-06,vancouver whitecaps vs st. louis city,Home,0.73,1.37,1.44,9.0,Vinst,3.96
-2026-09-05,charlotte vs houston dynamo,Away,0.35,2.82,2.85,0.45,Placerat,0.0
+2026-09-05,charlotte vs houston dynamo,Away,0.35,2.82,2.85,0.45,Förlust,-0.45
 2026-09-06,portland timbers vs minnesota united,Home,0.47,2.12,2.2,2.49,Förlust,-2.49
+2026-09-12,cincinnati vs charlotte,Away,0.45,2.22,3.65,14.95,Vinst,39.62
+2026-09-12,inter miami vs nashville,Away,0.38,2.64,3.55,10.18,Förlust,-10.18
+2026-09-12,orlando city vs toronto,Away,0.38,2.64,3.55,10.1,Vinst,25.75
+2026-09-13,dallas vs portland timbers,Away,0.41,2.42,3.65,14.38,Förlust,-14.38
+2026-09-13,kansas city vs lafc,Home,0.26,3.82,4.8,5.05,Förlust,-5.05
+2026-09-13,st. louis city vs minnesota united,Away,0.4,2.51,3.35,10.61,Vinst,24.93
+2026-09-13,colorado rapids vs cf montreal,Home,0.6,1.66,1.77,6.28,Vinst,4.84
+2026-09-13,colorado rapids vs cf montreal,Away,0.28,3.61,4.4,4.8,Förlust,-4.8
+2026-09-13,real salt lake vs new york city,Away,0.45,2.24,3.4,14.95,Förlust,-14.95
+2026-09-13,san jose vs houston dynamo,Away,0.48,2.07,2.6,11.88,Förlust,-11.88
