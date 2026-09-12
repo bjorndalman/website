@@ -52,7 +52,6 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
             const parts = lines[i].split(',');
             if (parts.length >= 2) {
                 labels.push(parts[0].trim());
-                // Ersätt kommatecken med punkt för korrekt parseFloat
                 const valStr = parts[1].trim().replace(',', '.');
                 rawItems.push({ profit: parseFloat(valStr) });
             }
@@ -62,42 +61,35 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
         rawItems = dataInput;
     }
 
-    // Detektera om värdena redan representerar den ackumulerade profiten eller bankrullen
     let runningBankroll = baseBankroll;
-    
-    // Kolla om första värdet är väldigt nära 0 (dvs ren förändring/kumulativ profit)
-    const firstVal = rawItems.length > 0 ? Math.abs(rawItems[0].profit || 0) : 0;
-    const isCumulativeProfit = firstVal < (baseBankroll * 0.1); 
 
     const profitValues = rawItems.map(item => {
-        // Om det finns ett direkt fält för bankroll/balance
+        // 1. Prioritera explicita fält för total kassa
         const directValue = item.bankroll ?? item.total_bankroll ?? item.balance ?? item.value;
         if (directValue !== undefined && directValue !== null) {
             const parsed = parseFloat(String(directValue).replace(',', '.'));
-            if (!isNaN(parsed)) return parsed;
+            if (!isNaN(parsed) && parsed > 5000) { // Om värdet är runt kassan (t.ex. > 5000 SEK)
+                return parsed;
+            }
         }
 
+        // 2. Om 'profit'-nyckeln råkar innehålla hela kassan (som i din JSON där profit: 10421.6)
         const p = parseFloat(String(item.profit ?? item.Profit ?? item.profit_sek ?? 0).replace(',', '.'));
-        if (isNaN(p)) return runningBankroll;
-
-        // Om värdet redan är total bankrulle (t.ex. 10 233 SEK)
-        if (p > baseBankroll * 0.3) {
+        if (!isNaN(p) && p > 5000) {
             return p;
         }
 
-        // Om CSV-filen innehåller KUMULATIV profit (t.ex. 0, +12, +45, +1233.44)
-        if (isCumulativeProfit) {
-            return baseBankroll + p;
+        // 3. Om 'profit' faktiskt är enskild vinst/förlust per dag (t.ex. +150 eller -50)
+        if (!isNaN(p)) {
+            runningBankroll += p;
+            return runningBankroll;
         }
 
-        // Om CSV-filen innehåller enskild profit per match (+12, -50, +30)
-        runningBankroll += p;
         return runningBankroll;
     });
 
     return { labels, profitValues };
 }
-
 // Universell rendering för fotbolls-/MLS-botten (startkapital 10 000 SEK)
 function renderFootballChart(dataInput) {
     const ctx = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
