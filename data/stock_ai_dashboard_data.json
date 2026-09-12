@@ -11,149 +11,9 @@
     "profit_pct": 0.9,
     "return_pct": 0.9,
     "max_drawdown_pct": 0.0,
-    "sharpe_ratio": 3.0
+    "sharpe_ratio": 0.0
   },
   "history": [
-    {
-      "date": "2026-08-07",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-10",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-11",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-12",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-13",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-14",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-17",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-18",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-19",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-20",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-21",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-24",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-25",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-26",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-27",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-28",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-29",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-08-31",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-01",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-02",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-03",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-04",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-05",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-07",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-08",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-09",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-10",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-11",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
     {
       "date": "2026-09-12",
       "bankroll": 100896.25,
@@ -227,9 +87,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 26.97,
-      "kalman_value": 26.75,
+      "kalman_value": 26.74,
       "ai_investment": 0.0,
-      "argument": "Sharp price increase signals higher process noise but confirms a strong upward trend. (Q: 1.50x, R: 0.80x)"
+      "argument": "Sharp daily gain of 3.21% indicates elevated volatility with positive momentum. (Q: 1.50x, R: 0.90x)"
     },
     {
       "date": "2026-09-12",
@@ -237,9 +97,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 98.66,
-      "kalman_value": 97.72,
+      "kalman_value": 97.68,
       "ai_investment": 0.0,
-      "argument": "Steady moderate gain under normal market conditions with reliable signal quality. (Q: 1.00x, R: 0.90x)"
+      "argument": "Moderate price gain reflects stable conditions under normal market volatility. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-12",
@@ -259,7 +119,7 @@
       "price": 875.2,
       "kalman_value": 867.73,
       "ai_investment": 0.0,
-      "argument": "Stable performance with low noise and a clear positive trajectory. (Q: 0.90x, R: 0.90x)"
+      "argument": "Steady performance with modest gain indicates low volatility and minimal noise. (Q: 0.90x, R: 0.90x)"
     },
     {
       "date": "2026-09-12",
@@ -357,9 +217,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 269.2,
-      "kalman_value": 268.79,
+      "kalman_value": 268.8,
       "ai_investment": 0.0,
-      "argument": "Positive price movement confirming a stable trend with low measurement noise. (Q: 1.00x, R: 0.85x)"
+      "argument": "Solid price increase of 1.97% suggests a clear positive trend with low uncertainty. (Q: 1.10x, R: 0.85x)"
     },
     {
       "date": "2026-09-12",
