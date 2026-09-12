@@ -10,10 +10,1225 @@
     "profit_sek": 896.25,
     "profit_pct": 0.9,
     "return_pct": 0.9,
-    "max_drawdown_pct": 0.0,
-    "sharpe_ratio": 5.29
+    "max_drawdown_pct": -53.06,
+    "sharpe_ratio": 0.45
   },
   "history": [
+    {
+      "date": "2025-09-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-25",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-09-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-01",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-06",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-07",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-08",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-14",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-21",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-28",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-10-31",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-04",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-06",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-07",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-14",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-21",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-25",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-11-28",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-01",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-04",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2025-12-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-07",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-08",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-14",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-21",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-28",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-01-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-04",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-06",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-25",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-02-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-04",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-06",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-25",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-03-31",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-01",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-07",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-08",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-14",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-21",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-28",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-04-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-04",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-06",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-07",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-08",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-21",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-25",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-28",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-05-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-01",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-04",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-08",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-25",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-06-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-01",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-02",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-06",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-07",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-08",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-09",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-14",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-15",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-16",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-21",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-22",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-23",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-28",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-29",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-30",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-07-31",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-03",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-04",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-05",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-06",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-07",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-10",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-11",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-12",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-13",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-14",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-17",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-18",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-19",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-20",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-21",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-24",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-25",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-26",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-27",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-28",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-08-31",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
+    {
+      "date": "2026-09-01",
+      "bankroll": 100000.0,
+      "profit": 0.0
+    },
     {
       "date": "2026-09-02",
       "bankroll": 100000.0,
@@ -26,38 +1241,28 @@
     },
     {
       "date": "2026-09-04",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-05",
-      "bankroll": 100000.0,
-      "profit": 0.0
-    },
-    {
-      "date": "2026-09-07",
-      "bankroll": 100000.0,
-      "profit": 0.0
+      "bankroll": 89694.41,
+      "profit": -10305.59
     },
     {
       "date": "2026-09-08",
-      "bankroll": 100000.0,
-      "profit": 0.0
+      "bankroll": 48420.41,
+      "profit": -51579.59
     },
     {
       "date": "2026-09-09",
-      "bankroll": 100000.0,
-      "profit": 0.0
+      "bankroll": 47979.23,
+      "profit": -52020.77
     },
     {
       "date": "2026-09-10",
-      "bankroll": 100000.0,
-      "profit": 0.0
+      "bankroll": 46939.9,
+      "profit": -53060.1
     },
     {
       "date": "2026-09-11",
-      "bankroll": 100000.0,
-      "profit": 0.0
+      "bankroll": 47079.93,
+      "profit": -52920.07
     },
     {
       "date": "2026-09-12",
@@ -132,9 +1337,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 26.97,
-      "kalman_value": 26.74,
+      "kalman_value": 26.75,
       "ai_investment": 0.0,
-      "argument": "Sharp price surge indicates heightened volatility and increased short-term event risk. (Q: 1.60x, R: 0.90x)"
+      "argument": "Sharp price gain indicates higher short-term volatility and strong momentum. (Q: 1.60x, R: 0.85x)"
     },
     {
       "date": "2026-09-12",
@@ -144,7 +1349,7 @@
       "price": 98.66,
       "kalman_value": 97.68,
       "ai_investment": 0.0,
-      "argument": "Moderate gain reflects normal market conditions with steady signal quality. (Q: 1.00x, R: 1.00x)"
+      "argument": "Moderate price increase under normal market conditions with steady signal quality. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-12",
@@ -164,7 +1369,7 @@
       "price": 875.2,
       "kalman_value": 867.73,
       "ai_investment": 0.0,
-      "argument": "Steady positive move demonstrates stable conditions and a clear trend direction. (Q: 0.90x, R: 0.90x)"
+      "argument": "Steady gains reflect stable trading conditions without major news noise. (Q: 0.90x, R: 0.90x)"
     },
     {
       "date": "2026-09-12",
@@ -262,9 +1467,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 269.2,
-      "kalman_value": 268.81,
+      "kalman_value": 268.8,
       "ai_investment": 0.0,
-      "argument": "Solid daily increase confirms clear upward momentum with low measurement noise. (Q: 1.20x, R: 0.80x)"
+      "argument": "Solid upward movement confirms a clear signal with slightly elevated volatility. (Q: 1.10x, R: 0.85x)"
     },
     {
       "date": "2026-09-12",
