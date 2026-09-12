@@ -3,10 +3,8 @@
  * Centraliserad hantering och rendering av grafer (CSV & JSON-stöd)
  */
 
-// Använd gemensam pathPrefix från fönstret om den finns, annars känn av via URL
 window.pathPrefix = window.pathPrefix || (window.location.pathname.toLowerCase().includes('/sv/') ? "../" : "");
 
-// Initiera globala instanser på window-objektet för att undvika namnkollisioner
 window.botChartInstance = window.botChartInstance || null;
 window.stockChartInstance = window.stockChartInstance || null;
 window.chartInstances = window.chartInstances || {};
@@ -15,7 +13,6 @@ function isEnglishPage() {
     return window.location.pathname.toLowerCase().includes('/en/') || (!window.location.pathname.toLowerCase().includes('/sv/') && document.documentElement.lang === 'en');
 }
 
-// Säker förstöring av befintliga grafer för att förhindra "Canvas is already in use"-fel
 function destroyExistingChart(canvasId) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
@@ -33,7 +30,6 @@ function destroyExistingChart(canvasId) {
     }
 }
 
-// Hjälpfunktion för att beräkna ackumulerad bankrulle från historik (JSON eller CSV)
 function processBankrollData(dataInput, baseBankroll = 10000) {
     let labels = [];
     let rawItems = [];
@@ -64,22 +60,19 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
     let runningBankroll = baseBankroll;
 
     const profitValues = rawItems.map(item => {
-        // 1. Prioritera explicita fält för total kassa
         const directValue = item.bankroll ?? item.total_bankroll ?? item.balance ?? item.value;
         if (directValue !== undefined && directValue !== null) {
             const parsed = parseFloat(String(directValue).replace(',', '.'));
-            if (!isNaN(parsed) && parsed > 5000) { // Om värdet är runt kassan (t.ex. > 5000 SEK)
+            if (!isNaN(parsed) && parsed > 5000) {
                 return parsed;
             }
         }
 
-        // 2. Om 'profit'-nyckeln råkar innehålla hela kassan (som i din JSON där profit: 10421.6)
         const p = parseFloat(String(item.profit ?? item.Profit ?? item.profit_sek ?? 0).replace(',', '.'));
         if (!isNaN(p) && p > 5000) {
             return p;
         }
 
-        // 3. Om 'profit' faktiskt är enskild vinst/förlust per dag (t.ex. +150 eller -50)
         if (!isNaN(p)) {
             runningBankroll += p;
             return runningBankroll;
@@ -90,7 +83,7 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
 
     return { labels, profitValues };
 }
-// Universell rendering för fotbolls-/MLS-botten (startkapital 10 000 SEK)
+
 function renderFootballChart(dataInput) {
     const ctx = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
     if (!ctx) return null;
@@ -105,7 +98,6 @@ function renderFootballChart(dataInput) {
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
     const textColor = isDark ? '#94a3b8' : '#64748b';
 
-    // Dynamisk beräkning av Min/Max för att undvika platt linje
     const minVal = Math.min(...profitValues);
     const maxVal = Math.max(...profitValues);
     const margin = (maxVal - minVal) * 0.15 || 500;
@@ -172,12 +164,10 @@ function renderFootballChart(dataInput) {
     return newChart;
 }
 
-// Alias för bakåtkompatibilitet
 function renderBotChart(dataInput) {
     return renderFootballChart(dataInput);
 }
 
-// Graf för aktier/börs (använder korrekt startkapital 100 000 SEK & anpassad Y-axel)
 function renderStockChart(dataInput) {
     const ctx = document.getElementById('stock-profit-chart');
     if (!ctx) return null;
@@ -258,7 +248,6 @@ function renderStockChart(dataInput) {
     return newChart;
 }
 
-// Hjälpfunktion för att ladda CSV/JSON-filer direkt med korrekt sökväg
 async function loadAndRenderChart(canvasId, csvUrl, label, borderColor, backgroundColor, currentInstance) {
     try {
         const finalUrl = (window.pathPrefix && !csvUrl.startsWith(window.pathPrefix) && !csvUrl.startsWith('http')) 
