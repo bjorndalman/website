@@ -235,15 +235,13 @@ async function loadFootballAIDashboard() {
             }
         }
 
-        // KOMMENTERA BORT DETTA BLOCK:
-        /*
         const historyData = data.history || data.bankroll_history || data.chart_data || (Array.isArray(data) ? data : null);
-        if (historyData && typeof renderStockChart === 'function') {
-            renderStockChart(historyData);
+        if (historyData && typeof renderFootballChart === 'function') {
+            renderFootballChart(historyData);
         } else if (typeof loadAndRenderChart === 'function') {
-            loadAndRenderChart('stock-profit-chart', `${pathPrefix}data/stock_ai_dashboard_data.json`);
+            const canvasId = chartCanvas ? chartCanvas.id : 'bot-profit-chart';
+            loadAndRenderChart(canvasId, `${pathPrefix}data/football_ai_dashboard_data.json`);
         }
-        */
 
     } catch (err) {
         console.warn("Fotbolls-dashboard kunde inte läsa JSON:", err);
