@@ -3,8 +3,10 @@
  * Centraliserad hantering och rendering av grafer (CSV & JSON-stöd)
  */
 
+// Använd gemensam pathPrefix från fönstret om den finns, annars känn av via URL
 window.pathPrefix = window.pathPrefix || (window.location.pathname.toLowerCase().includes('/sv/') ? "../" : "");
 
+// Initiera globala instanser på window-objektet för att undvika namnkollisioner
 window.botChartInstance = window.botChartInstance || null;
 window.stockChartInstance = window.stockChartInstance || null;
 window.chartInstances = window.chartInstances || {};
@@ -13,6 +15,7 @@ function isEnglishPage() {
     return window.location.pathname.toLowerCase().includes('/en/') || (!window.location.pathname.toLowerCase().includes('/sv/') && document.documentElement.lang === 'en');
 }
 
+// Säker förstöring av befintliga grafer för att förhindra "Canvas is already in use"-fel
 function destroyExistingChart(canvasId) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
@@ -30,16 +33,19 @@ function destroyExistingChart(canvasId) {
     }
 }
 
+// Hjälpfunktion för att beräkna ackumulerad bankrulle från historik (JSON eller CSV) med stöd för unikt startkapital
 function processBankrollData(dataInput, baseBankroll = 10000) {
     let labels = [];
     let rawItems = [];
 
+    // Om dataInput är en JSON-sträng, parsa den till ett objekt
     if (typeof dataInput === 'string' && (dataInput.trim().startsWith('{') || dataInput.trim().startsWith('['))) {
         try { dataInput = JSON.parse(dataInput); } catch (e) {}
     }
 
+    // Om dataInput är ett JSON-objekt med under-array (t.ex. { history: [...] })
     if (dataInput && typeof dataInput === 'object' && !Array.isArray(dataInput)) {
-        dataInput = dataInput.history || dataInput.bankroll_history || dataInput.chart_data || dataInput.data || dataInput.trades || dataInput.bets || [];
+        dataInput = dataInput.history || dataInput.data || dataInput.trades || dataInput.bets || [];
     }
 
     if (typeof dataInput === 'string') {
@@ -48,8 +54,7 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
             const parts = lines[i].split(',');
             if (parts.length >= 2) {
                 labels.push(parts[0].trim());
-                const valStr = parts[1].trim().replace(',', '.');
-                rawItems.push({ profit: parseFloat(valStr) });
+                rawItems.push({ profit: parseFloat(parts[1].trim()) });
             }
         }
     } else if (Array.isArray(dataInput)) {
@@ -57,33 +62,31 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
         rawItems = dataInput;
     }
 
+    const hasDynamicBankroll = rawItems.some(item => (item.bankroll && item.bankroll !== baseBankroll) || (item.total_bankroll && item.total_bankroll !== baseBankroll));
+
     let runningBankroll = baseBankroll;
-
     const profitValues = rawItems.map(item => {
-        const directValue = item.bankroll ?? item.total_bankroll ?? item.balance ?? item.value;
-        if (directValue !== undefined && directValue !== null) {
-            const parsed = parseFloat(String(directValue).replace(',', '.'));
-            if (!isNaN(parsed) && parsed > 5000) {
-                return parsed;
-            }
-        }
+        if (hasDynamicBankroll && item.bankroll !== undefined) return item.bankroll;
+        if (item.total_bankroll !== undefined && item.total_bankroll !== baseBankroll) return item.total_bankroll;
+        if (item.balance !== undefined && item.balance !== baseBankroll) return item.balance;
+        if (item.cum_profit !== undefined) return baseBankroll + parseFloat(item.cum_profit);
+        if (item.cumulative_profit !== undefined) return baseBankroll + parseFloat(item.cumulative_profit);
 
-        const p = parseFloat(String(item.profit ?? item.Profit ?? item.profit_sek ?? 0).replace(',', '.'));
-        if (!isNaN(p) && p > 5000) {
+        const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? item.value ?? 0);
+        
+        // Om värdet i filen redan är total bankrulle (t.ex. runt startkapitalet)
+        if (p > baseBankroll * 0.3) {
             return p;
         }
 
-        if (!isNaN(p)) {
-            runningBankroll += p;
-            return runningBankroll;
-        }
-
+        runningBankroll += p;
         return runningBankroll;
     });
 
     return { labels, profitValues };
 }
 
+// Universell rendering för fotbolls-/MLS-botten (startkapital 10 000 SEK)
 function renderFootballChart(dataInput) {
     const ctx = document.getElementById('bot-profit-chart') || document.getElementById('football-profit-chart') || document.getElementById('mls-profit-chart');
     if (!ctx) return null;
@@ -91,16 +94,11 @@ function renderFootballChart(dataInput) {
     destroyExistingChart(ctx.id);
 
     const { labels, profitValues } = processBankrollData(dataInput, 10000);
-    if (!profitValues || profitValues.length === 0) return null;
-
     const isEnglish = isEnglishPage();
+
     const isDark = document.documentElement.classList.contains("dark");
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
     const textColor = isDark ? '#94a3b8' : '#64748b';
-
-    const minVal = Math.min(...profitValues);
-    const maxVal = Math.max(...profitValues);
-    const margin = (maxVal - minVal) * 0.15 || 500;
 
     const newChart = new Chart(ctx, {
         type: 'line',
@@ -143,9 +141,8 @@ function renderFootballChart(dataInput) {
                     }
                 },
                 y: {
-                    min: Math.floor(minVal - margin),
-                    max: Math.ceil(maxVal + margin),
                     grid: { color: gridColor },
+                    suggestedMin: 10000,
                     ticks: { 
                         color: textColor,
                         maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
@@ -164,10 +161,12 @@ function renderFootballChart(dataInput) {
     return newChart;
 }
 
+// Alias för bakåtkompatibilitet
 function renderBotChart(dataInput) {
     return renderFootballChart(dataInput);
 }
 
+// Graf för aktier/börs (använder korrekt startkapital 100 000 SEK & anpassad Y-axel)
 function renderStockChart(dataInput) {
     const ctx = document.getElementById('stock-profit-chart');
     if (!ctx) return null;
@@ -175,16 +174,11 @@ function renderStockChart(dataInput) {
     destroyExistingChart('stock-profit-chart');
 
     const { labels, profitValues } = processBankrollData(dataInput, 100000);
-    if (!profitValues || profitValues.length === 0) return null;
-
     const isEnglish = isEnglishPage();
+
     const isDark = document.documentElement.classList.contains("dark");
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
     const textColor = isDark ? '#94a3b8' : '#64748b';
-
-    const minVal = Math.min(...profitValues);
-    const maxVal = Math.max(...profitValues);
-    const margin = (maxVal - minVal) * 0.15 || 2000;
 
     const newChart = new Chart(ctx, {
         type: 'line',
@@ -227,11 +221,11 @@ function renderStockChart(dataInput) {
                     }
                 },
                 y: {
-                    min: Math.floor(minVal - margin),
-                    max: Math.ceil(maxVal + margin),
+                    suggestedMin: 100000,
                     grid: { color: gridColor },
                     ticks: { 
                         color: textColor,
+                        stepSize: 500,
                         maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
                         callback: function(value) {
                             return value.toLocaleString('sv-SE') + ' SEK';
@@ -248,6 +242,7 @@ function renderStockChart(dataInput) {
     return newChart;
 }
 
+// Hjälpfunktion för att ladda CSV/JSON-filer direkt med korrekt sökväg
 async function loadAndRenderChart(canvasId, csvUrl, label, borderColor, backgroundColor, currentInstance) {
     try {
         const finalUrl = (window.pathPrefix && !csvUrl.startsWith(window.pathPrefix) && !csvUrl.startsWith('http')) 
