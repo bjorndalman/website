@@ -52,7 +52,9 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
             const parts = lines[i].split(',');
             if (parts.length >= 2) {
                 labels.push(parts[0].trim());
-                rawItems.push({ profit: parseFloat(parts[1].trim()) });
+                // Ersätt kommatecken med punkt för korrekt parseFloat
+                const valStr = parts[1].trim().replace(',', '.');
+                rawItems.push({ profit: parseFloat(valStr) });
             }
         }
     } else if (Array.isArray(dataInput)) {
@@ -60,25 +62,35 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
         rawItems = dataInput;
     }
 
+    // Detektera om värdena redan representerar den ackumulerade profiten eller bankrullen
     let runningBankroll = baseBankroll;
+    
+    // Kolla om första värdet är väldigt nära 0 (dvs ren förändring/kumulativ profit)
+    const firstVal = rawItems.length > 0 ? Math.abs(rawItems[0].profit || 0) : 0;
+    const isCumulativeProfit = firstVal < (baseBankroll * 0.1); 
+
     const profitValues = rawItems.map(item => {
-        // Direct absolute bankroll checks
+        // Om det finns ett direkt fält för bankroll/balance
         const directValue = item.bankroll ?? item.total_bankroll ?? item.balance ?? item.value;
         if (directValue !== undefined && directValue !== null) {
-            const parsed = parseFloat(directValue);
+            const parsed = parseFloat(String(directValue).replace(',', '.'));
             if (!isNaN(parsed)) return parsed;
         }
 
-        if (item.cum_profit !== undefined) return baseBankroll + parseFloat(item.cum_profit);
-        if (item.cumulative_profit !== undefined) return baseBankroll + parseFloat(item.cumulative_profit);
+        const p = parseFloat(String(item.profit ?? item.Profit ?? item.profit_sek ?? 0).replace(',', '.'));
+        if (isNaN(p)) return runningBankroll;
 
-        const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? 0);
-        
-        // Om värdet i filen är den totala kassan i stället för enskild vinst/förlust
-        if (Math.abs(p) > baseBankroll * 0.3) {
+        // Om värdet redan är total bankrulle (t.ex. 10 233 SEK)
+        if (p > baseBankroll * 0.3) {
             return p;
         }
 
+        // Om CSV-filen innehåller KUMULATIV profit (t.ex. 0, +12, +45, +1233.44)
+        if (isCumulativeProfit) {
+            return baseBankroll + p;
+        }
+
+        // Om CSV-filen innehåller enskild profit per match (+12, -50, +30)
         runningBankroll += p;
         return runningBankroll;
     });
