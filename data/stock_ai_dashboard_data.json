@@ -10,8 +10,8 @@
     "profit_sek": 896.25,
     "profit_pct": 0.9,
     "return_pct": 0.9,
-    "max_drawdown_pct": -10.31,
-    "sharpe_ratio": 0.14
+    "max_drawdown_pct": -3.26,
+    "sharpe_ratio": 0.24
   },
   "history": [
     {
@@ -1241,28 +1241,28 @@
     },
     {
       "date": "2026-09-04",
-      "bankroll": 89694.41,
-      "profit": -10305.59
+      "bankroll": 99942.93,
+      "profit": -57.07
     },
     {
       "date": "2026-09-08",
-      "bankroll": 89694.41,
-      "profit": -10305.59
+      "bankroll": 100357.92,
+      "profit": 357.92
     },
     {
       "date": "2026-09-09",
-      "bankroll": 89694.41,
-      "profit": -10305.59
+      "bankroll": 99461.18,
+      "profit": -538.82
     },
     {
       "date": "2026-09-10",
-      "bankroll": 89694.41,
-      "profit": -10305.59
+      "bankroll": 97084.4,
+      "profit": -2915.6
     },
     {
       "date": "2026-09-11",
-      "bankroll": 89694.41,
-      "profit": -10305.59
+      "bankroll": 97981.9,
+      "profit": -2018.1
     },
     {
       "date": "2026-09-12",
@@ -1337,9 +1337,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 26.97,
-      "kalman_value": 26.73,
+      "kalman_value": 26.76,
       "ai_investment": 0.0,
-      "argument": "Sharp price movement indicates increased volatility and event-driven process noise. (Q: 1.60x, R: 1.00x)"
+      "argument": "Sharp price gain indicates increased short-term volatility and momentum. (Q: 1.60x, R: 0.80x)"
     },
     {
       "date": "2026-09-12",
@@ -1347,9 +1347,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 98.66,
-      "kalman_value": 97.72,
+      "kalman_value": 97.68,
       "ai_investment": 0.0,
-      "argument": "Moderate price gains reflect stable market conditions with clear signal quality. (Q: 1.00x, R: 0.90x)"
+      "argument": "Steady daily gain under standard market conditions with low event risk. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-12",
@@ -1367,9 +1367,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 875.2,
-      "kalman_value": 867.78,
+      "kalman_value": 867.47,
       "ai_investment": 0.0,
-      "argument": "Moderate upward movement indicates stable conditions and reliable price trend signal. (Q: 1.00x, R: 0.90x)"
+      "argument": "Moderate price rise showing stable trading conditions without major news noise. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-09-12",
@@ -1467,9 +1467,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 269.2,
-      "kalman_value": 268.8,
+      "kalman_value": 268.79,
       "ai_investment": 0.0,
-      "argument": "Strong daily gain reflects clear positive momentum with low measurement noise. (Q: 1.10x, R: 0.85x)"
+      "argument": "Solid gain of nearly 2% reflecting positive sentiment and good signal quality. (Q: 1.20x, R: 0.90x)"
     },
     {
       "date": "2026-09-12",
