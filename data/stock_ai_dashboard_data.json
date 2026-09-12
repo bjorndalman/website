@@ -10,8 +10,8 @@
     "profit_sek": 0.0,
     "profit_pct": 0.0,
     "return_pct": 0.0,
-    "max_drawdown_pct": -3.26,
-    "sharpe_ratio": 0.02
+    "max_drawdown_pct": 0.0,
+    "sharpe_ratio": 0.0
   },
   "history": [
     {
@@ -1241,28 +1241,28 @@
     },
     {
       "date": "2026-09-04",
-      "bankroll": 99942.93,
-      "profit": -57.07
+      "bankroll": 100000.0,
+      "profit": 0.0
     },
     {
       "date": "2026-09-08",
-      "bankroll": 100357.92,
-      "profit": 357.92
+      "bankroll": 100000.0,
+      "profit": 0.0
     },
     {
       "date": "2026-09-09",
-      "bankroll": 99461.18,
-      "profit": -538.82
+      "bankroll": 100000.0,
+      "profit": 0.0
     },
     {
       "date": "2026-09-10",
-      "bankroll": 97084.4,
-      "profit": -2915.6
+      "bankroll": 100000.0,
+      "profit": 0.0
     },
     {
       "date": "2026-09-11",
-      "bankroll": 97981.9,
-      "profit": -2018.1
+      "bankroll": 100000.0,
+      "profit": 0.0
     },
     {
       "date": "2026-09-12",
@@ -1328,7 +1328,7 @@
       "status": "BUY",
       "price": 550.0,
       "kalman_value": 555.75,
-      "ai_investment": 9808.99,
+      "ai_investment": 3814.61,
       "argument": "Low daily volatility (0.59%). Standard quantitative Kalman analysis applied."
     },
     {
@@ -1339,7 +1339,7 @@
       "price": 26.97,
       "kalman_value": 26.75,
       "ai_investment": 0.0,
-      "argument": "Sharp price increase indicates elevated volatility alongside strong short-term upward momentum. (Q: 1.50x, R: 0.80x)"
+      "argument": "Sharp daily gain indicates elevated volatility but strong short-term upward momentum. (Q: 1.60x, R: 0.85x)"
     },
     {
       "date": "2026-09-12",
@@ -1349,7 +1349,7 @@
       "price": 98.66,
       "kalman_value": 97.72,
       "ai_investment": 0.0,
-      "argument": "Moderate gain reflects stable conditions with a clear, high-quality trend signal. (Q: 1.00x, R: 0.90x)"
+      "argument": "Moderate daily gain reflects stable trading conditions with clear positive direction. (Q: 1.00x, R: 0.90x)"
     },
     {
       "date": "2026-09-12",
@@ -1358,7 +1358,7 @@
       "status": "BUY",
       "price": 261.3,
       "kalman_value": 263.33,
-      "ai_investment": 9838.12,
+      "ai_investment": 3883.47,
       "argument": "Low daily volatility (-0.53%). Standard quantitative Kalman analysis applied."
     },
     {
@@ -1369,7 +1369,7 @@
       "price": 875.2,
       "kalman_value": 867.78,
       "ai_investment": 0.0,
-      "argument": "Steady price appreciation suggests normal market conditions and reliable signal quality. (Q: 1.00x, R: 0.90x)"
+      "argument": "Steady price increase under stable market conditions with consistent trend signal. (Q: 1.00x, R: 0.90x)"
     },
     {
       "date": "2026-09-12",
@@ -1378,7 +1378,7 @@
       "status": "BUY",
       "price": 234.4,
       "kalman_value": 236.52,
-      "ai_investment": 9754.3,
+      "ai_investment": 3948.17,
       "argument": "Low daily volatility (-0.59%). Standard quantitative Kalman analysis applied."
     },
     {
@@ -1398,7 +1398,7 @@
       "status": "BUY",
       "price": 164.4,
       "kalman_value": 165.88,
-      "ai_investment": 9773.32,
+      "ai_investment": 4072.22,
       "argument": "Low daily volatility (0.03%). Standard quantitative Kalman analysis applied."
     },
     {
@@ -1418,7 +1418,7 @@
       "status": "BUY",
       "price": 60.64,
       "kalman_value": 61.18,
-      "ai_investment": 9853.54,
+      "ai_investment": 4085.61,
       "argument": "Low daily volatility (0.63%). Standard quantitative Kalman analysis applied."
     },
     {
@@ -1438,7 +1438,7 @@
       "status": "BUY",
       "price": 385.2,
       "kalman_value": 388.09,
-      "ai_investment": 9541.47,
+      "ai_investment": 3816.59,
       "argument": "Low daily volatility (0.31%). Standard quantitative Kalman analysis applied."
     },
     {
@@ -1469,7 +1469,7 @@
       "price": 269.2,
       "kalman_value": 268.8,
       "ai_investment": 0.0,
-      "argument": "Solid upward move indicates healthy trend strength with slightly increased daily process noise. (Q: 1.10x, R: 0.85x)"
+      "argument": "Solid price gain showing steady upward momentum and high signal quality. (Q: 1.20x, R: 0.85x)"
     },
     {
       "date": "2026-09-12",
