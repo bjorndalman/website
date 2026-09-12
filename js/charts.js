@@ -33,19 +33,17 @@ function destroyExistingChart(canvasId) {
     }
 }
 
-// Hjälpfunktion för att beräkna ackumulerad bankrulle från historik (JSON eller CSV) med stöd för unikt startkapital
+// Hjälpfunktion för att beräkna ackumulerad bankrulle från historik (JSON eller CSV)
 function processBankrollData(dataInput, baseBankroll = 10000) {
     let labels = [];
     let rawItems = [];
 
-    // Om dataInput är en JSON-sträng, parsa den till ett objekt
     if (typeof dataInput === 'string' && (dataInput.trim().startsWith('{') || dataInput.trim().startsWith('['))) {
         try { dataInput = JSON.parse(dataInput); } catch (e) {}
     }
 
-    // Om dataInput är ett JSON-objekt med under-array (t.ex. { history: [...] })
     if (dataInput && typeof dataInput === 'object' && !Array.isArray(dataInput)) {
-        dataInput = dataInput.history || dataInput.data || dataInput.trades || dataInput.bets || [];
+        dataInput = dataInput.history || dataInput.bankroll_history || dataInput.chart_data || dataInput.data || dataInput.trades || dataInput.bets || [];
     }
 
     if (typeof dataInput === 'string') {
@@ -62,20 +60,22 @@ function processBankrollData(dataInput, baseBankroll = 10000) {
         rawItems = dataInput;
     }
 
-    const hasDynamicBankroll = rawItems.some(item => (item.bankroll && item.bankroll !== baseBankroll) || (item.total_bankroll && item.total_bankroll !== baseBankroll));
-
     let runningBankroll = baseBankroll;
     const profitValues = rawItems.map(item => {
-        if (hasDynamicBankroll && item.bankroll !== undefined) return item.bankroll;
-        if (item.total_bankroll !== undefined && item.total_bankroll !== baseBankroll) return item.total_bankroll;
-        if (item.balance !== undefined && item.balance !== baseBankroll) return item.balance;
+        // Direct absolute bankroll checks
+        const directValue = item.bankroll ?? item.total_bankroll ?? item.balance ?? item.value;
+        if (directValue !== undefined && directValue !== null) {
+            const parsed = parseFloat(directValue);
+            if (!isNaN(parsed)) return parsed;
+        }
+
         if (item.cum_profit !== undefined) return baseBankroll + parseFloat(item.cum_profit);
         if (item.cumulative_profit !== undefined) return baseBankroll + parseFloat(item.cumulative_profit);
 
-        const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? item.value ?? 0);
+        const p = parseFloat(item.profit ?? item.Profit ?? item.profit_sek ?? 0);
         
-        // Om värdet i filen redan är total bankrulle (t.ex. runt startkapitalet)
-        if (p > baseBankroll * 0.3) {
+        // Om värdet i filen är den totala kassan i stället för enskild vinst/förlust
+        if (Math.abs(p) > baseBankroll * 0.3) {
             return p;
         }
 
@@ -94,11 +94,17 @@ function renderFootballChart(dataInput) {
     destroyExistingChart(ctx.id);
 
     const { labels, profitValues } = processBankrollData(dataInput, 10000);
-    const isEnglish = isEnglishPage();
+    if (!profitValues || profitValues.length === 0) return null;
 
+    const isEnglish = isEnglishPage();
     const isDark = document.documentElement.classList.contains("dark");
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
     const textColor = isDark ? '#94a3b8' : '#64748b';
+
+    // Dynamisk beräkning av Min/Max för att undvika platt linje
+    const minVal = Math.min(...profitValues);
+    const maxVal = Math.max(...profitValues);
+    const margin = (maxVal - minVal) * 0.15 || 500;
 
     const newChart = new Chart(ctx, {
         type: 'line',
@@ -141,8 +147,9 @@ function renderFootballChart(dataInput) {
                     }
                 },
                 y: {
+                    min: Math.floor(minVal - margin),
+                    max: Math.ceil(maxVal + margin),
                     grid: { color: gridColor },
-                    suggestedMin: 10000,
                     ticks: { 
                         color: textColor,
                         maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
@@ -174,11 +181,16 @@ function renderStockChart(dataInput) {
     destroyExistingChart('stock-profit-chart');
 
     const { labels, profitValues } = processBankrollData(dataInput, 100000);
-    const isEnglish = isEnglishPage();
+    if (!profitValues || profitValues.length === 0) return null;
 
+    const isEnglish = isEnglishPage();
     const isDark = document.documentElement.classList.contains("dark");
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
     const textColor = isDark ? '#94a3b8' : '#64748b';
+
+    const minVal = Math.min(...profitValues);
+    const maxVal = Math.max(...profitValues);
+    const margin = (maxVal - minVal) * 0.15 || 2000;
 
     const newChart = new Chart(ctx, {
         type: 'line',
@@ -221,11 +233,11 @@ function renderStockChart(dataInput) {
                     }
                 },
                 y: {
-                    suggestedMin: 100000,
+                    min: Math.floor(minVal - margin),
+                    max: Math.ceil(maxVal + margin),
                     grid: { color: gridColor },
                     ticks: { 
                         color: textColor,
-                        stepSize: 500,
                         maxTicksLimit: window.innerWidth < 640 ? 5 : 8,
                         callback: function(value) {
                             return value.toLocaleString('sv-SE') + ' SEK';
