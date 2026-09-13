@@ -1,8 +1,8 @@
 {
-  "last_sync": "2026-09-12",
-  "current_bankroll": 11233.44,
-  "net_profit": 1233.44,
-  "total_trades": 155,
+  "last_sync": "2026-09-13",
+  "current_bankroll": 11201.95,
+  "net_profit": 1201.95,
+  "total_trades": 170,
   "history": [
     {
       "Datum": "2026-07-20",
@@ -35,50 +35,50 @@
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": -413.71,
-      "Nuvarande Kassa (kr)": 9586.29,
+      "Total Vinst/Förlust (kr)": -506.1,
+      "Nuvarande Kassa (kr)": 9493.9,
       "Antal Spelade Matcher": 5
     },
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": -212.49,
-      "Nuvarande Kassa (kr)": 9787.51,
+      "Total Vinst/Förlust (kr)": -618.41,
+      "Nuvarande Kassa (kr)": 9381.59,
       "Antal Spelade Matcher": 6
     },
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": -372.99,
-      "Nuvarande Kassa (kr)": 9627.01,
+      "Total Vinst/Förlust (kr)": -417.19,
+      "Nuvarande Kassa (kr)": 9582.81,
       "Antal Spelade Matcher": 7
     },
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": -306.02,
-      "Nuvarande Kassa (kr)": 9693.98,
+      "Total Vinst/Förlust (kr)": -577.69,
+      "Nuvarande Kassa (kr)": 9422.31,
       "Antal Spelade Matcher": 8
     },
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": -450.99,
-      "Nuvarande Kassa (kr)": 9549.01,
+      "Total Vinst/Förlust (kr)": -722.66,
+      "Nuvarande Kassa (kr)": 9277.34,
       "Antal Spelade Matcher": 9
     },
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": -342.19,
-      "Nuvarande Kassa (kr)": 9657.81,
+      "Total Vinst/Förlust (kr)": -613.86,
+      "Nuvarande Kassa (kr)": 9386.14,
       "Antal Spelade Matcher": 10
     },
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 162.1,
-      "Nuvarande Kassa (kr)": 10162.1,
+      "Total Vinst/Förlust (kr)": -109.57,
+      "Nuvarande Kassa (kr)": 9890.43,
       "Antal Spelade Matcher": 11
     },
     {
@@ -98,8 +98,8 @@
     {
       "Datum": "2026-07-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": -140.42,
-      "Nuvarande Kassa (kr)": 9859.58,
+      "Total Vinst/Förlust (kr)": 348.64,
+      "Nuvarande Kassa (kr)": 10348.64,
       "Antal Spelade Matcher": 14
     },
     {
@@ -168,85 +168,85 @@
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 448.69,
-      "Nuvarande Kassa (kr)": 10448.69,
+      "Total Vinst/Förlust (kr)": 390.73,
+      "Nuvarande Kassa (kr)": 10390.73,
       "Antal Spelade Matcher": 24
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 442.61,
-      "Nuvarande Kassa (kr)": 10442.61,
+      "Total Vinst/Förlust (kr)": 397.49,
+      "Nuvarande Kassa (kr)": 10397.49,
       "Antal Spelade Matcher": 25
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 479.09,
-      "Nuvarande Kassa (kr)": 10479.09,
+      "Total Vinst/Förlust (kr)": 449.37,
+      "Nuvarande Kassa (kr)": 10449.37,
       "Antal Spelade Matcher": 26
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 428.54,
-      "Nuvarande Kassa (kr)": 10428.54,
+      "Total Vinst/Förlust (kr)": 485.85,
+      "Nuvarande Kassa (kr)": 10485.85,
       "Antal Spelade Matcher": 27
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 475.59,
-      "Nuvarande Kassa (kr)": 10475.59,
+      "Total Vinst/Förlust (kr)": 435.3,
+      "Nuvarande Kassa (kr)": 10435.3,
       "Antal Spelade Matcher": 28
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 509.37,
-      "Nuvarande Kassa (kr)": 10509.37,
+      "Total Vinst/Förlust (kr)": 482.35,
+      "Nuvarande Kassa (kr)": 10482.35,
       "Antal Spelade Matcher": 29
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 464.12,
-      "Nuvarande Kassa (kr)": 10464.12,
+      "Total Vinst/Förlust (kr)": 516.13,
+      "Nuvarande Kassa (kr)": 10516.13,
       "Antal Spelade Matcher": 30
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 402.43,
-      "Nuvarande Kassa (kr)": 10402.43,
+      "Total Vinst/Förlust (kr)": 470.88,
+      "Nuvarande Kassa (kr)": 10470.88,
       "Antal Spelade Matcher": 31
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 354.71,
-      "Nuvarande Kassa (kr)": 10354.71,
+      "Total Vinst/Förlust (kr)": 409.19,
+      "Nuvarande Kassa (kr)": 10409.19,
       "Antal Spelade Matcher": 32
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 392.25,
-      "Nuvarande Kassa (kr)": 10392.25,
+      "Total Vinst/Förlust (kr)": 361.47,
+      "Nuvarande Kassa (kr)": 10361.47,
       "Antal Spelade Matcher": 33
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 415.5,
-      "Nuvarande Kassa (kr)": 10415.5,
+      "Total Vinst/Förlust (kr)": 399.01,
+      "Nuvarande Kassa (kr)": 10399.01,
       "Antal Spelade Matcher": 34
     },
     {
       "Datum": "2026-07-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 369.9,
-      "Nuvarande Kassa (kr)": 10369.9,
+      "Total Vinst/Förlust (kr)": 422.26,
+      "Nuvarande Kassa (kr)": 10422.26,
       "Antal Spelade Matcher": 35
     },
     {
@@ -273,8 +273,8 @@
     {
       "Datum": "2026-07-25",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 422.87,
-      "Nuvarande Kassa (kr)": 10422.87,
+      "Total Vinst/Förlust (kr)": 381.69,
+      "Nuvarande Kassa (kr)": 10381.69,
       "Antal Spelade Matcher": 39
     },
     {
@@ -287,43 +287,43 @@
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 413.15,
-      "Nuvarande Kassa (kr)": 10413.15,
+      "Total Vinst/Förlust (kr)": 384.26,
+      "Nuvarande Kassa (kr)": 10384.26,
       "Antal Spelade Matcher": 41
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 493.19,
-      "Nuvarande Kassa (kr)": 10493.19,
+      "Total Vinst/Förlust (kr)": 522.51,
+      "Nuvarande Kassa (kr)": 10522.51,
       "Antal Spelade Matcher": 42
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 466.5,
-      "Nuvarande Kassa (kr)": 10466.5,
+      "Total Vinst/Förlust (kr)": 433.42,
+      "Nuvarande Kassa (kr)": 10433.42,
       "Antal Spelade Matcher": 43
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 710.18,
-      "Nuvarande Kassa (kr)": 10710.18,
+      "Total Vinst/Förlust (kr)": 677.1,
+      "Nuvarande Kassa (kr)": 10677.1,
       "Antal Spelade Matcher": 44
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 621.09,
-      "Nuvarande Kassa (kr)": 10621.09,
+      "Total Vinst/Förlust (kr)": 757.14,
+      "Nuvarande Kassa (kr)": 10757.14,
       "Antal Spelade Matcher": 45
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 759.34,
-      "Nuvarande Kassa (kr)": 10759.34,
+      "Total Vinst/Förlust (kr)": 730.45,
+      "Nuvarande Kassa (kr)": 10730.45,
       "Antal Spelade Matcher": 46
     },
     {
@@ -343,85 +343,85 @@
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 554.33,
-      "Nuvarande Kassa (kr)": 10554.33,
+      "Total Vinst/Förlust (kr)": 844.83,
+      "Nuvarande Kassa (kr)": 10844.83,
       "Antal Spelade Matcher": 49
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 503.07,
-      "Nuvarande Kassa (kr)": 10503.07,
+      "Total Vinst/Förlust (kr)": 836.9,
+      "Nuvarande Kassa (kr)": 10836.9,
       "Antal Spelade Matcher": 50
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 785.64,
-      "Nuvarande Kassa (kr)": 10785.64,
+      "Total Vinst/Förlust (kr)": 979.8,
+      "Nuvarande Kassa (kr)": 10979.8,
       "Antal Spelade Matcher": 51
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1108.86,
-      "Nuvarande Kassa (kr)": 11108.86,
+      "Total Vinst/Förlust (kr)": 949.73,
+      "Nuvarande Kassa (kr)": 10949.73,
       "Antal Spelade Matcher": 52
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1011.79,
-      "Nuvarande Kassa (kr)": 11011.79,
+      "Total Vinst/Förlust (kr)": 1020.8,
+      "Nuvarande Kassa (kr)": 11020.8,
       "Antal Spelade Matcher": 53
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 933.34,
-      "Nuvarande Kassa (kr)": 10933.34,
+      "Total Vinst/Förlust (kr)": 1110.39,
+      "Nuvarande Kassa (kr)": 11110.39,
       "Antal Spelade Matcher": 54
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 834.26,
-      "Nuvarande Kassa (kr)": 10834.26,
+      "Total Vinst/Förlust (kr)": 1039.22,
+      "Nuvarande Kassa (kr)": 11039.22,
       "Antal Spelade Matcher": 55
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 763.09,
-      "Nuvarande Kassa (kr)": 10763.09,
+      "Total Vinst/Förlust (kr)": 1095.05,
+      "Nuvarande Kassa (kr)": 11095.05,
       "Antal Spelade Matcher": 56
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 852.68,
-      "Nuvarande Kassa (kr)": 10852.68,
+      "Total Vinst/Förlust (kr)": 1016.6,
+      "Nuvarande Kassa (kr)": 11016.6,
       "Antal Spelade Matcher": 57
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 822.61,
-      "Nuvarande Kassa (kr)": 10822.61,
+      "Total Vinst/Förlust (kr)": 919.53,
+      "Nuvarande Kassa (kr)": 10919.53,
       "Antal Spelade Matcher": 58
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 965.51,
-      "Nuvarande Kassa (kr)": 10965.51,
+      "Total Vinst/Förlust (kr)": 1242.75,
+      "Nuvarande Kassa (kr)": 11242.75,
       "Antal Spelade Matcher": 59
     },
     {
       "Datum": "2026-07-26",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1021.34,
-      "Nuvarande Kassa (kr)": 11021.34,
+      "Total Vinst/Förlust (kr)": 1143.67,
+      "Nuvarande Kassa (kr)": 11143.67,
       "Antal Spelade Matcher": 60
     },
     {
@@ -455,64 +455,64 @@
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1012.94,
-      "Nuvarande Kassa (kr)": 11012.94,
+      "Total Vinst/Förlust (kr)": 1229.64,
+      "Nuvarande Kassa (kr)": 11229.64,
       "Antal Spelade Matcher": 65
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1133.08,
-      "Nuvarande Kassa (kr)": 11133.08,
+      "Total Vinst/Förlust (kr)": 1164.73,
+      "Nuvarande Kassa (kr)": 11164.73,
       "Antal Spelade Matcher": 66
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1080.16,
-      "Nuvarande Kassa (kr)": 11080.16,
+      "Total Vinst/Förlust (kr)": 1110.5,
+      "Nuvarande Kassa (kr)": 11110.5,
       "Antal Spelade Matcher": 67
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1020.8,
-      "Nuvarande Kassa (kr)": 11020.8,
+      "Total Vinst/Förlust (kr)": 1249.05,
+      "Nuvarande Kassa (kr)": 11249.05,
       "Antal Spelade Matcher": 68
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1097.14,
-      "Nuvarande Kassa (kr)": 11097.14,
+      "Total Vinst/Förlust (kr)": 1193.02,
+      "Nuvarande Kassa (kr)": 11193.02,
       "Antal Spelade Matcher": 69
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1032.23,
-      "Nuvarande Kassa (kr)": 11032.23,
+      "Total Vinst/Förlust (kr)": 1269.36,
+      "Nuvarande Kassa (kr)": 11269.36,
       "Antal Spelade Matcher": 70
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 976.2,
-      "Nuvarande Kassa (kr)": 10976.2,
+      "Total Vinst/Förlust (kr)": 1216.44,
+      "Nuvarande Kassa (kr)": 11216.44,
       "Antal Spelade Matcher": 71
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1114.75,
-      "Nuvarande Kassa (kr)": 11114.75,
+      "Total Vinst/Förlust (kr)": 1336.58,
+      "Nuvarande Kassa (kr)": 11336.58,
       "Antal Spelade Matcher": 72
     },
     {
       "Datum": "2026-08-02",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1060.52,
-      "Nuvarande Kassa (kr)": 11060.52,
+      "Total Vinst/Förlust (kr)": 1274.47,
+      "Nuvarande Kassa (kr)": 11274.47,
       "Antal Spelade Matcher": 73
     },
     {
@@ -553,29 +553,29 @@
     {
       "Datum": "2026-08-19",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1154.03,
-      "Nuvarande Kassa (kr)": 11154.03,
+      "Total Vinst/Förlust (kr)": 1033.17,
+      "Nuvarande Kassa (kr)": 11033.17,
       "Antal Spelade Matcher": 79
     },
     {
       "Datum": "2026-08-19",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1113.87,
-      "Nuvarande Kassa (kr)": 11113.87,
+      "Total Vinst/Förlust (kr)": 1146.15,
+      "Nuvarande Kassa (kr)": 11146.15,
       "Antal Spelade Matcher": 80
     },
     {
       "Datum": "2026-08-19",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1061.32,
-      "Nuvarande Kassa (kr)": 11061.32,
+      "Total Vinst/Förlust (kr)": 1105.99,
+      "Nuvarande Kassa (kr)": 11105.99,
       "Antal Spelade Matcher": 81
     },
     {
       "Datum": "2026-08-19",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1008.77,
-      "Nuvarande Kassa (kr)": 11008.77,
+      "Total Vinst/Förlust (kr)": 1053.44,
+      "Nuvarande Kassa (kr)": 11053.44,
       "Antal Spelade Matcher": 82
     },
     {
@@ -588,36 +588,36 @@
     {
       "Datum": "2026-08-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1102.11,
-      "Nuvarande Kassa (kr)": 11102.11,
+      "Total Vinst/Förlust (kr)": 1217.34,
+      "Nuvarande Kassa (kr)": 11217.34,
       "Antal Spelade Matcher": 84
     },
     {
       "Datum": "2026-08-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1091.53,
-      "Nuvarande Kassa (kr)": 11091.53,
+      "Total Vinst/Förlust (kr)": 1129.52,
+      "Nuvarande Kassa (kr)": 11129.52,
       "Antal Spelade Matcher": 85
     },
     {
       "Datum": "2026-08-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1038.98,
-      "Nuvarande Kassa (kr)": 11038.98,
+      "Total Vinst/Förlust (kr)": 1266.15,
+      "Nuvarande Kassa (kr)": 11266.15,
       "Antal Spelade Matcher": 86
     },
     {
       "Datum": "2026-08-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1175.61,
-      "Nuvarande Kassa (kr)": 11175.61,
+      "Total Vinst/Förlust (kr)": 1255.57,
+      "Nuvarande Kassa (kr)": 11255.57,
       "Antal Spelade Matcher": 87
     },
     {
       "Datum": "2026-08-20",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1271.2,
-      "Nuvarande Kassa (kr)": 11271.2,
+      "Total Vinst/Förlust (kr)": 1235.93,
+      "Nuvarande Kassa (kr)": 11235.93,
       "Antal Spelade Matcher": 88
     },
     {
@@ -630,29 +630,29 @@
     {
       "Datum": "2026-08-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1162.94,
-      "Nuvarande Kassa (kr)": 11162.94,
+      "Total Vinst/Förlust (kr)": 1231.2,
+      "Nuvarande Kassa (kr)": 11231.2,
       "Antal Spelade Matcher": 90
     },
     {
       "Datum": "2026-08-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1123.97,
-      "Nuvarande Kassa (kr)": 11123.97,
+      "Total Vinst/Förlust (kr)": 1178.65,
+      "Nuvarande Kassa (kr)": 11178.65,
       "Antal Spelade Matcher": 91
     },
     {
       "Datum": "2026-08-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1171.79,
-      "Nuvarande Kassa (kr)": 11171.79,
+      "Total Vinst/Förlust (kr)": 1139.68,
+      "Nuvarande Kassa (kr)": 11139.68,
       "Antal Spelade Matcher": 92
     },
     {
       "Datum": "2026-08-22",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1169.34,
-      "Nuvarande Kassa (kr)": 11169.34,
+      "Total Vinst/Förlust (kr)": 1119.24,
+      "Nuvarande Kassa (kr)": 11119.24,
       "Antal Spelade Matcher": 93
     },
     {
@@ -665,15 +665,15 @@
     {
       "Datum": "2026-08-23",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1110.77,
-      "Nuvarande Kassa (kr)": 11110.77,
+      "Total Vinst/Förlust (kr)": 1107.69,
+      "Nuvarande Kassa (kr)": 11107.69,
       "Antal Spelade Matcher": 95
     },
     {
       "Datum": "2026-08-23",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1058.22,
-      "Nuvarande Kassa (kr)": 11058.22,
+      "Total Vinst/Förlust (kr)": 1055.14,
+      "Nuvarande Kassa (kr)": 11055.14,
       "Antal Spelade Matcher": 96
     },
     {
@@ -693,29 +693,29 @@
     {
       "Datum": "2026-08-23",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1133.2,
-      "Nuvarande Kassa (kr)": 11133.2,
+      "Total Vinst/Förlust (kr)": 1026.78,
+      "Nuvarande Kassa (kr)": 11026.78,
       "Antal Spelade Matcher": 99
     },
     {
       "Datum": "2026-08-23",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1217.25,
-      "Nuvarande Kassa (kr)": 11217.25,
+      "Total Vinst/Förlust (kr)": 1110.83,
+      "Nuvarande Kassa (kr)": 11110.83,
       "Antal Spelade Matcher": 100
     },
     {
       "Datum": "2026-08-23",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1179.56,
-      "Nuvarande Kassa (kr)": 11179.56,
+      "Total Vinst/Förlust (kr)": 1073.14,
+      "Nuvarande Kassa (kr)": 11073.14,
       "Antal Spelade Matcher": 101
     },
     {
       "Datum": "2026-08-23",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1146.82,
-      "Nuvarande Kassa (kr)": 11146.82,
+      "Total Vinst/Förlust (kr)": 1209.77,
+      "Nuvarande Kassa (kr)": 11209.77,
       "Antal Spelade Matcher": 102
     },
     {
@@ -728,29 +728,29 @@
     {
       "Datum": "2026-08-29",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1175.16,
-      "Nuvarande Kassa (kr)": 11175.16,
+      "Total Vinst/Förlust (kr)": 1175.98,
+      "Nuvarande Kassa (kr)": 11175.98,
       "Antal Spelade Matcher": 104
     },
     {
       "Datum": "2026-08-29",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1168.23,
-      "Nuvarande Kassa (kr)": 11168.23,
+      "Total Vinst/Förlust (kr)": 1187.34,
+      "Nuvarande Kassa (kr)": 11187.34,
       "Antal Spelade Matcher": 105
     },
     {
       "Datum": "2026-08-29",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1174.04,
-      "Nuvarande Kassa (kr)": 11174.04,
+      "Total Vinst/Förlust (kr)": 1193.15,
+      "Nuvarande Kassa (kr)": 11193.15,
       "Antal Spelade Matcher": 106
     },
     {
       "Datum": "2026-08-29",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1185.4,
-      "Nuvarande Kassa (kr)": 11185.4,
+      "Total Vinst/Förlust (kr)": 1186.22,
+      "Nuvarande Kassa (kr)": 11186.22,
       "Antal Spelade Matcher": 107
     },
     {
@@ -770,15 +770,15 @@
     {
       "Datum": "2026-08-29",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1196.83,
-      "Nuvarande Kassa (kr)": 11196.83,
+      "Total Vinst/Förlust (kr)": 1175.88,
+      "Nuvarande Kassa (kr)": 11175.88,
       "Antal Spelade Matcher": 110
     },
     {
       "Datum": "2026-08-29",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1189.21,
-      "Nuvarande Kassa (kr)": 11189.21,
+      "Total Vinst/Förlust (kr)": 1171.51,
+      "Nuvarande Kassa (kr)": 11171.51,
       "Antal Spelade Matcher": 111
     },
     {
@@ -812,71 +812,71 @@
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1186.4,
-      "Nuvarande Kassa (kr)": 11186.4,
+      "Total Vinst/Förlust (kr)": 1207.11,
+      "Nuvarande Kassa (kr)": 11207.11,
       "Antal Spelade Matcher": 116
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1185.65,
-      "Nuvarande Kassa (kr)": 11185.65,
+      "Total Vinst/Förlust (kr)": 1200.39,
+      "Nuvarande Kassa (kr)": 11200.39,
       "Antal Spelade Matcher": 117
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1184.69,
-      "Nuvarande Kassa (kr)": 11184.69,
+      "Total Vinst/Förlust (kr)": 1198.41,
+      "Nuvarande Kassa (kr)": 11198.41,
       "Antal Spelade Matcher": 118
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1183.89,
-      "Nuvarande Kassa (kr)": 11183.89,
+      "Total Vinst/Förlust (kr)": 1192.44,
+      "Nuvarande Kassa (kr)": 11192.44,
       "Antal Spelade Matcher": 119
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1179.55,
-      "Nuvarande Kassa (kr)": 11179.55,
+      "Total Vinst/Förlust (kr)": 1192.11,
+      "Nuvarande Kassa (kr)": 11192.11,
       "Antal Spelade Matcher": 120
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1172.83,
-      "Nuvarande Kassa (kr)": 11172.83,
+      "Total Vinst/Förlust (kr)": 1191.15,
+      "Nuvarande Kassa (kr)": 11191.15,
       "Antal Spelade Matcher": 121
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1170.85,
-      "Nuvarande Kassa (kr)": 11170.85,
+      "Total Vinst/Förlust (kr)": 1190.35,
+      "Nuvarande Kassa (kr)": 11190.35,
       "Antal Spelade Matcher": 122
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1164.88,
-      "Nuvarande Kassa (kr)": 11164.88,
+      "Total Vinst/Förlust (kr)": 1209.69,
+      "Nuvarande Kassa (kr)": 11209.69,
       "Antal Spelade Matcher": 123
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1164.55,
-      "Nuvarande Kassa (kr)": 11164.55,
+      "Total Vinst/Förlust (kr)": 1208.94,
+      "Nuvarande Kassa (kr)": 11208.94,
       "Antal Spelade Matcher": 124
     },
     {
       "Datum": "2026-08-30",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1183.89,
-      "Nuvarande Kassa (kr)": 11183.89,
+      "Total Vinst/Förlust (kr)": 1214.74,
+      "Nuvarande Kassa (kr)": 11214.74,
       "Antal Spelade Matcher": 125
     },
     {
@@ -896,29 +896,29 @@
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1193.68,
-      "Nuvarande Kassa (kr)": 11193.68,
+      "Total Vinst/Förlust (kr)": 1198.21,
+      "Nuvarande Kassa (kr)": 11198.21,
       "Antal Spelade Matcher": 128
     },
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1193.23,
-      "Nuvarande Kassa (kr)": 11193.23,
+      "Total Vinst/Förlust (kr)": 1197.76,
+      "Nuvarande Kassa (kr)": 11197.76,
       "Antal Spelade Matcher": 129
     },
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1188.85,
-      "Nuvarande Kassa (kr)": 11188.85,
+      "Total Vinst/Förlust (kr)": 1193.38,
+      "Nuvarande Kassa (kr)": 11193.38,
       "Antal Spelade Matcher": 130
     },
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1189.28,
-      "Nuvarande Kassa (kr)": 11189.28,
+      "Total Vinst/Förlust (kr)": 1193.81,
+      "Nuvarande Kassa (kr)": 11193.81,
       "Antal Spelade Matcher": 131
     },
     {
@@ -931,36 +931,36 @@
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1184.25,
-      "Nuvarande Kassa (kr)": 11184.25,
+      "Total Vinst/Förlust (kr)": 1184.53,
+      "Nuvarande Kassa (kr)": 11184.53,
       "Antal Spelade Matcher": 133
     },
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1182.19,
-      "Nuvarande Kassa (kr)": 11182.19,
+      "Total Vinst/Förlust (kr)": 1176.74,
+      "Nuvarande Kassa (kr)": 11176.74,
       "Antal Spelade Matcher": 134
     },
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1214.27,
-      "Nuvarande Kassa (kr)": 11214.27,
+      "Total Vinst/Förlust (kr)": 1174.68,
+      "Nuvarande Kassa (kr)": 11174.68,
       "Antal Spelade Matcher": 135
     },
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1212.28,
-      "Nuvarande Kassa (kr)": 11212.28,
+      "Total Vinst/Förlust (kr)": 1206.76,
+      "Nuvarande Kassa (kr)": 11206.76,
       "Antal Spelade Matcher": 136
     },
     {
       "Datum": "2026-09-05",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1207.97,
-      "Nuvarande Kassa (kr)": 11207.97,
+      "Total Vinst/Förlust (kr)": 1204.77,
+      "Nuvarande Kassa (kr)": 11204.77,
       "Antal Spelade Matcher": 137
     },
     {
@@ -973,29 +973,29 @@
     {
       "Datum": "2026-09-06",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1197.97,
-      "Nuvarande Kassa (kr)": 11197.97,
+      "Total Vinst/Förlust (kr)": 1197.79,
+      "Nuvarande Kassa (kr)": 11197.79,
       "Antal Spelade Matcher": 139
     },
     {
       "Datum": "2026-09-06",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1201.93,
-      "Nuvarande Kassa (kr)": 11201.93,
+      "Total Vinst/Förlust (kr)": 1195.3,
+      "Nuvarande Kassa (kr)": 11195.3,
       "Antal Spelade Matcher": 140
     },
     {
       "Datum": "2026-09-06",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1202.84,
-      "Nuvarande Kassa (kr)": 11202.84,
+      "Total Vinst/Förlust (kr)": 1196.21,
+      "Nuvarande Kassa (kr)": 11196.21,
       "Antal Spelade Matcher": 141
     },
     {
       "Datum": "2026-09-06",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1209.26,
-      "Nuvarande Kassa (kr)": 11209.26,
+      "Total Vinst/Förlust (kr)": 1202.63,
+      "Nuvarande Kassa (kr)": 11202.63,
       "Antal Spelade Matcher": 142
     },
     {
@@ -1050,36 +1050,36 @@
     {
       "Datum": "2026-09-12",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1192.15,
-      "Nuvarande Kassa (kr)": 11192.15,
+      "Total Vinst/Förlust (kr)": 1191.78,
+      "Nuvarande Kassa (kr)": 11191.78,
       "Antal Spelade Matcher": 150
     },
     {
       "Datum": "2026-09-12",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1231.77,
-      "Nuvarande Kassa (kr)": 11231.77,
+      "Total Vinst/Förlust (kr)": 1217.53,
+      "Nuvarande Kassa (kr)": 11217.53,
       "Antal Spelade Matcher": 151
     },
     {
       "Datum": "2026-09-12",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1221.59,
-      "Nuvarande Kassa (kr)": 11221.59,
+      "Total Vinst/Förlust (kr)": 1257.15,
+      "Nuvarande Kassa (kr)": 11257.15,
       "Antal Spelade Matcher": 152
     },
     {
       "Datum": "2026-09-12",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1247.34,
-      "Nuvarande Kassa (kr)": 11247.34,
+      "Total Vinst/Förlust (kr)": 1248.7,
+      "Nuvarande Kassa (kr)": 11248.7,
       "Antal Spelade Matcher": 153
     },
     {
       "Datum": "2026-09-12",
       "Startkassa (kr)": 10000.0,
-      "Total Vinst/Förlust (kr)": 1238.89,
-      "Nuvarande Kassa (kr)": 11238.89,
+      "Total Vinst/Förlust (kr)": 1238.52,
+      "Nuvarande Kassa (kr)": 11238.52,
       "Antal Spelade Matcher": 154
     },
     {
@@ -1088,6 +1088,111 @@
       "Total Vinst/Förlust (kr)": 1233.44,
       "Nuvarande Kassa (kr)": 11233.44,
       "Antal Spelade Matcher": 155
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1225.62,
+      "Nuvarande Kassa (kr)": 11225.62,
+      "Antal Spelade Matcher": 156
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1216.22,
+      "Nuvarande Kassa (kr)": 11216.22,
+      "Antal Spelade Matcher": 157
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1229.78,
+      "Nuvarande Kassa (kr)": 11229.78,
+      "Antal Spelade Matcher": 158
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1228.08,
+      "Nuvarande Kassa (kr)": 11228.08,
+      "Antal Spelade Matcher": 159
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1224.72,
+      "Nuvarande Kassa (kr)": 11224.72,
+      "Antal Spelade Matcher": 160
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1219.72,
+      "Nuvarande Kassa (kr)": 11219.72,
+      "Antal Spelade Matcher": 161
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1214.25,
+      "Nuvarande Kassa (kr)": 11214.25,
+      "Antal Spelade Matcher": 162
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1199.3,
+      "Nuvarande Kassa (kr)": 11199.3,
+      "Antal Spelade Matcher": 163
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1194.5,
+      "Nuvarande Kassa (kr)": 11194.5,
+      "Antal Spelade Matcher": 164
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1199.34,
+      "Nuvarande Kassa (kr)": 11199.34,
+      "Antal Spelade Matcher": 165
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1224.27,
+      "Nuvarande Kassa (kr)": 11224.27,
+      "Antal Spelade Matcher": 166
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1219.22,
+      "Nuvarande Kassa (kr)": 11219.22,
+      "Antal Spelade Matcher": 167
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1204.84,
+      "Nuvarande Kassa (kr)": 11204.84,
+      "Antal Spelade Matcher": 168
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1192.96,
+      "Nuvarande Kassa (kr)": 11192.96,
+      "Antal Spelade Matcher": 169
+    },
+    {
+      "Datum": "2026-09-13",
+      "Startkassa (kr)": 10000.0,
+      "Total Vinst/Förlust (kr)": 1201.95,
+      "Nuvarande Kassa (kr)": 11201.95,
+      "Antal Spelade Matcher": 170
     }
   ]
 }
