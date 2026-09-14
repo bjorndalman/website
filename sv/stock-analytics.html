@@ -326,11 +326,17 @@
                         sharpeElem.className = "text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white";
                     }
                 
-                    const drawdownElem = document.getElementById('stock-max-drawdown');
+                   const drawdownElem = document.getElementById('stock-max-drawdown');
                     if (drawdownElem) {
-                        drawdownElem.innerText = (typeof drawdown === 'number' ? drawdown.toFixed(2) : drawdown) + '%';
-                        drawdownElem.className = "text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white";
-                    }
+                        const numDrawdown = typeof drawdown === 'number' ? drawdown : parseFloat(drawdown) || 0;
+                        
+                        // Gör talet negativt om det skickas som ett positivt tal i JSON (ex: 15.18 -> -15.18%)
+                        const formattedDrawdown = numDrawdown > 0 ? -numDrawdown : numDrawdown;
+                
+                        drawdownElem.innerText = formattedDrawdown.toFixed(2) + '%';
+                        // Sätt röd färg
+                        drawdownElem.className = "text-lg sm:text-xl font-extrabold text-rose-600 dark:text-rose-400";
+    }
                 }
 
                 // 3. Fyll i AI Trades-tabellen
