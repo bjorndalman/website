@@ -56,6 +56,8 @@ async function loadStockAIDashboard() {
             const profitPct = data.summary.profit_pct ?? data.summary.return_pct ?? 0;
             const profitSek = data.summary.profit_sek ?? data.summary.net_profit ?? 0;
             const investedVal = data.summary.invested ?? 0;
+            // Hämtar Max Drawdown från stock_ai_dashboard_data.json
+            const maxDrawdown = data.summary.max_drawdown_pct ?? data.summary.max_drawdown ?? 0;
 
             const bankrollElem = document.getElementById('stock-bankroll');
             if (bankrollElem) {
@@ -77,6 +79,15 @@ async function loadStockAIDashboard() {
             const investedElem = document.getElementById('stock-invested');
             if (investedElem) {
                 investedElem.innerText = investedVal.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+            }
+
+            // Rendera Max Drawdown i gränssnittet
+            const maxDrawdownElem = document.getElementById('stock-max-drawdown');
+            if (maxDrawdownElem) {
+                const formattedDrawdown = typeof maxDrawdown === 'number' 
+                    ? maxDrawdown.toFixed(2).replace('.', ',') 
+                    : maxDrawdown;
+                maxDrawdownElem.innerText = `${formattedDrawdown}%`;
             }
         }
 
