@@ -303,7 +303,7 @@
                     const investedVal = data.summary.invested;
 
                     
-                    const netProfitElem = document.getElementById('net-profit');
+                    const netProfitElem = document.getElementById('stock-profit');
                     if (netProfitElem) {
                         netProfitElem.innerText = (profit >= 0 ? '+' : '') + profit.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                         netProfitElem.className = "text-xl font-extrabold " + (profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
@@ -325,7 +325,7 @@
                         pctElem.className = "text-xl font-extrabold " + (profitPct >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
                     }
 
-                    const sharpeElem = document.getElementById('sharpe-ratio');
+                    const sharpeElem = document.getElementById('stock-sharpe');
                     if (sharpeElem && data.summary.sharpe_ratio !== undefined) {
                         sharpeElem.innerText = Number(data.summary.sharpe_ratio).toFixed(2);
                     }
