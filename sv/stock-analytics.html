@@ -302,6 +302,11 @@
                     const profitPct = data.summary.profit_pct ?? data.summary.return_pct ?? 0;
                     const investedVal = data.summary.invested;
 
+                    const investedElem = document.getElementById('stock-invested');
+                    if (investedElem && investedVal !== undefined) {
+                        investedElem.innerText = investedVal.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
+                    }
+
                     const bankrollElem = document.getElementById('stock-bankroll');
                     if (bankrollElem) {
                         bankrollElem.innerText = bankroll.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
@@ -327,11 +332,6 @@
                     const maxDdElem = document.getElementById('max-drawdown');
                     if (maxDdElem && data.summary.max_drawdown_pct !== undefined) {
                         maxDdElem.innerText = Number(data.summary.max_drawdown_pct).toFixed(2) + '%';
-                    }
-
-                    const investedElem = document.getElementById('stock-invested');
-                    if (investedElem && investedVal !== undefined) {
-                        investedElem.innerText = investedVal.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SEK';
                     }
                 }
 
