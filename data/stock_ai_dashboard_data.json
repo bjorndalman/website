@@ -2,16 +2,16 @@
   "updated_at": "2026-09-16",
   "summary": {
     "start_capital": 100000.0,
-    "current_bankroll": 99614.61,
-    "total_bankroll": 99614.61,
-    "cash_available": 99614.61,
+    "current_bankroll": 99610.74,
+    "total_bankroll": 99610.74,
+    "cash_available": 99610.74,
     "invested": 0.0,
-    "net_profit": -385.39,
-    "profit_sek": -385.39,
+    "net_profit": -389.26,
+    "profit_sek": -389.26,
     "profit_pct": -0.39,
     "return_pct": -0.39,
     "max_drawdown_pct": -0.39,
-    "sharpe_ratio": -1.06
+    "sharpe_ratio": -1.07
   },
   "history": [
     {
@@ -1266,8 +1266,8 @@
     },
     {
       "date": "2026-09-16",
-      "bankroll": 99614.61,
-      "profit": -385.39
+      "bankroll": 99610.74,
+      "profit": -389.26
     }
   ],
   "latest_trades_and_forecasts": [
