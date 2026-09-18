@@ -168,7 +168,18 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-09-13,chicago fire vs new england revolution,Away,0.3,3.33,3.95,9.4,Förlust,-9.4
 2026-09-13,vancouver whitecaps vs austin fc,Draw,0.21,4.76,6.0,7.82,Förlust,-7.82
 2026-09-13,vancouver whitecaps vs austin fc,Away,0.13,7.52,10.0,5.47,Förlust,-5.47
-2026-09-14,san diego fc vs philadelphia union,Home,0.43,2.3,2.6,18.95,Placerat,0.0
-2026-09-14,san diego fc vs philadelphia union,Draw,0.27,3.64,3.8,2.38,Placerat,0.0
+2026-09-14,san diego fc vs philadelphia union,Home,0.43,2.3,2.6,18.95,Förlust,-18.95
+2026-09-14,san diego fc vs philadelphia union,Draw,0.27,3.64,3.8,2.38,Förlust,-2.38
 2026-09-13,kansas city vs lafc,Away,0.76,1.31,1.6,14.98,Vinst,8.99
 2026-09-13,chicago fire vs new england revolution,Home,0.54,1.84,1.94,4.11,Förlust,-4.11
+2026-09-18,new york city vs red bulls,Away,0.27,3.72,4.3,3.51,Förlust,-3.51
+2026-09-19,dc united vs charlotte,Away,0.6,1.66,2.55,14.93,Vinst,23.14
+2026-09-19,san jose vs lafc,Away,0.6,1.67,2.16,14.93,Vinst,17.32
+2026-09-19,new england revolution vs orlando city,Away,0.45,2.23,3.8,14.93,Vinst,41.8
+2026-09-20,dallas vs austin fc,Away,0.3,3.35,4.5,7.28,Förlust,-7.28
+2026-09-20,houston dynamo vs cincinnati,Away,0.41,2.44,3.4,12.23,Förlust,-12.23
+2026-09-20,kansas city vs philadelphia union,Away,0.67,1.49,1.57,7.37,Vinst,4.2
+2026-09-20,st. louis city vs toronto,Away,0.34,2.97,4.35,10.32,Placerat,0.0
+2026-09-20,nashville vs chicago fire,Home,0.62,1.62,1.93,14.93,Vinst,13.88
+2026-09-20,real salt lake vs vancouver whitecaps,Away,0.66,1.52,1.96,14.93,Vinst,14.33
+2026-09-20,inter miami vs san diego fc,Away,0.25,4.04,4.85,4.11,Placerat,0.0
