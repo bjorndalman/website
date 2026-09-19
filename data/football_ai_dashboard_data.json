@@ -1,22 +1,13 @@
 {
-  "updated_at": "2026-09-19 15:31",
+  "updated_at": "2026-09-19 20:10",
   "summary": {
     "current_bankroll": 11260.89,
     "profit_sek": 1260.89,
     "profit_pct": 12.61,
     "next_matchday": "2026-09-19",
-    "last_sync": "2026-09-19 15:31"
+    "last_sync": "2026-09-19 20:10"
   },
   "latest_bets": [
-    {
-      "date": "2026-09-20",
-      "match": "houston dynamo vs cincinnati",
-      "prediction": "Away",
-      "odds": 3.4,
-      "stake": 12.23,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.41)"
-    },
     {
       "date": "2026-09-20",
       "match": "kansas city vs philadelphia union",
@@ -97,6 +88,15 @@
       "stake": 10.85,
       "status": "Vinst",
       "reasoning": "Kalman AI EV-spel (Prob: 0.57)"
+    },
+    {
+      "date": "2026-09-20",
+      "match": "inter miami vs san diego fc",
+      "prediction": "Draw",
+      "odds": 4.9,
+      "stake": 1.9,
+      "status": "Placerat",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.21)"
     }
   ],
   "history": [
