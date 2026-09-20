@@ -1,58 +1,58 @@
 {
-  "last_sync": "2026-09-20 15:37",
+  "last_sync": "2026-09-20 20:27",
   "next_matchday": "2026-09-20",
   "top5": [
     {
       "rank": 1,
       "name": "vancouver whitecaps",
-      "strength": 0.5041
+      "strength": 0.3817
     },
     {
       "rank": 2,
       "name": "inter miami",
-      "strength": 0.4942
+      "strength": 0.344
     },
     {
       "rank": 3,
       "name": "philadelphia union",
-      "strength": 0.1983
+      "strength": 0.1792
     },
     {
       "rank": 4,
       "name": "charlotte",
-      "strength": 0.1675
+      "strength": 0.176
     },
     {
       "rank": 5,
-      "name": "san diego fc",
-      "strength": 0.0725
+      "name": "chicago fire",
+      "strength": 0.1163
     }
   ],
   "bottom5": [
     {
       "rank": 22,
       "name": "cf montreal",
-      "strength": -0.4683
+      "strength": -0.3034
     },
     {
       "rank": 21,
-      "name": "dc united",
-      "strength": -0.3723
+      "name": "atlanta utd",
+      "strength": -0.1798
     },
     {
       "rank": 20,
-      "name": "austin fc",
-      "strength": -0.3131
+      "name": "real salt lake",
+      "strength": -0.1724
     },
     {
       "rank": 19,
-      "name": "atlanta utd",
-      "strength": -0.3118
+      "name": "austin fc",
+      "strength": -0.169
     },
     {
       "rank": 18,
-      "name": "real salt lake",
-      "strength": -0.277
+      "name": "dc united",
+      "strength": -0.1675
     }
   ]
 }
