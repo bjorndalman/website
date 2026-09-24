@@ -179,12 +179,24 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-09-20,dallas vs austin fc,Away,0.3,3.35,4.5,7.28,Förlust,-7.28
 2026-09-20,houston dynamo vs cincinnati,Away,0.41,2.44,3.4,12.23,Förlust,-12.23
 2026-09-20,kansas city vs philadelphia union,Away,0.67,1.49,1.57,7.37,Vinst,4.2
-2026-09-20,st. louis city vs toronto,Away,0.34,2.97,4.35,10.32,Placerat,0.0
+2026-09-20,st. louis city vs toronto,Away,0.34,2.97,4.35,10.32,Förlust,-10.32
 2026-09-20,nashville vs chicago fire,Home,0.62,1.62,1.93,14.93,Vinst,13.88
 2026-09-20,real salt lake vs vancouver whitecaps,Away,0.66,1.52,1.96,14.93,Vinst,14.33
-2026-09-20,inter miami vs san diego fc,Away,0.25,4.04,4.85,4.11,Placerat,0.0
+2026-09-20,inter miami vs san diego fc,Away,0.25,4.04,4.85,4.11,Förlust,-4.11
 2026-09-19,san jose vs lafc,Home,0.33,2.99,3.15,3.59,Förlust,-3.59
 2026-09-20,kansas city vs philadelphia union,Home,0.26,3.83,4.4,6.58,Förlust,-6.58
 2026-09-20,nashville vs chicago fire,Away,0.28,3.58,3.9,4.57,Förlust,-4.57
 2026-09-18,new york city vs red bulls,Home,0.57,1.74,1.85,10.85,Vinst,9.22
-2026-09-20,inter miami vs san diego fc,Draw,0.21,4.68,4.9,1.9,Placerat,0.0
+2026-09-20,inter miami vs san diego fc,Draw,0.21,4.68,4.9,1.9,Vinst,7.41
+2026-09-26,cf montreal vs cincinnati,Away,0.6,1.66,2.41,30.03,Vinst,42.34
+2026-09-26,charlotte vs chicago fire,Home,0.51,1.95,2.16,14.02,Förlust,-14.02
+2026-09-26,red bulls vs st. louis city,Home,0.34,2.92,3.15,5.42,Placerat,0.0
+2026-09-26,red bulls vs st. louis city,Away,0.52,1.91,2.0,7.26,Placerat,0.0
+2026-09-26,philadelphia union vs orlando city,Away,0.36,2.81,4.9,28.76,Vinst,112.16
+2026-09-27,austin fc vs san diego fc,Away,0.57,1.74,2.55,44.28,Förlust,-44.28
+2026-09-27,dallas vs lafc,Away,0.54,1.86,2.77,30.03,Förlust,-30.03
+2026-09-27,houston dynamo vs kansas city,Away,0.23,4.39,6.5,13.14,Förlust,-13.14
+2026-09-27,nashville vs toronto,Home,0.74,1.35,1.4,13.99,Vinst,5.6
+2026-09-27,real salt lake vs new england revolution,Away,0.53,1.9,2.7,30.03,Förlust,-30.03
+2026-09-27,vancouver whitecaps vs dc united,Away,0.15,6.86,8.7,5.24,Förlust,-5.24
+2026-09-27,san jose vs portland timbers,Away,0.47,2.11,2.85,28.23,Vinst,52.23
