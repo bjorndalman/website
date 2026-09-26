@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,15 +42,15 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             
-            <a href="index.html" aria-label="Hem">
+            <a href="index.html" aria-label="Home">
                 <picture>
                     <source srcset="images/bjorn-dahlman.webp" type="image/webp">
-                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Logotyp" class="h-10 md:h-12 w-auto rounded-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/ffffff?text=BD'">
+                    <img src="images/bjorn-dahlman.jpg" alt="Björn Dahlman Logo" class="h-10 md:h-12 w-auto rounded-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e293b/ffffff?text=BD'">
                 </picture>
             </a>
             
             <div class="flex items-center gap-6">
-                <!-- HUVUDMENY (Skrivbord) -->
+                <!-- MAIN MENU (Desktop) -->
                 <ul id="main-nav" class="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400 items-center">
                     <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a></li>
                     <li><a href="index.html#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a></li>
@@ -80,13 +80,13 @@
                     <li><a href="index.html#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a></li>
                 </ul>
 
-                <!-- SPRÅKVÄXLARE -->
+                <!-- LANGUAGE SWITCHER -->
                 <div class="language-switcher flex items-center gap-2 text-xl">
-                    <a href="stryktipset-analytics.html" class="lang-icon hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
-                    <a href="sv/stryktipset-analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+                    <span class="lang-icon hover:opacity-150" aria-label="English">🇬🇧</span>
+                    <a href="sv/stryktipset-analytics.html" class="lang-icon hover:opacity-100 opacity-50 transition" aria-label="Switch to Swedish">🇸🇪</a>
                 </div>
 
-                <!-- SOCIALA IKONER -->
+                <!-- SOCIAL ICONS -->
                 <div class="social-icons hidden md:flex items-center gap-4 text-xl">
                     <a href="https://x.com/DahlmanBjorn" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-400 transition" aria-label="X (Twitter)">
                         <i class="fab fa-x-twitter"></i> 
@@ -96,13 +96,13 @@
                     </a>
                 </div>
                 
-                <!-- TEMA-KNAPP -->
+                <!-- THEME TOGGLE -->
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition hidden md:block" aria-label="Toggle Theme">
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
                 
-                <!-- MOBILMENY-KNAPP -->
+                <!-- MOBILE MENU BUTTON -->
                 <button id="menu-button" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition md:hidden" aria-label="Toggle Menu">
                     <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
                     <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
@@ -111,13 +111,13 @@
         </div>
     </nav>
 
-    <!-- MOBILMENY -->
+    <!-- MOBILE MENU -->
     <nav id="mobile-menu" class="fixed top-[72px] left-0 right-0 z-40 h-0 overflow-hidden bg-white dark:bg-slate-900 transition-[height] duration-300 ease-in-out md:hidden shadow-2xl border-b border-slate-200 dark:border-slate-800">
         <div class="flex flex-col p-4 space-y-3 font-medium text-slate-700 dark:text-slate-300 max-h-[calc(100vh-80px)] overflow-y-auto">
             <a href="index.html#about" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">About</a>
             <a href="index.html#skills" class="block p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Skills</a>
             
-            <!-- MOBIL: ANALYTICS UNDERMENY -->
+            <!-- MOBILE: ANALYTICS SUBMENU -->
             <div class="space-y-1 pl-3 border-l-2 border-slate-200 dark:border-slate-800 my-1">
                 <span class="block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Analytics</span>
                 <a href="stryktipset-analytics.html" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-blue-600 dark:text-blue-400 font-semibold rounded transition text-sm flex items-center gap-2">
@@ -138,8 +138,8 @@
             
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <span class="text-sm uppercase tracking-wider font-semibold text-slate-500">Language:</span>
-                <a href="stryktipset-analytics.html" class="lang-icon text-xl hover:opacity-100" aria-label="Switch to English">🇬🇧</a>
-                <a href="sv/stryktipset-analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Växla till Svenska">🇸🇪</a>
+                <span class="lang-icon text-xl hover:opacity-100" aria-label="English">🇬🇧</span>
+                <a href="sv/stryktipset-analytics.html" class="lang-icon text-xl hover:opacity-100 opacity-50 transition" aria-label="Switch to Swedish">🇸🇪</a>
             </div>
             
             <button id="theme-toggle-mobile" class="flex items-center justify-start p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition w-full text-left">
@@ -167,13 +167,13 @@
         </p>
     </header>
 
-   <!-- HUVUDINNEHÅLL -->
+    <!-- MAIN CONTENT -->
     <main class="max-w-6xl mx-auto px-4 md:px-6 py-12 space-y-12 flex-grow">
 
-        <!-- BETA / TESTLÄGE BANNER -->
+        <!-- BETA / TEST MODE BANNER -->
         <div class="bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 px-4 py-3 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-sm">
             <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
-            <span><strong>Beta / Testläge:</strong> Stryktipset-pipelinen körs automatiskt via GitHub Actions och uppdateras löpande.</span>
+            <span><strong>Beta / Test Mode:</strong> The Stryktipset pipeline runs automatically via GitHub Actions and updates continuously.</span>
         </div>
 
         <!-- STRYKTIPSET LIVE BANNER -->
@@ -206,9 +206,9 @@
                         <span class="text-xs md:text-sm font-semibold text-slate-200">Pipeline Status: <span class="text-emerald-400">Operational</span></span>
                     </div>
                     <div class="flex items-center gap-6 text-xs md:text-sm text-slate-300">
-                        <span>Current Omgång: <strong id="stryktipset-omgang" class="text-white">Omgång 12 (Lördag)</strong></span>
+                        <span>Current Round: <strong id="stryktipset-omgang" class="text-white">Round 12 (Saturday)</strong></span>
                         <span>•</span>
-                        <span>Generated Rows: <strong id="stryktipset-total-rows" class="text-white">288 Rader</strong></span>
+                        <span>Generated Rows: <strong id="stryktipset-total-rows" class="text-white">288 Rows</strong></span>
                     </div>
                 </div>
             </div>
@@ -249,15 +249,15 @@
                     </div>
 
                     <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200/60 dark:border-slate-800">
-                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">13-Rätt Hits</span>
-                        <span id="stryktipset-13-hits" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">2 Omgångar</span>
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">13-Correct Hits</span>
+                        <span id="stryktipset-13-hits" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">2 Rounds</span>
                         <span class="text-xs text-amber-500 font-medium block mt-1 flex items-center gap-1">
                             <i data-lucide="trophy" class="w-3.5 h-3.5"></i> Jackpot Tier Hit
                         </span>
                     </div>
 
                     <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200/60 dark:border-slate-800">
-                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">Hit Rate (10-12 Rätt)</span>
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">Hit Rate (10-12 Correct)</span>
                         <span id="stryktipset-win-rate" class="text-2xl md:text-3xl font-extrabold text-purple-600 dark:text-purple-400">78.5%</span>
                         <span class="text-xs text-slate-500 block mt-1">Payout frequency</span>
                     </div>
@@ -280,7 +280,7 @@
                             <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Stryktipset 13 Matches</span>
                         </div>
                         <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-                            Current Omgång: Kalman Probabilities
+                            Current Round: Kalman Probabilities
                         </h3>
                     </div>
                     <div class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center gap-2">
@@ -358,7 +358,7 @@
                                 </td>
                                 <td class="py-3 px-3 text-right font-bold text-slate-800 dark:text-slate-200">1</td>
                             </tr>
-                            <!-- Additional Rows auto-populated or expanded -->
+                            <!-- Match 4 -->
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
                                 <td class="py-3 px-3 font-bold text-slate-400">4</td>
                                 <td class="py-3 px-3 font-semibold text-slate-800 dark:text-slate-200">
@@ -377,6 +377,7 @@
                                 </td>
                                 <td class="py-3 px-3 text-right font-bold text-slate-800 dark:text-slate-200">1 X</td>
                             </tr>
+                            <!-- Match 5 -->
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
                                 <td class="py-3 px-3 font-bold text-slate-400">5</td>
                                 <td class="py-3 px-3 font-semibold text-slate-800 dark:text-slate-200">
@@ -467,7 +468,7 @@
                             Historical Backfill & Performance Log
                         </h3>
                         <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-1">
-                            Verified results per weekly omgång calculated against official Svenska Spel facit.
+                            Verified results per weekly round calculated against official Svenska Spel outcomes.
                         </p>
                     </div>
                 </div>
@@ -476,9 +477,9 @@
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
-                                <th class="py-3 px-4">Omgång</th>
-                                <th class="py-3 px-4">Datum</th>
-                                <th class="py-3 px-4 text-center">Rätt (Hits)</th>
+                                <th class="py-3 px-4">Round</th>
+                                <th class="py-3 px-4">Date</th>
+                                <th class="py-3 px-4 text-center">Correct (Hits)</th>
                                 <th class="py-3 px-4 text-center">Cost</th>
                                 <th class="py-3 px-4 text-center">Payout</th>
                                 <th class="py-3 px-4 text-right">Net Return</th>
@@ -486,11 +487,11 @@
                         </thead>
                         <tbody id="history-log-body" class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
-                                <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Omgång 11</td>
+                                <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Round 11</td>
                                 <td class="py-3 px-4 text-xs text-slate-500">2026-03-21</td>
                                 <td class="py-3 px-4 text-center">
                                     <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-extrabold text-xs">
-                                        12 Rätt
+                                        12 Correct
                                     </span>
                                 </td>
                                 <td class="py-3 px-4 text-center text-slate-500">288 SEK</td>
@@ -498,11 +499,11 @@
                                 <td class="py-3 px-4 text-right font-extrabold text-emerald-600 dark:text-emerald-400">+1,132 SEK</td>
                             </tr>
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
-                                <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Omgång 10</td>
+                                <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Round 10</td>
                                 <td class="py-3 px-4 text-xs text-slate-500">2026-03-14</td>
                                 <td class="py-3 px-4 text-center">
                                     <span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-extrabold text-xs">
-                                        11 Rätt
+                                        11 Correct
                                     </span>
                                 </td>
                                 <td class="py-3 px-4 text-center text-slate-500">288 SEK</td>
@@ -510,11 +511,11 @@
                                 <td class="py-3 px-4 text-right font-bold text-rose-500">-108 SEK</td>
                             </tr>
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
-                                <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Omgång 09</td>
+                                <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Round 9</td>
                                 <td class="py-3 px-4 text-xs text-slate-500">2026-03-07</td>
                                 <td class="py-3 px-4 text-center">
                                     <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-extrabold text-xs">
-                                        13 Rätt
+                                        13 Correct
                                     </span>
                                 </td>
                                 <td class="py-3 px-4 text-center text-slate-500">288 SEK</td>
@@ -543,7 +544,7 @@
         </div>
     </footer>
 
-    <!-- EXTERNA SKRIPT -->
+    <!-- EXTERNAL SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="data/en.js" onerror="console.warn('Data translation JS not found, using fallback defaults.')"></script>
     <script src="js/ui.js" onerror="console.warn('js/ui.js missing')"></script>
@@ -551,15 +552,15 @@
     <script src="js/dashboard.js?v=2" onerror="console.warn('js/dashboard.js missing')"></script>
     <script src="script.js" onerror="console.warn('script.js missing')"></script>
 
-    <!-- MOBILMENY & TEMA LOGIK -->
+    <!-- MOBILE MENU & THEME LOGIC -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialisera Lucide ikoner
+            // Initialize Lucide icons
             if (window.lucide) {
                 lucide.createIcons();
             }
 
-            // Mobilmeny toggling
+            // Mobile menu toggling
             const menuBtn = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
@@ -581,7 +582,7 @@
                 });
             }
 
-            // Tema växling (Dark/Light Mode)
+            // Theme switching (Dark/Light Mode)
             const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
             themeToggleBtns.forEach(btn => {
                 if (btn) {
@@ -593,13 +594,13 @@
                 }
             });
 
-            // Initialisera Chart.js ifall inline fallback krävs
+            // Initialize Chart.js inline fallback
             const ctx = document.getElementById('stryktipset-profit-chart');
             if (ctx && window.Chart) {
                 new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ['Omgång 1', 'Omgång 2', 'Omgång 3', 'Omgång 4', 'Omgång 5', 'Omgång 6', 'Omgång 7', 'Omgång 8', 'Omgång 9', 'Omgång 10', 'Omgång 11'],
+                        labels: ['Round 1', 'Round 2', 'Round 3', 'Round 4', 'Round 5', 'Round 6', 'Round 7', 'Round 8', 'Round 9', 'Round 10', 'Round 11'],
                         datasets: [{
                             label: 'Net Profit (SEK)',
                             data: [-288, -576, 420, 132, -156, 890, 602, 314, 12676, 12568, 13700],
