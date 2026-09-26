@@ -84,9 +84,12 @@
                         <span>Analytics</span>
                         <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
                     </button>
-                    <div class="absolute left-0 top-full hidden group-hover:block w-48 bg-white dark:bg-slate-900 shadow-xl rounded-xl border border-slate-200 dark:border-slate-800 py-2 z-50">
+                    <div class="absolute left-0 top-full hidden group-hover:block w-56 bg-white dark:bg-slate-900 shadow-xl rounded-xl border border-slate-200 dark:border-slate-800 py-2 z-50">
+                        <a href="stryktipset.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition text-sm flex items-center gap-2">
+                            <i data-lucide="trophy" class="w-4 h-4 text-blue-500"></i> Stryktipset Optimization
+                        </a>
                         <a href="football-analytics.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition text-sm flex items-center gap-2">
-                            <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i> Football Analytics
+                            <i data-lucide="activity" class="w-4 h-4 text-cyan-500"></i> Football Analytics
                         </a>
                         <a href="stock-analytics.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition text-sm flex items-center gap-2">
                             <i data-lucide="line-chart" class="w-4 h-4 text-emerald-500"></i> Financial Analytics
@@ -134,8 +137,11 @@
         
         <div class="space-y-1 pl-3 border-l-2 border-slate-200 dark:border-slate-800 my-1">
             <span class="block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Analytics</span>
+            <a href="stryktipset.html" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition text-sm flex items-center gap-2">
+                <i data-lucide="trophy" class="w-4 h-4 text-blue-500"></i> Stryktipset Optimization
+            </a>
             <a href="football-analytics.html" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition text-sm flex items-center gap-2">
-                <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i> Football Analytics
+                <i data-lucide="activity" class="w-4 h-4 text-cyan-500"></i> Football Analytics
             </a>
             <a href="stock-analytics.html" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition text-sm flex items-center gap-2">
                 <i data-lucide="line-chart" class="w-4 h-4 text-emerald-500"></i> Financial Analytics
@@ -201,10 +207,42 @@
             </div>
         </section>
 
+        <!-- Framhävd Analytics & Quantitative Modeling-sektion på startsidan -->
+        <section id="featured-analytics" class="fade-in delay-150">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="cpu" class="w-6 h-6 text-blue-600" aria-hidden="true"></i> Featured Project
+                </h3>
+                <a href="stryktipset.html" class="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 font-semibold">
+                    View Live Dashboard <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-xl relative overflow-hidden group hover:border-blue-500/50 transition duration-300">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div class="space-y-3 max-w-xl">
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                                Kalman Filtering & EV Optimization
+                            </span>
+                            <span class="text-xs text-slate-400">Autonomous Pipeline</span>
+                        </div>
+                        <h4 class="text-2xl font-bold">Stryktipset Optimization Engine</h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            A quantitative model that estimates team attack/defense ratings dynamically using Kalman filtering. Evaluates 1.5M+ row combinations with Poisson goal distributions and Expected Value (EV) calculation to generate an optimal 288-row portfolio.
+                        </p>
+                    </div>
+                    <a href="stryktipset.html" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-2xl font-semibold text-sm transition shadow-lg shadow-blue-600/30 flex items-center gap-2 shrink-0">
+                        Explore Model <i data-lucide="activity" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="skills" class="grid md:grid-cols-3 gap-12 items-start fade-in delay-200">
             <div class="md:col-span-1">
                 <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
-                    <i data-lucide="cpu" class="w-6 h-6 text-blue-600" aria-hidden="true"></i> Skills
+                    <i data-lucide="code" class="w-6 h-6 text-blue-600" aria-hidden="true"></i> Skills
                 </h3>
             </div>
             <div class="md:col-span-2">
@@ -281,13 +319,13 @@
         function handleWelcomeModal() {
             const rawHash = window.location.hash.substring(1);
             const navIds = ['about', 'skills', 'experience', 'education', 'contact'];
-    
+            
             if (rawHash && !navIds.includes(rawHash)) {
                 const clientID = decodeURIComponent(rawHash);
                 const modal = document.getElementById('welcome-modal');
                 const nameSpan = document.getElementById('welcome-name');
                 const pwdSpan = document.getElementById('pdf-pwd');
-        
+                
                 if (modal && nameSpan && pwdSpan) {
                     nameSpan.innerText = clientID;
                     
@@ -324,7 +362,7 @@
             if (yearSpan) yearSpan.innerText = new Date().getFullYear();
 
             handleWelcomeModal();
-    
+            
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
