@@ -1,22 +1,13 @@
 {
-  "updated_at": "2026-09-26 15:58",
+  "updated_at": "2026-09-26 20:45",
   "summary": {
     "current_bankroll": 11391.92,
     "profit_sek": 1391.92,
     "profit_pct": 13.92,
     "next_matchday": "2026-09-26",
-    "last_sync": "2026-09-26 15:58"
+    "last_sync": "2026-09-26 20:45"
   },
   "latest_bets": [
-    {
-      "date": "2026-09-27",
-      "match": "austin fc vs san diego fc",
-      "prediction": "Away",
-      "odds": 2.55,
-      "stake": 44.28,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.57)"
-    },
     {
       "date": "2026-09-27",
       "match": "dallas vs lafc",
@@ -97,6 +88,15 @@
       "stake": 1.37,
       "status": "Placerat",
       "reasoning": "Kalman AI EV-spel (Prob: 0.25)"
+    },
+    {
+      "date": "2026-09-27",
+      "match": "nashville vs toronto",
+      "prediction": "Away",
+      "odds": 5.8,
+      "stake": 3.01,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.19)"
     }
   ],
   "history": [
