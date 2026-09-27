@@ -551,18 +551,23 @@
     <script src="data/en.js" onerror="console.warn('Data translation JS not found, using fallback defaults.')"></script>
     <script src="js/ui.js" onerror="console.warn('js/ui.js missing')"></script>
     <script src="js/charts.js" onerror="console.warn('js/charts.js missing')"></script>
-    <script src="js/dashboard.js?v=2" onerror="console.warn('js/dashboard.js missing')"></script>
+    <script src="js/dashboard.js?v=3" onerror="console.warn('js/dashboard.js missing')"></script>
     <script src="script.js" onerror="console.warn('script.js missing')"></script>
 
-    <!-- MOBILE MENU & THEME LOGIC -->
+    <!-- MOBILE MENU, THEME & DASHBOARD LOGIC -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Lucide icons
+            // 1. Ladda dynamisk data från data/latest.json via dashboard.js
+            if (typeof loadStryktipsetDashboard === 'function') {
+                loadStryktipsetDashboard();
+            }
+
+            // 2. Initialize Lucide icons
             if (window.lucide) {
                 lucide.createIcons();
             }
 
-            // Mobile menu toggle (säkerhetskopierad mot saknade element)
+            // 3. Mobile menu toggle
             const menuBtn = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
@@ -577,12 +582,11 @@
                     if (menuIcon) menuIcon.classList.toggle('hidden', isOpen);
                     if (closeIcon) closeIcon.classList.toggle('hidden', !isOpen);
                     
-                    // Tillgänglighet
                     menuBtn.setAttribute('aria-expanded', isOpen);
                 });
             }
 
-            // Theme switching (Dark/Light Mode)
+            // 4. Theme switching (Dark/Light Mode)
             const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
             themeToggleBtns.forEach(btn => {
                 if (btn) {
@@ -593,44 +597,6 @@
                     });
                 }
             });
-
-            // Initialize Chart.js inline fallback
-            const ctx = document.getElementById('stryktipset-profit-chart');
-            if (ctx && window.Chart) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Round 1', 'Round 2', 'Round 3', 'Round 4', 'Round 5', 'Round 6', 'Round 7', 'Round 8', 'Round 9', 'Round 10', 'Round 11'],
-                        datasets: [{
-                            label: 'Net Profit (SEK)',
-                            data: [-288, -576, 420, 132, -156, 890, 602, 314, 12676, 12568, 13700],
-                            borderColor: '#2563eb',
-                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.3,
-                            pointRadius: 4,
-                            pointHoverRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false }
-                        },
-                        scales: {
-                            x: { grid: { display: false } },
-                            y: { 
-                                grid: { color: 'rgba(148, 163, 184, 0.1)' },
-                                ticks: {
-                                    callback: function(value) { return value + ' SEK'; }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
         });
     </script>
 </body>
