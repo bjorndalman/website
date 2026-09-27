@@ -290,16 +290,17 @@
                 </div>
 
                 <!-- MATCHES TABLE -->
-                <div class="overflow-x-auto">
+               <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
-                                <th class="py-3 px-3">#</th>
-                                <th class="py-3 px-3">Match</th>
-                                <th class="py-3 px-3 text-center">Kalman Prob (1-X-2)</th>
-                                <th class="py-3 px-3 text-center">SVS Distribution</th>
-                                <th class="py-3 px-3 text-center">Value Edge</th>
-                                <th class="py-3 px-3 text-right">Rec. Mark</th>
+                                <!-- ÄNDRA HÄR: Lägg till scope="col" på varje th -->
+                                <th scope="col" class="py-3 px-3">#</th>
+                                <th scope="col" class="py-3 px-3">Match</th>
+                                <th scope="col" class="py-3 px-3 text-center">Kalman Prob (1-X-2)</th>
+                                <th scope="col" class="py-3 px-3 text-center">SVS Distribution</th>
+                                <th scope="col" class="py-3 px-3 text-center">Value Edge</th>
+                                <th scope="col" class="py-3 px-3 text-right">Rec. Mark</th>
                             </tr>
                         </thead>
                         <tbody id="coupon-matches-body" class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
@@ -477,12 +478,13 @@
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
-                                <th class="py-3 px-4">Round</th>
-                                <th class="py-3 px-4">Date</th>
-                                <th class="py-3 px-4 text-center">Correct (Hits)</th>
-                                <th class="py-3 px-4 text-center">Cost</th>
-                                <th class="py-3 px-4 text-center">Payout</th>
-                                <th class="py-3 px-4 text-right">Net Return</th>
+                                <!-- ÄNDRA HÄR: Lägg till scope="col" även här -->
+                                <th scope="col" class="py-3 px-4">Round</th>
+                                <th scope="col" class="py-3 px-4">Date</th>
+                                <th scope="col" class="py-3 px-4 text-center">Correct (Hits)</th>
+                                <th scope="col" class="py-3 px-4 text-center">Cost</th>
+                                <th scope="col" class="py-3 px-4 text-center">Payout</th>
+                                <th scope="col" class="py-3 px-4 text-right">Net Return</th>
                             </tr>
                         </thead>
                         <tbody id="history-log-body" class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
@@ -560,7 +562,7 @@
                 lucide.createIcons();
             }
 
-            // Mobile menu toggling
+            // Mobile menu toggle (säkerhetskopierad mot saknade element)
             const menuBtn = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
@@ -570,15 +572,13 @@
                 let isOpen = false;
                 menuBtn.addEventListener('click', () => {
                     isOpen = !isOpen;
-                    if (isOpen) {
-                        mobileMenu.style.height = mobileMenu.scrollHeight + 'px';
-                        menuIcon.classList.add('hidden');
-                        closeIcon.classList.remove('hidden');
-                    } else {
-                        mobileMenu.style.height = '0px';
-                        menuIcon.classList.remove('hidden');
-                        closeIcon.classList.add('hidden');
-                    }
+                    mobileMenu.style.height = isOpen ? `${mobileMenu.scrollHeight}px` : '0px';
+                    
+                    if (menuIcon) menuIcon.classList.toggle('hidden', isOpen);
+                    if (closeIcon) closeIcon.classList.toggle('hidden', !isOpen);
+                    
+                    // Tillgänglighet
+                    menuBtn.setAttribute('aria-expanded', isOpen);
                 });
             }
 
