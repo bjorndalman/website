@@ -486,15 +486,6 @@
     "max_rights": 7
   },
   {
-    "draw_number": 4969,
-    "date": "Okänt datu",
-    "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -15840.0,
-    "max_rights": 6
-  },
-  {
     "draw_number": 4970,
     "date": "Okänt datu",
     "cost_sek": 288.0,
@@ -511,5 +502,26 @@
     "net_profit_sek": -288.0,
     "cum_net_profit_sek": -16416.0,
     "max_rights": 8
+  },
+  {
+    "draw_number": 4969,
+    "total_rows": 288,
+    "cost_sek": 288.0,
+    "winnings_sek": 0.0,
+    "net_profit_sek": -288.0,
+    "cum_net_profit_sek": -16704.0,
+    "row_results": {
+      "13": 0,
+      "12": 0,
+      "11": 0,
+      "10": 0,
+      "below_10": 288
+    },
+    "payouts_per_right": {
+      "13": 0.0,
+      "12": 0.0,
+      "11": 0.0,
+      "10": 0.0
+    }
   }
 ]
