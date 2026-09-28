@@ -330,87 +330,132 @@ async function loadKalmanRankings() {
     }
 }
 
-// NY: Funktion för att ladda dynamisk Stryktipset-data till stryktipset.html
+// Hjälpfunktion för att parsa CSV i JS
+function parseCSV(text) {
+    const lines = text.trim().split(/\r?\n/);
+    if (lines.length < 2) return [];
+    
+    const headers = lines[0].split(',').map(h => h.trim());
+    const data = [];
+    
+    for (let i = 1; i < lines.length; i++) {
+        if (!lines[i].trim()) continue;
+        const values = lines[i].split(',').map(v => v.trim());
+        const row = {};
+        headers.forEach((header, idx) => {
+            row[header] = values[idx] !== undefined ? values[idx] : '';
+        });
+        data.push(row);
+    }
+    return data;
+}
+
+// Uppdaterad Stryktipset-funktion som läser stryktipset_history.csv direkt
 async function loadStryktipsetDashboard() {
-    const couponBody = document.getElementById('coupon-matches-body');
-    const historyBody = document.getElementById('history-log-body');
+    const historyBody = document.getElementById('history-log-body') || document.getElementById('stryktipset-history-body');
     const pathPrefix = getPathPrefix();
 
-    if (!couponBody && !historyBody) return;
-
     try {
-        const response = await fetch(`${pathPrefix}data/latest.json?t=${Date.now()}`, { cache: 'no-store' });
-        if (!response.ok) throw new Error('Kunde inte ladda data/latest.json');
+        const response = await fetch(`${pathPrefix}data/stryktipset_history.csv?t=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) throw new Error("Kunde inte hämta data/stryktipset_history.csv");
         
-        const data = await response.json();
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+        if (!rows || rows.length === 0) return;
 
-        // 1. Omgång & KPIer
-        if (data.round_id) {
-            const omgangEl = document.getElementById('stryktipset-omgang');
-            if (omgangEl) omgangEl.innerText = `Omgång ${data.round_id}`;
-        }
-        
-        if (data.metrics) {
-            const profitEl = document.getElementById('stryktipset-profit');
-            if (profitEl && data.metrics.net_profit !== undefined) {
-                profitEl.innerText = `${data.metrics.net_profit >= 0 ? '+' : ''}${data.metrics.net_profit.toLocaleString('sv-SE')} SEK`;
-                profitEl.className = "text-2xl md:text-3xl font-extrabold " + (data.metrics.net_profit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-500");
-            }
-            const roiEl = document.getElementById('stryktipset-roi');
-            if (roiEl && data.metrics.roi !== undefined) {
-                roiEl.innerText = `${data.metrics.roi >= 0 ? '+' : ''}${data.metrics.roi}%`;
-            }
-            const hitsEl = document.getElementById('stryktipset-13-hits');
-            if (hitsEl && data.metrics.hits_13 !== undefined) {
-                hitsEl.innerText = `${data.metrics.hits_13} Omgångar`;
-            }
-            const winRateEl = document.getElementById('stryktipset-win-rate');
-            if (winRateEl && data.metrics.win_rate !== undefined) {
-                winRateEl.innerText = `${data.metrics.win_rate}%`;
-            }
-        }
+        // Schablonutbetalningar per vinstmängd om exakta belopp saknas
+        const PAYOUT_MAP = { 13: 200000, 12: 5800, 11: 520, 10: 85 };
 
-        // 2. Aktuella matcher
-        if (couponBody && data.matches && data.matches.length > 0) {
-            couponBody.innerHTML = '';
-            data.matches.forEach((m, index) => {
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/40 transition';
-                tr.innerHTML = `
-                    <td class="py-3 px-3 font-bold text-slate-400">${index + 1}</td>
-                    <td class="py-3 px-3 font-semibold text-slate-800 dark:text-slate-200">${m.home} - ${m.away}</td>
-                    <td class="py-3 px-3 text-center font-mono text-xs">
-                        <span class="text-blue-600 dark:text-blue-400 font-bold">${(m.p1 * 100).toFixed(0)}%</span> - 
-                        <span class="text-slate-500">${(m.pX * 100).toFixed(0)}%</span> - 
-                        <span class="text-slate-500">${(m.p2 * 100).toFixed(0)}%</span>
-                    </td>
-                    <td class="py-3 px-3 text-center font-mono text-xs text-slate-500">
-                        ${(m.svs_1 * 100).toFixed(0)}% - ${(m.svs_x * 100).toFixed(0)}% - ${(m.svs_2 * 100).toFixed(0)}%
-                    </td>
-                    <td class="py-3 px-3 text-center">
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-semibold">
-                            ${m.edge_text || 'Value'}
-                        </span>
-                    </td>
-                    <td class="py-3 px-3 text-right font-bold text-blue-600 dark:text-blue-400">${m.rec_mark || '1 X'}</td>
-                `;
-                couponBody.appendChild(tr);
+        let totalCost = 0;
+        let totalPayout = 0;
+        let hits13Count = 0;
+        let winningRoundsCount = 0;
+
+        const historyList = [];
+
+        rows.forEach(r => {
+            const omgang = parseInt(r['Omgång'] || r['omgang'] || 0, 10);
+            if (!omgang) return;
+
+            const rader = parseInt(r['Antal Rader'] || 288, 10);
+            const insatsRaw = parseFloat(r['Insats (kr)']);
+            const cost = isNaN(insatsRaw) || insatsRaw === 0 ? rader * 1.0 : insatsRaw;
+
+            const best = parseInt(r['Bästa Rad'] || 0, 10);
+            const a13 = parseInt(r['Antal 13'] || 0, 10);
+            const a12 = parseInt(r['Antal 12'] || 0, 10);
+            const a11 = parseInt(r['Antal 11'] || 0, 10);
+            const a10 = parseInt(r['Antal 10'] || 0, 10);
+            const facit = r['Facit'] || '';
+
+            const payout = (a13 * PAYOUT_MAP[13]) + (a12 * PAYOUT_MAP[12]) + (a11 * PAYOUT_MAP[11]) + (a10 * PAYOUT_MAP[10]);
+            const net = payout - cost;
+
+            totalCost += cost;
+            totalPayout += payout;
+            
+            if (best === 13 || a13 > 0) hits13Count++;
+            if (payout > 0) winningRoundsCount++;
+
+            let datum = r['Datum'] || '';
+            if (!datum || datum.includes('Okänt')) {
+                datum = `Omgång ${omgang}`;
+            }
+
+            historyList.push({
+                omgang,
+                datum,
+                cost,
+                payout,
+                net,
+                best,
+                facit
             });
+        });
+
+        const netProfit = totalPayout - totalCost;
+        const roi = totalCost > 0 ? ((totalPayout / totalCost) * 100) - 100 : 0;
+        const winRate = historyList.length > 0 ? (winningRoundsCount / historyList.length) * 100 : 0;
+        const latestRound = historyList.length > 0 ? historyList[0].omgang : '-';
+
+        // Uppdatera KPIer
+        const omgangEl = document.getElementById('stryktipset-omgang');
+        if (omgangEl) omgangEl.innerText = `Omgång ${latestRound}`;
+
+        const profitEl = document.getElementById('stryktipset-profit');
+        if (profitEl) {
+            profitEl.innerText = `${netProfit >= 0 ? '+' : ''}${netProfit.toLocaleString('sv-SE')} SEK`;
+            profitEl.className = "text-2xl md:text-3xl font-extrabold " + (netProfit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400");
         }
 
-        // 3. Historik & Graf
-        if (historyBody && data.history && data.history.length > 0) {
+        const roiEl = document.getElementById('stryktipset-roi');
+        if (roiEl) {
+            roiEl.innerText = `${roi >= 0 ? '+' : ''}${roi.toFixed(1)}%`;
+        }
+
+        const hitsEl = document.getElementById('stryktipset-13-hits');
+        if (hitsEl) {
+            hitsEl.innerText = `${hits13Count} st`;
+        }
+
+        const winRateEl = document.getElementById('stryktipset-win-rate');
+        if (winRateEl) {
+            winRateEl.innerText = `${winRate.toFixed(1)}%`;
+        }
+
+        // Bygg historiktabellen
+        if (historyBody) {
             historyBody.innerHTML = '';
-            data.history.forEach(h => {
+            historyList.forEach(h => {
                 const tr = document.createElement('tr');
-                tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/40 transition';
-                const netClass = h.net >= 0 ? 'text-emerald-600 dark:text-emerald-400 font-extrabold' : 'text-rose-500 font-bold';
+                tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors";
+                const netClass = h.net >= 0 ? "text-emerald-600 dark:text-emerald-400 font-bold" : "text-rose-500 font-bold";
                 tr.innerHTML = `
-                    <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Omgång ${h.round}</td>
-                    <td class="py-3 px-4 text-xs text-slate-500">${h.date}</td>
+                    <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Omgång ${h.omgang}</td>
+                    <td class="py-3 px-4 text-xs text-slate-500">${h.datum}</td>
                     <td class="py-3 px-4 text-center">
-                        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-extrabold text-xs">
-                            ${h.hits} Rätt
+                        <span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-extrabold text-xs">
+                            ${h.best} Rätt
                         </span>
                     </td>
                     <td class="py-3 px-4 text-center text-slate-500">${h.cost} SEK</td>
@@ -419,47 +464,57 @@ async function loadStryktipsetDashboard() {
                 `;
                 historyBody.appendChild(tr);
             });
+        }
 
-            // Chart.js graf för Stryktipset
-            const ctx = document.getElementById('stryktipset-profit-chart');
-            if (ctx && window.Chart) {
-                const labels = data.history.map(h => `Omgång ${h.round}`);
-                let cumulative = 0;
-                const netData = data.history.map(h => {
-                    cumulative += h.net;
-                    return cumulative;
-                });
+        // Rita vinstdiagrammet
+        const canvas = document.getElementById('stryktipset-profit-chart');
+        if (canvas && window.Chart) {
+            const chronological = [...historyList].reverse();
+            let cumProfit = 0;
+            const labels = chronological.map(item => `Omgång ${item.omgang}`);
+            const dataPoints = chronological.map(item => {
+                cumProfit += item.net;
+                return cumProfit;
+            });
 
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Net Profit (SEK)',
-                            data: netData,
-                            borderColor: '#2563eb',
-                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.3
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            x: { grid: { display: false } },
-                            y: { 
-                                ticks: { callback: function(value) { return value.toLocaleString('sv-SE') + ' SEK'; } }
+            if (window.stryktipsetChartInstance) {
+                window.stryktipsetChartInstance.destroy();
+            }
+
+            window.stryktipsetChartInstance = new Chart(canvas, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ackumulerad Vinst (SEK)',
+                        data: dataPoints,
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 3,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: {
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            ticks: {
+                                callback: function(val) { return val.toLocaleString('sv-SE') + ' SEK'; }
                             }
                         }
                     }
-                });
-            }
+                }
+            });
         }
 
     } catch (err) {
-        console.warn("Kunde inte ladda Stryktipset-data:", err);
+        console.warn("Kunde inte läsa stryktipset_history.csv i frontend:", err);
     }
 }
