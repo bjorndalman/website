@@ -3,9 +3,9 @@
     "draw_number": 4915,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -288.0,
+    "winnings_sek": 455.0,
+    "net_profit_sek": 167.0,
+    "cum_net_profit_sek": 167.0,
     "max_rights": 10
   },
   {
@@ -14,16 +14,16 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -576.0,
-    "max_rights": 8
+    "cum_net_profit_sek": -121.0,
+    "max_rights": 7
   },
   {
     "draw_number": 4917,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -864.0,
+    "winnings_sek": 236.0,
+    "net_profit_sek": -52.0,
+    "cum_net_profit_sek": -173.0,
     "max_rights": 11
   },
   {
@@ -32,17 +32,17 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -1152.0,
+    "cum_net_profit_sek": -461.0,
     "max_rights": 7
   },
   {
     "draw_number": 4919,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -1440.0,
-    "max_rights": 10
+    "winnings_sek": 3286.0,
+    "net_profit_sek": 2998.0,
+    "cum_net_profit_sek": 2537.0,
+    "max_rights": 11
   },
   {
     "draw_number": 4920,
@@ -50,16 +50,16 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -1728.0,
-    "max_rights": 7
+    "cum_net_profit_sek": 2249.0,
+    "max_rights": 8
   },
   {
     "draw_number": 4921,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -2016.0,
+    "winnings_sek": 384.0,
+    "net_profit_sek": 96.0,
+    "cum_net_profit_sek": 2345.0,
     "max_rights": 10
   },
   {
@@ -68,7 +68,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -2304.0,
+    "cum_net_profit_sek": 2057.0,
     "max_rights": 9
   },
   {
@@ -77,16 +77,16 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -2592.0,
+    "cum_net_profit_sek": 1769.0,
     "max_rights": 11
   },
   {
     "draw_number": 4924,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -2880.0,
+    "winnings_sek": 513.0,
+    "net_profit_sek": 225.0,
+    "cum_net_profit_sek": 1994.0,
     "max_rights": 10
   },
   {
@@ -95,7 +95,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -3168.0,
+    "cum_net_profit_sek": 1706.0,
     "max_rights": 9
   },
   {
@@ -104,7 +104,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -3456.0,
+    "cum_net_profit_sek": 1418.0,
     "max_rights": 10
   },
   {
@@ -113,7 +113,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -3744.0,
+    "cum_net_profit_sek": 1130.0,
     "max_rights": 9
   },
   {
@@ -122,7 +122,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -4032.0,
+    "cum_net_profit_sek": 842.0,
     "max_rights": 9
   },
   {
@@ -131,35 +131,35 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -4320.0,
+    "cum_net_profit_sek": 554.0,
     "max_rights": 10
   },
   {
     "draw_number": 4930,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -4608.0,
+    "winnings_sek": 68.0,
+    "net_profit_sek": -220.0,
+    "cum_net_profit_sek": 334.0,
     "max_rights": 11
   },
   {
     "draw_number": 4931,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -4896.0,
-    "max_rights": 11
+    "winnings_sek": 60.0,
+    "net_profit_sek": -228.0,
+    "cum_net_profit_sek": 106.0,
+    "max_rights": 10
   },
   {
     "draw_number": 4932,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -5184.0,
-    "max_rights": 9
+    "winnings_sek": 18.0,
+    "net_profit_sek": -270.0,
+    "cum_net_profit_sek": -164.0,
+    "max_rights": 10
   },
   {
     "draw_number": 4933,
@@ -167,8 +167,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -5472.0,
-    "max_rights": 8
+    "cum_net_profit_sek": -452.0,
+    "max_rights": 7
   },
   {
     "draw_number": 4934,
@@ -176,7 +176,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -5760.0,
+    "cum_net_profit_sek": -740.0,
     "max_rights": 7
   },
   {
@@ -185,7 +185,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -6048.0,
+    "cum_net_profit_sek": -1028.0,
     "max_rights": 8
   },
   {
@@ -194,8 +194,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -6336.0,
-    "max_rights": 8
+    "cum_net_profit_sek": -1316.0,
+    "max_rights": 9
   },
   {
     "draw_number": 4937,
@@ -203,8 +203,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -6624.0,
-    "max_rights": 10
+    "cum_net_profit_sek": -1604.0,
+    "max_rights": 9
   },
   {
     "draw_number": 4938,
@@ -212,7 +212,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -6912.0,
+    "cum_net_profit_sek": -1892.0,
     "max_rights": 8
   },
   {
@@ -221,7 +221,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -7200.0,
+    "cum_net_profit_sek": -2180.0,
     "max_rights": 7
   },
   {
@@ -230,8 +230,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -7488.0,
-    "max_rights": 7
+    "cum_net_profit_sek": -2468.0,
+    "max_rights": 8
   },
   {
     "draw_number": 4941,
@@ -239,7 +239,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -7776.0,
+    "cum_net_profit_sek": -2756.0,
     "max_rights": 9
   },
   {
@@ -248,7 +248,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -8064.0,
+    "cum_net_profit_sek": -3044.0,
     "max_rights": 8
   },
   {
@@ -257,7 +257,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -8352.0,
+    "cum_net_profit_sek": -3332.0,
     "max_rights": 8
   },
   {
@@ -266,8 +266,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -8640.0,
-    "max_rights": 8
+    "cum_net_profit_sek": -3620.0,
+    "max_rights": 9
   },
   {
     "draw_number": 4945,
@@ -275,16 +275,16 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -8928.0,
+    "cum_net_profit_sek": -3908.0,
     "max_rights": 8
   },
   {
     "draw_number": 4946,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -9216.0,
+    "winnings_sek": 64.0,
+    "net_profit_sek": -224.0,
+    "cum_net_profit_sek": -4132.0,
     "max_rights": 11
   },
   {
@@ -293,7 +293,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -9504.0,
+    "cum_net_profit_sek": -4420.0,
     "max_rights": 8
   },
   {
@@ -302,8 +302,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -9792.0,
-    "max_rights": 9
+    "cum_net_profit_sek": -4708.0,
+    "max_rights": 8
   },
   {
     "draw_number": 4949,
@@ -311,7 +311,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -10080.0,
+    "cum_net_profit_sek": -4996.0,
     "max_rights": 5
   },
   {
@@ -320,7 +320,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -10368.0,
+    "cum_net_profit_sek": -5284.0,
     "max_rights": 9
   },
   {
@@ -329,7 +329,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -10656.0,
+    "cum_net_profit_sek": -5572.0,
     "max_rights": 7
   },
   {
@@ -338,7 +338,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -10944.0,
+    "cum_net_profit_sek": -5860.0,
     "max_rights": 7
   },
   {
@@ -347,7 +347,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -11232.0,
+    "cum_net_profit_sek": -6148.0,
     "max_rights": 8
   },
   {
@@ -356,16 +356,16 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -11520.0,
-    "max_rights": 8
+    "cum_net_profit_sek": -6436.0,
+    "max_rights": 7
   },
   {
     "draw_number": 4955,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -11808.0,
+    "winnings_sek": 32.0,
+    "net_profit_sek": -256.0,
+    "cum_net_profit_sek": -6692.0,
     "max_rights": 10
   },
   {
@@ -374,7 +374,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -12096.0,
+    "cum_net_profit_sek": -6980.0,
     "max_rights": 8
   },
   {
@@ -383,7 +383,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -12384.0,
+    "cum_net_profit_sek": -7268.0,
     "max_rights": 6
   },
   {
@@ -392,7 +392,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -12672.0,
+    "cum_net_profit_sek": -7556.0,
     "max_rights": 8
   },
   {
@@ -401,7 +401,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -12960.0,
+    "cum_net_profit_sek": -7844.0,
     "max_rights": 8
   },
   {
@@ -410,16 +410,16 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -13248.0,
+    "cum_net_profit_sek": -8132.0,
     "max_rights": 9
   },
   {
     "draw_number": 4961,
     "date": "Okänt datu",
     "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -13536.0,
+    "winnings_sek": 16.0,
+    "net_profit_sek": -272.0,
+    "cum_net_profit_sek": -8404.0,
     "max_rights": 11
   },
   {
@@ -428,7 +428,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -13824.0,
+    "cum_net_profit_sek": -8692.0,
     "max_rights": 7
   },
   {
@@ -437,8 +437,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -14112.0,
-    "max_rights": 7
+    "cum_net_profit_sek": -8980.0,
+    "max_rights": 6
   },
   {
     "draw_number": 4964,
@@ -446,8 +446,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -14400.0,
-    "max_rights": 9
+    "cum_net_profit_sek": -9268.0,
+    "max_rights": 10
   },
   {
     "draw_number": 4965,
@@ -455,7 +455,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -14688.0,
+    "cum_net_profit_sek": -9556.0,
     "max_rights": 8
   },
   {
@@ -464,8 +464,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -14976.0,
-    "max_rights": 7
+    "cum_net_profit_sek": -9844.0,
+    "max_rights": 8
   },
   {
     "draw_number": 4967,
@@ -473,8 +473,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -15264.0,
-    "max_rights": 8
+    "cum_net_profit_sek": -10132.0,
+    "max_rights": 9
   },
   {
     "draw_number": 4968,
@@ -482,7 +482,16 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -15552.0,
+    "cum_net_profit_sek": -10420.0,
+    "max_rights": 7
+  },
+  {
+    "draw_number": 4969,
+    "date": "Okänt datu",
+    "cost_sek": 288.0,
+    "winnings_sek": 0.0,
+    "net_profit_sek": -288.0,
+    "cum_net_profit_sek": -10708.0,
     "max_rights": 7
   },
   {
@@ -491,8 +500,8 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -16128.0,
-    "max_rights": 8
+    "cum_net_profit_sek": -10996.0,
+    "max_rights": 7
   },
   {
     "draw_number": 4971,
@@ -500,28 +509,7 @@
     "cost_sek": 288.0,
     "winnings_sek": 0.0,
     "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -16416.0,
-    "max_rights": 8
-  },
-  {
-    "draw_number": 4969,
-    "total_rows": 288,
-    "cost_sek": 288.0,
-    "winnings_sek": 0.0,
-    "net_profit_sek": -288.0,
-    "cum_net_profit_sek": -16704.0,
-    "row_results": {
-      "13": 0,
-      "12": 0,
-      "11": 0,
-      "10": 0,
-      "below_10": 288
-    },
-    "payouts_per_right": {
-      "13": 0.0,
-      "12": 0.0,
-      "11": 0.0,
-      "10": 0.0
-    }
+    "cum_net_profit_sek": -11284.0,
+    "max_rights": 9
   }
 ]
