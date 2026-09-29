@@ -466,16 +466,15 @@ async function loadStryktipsetDashboard() {
             });
         }
 
-        // Rita vinstdiagrammet
+       // Rita diagrammet för Antal Rätt per omgång
         const canvas = document.getElementById('stryktipset-profit-chart');
         if (canvas && window.Chart) {
             const chronological = [...historyList].reverse();
-            let cumProfit = 0;
             const labels = chronological.map(item => `Omgång ${item.omgang}`);
-            const dataPoints = chronological.map(item => {
-                cumProfit += item.net;
-                return cumProfit;
-            });
+            const dataPoints = chronological.map(item => item.best); // Hämtar antal rätt per omgång
+
+            // Gröna punkter vid vinst (>= 10 rätt), blå annars
+            const pointColors = chronological.map(item => item.best >= 10 ? '#10b981' : '#2563eb');
 
             if (window.stryktipsetChartInstance) {
                 window.stryktipsetChartInstance.destroy();
@@ -486,15 +485,16 @@ async function loadStryktipsetDashboard() {
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Ackumulerad Vinst (SEK)',
+                        label: 'Antal Rätt',
                         data: dataPoints,
                         borderColor: '#2563eb',
                         backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        pointBackgroundColor: pointColors,
                         borderWidth: 3,
                         fill: true,
                         tension: 0.3,
-                        pointRadius: 3,
-                        pointHoverRadius: 6
+                        pointRadius: 5,
+                        pointHoverRadius: 7
                     }]
                 },
                 options: {
@@ -504,9 +504,12 @@ async function loadStryktipsetDashboard() {
                     scales: {
                         x: { grid: { display: false } },
                         y: {
+                            min: 0,
+                            max: 13,
                             grid: { color: 'rgba(148, 163, 184, 0.1)' },
                             ticks: {
-                                callback: function(val) { return val.toLocaleString('sv-SE') + ' SEK'; }
+                                stepSize: 1,
+                                callback: function(val) { return val + ' rätt'; }
                             }
                         }
                     }
