@@ -350,7 +350,7 @@ function parseCSV(text) {
     return data;
 }
 
-// Uppdaterad Stryktipset-funktion med Champion vs. Challenger-stöd
+// Uppdaterad Stryktipset-funktion med Champion vs. Challenger-stöd samt filtrering av tomma rader
 async function loadStryktipsetDashboard() {
     const historyBody = document.getElementById('history-log-body') || document.getElementById('stryktipset-history-body');
     const pathPrefix = getPathPrefix();
@@ -365,8 +365,9 @@ async function loadStryktipsetDashboard() {
         const champText = resChamp.ok ? await resChamp.text() : '';
         const challText = resChall.ok ? await resChall.text() : '';
 
-        const champRows = parseCSV(champText);
-        const challRows = parseCSV(challText);
+        // Filtrera bort ej spelade omgångar (där Antal Rader är 0 eller saknas) direkt vid parsning
+        const champRows = parseCSV(champText).filter(r => parseInt(r['Antal Rader'] || 0, 10) > 0);
+        const challRows = parseCSV(challText).filter(r => parseInt(r['Antal Rader'] || 0, 10) > 0);
 
         // Använd Challenger-rader i första hand för KPIer & tabell (faller tillbaka på Champion om Challenger är tom)
         const activeRows = challRows.length > 0 ? challRows : champRows;
@@ -478,7 +479,7 @@ async function loadStryktipsetDashboard() {
         // Rita diagrammet med DUBBLA LINJER (Champion + Challenger)
         const canvas = document.getElementById('stryktipset-profit-chart');
         if (canvas && window.Chart) {
-            // Mappa omgång till antal rätt
+            // Mappa omgång till antal rätt (endast giltiga rader)
             const champMap = new Map(champRows.map(r => [parseInt(r['Omgång'] || 0, 10), parseInt(r['Bästa Rad'] || 0, 10)]));
             const challMap = new Map(challRows.map(r => [parseInt(r['Omgång'] || 0, 10), parseInt(r['Bästa Rad'] || 0, 10)]));
 
@@ -504,7 +505,7 @@ async function loadStryktipsetDashboard() {
                         {
                             label: '🏆 Champion (Rekord)',
                             data: champData,
-                            borderColor: '#f59e0b', // Solid Guld/Bärnsten
+                            borderColor: '#f59e0b',
                             backgroundColor: 'rgba(245, 158, 11, 0.05)',
                             borderWidth: 3,
                             pointBackgroundColor: '#f59e0b',
@@ -515,10 +516,10 @@ async function loadStryktipsetDashboard() {
                         {
                             label: '🚀 Challenger (Aktiv modell)',
                             data: challData,
-                            borderColor: '#2563eb', // Blå
+                            borderColor: '#2563eb',
                             backgroundColor: 'rgba(37, 99, 235, 0.1)',
                             borderWidth: 2,
-                            borderDash: [5, 5], // Streckad linje för utmanaren
+                            borderDash: [5, 5],
                             pointBackgroundColor: '#2563eb',
                             fill: false,
                             tension: 0.2,
