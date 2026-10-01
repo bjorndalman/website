@@ -350,18 +350,27 @@ function parseCSV(text) {
     return data;
 }
 
-// Uppdaterad Stryktipset-funktion som läser stryktipset_history.csv direkt
+// Uppdaterad Stryktipset-funktion med Champion vs. Challenger-stöd
 async function loadStryktipsetDashboard() {
     const historyBody = document.getElementById('history-log-body') || document.getElementById('stryktipset-history-body');
     const pathPrefix = getPathPrefix();
 
     try {
-        const response = await fetch(`${pathPrefix}data/stryktipset_history.csv?t=${Date.now()}`, { cache: 'no-store' });
-        if (!response.ok) throw new Error("Kunde inte hämta data/stryktipset_history.csv");
-        
-        const csvText = await response.text();
-        const rows = parseCSV(csvText);
-        if (!rows || rows.length === 0) return;
+        // 1. Hämta BÅDE Champion och Challenger CSV-filerna parallellt
+        const [resChamp, resChall] = await Promise.all([
+            fetch(`${pathPrefix}data/stryktipset_history_champion.csv?t=${Date.now()}`, { cache: 'no-store' }),
+            fetch(`${pathPrefix}data/stryktipset_history_challenger.csv?t=${Date.now()}`, { cache: 'no-store' })
+        ]);
+
+        const champText = resChamp.ok ? await resChamp.text() : '';
+        const challText = resChall.ok ? await resChall.text() : '';
+
+        const champRows = parseCSV(champText);
+        const challRows = parseCSV(challText);
+
+        // Använd Challenger-rader i första hand för KPIer & tabell (faller tillbaka på Champion om Challenger är tom)
+        const activeRows = challRows.length > 0 ? challRows : champRows;
+        if (!activeRows || activeRows.length === 0) return;
 
         // Schablonutbetalningar per vinstmängd om exakta belopp saknas
         const PAYOUT_MAP = { 13: 200000, 12: 5800, 11: 520, 10: 85 };
@@ -373,7 +382,7 @@ async function loadStryktipsetDashboard() {
 
         const historyList = [];
 
-        rows.forEach(r => {
+        activeRows.forEach(r => {
             const omgang = parseInt(r['Omgång'] || r['omgang'] || 0, 10);
             if (!omgang) return;
 
@@ -418,7 +427,7 @@ async function loadStryktipsetDashboard() {
         const winRate = historyList.length > 0 ? (winningRoundsCount / historyList.length) * 100 : 0;
         const latestRound = historyList.length > 0 ? historyList[0].omgang : '-';
 
-        // Uppdatera KPIer
+        // Uppdatera KPI-kort
         const omgangEl = document.getElementById('stryktipset-omgang');
         if (omgangEl) omgangEl.innerText = `Omgång ${latestRound}`;
 
@@ -443,7 +452,7 @@ async function loadStryktipsetDashboard() {
             winRateEl.innerText = `${winRate.toFixed(1)}%`;
         }
 
-        // Bygg historiktabellen
+        // Bygg historiktabellen för den aktiva modellen
         if (historyBody) {
             historyBody.innerHTML = '';
             historyList.forEach(h => {
@@ -466,15 +475,22 @@ async function loadStryktipsetDashboard() {
             });
         }
 
-       // Rita diagrammet för Antal Rätt per omgång
+        // Rita diagrammet med DUBBLA LINJER (Champion + Challenger)
         const canvas = document.getElementById('stryktipset-profit-chart');
         if (canvas && window.Chart) {
-            const chronological = [...historyList].reverse();
-            const labels = chronological.map(item => `Omgång ${item.omgang}`);
-            const dataPoints = chronological.map(item => item.best); // Hämtar antal rätt per omgång
+            // Mappa omgång till antal rätt
+            const champMap = new Map(champRows.map(r => [parseInt(r['Omgång'] || 0, 10), parseInt(r['Bästa Rad'] || 0, 10)]));
+            const challMap = new Map(challRows.map(r => [parseInt(r['Omgång'] || 0, 10), parseInt(r['Bästa Rad'] || 0, 10)]));
 
-            // Gröna punkter vid vinst (>= 10 rätt), blå annars
-            const pointColors = chronological.map(item => item.best >= 10 ? '#10b981' : '#2563eb');
+            // Samla alla unika omgångar i kronologisk ordning
+            const allOmgangar = Array.from(new Set([
+                ...Array.from(champMap.keys()),
+                ...Array.from(challMap.keys())
+            ])).filter(o => o > 0).sort((a, b) => a - b);
+
+            const labels = allOmgangar.map(o => `Omgång ${o}`);
+            const champData = allOmgangar.map(o => champMap.get(o) ?? null);
+            const challData = allOmgangar.map(o => challMap.get(o) ?? null);
 
             if (window.stryktipsetChartInstance) {
                 window.stryktipsetChartInstance.destroy();
@@ -484,23 +500,45 @@ async function loadStryktipsetDashboard() {
                 type: 'line',
                 data: {
                     labels: labels,
-                    datasets: [{
-                        label: 'Antal Rätt',
-                        data: dataPoints,
-                        borderColor: '#2563eb',
-                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                        pointBackgroundColor: pointColors,
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 5,
-                        pointHoverRadius: 7
-                    }]
+                    datasets: [
+                        {
+                            label: '🏆 Champion (Rekord)',
+                            data: champData,
+                            borderColor: '#f59e0b', // Solid Guld/Bärnsten
+                            backgroundColor: 'rgba(245, 158, 11, 0.05)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#f59e0b',
+                            fill: false,
+                            tension: 0.2,
+                            pointRadius: 4
+                        },
+                        {
+                            label: '🚀 Challenger (Aktiv modell)',
+                            data: challData,
+                            borderColor: '#2563eb', // Blå
+                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                            borderWidth: 2,
+                            borderDash: [5, 5], // Streckad linje för utmanaren
+                            pointBackgroundColor: '#2563eb',
+                            fill: false,
+                            tension: 0.2,
+                            pointRadius: 4
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: document.documentElement.classList.contains('dark') ? '#cbd5e1' : '#334155',
+                                font: { weight: 'bold' }
+                            }
+                        }
+                    },
                     scales: {
                         x: { grid: { display: false } },
                         y: {
@@ -518,6 +556,6 @@ async function loadStryktipsetDashboard() {
         }
 
     } catch (err) {
-        console.warn("Kunde inte läsa stryktipset_history.csv i frontend:", err);
+        console.warn("Kunde inte läsa Stryktipset-historik i frontend:", err);
     }
 }
