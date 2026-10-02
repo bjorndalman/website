@@ -443,6 +443,27 @@ async function loadStryktipsetDashboard() {
             isChallengerWinner = true;
         }
 
+        // --- STATUS-BANDEROLL (TRONSKIFTE-NOTIS) ---
+        const bannerEl = document.getElementById('stryktipset-status-banner');
+        if (bannerEl) {
+            if (isChallengerWinner && champStats && challStats) {
+                const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
+                bannerEl.innerHTML = `
+                    <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-900 dark:text-blue-200 flex items-center gap-3 shadow-sm">
+                        <span class="text-2xl">🚀</span>
+                        <div class="text-sm">
+                            <strong class="font-extrabold text-blue-600 dark:text-blue-400">Tronskifte aktiverat!</strong> 
+                            Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.
+                        </div>
+                    </div>
+                `;
+                bannerEl.classList.remove('hidden');
+            } else {
+                bannerEl.innerHTML = '';
+                bannerEl.classList.add('hidden');
+            }
+        }
+
         if (!activeStats || activeStats.historyList.length === 0) return;
 
         const { netProfit, roi, winRate, hits13Count, historyList } = activeStats;
