@@ -335,7 +335,6 @@ async function loadKalmanRankings() {
     }
 }
 
-// Hjälpfunktion för CSV-parsning som rensar bort osynliga BOM-tecken och citattecken
 function parseCSV(text) {
     if (!text) return [];
     const cleanText = text.replace(/^\uFEFF/, '');
@@ -357,7 +356,6 @@ function parseCSV(text) {
     return data;
 }
 
-// Hjälpfunktion för säkrare utläsning av CSV-kolumner
 function getRowValue(r, keys, defaultVal = 0) {
     for (const k of keys) {
         if (r[k] !== undefined && r[k] !== '') {
@@ -367,7 +365,6 @@ function getRowValue(r, keys, defaultVal = 0) {
     return defaultVal;
 }
 
-// Uppdaterad Stryktipset-funktion med Champion vs Challenger-jämförelse, flerspråkigt stöd (t), BOM-rensning och dubbla linjer i diagrammet
 async function loadStryktipsetDashboard() {
     const historyBody = document.getElementById('history-log-body') || document.getElementById('stryktipset-history-body');
     const pathPrefix = getPathPrefix();
@@ -418,7 +415,7 @@ async function loadStryktipsetDashboard() {
                 if (payout > 0) winningRoundsCount++;
 
                 let datum = getRowValue(r, ['Datum', 'datum'], '');
-                if (!datum || datum.includes('Okänt')) {
+                if (!datum || datum.toLowerCase().includes('okänt')) {
                     datum = `${t('Omgång', 'Round')} ${omgang}`;
                 }
 
@@ -437,8 +434,33 @@ async function loadStryktipsetDashboard() {
 
         let activeStats = champStats;
         let isChallengerWinner = false;
+        let takeoverDate = null;
+        let takeoverDiff = 0;
 
         if (challStats && champStats) {
+            let challCum = 0;
+            let champCum = 0;
+            const challMap = new Map(challStats.historyList.map(h => [h.omgang, h]));
+            const champMap = new Map(champStats.historyList.map(h => [h.omgang, h]));
+            
+            const allOmgangar = Array.from(new Set([...challMap.keys(), ...champMap.keys()])).sort((a, b) => a - b);
+
+            for (const omgang of allOmgangar) {
+                const cItem = challMap.get(omgang);
+                const hItem = champMap.get(omgang);
+                if (cItem) challCum += cItem.net;
+                if (hItem) champCum += hItem.net;
+
+                if (cItem && hItem && challCum > champCum && !takeoverDate) {
+                    if (cItem.datum && !cItem.datum.toLowerCase().includes('okänt')) {
+                        takeoverDate = cItem.datum;
+                    } else {
+                        takeoverDate = `${t('Omgång', 'Round')} ${omgang}`;
+                    }
+                    takeoverDiff = challCum - champCum;
+                }
+            }
+
             if (challStats.netProfit > champStats.netProfit) {
                 activeStats = challStats;
                 isChallengerWinner = true;
@@ -448,16 +470,32 @@ async function loadStryktipsetDashboard() {
             isChallengerWinner = true;
         }
 
-        // --- STATUS-BANDEROLL (TRONSKIFTE-NOTIS) ---
+        // Hämta GitHub-tidsstämpling från stats.json om den finns
+        let githubTimestamp = '';
+        try {
+            const statsRes = await fetch(`${pathPrefix}data/stats.json?t=${Date.now()}`, { cache: 'no-store' });
+            if (statsRes.ok) {
+                const statsData = await statsRes.json();
+                githubTimestamp = statsData.last_sync || statsData.updated_at || '';
+            }
+        } catch (e) {
+            // Ignorera
+        }
+
+        // --- STATUS-BANDEROLL ---
         const bannerEl = document.getElementById('stryktipset-status-banner');
         if (bannerEl) {
-            if (isChallengerWinner && champStats && challStats) {
-                const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
+            if (isChallengerWinner) {
+                const diffFormatted = takeoverDiff.toLocaleString('sv-SE');
                 
-                const titleText = t("Tronskifte aktiverat!", "Title Takeover Activated!");
+                // Prioritera GitHub-tid, sedan omgång/datum, annars tomt
+                const timeSource = githubTimestamp || takeoverDate;
+                const timeRef = timeSource ? ` (${timeSource})` : '';
+                
+                const titleText = t(`Tronskifte aktiverat${timeRef}!`, `Title Takeover Activated${timeRef}!`);
                 const bodyText = t(
-                    `Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.`,
-                    `Challenger has defeated Champion and leads by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in net profit. The model now governs all primary KPIs.`
+                    `Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diffFormatted} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.`,
+                    `Challenger has defeated Champion and leads by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diffFormatted} SEK</span> in net profit. The model now governs all primary KPIs.`
                 );
 
                 bannerEl.innerHTML = `
@@ -481,7 +519,6 @@ async function loadStryktipsetDashboard() {
         const { netProfit, roi, winRate, hits13Count, historyList } = activeStats;
         const latestRound = historyList.length > 0 ? historyList[0].omgang : '-';
 
-        // Uppdatera KPI-kort
         const omgangEl = document.getElementById('stryktipset-omgang');
         if (omgangEl) {
             omgangEl.innerText = `${t('Omgång', 'Round')} ${latestRound}${isChallengerWinner ? ' (🚀 Challenger)' : ' (🏆 Champion)'}`;
@@ -502,7 +539,6 @@ async function loadStryktipsetDashboard() {
         const winRateEl = document.getElementById('stryktipset-win-rate');
         if (winRateEl) winRateEl.innerText = `${winRate.toFixed(1)}%`;
 
-        // Uppdatera Historiktabell
         if (historyBody) {
             historyBody.innerHTML = '';
             const bestText = t('Rätt', 'Correct');
@@ -528,7 +564,6 @@ async function loadStryktipsetDashboard() {
             });
         }
 
-        // Rita diagrammet med säkra nyckeluppslagningar
         const canvas = document.getElementById('stryktipset-profit-chart');
         if (canvas && window.Chart) {
             const champMap = new Map(champRows.map(r => [
