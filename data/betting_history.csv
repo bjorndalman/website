@@ -190,8 +190,8 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-09-20,inter miami vs san diego fc,Draw,0.21,4.68,4.9,1.9,Vinst,7.41
 2026-09-26,cf montreal vs cincinnati,Away,0.6,1.66,2.41,30.03,Vinst,42.34
 2026-09-26,charlotte vs chicago fire,Home,0.51,1.95,2.16,14.02,Förlust,-14.02
-2026-09-26,red bulls vs st. louis city,Home,0.34,2.92,3.15,5.42,Placerat,0.0
-2026-09-26,red bulls vs st. louis city,Away,0.52,1.91,2.0,7.26,Placerat,0.0
+2026-09-26,red bulls vs st. louis city,Home,0.34,2.92,3.15,5.42,Förlust,-5.42
+2026-09-26,red bulls vs st. louis city,Away,0.52,1.91,2.0,7.26,Vinst,7.26
 2026-09-26,philadelphia union vs orlando city,Away,0.36,2.81,4.9,28.76,Vinst,112.16
 2026-09-27,austin fc vs san diego fc,Away,0.57,1.74,2.55,44.28,Förlust,-44.28
 2026-09-27,dallas vs lafc,Away,0.54,1.86,2.77,30.03,Förlust,-30.03
@@ -202,5 +202,5 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-09-27,san jose vs portland timbers,Away,0.47,2.11,2.85,28.23,Vinst,52.23
 2026-09-26,philadelphia union vs orlando city,Draw,0.22,4.5,5.0,4.18,Förlust,-4.18
 2026-09-27,vancouver whitecaps vs dc united,Draw,0.18,5.57,6.4,4.12,Förlust,-4.12
-2026-09-26,red bulls vs st. louis city,Draw,0.25,4.03,4.14,1.37,Placerat,0.0
+2026-09-26,red bulls vs st. louis city,Draw,0.25,4.03,4.14,1.37,Förlust,-1.37
 2026-09-27,nashville vs toronto,Away,0.19,5.3,5.8,3.01,Förlust,-3.01
