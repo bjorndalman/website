@@ -262,6 +262,7 @@ async function loadFootballAIDashboard() {
     }
 }
 
+// stats.json intakt för fotbolls- och pipelinesidan
 async function loadPipelineStatus() {
     const syncEl = document.getElementById('mls-last-sync') || document.getElementById('bot-last-sync');
     if (!syncEl) return;
@@ -365,6 +366,7 @@ function getRowValue(r, keys, defaultVal = 0) {
     return defaultVal;
 }
 
+// Stryktipset-dashboard med Champion vs Challenger, ursprunglig beräkning och localStorage-datum
 async function loadStryktipsetDashboard() {
     const historyBody = document.getElementById('history-log-body') || document.getElementById('stryktipset-history-body');
     const pathPrefix = getPathPrefix();
@@ -432,35 +434,11 @@ async function loadStryktipsetDashboard() {
         const champStats = champRows.length > 0 ? calculateStats(champRows) : null;
         const challStats = challRows.length > 0 ? calculateStats(challRows) : null;
 
+        // Ursprunglig och exakt beräkning baserad på total nettovinst
         let activeStats = champStats;
         let isChallengerWinner = false;
-        let takeoverDate = null;
-        let takeoverDiff = 0;
 
         if (challStats && champStats) {
-            let challCum = 0;
-            let champCum = 0;
-            const challMap = new Map(challStats.historyList.map(h => [h.omgang, h]));
-            const champMap = new Map(champStats.historyList.map(h => [h.omgang, h]));
-            
-            const allOmgangar = Array.from(new Set([...challMap.keys(), ...champMap.keys()])).sort((a, b) => a - b);
-
-            for (const omgang of allOmgangar) {
-                const cItem = challMap.get(omgang);
-                const hItem = champMap.get(omgang);
-                if (cItem) challCum += cItem.net;
-                if (hItem) champCum += hItem.net;
-
-                if (cItem && hItem && challCum > champCum && !takeoverDate) {
-                    if (cItem.datum && !cItem.datum.toLowerCase().includes('okänt')) {
-                        takeoverDate = cItem.datum;
-                    } else {
-                        takeoverDate = `${t('Omgång', 'Round')} ${omgang}`;
-                    }
-                    takeoverDiff = challCum - champCum;
-                }
-            }
-
             if (challStats.netProfit > champStats.netProfit) {
                 activeStats = challStats;
                 isChallengerWinner = true;
@@ -470,32 +448,25 @@ async function loadStryktipsetDashboard() {
             isChallengerWinner = true;
         }
 
-        // Hämta GitHub-tidsstämpling från stats.json om den finns
-        let githubTimestamp = '';
-        try {
-            const statsRes = await fetch(`${pathPrefix}data/stats.json?t=${Date.now()}`, { cache: 'no-store' });
-            if (statsRes.ok) {
-                const statsData = await statsRes.json();
-                githubTimestamp = statsData.last_sync || statsData.updated_at || '';
-            }
-        } catch (e) {
-            // Ignorera
-        }
-
-        // --- STATUS-BANDEROLL ---
+        // --- STATUS-BANDEROLL FÖR STRYKTIPSET ---
         const bannerEl = document.getElementById('stryktipset-status-banner');
         if (bannerEl) {
-            if (isChallengerWinner) {
-                const diffFormatted = takeoverDiff.toLocaleString('sv-SE');
+            if (isChallengerWinner && champStats && challStats) {
+                const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
                 
-                // Prioritera GitHub-tid, sedan omgång/datum, annars tomt
-                const timeSource = githubTimestamp || takeoverDate;
-                const timeRef = timeSource ? ` (${timeSource})` : '';
+                let calcDate = localStorage.getItem('stryktipset_calc_date');
+                if (!calcDate) {
+                    const now = new Date();
+                    calcDate = now.toISOString().split('T')[0];
+                    localStorage.setItem('stryktipset_calc_date', calcDate);
+                }
+
+                const timeRef = calcDate ? ` (${calcDate})` : '';
                 
                 const titleText = t(`Tronskifte aktiverat${timeRef}!`, `Title Takeover Activated${timeRef}!`);
                 const bodyText = t(
-                    `Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diffFormatted} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.`,
-                    `Challenger has defeated Champion and leads by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diffFormatted} SEK</span> in net profit. The model now governs all primary KPIs.`
+                    `Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.`,
+                    `Challenger has defeated Champion and leads by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in net profit. The model now governs all primary KPIs.`
                 );
 
                 bannerEl.innerHTML = `
