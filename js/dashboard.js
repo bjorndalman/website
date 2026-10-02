@@ -1,4 +1,9 @@
 // js/dashboard.js
+// Hjälpfunktion för snabb inline-översättning: t("Svenska", "English")
+
+function t(sv, en) {
+    return isEnglishPage() ? en : sv;
+}
 
 function getPathPrefix() {
     if (typeof window.pathPrefix !== 'undefined' && window.pathPrefix !== '') {
@@ -362,7 +367,7 @@ function getRowValue(r, keys, defaultVal = 0) {
     return defaultVal;
 }
 
-// Uppdaterad Stryktipset-funktion med Champion vs Challenger-jämförelse, BOM-rensning och dubbla linjer i diagrammet
+// Uppdaterad Stryktipset-funktion med Champion vs Challenger-jämförelse, flerspråkigt stöd (t), BOM-rensning och dubbla linjer i diagrammet
 async function loadStryktipsetDashboard() {
     const historyBody = document.getElementById('history-log-body') || document.getElementById('stryktipset-history-body');
     const pathPrefix = getPathPrefix();
@@ -414,7 +419,7 @@ async function loadStryktipsetDashboard() {
 
                 let datum = getRowValue(r, ['Datum', 'datum'], '');
                 if (!datum || datum.includes('Okänt')) {
-                    datum = `Omgång ${omgang}`;
+                    datum = `${t('Omgång', 'Round')} ${omgang}`;
                 }
 
                 historyList.push({ omgang, datum, cost, payout, net, best, facit });
@@ -448,12 +453,19 @@ async function loadStryktipsetDashboard() {
         if (bannerEl) {
             if (isChallengerWinner && champStats && challStats) {
                 const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
+                
+                const titleText = t("Tronskifte aktiverat!", "Title Takeover Activated!");
+                const bodyText = t(
+                    `Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.`,
+                    `Challenger has defeated Champion and leads by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in net profit. The model now governs all primary KPIs.`
+                );
+
                 bannerEl.innerHTML = `
                     <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-900 dark:text-blue-200 flex items-center gap-3 shadow-sm">
                         <span class="text-2xl">🚀</span>
                         <div class="text-sm">
-                            <strong class="font-extrabold text-blue-600 dark:text-blue-400">Tronskifte aktiverat!</strong> 
-                            Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.
+                            <strong class="font-extrabold text-blue-600 dark:text-blue-400">${titleText}</strong> 
+                            ${bodyText}
                         </div>
                     </div>
                 `;
@@ -472,7 +484,7 @@ async function loadStryktipsetDashboard() {
         // Uppdatera KPI-kort
         const omgangEl = document.getElementById('stryktipset-omgang');
         if (omgangEl) {
-            omgangEl.innerText = `Omgång ${latestRound}${isChallengerWinner ? ' (🚀 Challenger)' : ' (🏆 Champion)'}`;
+            omgangEl.innerText = `${t('Omgång', 'Round')} ${latestRound}${isChallengerWinner ? ' (🚀 Challenger)' : ' (🏆 Champion)'}`;
         }
 
         const profitEl = document.getElementById('stryktipset-profit');
@@ -493,16 +505,19 @@ async function loadStryktipsetDashboard() {
         // Uppdatera Historiktabell
         if (historyBody) {
             historyBody.innerHTML = '';
+            const bestText = t('Rätt', 'Correct');
+            const roundText = t('Omgång', 'Round');
+
             historyList.forEach(h => {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors";
                 const netClass = h.net >= 0 ? "text-emerald-600 dark:text-emerald-400 font-bold" : "text-rose-500 font-bold";
                 tr.innerHTML = `
-                    <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Omgång ${h.omgang}</td>
+                    <td class="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">${roundText} ${h.omgang}</td>
                     <td class="py-3 px-4 text-xs text-slate-500">${h.datum}</td>
                     <td class="py-3 px-4 text-center">
                         <span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-extrabold text-xs">
-                            ${h.best} Rätt
+                            ${h.best} ${bestText}
                         </span>
                     </td>
                     <td class="py-3 px-4 text-center text-slate-500">${h.cost} SEK</td>
@@ -531,7 +546,7 @@ async function loadStryktipsetDashboard() {
                 ...Array.from(challMap.keys())
             ])).filter(o => !isNaN(o) && o > 0).sort((a, b) => a - b);
 
-            const labels = allOmgangar.map(o => `Omgång ${o}`);
+            const labels = allOmgangar.map(o => `${t('Omgång', 'Round')} ${o}`);
             const champData = allOmgangar.map(o => champMap.get(o) ?? null);
             const challData = allOmgangar.map(o => challMap.get(o) ?? null);
 
@@ -545,7 +560,7 @@ async function loadStryktipsetDashboard() {
                     labels: labels,
                     datasets: [
                         {
-                            label: '🏆 Champion (Rekord)',
+                            label: t('🏆 Champion (Rekord)', '🏆 Champion (Record)'),
                             data: champData,
                             borderColor: '#f59e0b',
                             backgroundColor: 'rgba(245, 158, 11, 0.05)',
@@ -556,7 +571,7 @@ async function loadStryktipsetDashboard() {
                             pointRadius: 4
                         },
                         {
-                            label: '🚀 Challenger (Aktiv modell)',
+                            label: t('🚀 Challenger (Aktiv modell)', '🚀 Challenger (Active Model)'),
                             data: challData,
                             borderColor: '#2563eb',
                             backgroundColor: 'rgba(37, 99, 235, 0.1)',
@@ -590,7 +605,7 @@ async function loadStryktipsetDashboard() {
                             grid: { color: 'rgba(148, 163, 184, 0.1)' },
                             ticks: {
                                 stepSize: 1,
-                                callback: function(val) { return val + ' rätt'; }
+                                callback: function(val) { return val + ' ' + t('rätt', 'correct'); }
                             }
                         }
                     }
