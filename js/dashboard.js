@@ -448,7 +448,7 @@ async function loadStryktipsetDashboard() {
             isChallengerWinner = true;
         }
 
-        // --- STATUS-BANDEROLL FÖR STRYKTIPSET ---
+        // --- STATUS-BANDEROLL FÖR STRYKTIPSET (NY MÄSTARE KRÖNT) ---
         const bannerEl = document.getElementById('stryktipset-status-banner');
         if (bannerEl) {
             if (isChallengerWinner && champStats && challStats) {
@@ -463,15 +463,15 @@ async function loadStryktipsetDashboard() {
 
                 const timeRef = calcDate ? ` (${calcDate})` : '';
                 
-                const titleText = t(`Tronskifte aktiverat${timeRef}!`, `Title Takeover Activated${timeRef}!`);
+                const titleText = t(`Ny Mästare Krönt${timeRef}!`, `New Champion Crowned${timeRef}!`);
                 const bodyText = t(
-                    `Challenger har besegrat Champion och leder med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i nettovinst. Modellen styr nu alla primära nyckeltal.`,
-                    `Challenger has defeated Champion and leads by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in net profit. The model now governs all primary KPIs.`
+                    `Challenger har överträffat den tidigare Mästaren med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i kumulativ nettovinst och har uppgraderats till aktiv standardmodell.`,
+                    `Challenger has outperformed the previous Champion by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in cumulative net profit and has been promoted to the active standard model.`
                 );
 
                 bannerEl.innerHTML = `
                     <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-900 dark:text-blue-200 flex items-center gap-3 shadow-sm">
-                        <span class="text-2xl">🚀</span>
+                        <span class="text-2xl">🏆</span>
                         <div class="text-sm">
                             <strong class="font-extrabold text-blue-600 dark:text-blue-400">${titleText}</strong> 
                             ${bodyText}
