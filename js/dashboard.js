@@ -176,7 +176,68 @@ async function loadStockAIDashboard() {
 }
 
 async function fetchStockStats() {
-    return;
+    const winRateEl = document.getElementById('stock-win-rate');
+    const totalTradesEl = document.getElementById('stock-total-trades');
+    const profitFactorEl = document.getElementById('stock-profit-factor');
+    const sharpeEl = document.getElementById('stock-sharpe-ratio') || document.getElementById('stock-sharpe');
+    const avgTradeEl = document.getElementById('stock-avg-trade');
+
+    // Avbryt om inga av statistik-elementen finns på den aktuella sidan
+    if (!winRateEl && !totalTradesEl && !profitFactorEl && !sharpeEl && !avgTradeEl) return;
+
+    const pathPrefix = getPathPrefix();
+
+    try {
+        // 1. Försök i första hand hämta från dedikerad stock_stats.json
+        let response = await fetch(`${pathPrefix}data/stock_stats.json?t=${Date.now()}`, { cache: 'no-store' });
+        let stats = null;
+
+        if (response.ok) {
+            stats = await response.json();
+        } else {
+            // 2. Fallback: Hämta från huvudfilen stock_ai_dashboard_data.json om separat stats-fil saknas
+            response = await fetch(`${pathPrefix}data/stock_ai_dashboard_data.json?t=${Date.now()}`, { cache: 'no-store' });
+            if (response.ok) {
+                const data = await response.json();
+                stats = data.stats || data.summary || null;
+            }
+        }
+
+        if (!stats) return;
+
+        // Vinstprocent (Win Rate)
+        if (winRateEl && (stats.win_rate !== undefined || stats.win_pct !== undefined)) {
+            const winRate = parseFloat(stats.win_rate ?? stats.win_pct ?? 0);
+            winRateEl.innerText = `${winRate.toFixed(1)}%`;
+        }
+
+        // Totalt antal affärer (Total Trades)
+        if (totalTradesEl && (stats.total_trades !== undefined || stats.trades_count !== undefined)) {
+            const totalTrades = parseInt(stats.total_trades ?? stats.trades_count ?? 0, 10);
+            totalTradesEl.innerText = `${totalTrades} st`;
+        }
+
+        // Vinstfaktor (Profit Factor)
+        if (profitFactorEl && stats.profit_factor !== undefined) {
+            const pf = parseFloat(stats.profit_factor);
+            profitFactorEl.innerText = !isNaN(pf) ? pf.toFixed(2) : '-';
+        }
+
+        // Sharpe-kvot (Sharpe Ratio)
+        if (sharpeEl && (stats.sharpe_ratio !== undefined || stats.sharpe !== undefined)) {
+            const sharpe = parseFloat(stats.sharpe_ratio ?? stats.sharpe ?? 0);
+            sharpeEl.innerText = !isNaN(sharpe) ? sharpe.toFixed(2) : '-';
+        }
+
+        // Genomsnittlig avkastning per affär
+        if (avgTradeEl && (stats.avg_trade_pct !== undefined || stats.avg_return !== undefined)) {
+            const avgTrade = parseFloat(stats.avg_trade_pct ?? stats.avg_return ?? 0);
+            avgTradeEl.innerText = `${avgTrade >= 0 ? '+' : ''}${avgTrade.toFixed(2)}%`;
+        }
+
+    } catch (error) {
+        console.warn("Kunde inte läsa aktiestatistik i fetchStockStats():", error);
+    }
 }
 
 async function loadFootballAIDashboard() {
