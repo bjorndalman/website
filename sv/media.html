@@ -160,77 +160,107 @@
         </section>
 
         <!-- 2. VIDEOR (YOUTUBE) -->
-        <section id="videos" class="fade-in">
-            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
-                <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videor
-            </h2>
+<section id="videos" class="fade-in">
+    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
+        <i data-lucide="film" class="w-7 h-7 text-blue-600"></i> Videos
+    </h2>
 
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
-                <div class="aspect-video mb-3">
-                    <iframe 
-                        class="w-full h-full rounded-lg" 
-                        src="https://www.youtube.com/embed/JbvXP0iHnAU" 
-                        title="Automated Live AI System for MLS Soccer Analytics" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
-                    Automated Live AI System for MLS Soccer Analytics
-                </p>
+    <!-- Grid-container för de första tre videorna -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Video 1 -->
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+            <div class="aspect-video mb-3">
+                <iframe 
+                    class="w-full h-full rounded-lg" 
+                    src="https://www.youtube.com/embed/JbvXP0iHnAU" 
+                    title="Automated Live AI System for MLS Soccer Analytics" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
+            <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                Automated Live AI System for MLS Soccer Analytics
+            </p>
+        </div>
 
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
-                <div class="aspect-video mb-3">
-                    <iframe 
-                        class="w-full h-full rounded-lg" 
-                        src="https://www.youtube.com/embed/RRicAHFkRV4" 
-                        title="Kalman Filter Implementation" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    High-Precision Temperature Sensing: Implementing a Kalman Filter in KiCad
-                </p>
+        <!-- Video 2 -->
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+            <div class="aspect-video mb-3">
+                <iframe 
+                    class="w-full h-full rounded-lg" 
+                    src="https://www.youtube.com/embed/RRicAHFkRV4" 
+                    title="Kalman Filter Implementation" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
-            
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 mb-8">
-                <div class="aspect-video mb-3">
-                    <iframe 
-                        class="w-full h-full rounded-lg" 
-                        src="https://www.youtube.com/embed/t5i80ZmHzB0" 
-                        title="Nuclear Power Safety" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    Nuclear Power Safety - The Main Steam Line Break Accident
-                </p>
+            <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                High-Precision Temperature Sensing: Implementing a Kalman Filter in KiCad
+            </p>
+        </div>
+        
+        <!-- Video 3 -->
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+            <div class="aspect-video mb-3">
+                <iframe 
+                    class="w-full h-full rounded-lg" 
+                    src="https://www.youtube.com/embed/t5i80ZmHzB0" 
+                    title="Nuclear Power Safety" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
-            
-            <h3 class="text-xl font-bold mt-8 mb-4">Ytterligare videoinnehåll</h3>
-            
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
-                <div class="aspect-video mb-3">
-                    <iframe 
-                        class="w-full h-full rounded-lg" 
-                        src="https://www.youtube.com/embed/F5Ip9c3yyMc" 
-                        title="Highfrequency Filter Design" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                    Highfrequency Filter Design
-                </p>
+            <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                Nuclear Power Safety - The Main Steam Line Break Accident
+            </p>
+        </div>
+    </div> <!-- Slut på första grid-containern -->
+    
+    <h3 class="text-xl font-bold mt-10 mb-6 text-slate-900 dark:text-white">Additional Video Content</h3>
+    
+    <!-- Grid-container för extramaterialet -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Video 4 -->
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+            <div class="aspect-video mb-3">
+                <iframe 
+                    class="w-full h-full rounded-lg" 
+                    src="https://www.youtube.com/embed/F5Ip9c3yyMc" 
+                    title="Highfrequency Filter Design" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
-        </section>
+            <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                Highfrequency Filter Design
+            </p>
+        </div>
+        
+        <!-- Video 5 -->
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+            <div class="aspect-video mb-3">
+                <iframe 
+                    class="w-full h-full rounded-lg" 
+                    src="https://www.youtube.com/embed/a6P0KTmy5DE"
+                    title="The Life Regiment Hussars K3" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                Military Service - Rangers Training
+            </p>
+        </div>
+        
+    </div> <!-- Slut på andra grid-containern -->
+</section>
 
         <!-- 3. AUDIO -->
         <section id="audio" class="fade-in my-12">
