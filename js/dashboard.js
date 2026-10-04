@@ -449,42 +449,46 @@ async function loadStryktipsetDashboard() {
         }
 
         // --- STATUS-BANDEROLL FÖR STRYKTIPSET (NY MÄSTARE KRÖNT) ---
-        const bannerEl = document.getElementById('stryktipset-status-banner');
-        if (bannerEl) {
-            if (isChallengerWinner && champStats && challStats) {
-                const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
-                
-                let calcDate = localStorage.getItem('stryktipset_calc_date');
-                if (!calcDate) {
-                    const now = new Date();
-                    calcDate = now.toISOString().split('T')[0];
-                    localStorage.setItem('stryktipset_calc_date', calcDate);
-                }
+const bannerEl = document.getElementById('stryktipset-status-banner');
+if (bannerEl) {
+    if (isChallengerWinner && champStats && challStats) {
+        const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
+        
+        let calcDate = localStorage.getItem('stryktipset_calc_date');
+        const lastPromotedProfit = localStorage.getItem('stryktipset_promoted_profit');
+        const currentProfitStr = String(challStats.netProfit);
 
-                const timeRef = calcDate ? ` (${calcDate})` : '';
-                
-                const titleText = t(`Ny Mästare Krönt${timeRef}!`, `New Champion Crowned${timeRef}!`);
-                const bodyText = t(
-                    `Challenger har överträffat den tidigare Mästaren med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i kumulativ nettovinst och har uppgraderats till aktiv standardmodell.`,
-                    `Challenger has outperformed the previous Champion by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in cumulative net profit and has been promoted to the active standard model.`
-                );
-
-                bannerEl.innerHTML = `
-                    <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-900 dark:text-blue-200 flex items-center gap-3 shadow-sm">
-                        <span class="text-2xl">🏆</span>
-                        <div class="text-sm">
-                            <strong class="font-extrabold text-blue-600 dark:text-blue-400">${titleText}</strong> 
-                            ${bodyText}
-                        </div>
-                    </div>
-                `;
-                bannerEl.classList.remove('hidden');
-            } else {
-                bannerEl.innerHTML = '';
-                bannerEl.classList.add('hidden');
-            }
+        // Uppdatera datumet ENDAST om det saknas ELLER om nettovinsten har ändrats (ny omgång/kröning)
+        if (!calcDate || lastPromotedProfit !== currentProfitStr) {
+            const now = new Date();
+            calcDate = now.toISOString().split('T')[0];
+            localStorage.setItem('stryktipset_calc_date', calcDate);
+            localStorage.setItem('stryktipset_promoted_profit', currentProfitStr);
         }
 
+        const timeRef = calcDate ? ` (${calcDate})` : '';
+        
+        const titleText = t(`Ny Mästare Krönt${timeRef}!`, `New Champion Crowned${timeRef}!`);
+        const bodyText = t(
+            `Challenger har överträffat den tidigare Mästaren med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i kumulativ nettovinst och har uppgraderats till aktiv standardmodell.`,
+            `Challenger has outperformed the previous Champion by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in cumulative net profit and has been promoted to the active standard model.`
+        );
+
+        bannerEl.innerHTML = `
+            <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-900 dark:text-blue-200 flex items-center gap-3 shadow-sm">
+                <span class="text-2xl">🏆</span>
+                <div class="text-sm">
+                    <strong class="font-extrabold text-blue-600 dark:text-blue-400">${titleText}</strong> 
+                    ${bodyText}
+                </div>
+            </div>
+        `;
+        bannerEl.classList.remove('hidden');
+    } else {
+        bannerEl.innerHTML = '';
+        bannerEl.classList.add('hidden');
+    }
+}
         if (!activeStats || activeStats.historyList.length === 0) return;
 
         const { netProfit, roi, winRate, hits13Count, historyList } = activeStats;
