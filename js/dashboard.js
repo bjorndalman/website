@@ -628,14 +628,12 @@ async function loadStryktipsetDashboard() {
             });
         }
 
-        // =========================================================
-        // GRAF 2: NY FRISTÅENDE GRAF - CHALLENGER HALL OF FAME
-        // (Alternativ B: Visar ackumulerad utveckling vid varje tronskifte/promotion)
+       // =========================================================
+        // GRAF 2: NY FRISTÅENDE GRAF - CHALLENGER HALL OF FAME (Alternativ B)
         // =========================================================
         const hallCanvas = document.getElementById('stryktipset-challenger-hall-chart');
         if (hallCanvas && window.Chart) {
             
-            // Vi spårar när Challenger faktiskt går om Champion i ackumulerad nettovinst (Promotion Milestones)
             let runningChampProfit = 0;
             let runningChallProfit = 0;
             const promotedMilestones = [];
@@ -645,7 +643,7 @@ async function loadStryktipsetDashboard() {
                 const chRow = challRows.find(r => parseInt(getRowValue(r, ['Omgång', 'omgang']), 10) === o);
 
                 if (cRow) {
-                    const cRader = parseInt(getRowValue(r => getRowValue(cRow, ['Antal Rader', 'antal_rader'], 288)), 10) || 288;
+                    const cRader = parseInt(getRowValue(cRow, ['Antal Rader', 'antal_rader'], 288), 10) || 288;
                     const cPayout = (parseInt(getRowValue(cRow, ['Antal 13', 'antal_13'], 0), 10) * 200000) +
                                     (parseInt(getRowValue(cRow, ['Antal 12', 'antal_12'], 0), 10) * 5800) +
                                     (parseInt(getRowValue(cRow, ['Antal 11', 'antal_11'], 0), 10) * 520) +
@@ -662,7 +660,6 @@ async function loadStryktipsetDashboard() {
                     runningChallProfit += (chPayout - chRader);
                 }
 
-                // När Challenger har ett bättre resultat i omgången OCH ligger över eller ökar ledningen
                 const chHits = challMap.get(o);
                 const cHits = champMap.get(o);
 
@@ -690,12 +687,12 @@ async function loadStryktipsetDashboard() {
                         {
                             label: t('🏆 Promoted Challenger Performance', '🏆 Promoted Challenger Performance'),
                             data: hallHitsData,
-                            borderColor: '#2563eb', // Blå accentfärg
+                            borderColor: '#2563eb',
                             backgroundColor: 'rgba(37, 99, 235, 0.12)',
                             borderWidth: 3,
                             fill: true,
                             tension: 0.25,
-                            pointBackgroundColor: '#f59e0b', // Guldpunkter för milstolpar
+                            pointBackgroundColor: '#f59e0b',
                             pointBorderColor: '#ffffff',
                             pointBorderWidth: 2,
                             pointRadius: 6,
@@ -719,6 +716,7 @@ async function loadStryktipsetDashboard() {
                             callbacks: {
                                 label: function(context) {
                                     const m = promotedMilestones[context.dataIndex];
+                                    if (!m) return '';
                                     const diffStr = m.profitDiff >= 0 ? `+${m.profitDiff.toLocaleString('sv-SE')} SEK` : `${m.profitDiff.toLocaleString('sv-SE')} SEK`;
                                     return ` 🚀 Challenger: ${m.hits} ${t('rätt', 'correct')} (Nettodifferens: ${diffStr})`;
                                 }
