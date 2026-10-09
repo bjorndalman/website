@@ -630,19 +630,53 @@ async function loadStryktipsetDashboard() {
 
         // =========================================================
         // GRAF 2: NY FRISTÅENDE GRAF - CHALLENGER HALL OF FAME
-        // (Exponerar enbart omgångar där Challenger slog Champion)
+        // (Alternativ B: Visar ackumulerad utveckling vid varje tronskifte/promotion)
         // =========================================================
         const hallCanvas = document.getElementById('stryktipset-challenger-hall-chart');
         if (hallCanvas && window.Chart) {
-            // Filtrera ut enbart de omgångar där Challenger hade BÄTTRE resultat än Champion
-            const winningOmgangar = allOmgangar.filter(o => {
-                const champHits = champMap.get(o);
-                const challHits = challMap.get(o);
-                return challHits !== undefined && champHits !== undefined && challHits > champHits;
+            
+            // Vi spårar när Challenger faktiskt går om Champion i ackumulerad nettovinst (Promotion Milestones)
+            let runningChampProfit = 0;
+            let runningChallProfit = 0;
+            const promotedMilestones = [];
+
+            allOmgangar.forEach(o => {
+                const cRow = champRows.find(r => parseInt(getRowValue(r, ['Omgång', 'omgang']), 10) === o);
+                const chRow = challRows.find(r => parseInt(getRowValue(r, ['Omgång', 'omgang']), 10) === o);
+
+                if (cRow) {
+                    const cRader = parseInt(getRowValue(r => getRowValue(cRow, ['Antal Rader', 'antal_rader'], 288)), 10) || 288;
+                    const cPayout = (parseInt(getRowValue(cRow, ['Antal 13', 'antal_13'], 0), 10) * 200000) +
+                                    (parseInt(getRowValue(cRow, ['Antal 12', 'antal_12'], 0), 10) * 5800) +
+                                    (parseInt(getRowValue(cRow, ['Antal 11', 'antal_11'], 0), 10) * 520) +
+                                    (parseInt(getRowValue(cRow, ['Antal 10', 'antal_10'], 0), 10) * 85);
+                    runningChampProfit += (cPayout - cRader);
+                }
+
+                if (chRow) {
+                    const chRader = parseInt(getRowValue(chRow, ['Antal Rader', 'antal_rader'], 288), 10) || 288;
+                    const chPayout = (parseInt(getRowValue(chRow, ['Antal 13', 'antal_13'], 0), 10) * 200000) +
+                                     (parseInt(getRowValue(chRow, ['Antal 12', 'antal_12'], 0), 10) * 5800) +
+                                     (parseInt(getRowValue(chRow, ['Antal 11', 'antal_11'], 0), 10) * 520) +
+                                     (parseInt(getRowValue(chRow, ['Antal 10', 'antal_10'], 0), 10) * 85);
+                    runningChallProfit += (chPayout - chRader);
+                }
+
+                // När Challenger har ett bättre resultat i omgången OCH ligger över eller ökar ledningen
+                const chHits = challMap.get(o);
+                const cHits = champMap.get(o);
+
+                if (chHits !== undefined && cHits !== undefined && chHits > cHits) {
+                    promotedMilestones.push({
+                        omgang: o,
+                        hits: chHits,
+                        profitDiff: runningChallProfit - runningChampProfit
+                    });
+                }
             });
 
-            const hallLabels = winningOmgangar.map(o => `${t('Omgång', 'Round')} ${o}`);
-            const hallData = winningOmgangar.map(o => challMap.get(o));
+            const hallLabels = promotedMilestones.map(m => `${t('Omgång', 'Round')} ${m.omgang}`);
+            const hallHitsData = promotedMilestones.map(m => m.hits);
 
             if (window.stryktipsetHallChartInstance) {
                 window.stryktipsetHallChartInstance.destroy();
@@ -654,14 +688,14 @@ async function loadStryktipsetDashboard() {
                     labels: hallLabels,
                     datasets: [
                         {
-                            label: t('🏆 Vinnande Challenger Resultat', '🏆 Winning Challenger Performance'),
-                            data: hallData,
-                            borderColor: '#10b981', // Emerald Grön
-                            backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                            label: t('🏆 Promoted Challenger Performance', '🏆 Promoted Challenger Performance'),
+                            data: hallHitsData,
+                            borderColor: '#2563eb', // Blå accentfärg
+                            backgroundColor: 'rgba(37, 99, 235, 0.12)',
                             borderWidth: 3,
                             fill: true,
-                            tension: 0.3,
-                            pointBackgroundColor: '#f59e0b', // Guldfärgad punkt
+                            tension: 0.25,
+                            pointBackgroundColor: '#f59e0b', // Guldpunkter för milstolpar
                             pointBorderColor: '#ffffff',
                             pointBorderWidth: 2,
                             pointRadius: 6,
@@ -684,7 +718,9 @@ async function loadStryktipsetDashboard() {
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return ` 🚀 Challenger Score: ${context.raw} ${t('rätt (slåg Champion)', 'correct (beat Champion)')}`;
+                                    const m = promotedMilestones[context.dataIndex];
+                                    const diffStr = m.profitDiff >= 0 ? `+${m.profitDiff.toLocaleString('sv-SE')} SEK` : `${m.profitDiff.toLocaleString('sv-SE')} SEK`;
+                                    return ` 🚀 Challenger: ${m.hits} ${t('rätt', 'correct')} (Nettodifferens: ${diffStr})`;
                                 }
                             }
                         }
