@@ -629,7 +629,7 @@ async function loadStryktipsetDashboard() {
         }
 
        // =========================================================
-        // GRAF 2: NY FRISTÅENDE GRAF - CHALLENGER HALL OF FAME (Alternativ B)
+        // GRAF 2: CHALLENGER HALL OF FAME (Kombinerad: Enskilda resultat + Medelvärde)
         // =========================================================
         const hallCanvas = document.getElementById('stryktipset-challenger-hall-chart');
         if (hallCanvas && window.Chart) {
@@ -673,7 +673,17 @@ async function loadStryktipsetDashboard() {
             });
 
             const hallLabels = promotedMilestones.map(m => `${t('Omgång', 'Round')} ${m.omgang}`);
-            const hallHitsData = promotedMilestones.map(m => m.hits);
+            
+            // Beräkna enskilda resultat och ackumulerat medelvärde
+            let runningSum = 0;
+            const hallHitsData = [];
+            const hallAvgData = [];
+
+            promotedMilestones.forEach((m, idx) => {
+                hallHitsData.push(m.hits);
+                runningSum += m.hits;
+                hallAvgData.push((runningSum / (idx + 1)).toFixed(2));
+            });
 
             if (window.stryktipsetHallChartInstance) {
                 window.stryktipsetHallChartInstance.destroy();
@@ -685,18 +695,29 @@ async function loadStryktipsetDashboard() {
                     labels: hallLabels,
                     datasets: [
                         {
-                            label: t('🏆 Promoted Challenger Performance', '🏆 Promoted Challenger Performance'),
+                            label: t('🚀 Challenger Resultat', '🚀 Challenger Score'),
                             data: hallHitsData,
                             borderColor: '#2563eb',
-                            backgroundColor: 'rgba(37, 99, 235, 0.12)',
-                            borderWidth: 3,
+                            backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                            borderWidth: 2,
                             fill: true,
-                            tension: 0.25,
+                            tension: 0.2,
                             pointBackgroundColor: '#f59e0b',
                             pointBorderColor: '#ffffff',
                             pointBorderWidth: 2,
-                            pointRadius: 6,
-                            pointHoverRadius: 9
+                            pointRadius: 5,
+                            pointHoverRadius: 8
+                        },
+                        {
+                            label: t('📈 Ackumulerat Medelvärde', '📈 Cumulative Average'),
+                            data: hallAvgData,
+                            borderColor: '#10b981', // Grön trendlinje
+                            borderWidth: 3,
+                            borderDash: [5, 5],
+                            fill: false,
+                            tension: 0.3,
+                            pointRadius: 3,
+                            pointBackgroundColor: '#10b981'
                         }
                     ]
                 },
@@ -715,10 +736,11 @@ async function loadStryktipsetDashboard() {
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    const m = promotedMilestones[context.dataIndex];
-                                    if (!m) return '';
-                                    const diffStr = m.profitDiff >= 0 ? `+${m.profitDiff.toLocaleString('sv-SE')} SEK` : `${m.profitDiff.toLocaleString('sv-SE')} SEK`;
-                                    return ` 🚀 Challenger: ${m.hits} ${t('rätt', 'correct')} (Nettodifferens: ${diffStr})`;
+                                    if (context.datasetIndex === 0) {
+                                        return ` 🚀 Resultat: ${context.raw} ${t('rätt', 'correct')}`;
+                                    } else {
+                                        return ` 📈 Snitt hittills: ${context.raw} ${t('rätt', 'correct')}`;
+                                    }
                                 }
                             }
                         }
