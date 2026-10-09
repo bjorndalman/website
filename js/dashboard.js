@@ -449,46 +449,47 @@ async function loadStryktipsetDashboard() {
         }
 
         // --- STATUS-BANDEROLL FÖR STRYKTIPSET (NY MÄSTARE KRÖNT) ---
-const bannerEl = document.getElementById('stryktipset-status-banner');
-if (bannerEl) {
-    if (isChallengerWinner && champStats && challStats) {
-        const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
-        
-        let calcDate = localStorage.getItem('stryktipset_calc_date');
-        const lastPromotedProfit = localStorage.getItem('stryktipset_promoted_profit');
-        const currentProfitStr = String(challStats.netProfit);
+        const bannerEl = document.getElementById('stryktipset-status-banner');
+        if (bannerEl) {
+            if (isChallengerWinner && champStats && challStats) {
+                const diff = (challStats.netProfit - champStats.netProfit).toLocaleString('sv-SE');
+                
+                let calcDate = localStorage.getItem('stryktipset_calc_date');
+                const lastPromotedProfit = localStorage.getItem('stryktipset_promoted_profit');
+                const currentProfitStr = String(challStats.netProfit);
 
-        // Uppdatera datumet ENDAST om det saknas ELLER om nettovinsten har ändrats (ny omgång/kröning)
-        if (!calcDate || lastPromotedProfit !== currentProfitStr) {
-            const now = new Date();
-            calcDate = now.toISOString().split('T')[0];
-            localStorage.setItem('stryktipset_calc_date', calcDate);
-            localStorage.setItem('stryktipset_promoted_profit', currentProfitStr);
+                // Uppdatera datumet ENDAST om det saknas ELLER om nettovinsten har ändrats (ny omgång/kröning)
+                if (!calcDate || lastPromotedProfit !== currentProfitStr) {
+                    const now = new Date();
+                    calcDate = now.toISOString().split('T')[0];
+                    localStorage.setItem('stryktipset_calc_date', calcDate);
+                    localStorage.setItem('stryktipset_promoted_profit', currentProfitStr);
+                }
+
+                const timeRef = calcDate ? ` (${calcDate})` : '';
+                
+                const titleText = t(`Ny Mästare Krönt${timeRef}!`, `New Champion Crowned${timeRef}!`);
+                const bodyText = t(
+                    `Challenger har överträffat den tidigare Mästaren med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i kumulativ nettovinst och har uppgraderats till aktiv standardmodell.`,
+                    `Challenger has outperformed the previous Champion by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in cumulative net profit and has been promoted to the active standard model.`
+                );
+
+                bannerEl.innerHTML = `
+                    <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-900 dark:text-blue-200 flex items-center gap-3 shadow-sm">
+                        <span class="text-2xl">🏆</span>
+                        <div class="text-sm">
+                            <strong class="font-extrabold text-blue-600 dark:text-blue-400">${titleText}</strong> 
+                            ${bodyText}
+                        </div>
+                    </div>
+                `;
+                bannerEl.classList.remove('hidden');
+            } else {
+                bannerEl.innerHTML = '';
+                bannerEl.classList.add('hidden');
+            }
         }
 
-        const timeRef = calcDate ? ` (${calcDate})` : '';
-        
-        const titleText = t(`Ny Mästare Krönt${timeRef}!`, `New Champion Crowned${timeRef}!`);
-        const bodyText = t(
-            `Challenger har överträffat den tidigare Mästaren med <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> i kumulativ nettovinst och har uppgraderats till aktiv standardmodell.`,
-            `Challenger has outperformed the previous Champion by <span class="font-bold text-emerald-600 dark:text-emerald-400">+${diff} SEK</span> in cumulative net profit and has been promoted to the active standard model.`
-        );
-
-        bannerEl.innerHTML = `
-            <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-900 dark:text-blue-200 flex items-center gap-3 shadow-sm">
-                <span class="text-2xl">🏆</span>
-                <div class="text-sm">
-                    <strong class="font-extrabold text-blue-600 dark:text-blue-400">${titleText}</strong> 
-                    ${bodyText}
-                </div>
-            </div>
-        `;
-        bannerEl.classList.remove('hidden');
-    } else {
-        bannerEl.innerHTML = '';
-        bannerEl.classList.add('hidden');
-    }
-}
         if (!activeStats || activeStats.historyList.length === 0) return;
 
         const { netProfit, roi, winRate, hits13Count, historyList } = activeStats;
@@ -539,23 +540,27 @@ if (bannerEl) {
             });
         }
 
+        // =========================================================
+        // GRAF 1: HUVUDGRAF (CHAMPION VS CHALLENGER - HELT ORÖRD)
+        // =========================================================
         const canvas = document.getElementById('stryktipset-profit-chart');
+        
+        const champMap = new Map(champRows.map(r => [
+            parseInt(getRowValue(r, ['Omgång', 'omgang']), 10),
+            parseInt(getRowValue(r, ['Bästa Rad', 'basta_rad']), 10)
+        ]));
+
+        const challMap = new Map(challRows.map(r => [
+            parseInt(getRowValue(r, ['Omgång', 'omgang']), 10),
+            parseInt(getRowValue(r, ['Bästa Rad', 'basta_rad']), 10)
+        ]));
+
+        const allOmgangar = Array.from(new Set([
+            ...Array.from(champMap.keys()),
+            ...Array.from(challMap.keys())
+        ])).filter(o => !isNaN(o) && o > 0).sort((a, b) => a - b);
+
         if (canvas && window.Chart) {
-            const champMap = new Map(champRows.map(r => [
-                parseInt(getRowValue(r, ['Omgång', 'omgang']), 10),
-                parseInt(getRowValue(r, ['Bästa Rad', 'basta_rad']), 10)
-            ]));
-
-            const challMap = new Map(challRows.map(r => [
-                parseInt(getRowValue(r, ['Omgång', 'omgang']), 10),
-                parseInt(getRowValue(r, ['Bästa Rad', 'basta_rad']), 10)
-            ]));
-
-            const allOmgangar = Array.from(new Set([
-                ...Array.from(champMap.keys()),
-                ...Array.from(challMap.keys())
-            ])).filter(o => !isNaN(o) && o > 0).sort((a, b) => a - b);
-
             const labels = allOmgangar.map(o => `${t('Omgång', 'Round')} ${o}`);
             const champData = allOmgangar.map(o => champMap.get(o) ?? null);
             const challData = allOmgangar.map(o => challMap.get(o) ?? null);
@@ -609,6 +614,86 @@ if (bannerEl) {
                     },
                     scales: {
                         x: { grid: { display: false } },
+                        y: {
+                            min: 0,
+                            max: 13,
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            ticks: {
+                                stepSize: 1,
+                                callback: function(val) { return val + ' ' + t('rätt', 'correct'); }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // =========================================================
+        // GRAF 2: NY FRISTÅENDE GRAF - CHALLENGER HALL OF FAME
+        // (Exponerar enbart omgångar där Challenger slog Champion)
+        // =========================================================
+        const hallCanvas = document.getElementById('stryktipset-challenger-hall-chart');
+        if (hallCanvas && window.Chart) {
+            // Filtrera ut enbart de omgångar där Challenger hade BÄTTRE resultat än Champion
+            const winningOmgangar = allOmgangar.filter(o => {
+                const champHits = champMap.get(o);
+                const challHits = challMap.get(o);
+                return challHits !== undefined && champHits !== undefined && challHits > champHits;
+            });
+
+            const hallLabels = winningOmgangar.map(o => `${t('Omgång', 'Round')} ${o}`);
+            const hallData = winningOmgangar.map(o => challMap.get(o));
+
+            if (window.stryktipsetHallChartInstance) {
+                window.stryktipsetHallChartInstance.destroy();
+            }
+
+            window.stryktipsetHallChartInstance = new Chart(hallCanvas, {
+                type: 'line',
+                data: {
+                    labels: hallLabels,
+                    datasets: [
+                        {
+                            label: t('🏆 Vinnande Challenger Resultat', '🏆 Winning Challenger Performance'),
+                            data: hallData,
+                            borderColor: '#10b981', // Emerald Grön
+                            backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3,
+                            pointBackgroundColor: '#f59e0b', // Guldfärgad punkt
+                            pointBorderColor: '#ffffff',
+                            pointBorderWidth: 2,
+                            pointRadius: 6,
+                            pointHoverRadius: 9
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: document.documentElement.classList.contains('dark') ? '#cbd5e1' : '#334155',
+                                font: { weight: 'bold' }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` 🚀 Challenger Score: ${context.raw} ${t('rätt (slåg Champion)', 'correct (beat Champion)')}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            grid: { display: false },
+                            ticks: { color: '#64748b', font: { weight: '600' } }
+                        },
                         y: {
                             min: 0,
                             max: 13,
