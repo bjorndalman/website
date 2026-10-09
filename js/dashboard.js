@@ -663,7 +663,7 @@ async function loadStryktipsetDashboard() {
                 const chHits = challMap.get(o);
                 const cHits = champMap.get(o);
 
-                if (chHits !== undefined && cHits !== undefined && chHits > cHits) {
+                if (chHits !== undefined && cHits !== undefined && chHits >= cHits) {
                     promotedMilestones.push({
                         omgang: o,
                         hits: chHits,
