@@ -1,22 +1,13 @@
 {
-  "updated_at": "2026-10-14 03:55",
+  "updated_at": "2026-10-14 11:22",
   "summary": {
     "current_bankroll": 11404.28,
     "profit_sek": 1404.28,
     "profit_pct": 14.04,
     "next_matchday": "2026-10-14",
-    "last_sync": "2026-10-14 03:55"
+    "last_sync": "2026-10-14 11:22"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-15",
-      "match": "chicago fire vs philadelphia union",
-      "prediction": "Away",
-      "odds": 2.64,
-      "stake": 15.17,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.5)"
-    },
     {
       "date": "2026-10-15",
       "match": "nashville vs kansas city",
@@ -97,6 +88,15 @@
       "stake": 7.12,
       "status": "Vinst",
       "reasoning": "Kalman AI EV-spel (Prob: 0.17)"
+    },
+    {
+      "date": "2026-10-15",
+      "match": "colorado rapids vs minnesota united",
+      "prediction": "Home",
+      "odds": 2.12,
+      "stake": 2.53,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.49)"
     }
   ],
   "history": [
