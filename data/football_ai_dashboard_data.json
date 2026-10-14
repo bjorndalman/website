@@ -1,31 +1,13 @@
 {
-  "updated_at": "2026-10-14 16:43",
+  "updated_at": "2026-10-14 21:21",
   "summary": {
     "current_bankroll": 11402.95,
     "profit_sek": 1402.95,
     "profit_pct": 14.03,
     "next_matchday": "2026-10-14",
-    "last_sync": "2026-10-14 16:43"
+    "last_sync": "2026-10-14 21:21"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-15",
-      "match": "real salt lake vs san jose",
-      "prediction": "Away",
-      "odds": 3.56,
-      "stake": 14.02,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.41)"
-    },
-    {
-      "date": "2026-10-15",
-      "match": "lafc vs austin fc",
-      "prediction": "Away",
-      "odds": 6.78,
-      "stake": 5.84,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.21)"
-    },
     {
       "date": "2026-10-15",
       "match": "san diego fc vs houston dynamo",
@@ -97,6 +79,24 @@
       "stake": 3.67,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.42)"
+    },
+    {
+      "date": "2026-10-17",
+      "match": "philadelphia union vs charlotte",
+      "prediction": "Away",
+      "odds": 4.9,
+      "stake": 10.04,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.31)"
+    },
+    {
+      "date": "2026-10-17",
+      "match": "minnesota united vs st. louis city",
+      "prediction": "Away",
+      "odds": 2.6,
+      "stake": 6.58,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.43)"
     }
   ],
   "history": [
