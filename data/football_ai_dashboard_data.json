@@ -1,31 +1,13 @@
 {
-  "updated_at": "2026-10-12 04:48",
+  "updated_at": "2026-10-14 03:55",
   "summary": {
-    "current_bankroll": 11378.52,
-    "profit_sek": 1378.52,
-    "profit_pct": 13.79,
+    "current_bankroll": 11404.28,
+    "profit_sek": 1404.28,
+    "profit_pct": 14.04,
     "next_matchday": "2026-10-14",
-    "last_sync": "2026-10-12 04:48"
+    "last_sync": "2026-10-14 03:55"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-14",
-      "match": "inter miami vs new york city",
-      "prediction": "Away",
-      "odds": 5.2,
-      "stake": 5.25,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.25)"
-    },
-    {
-      "date": "2026-10-14",
-      "match": "toronto vs orlando city",
-      "prediction": "Away",
-      "odds": 2.88,
-      "stake": 15.17,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.49)"
-    },
     {
       "date": "2026-10-15",
       "match": "chicago fire vs philadelphia union",
@@ -97,6 +79,24 @@
       "stake": 1.51,
       "status": "Vinst",
       "reasoning": "Kalman AI EV-spel (Prob: 0.32)"
+    },
+    {
+      "date": "2026-10-15",
+      "match": "nashville vs kansas city",
+      "prediction": "Draw",
+      "odds": 7.8,
+      "stake": 3.07,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.16)"
+    },
+    {
+      "date": "2026-10-15",
+      "match": "nashville vs kansas city",
+      "prediction": "Away",
+      "odds": 12.3,
+      "stake": 7.12,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.17)"
     }
   ],
   "history": [
@@ -562,19 +562,19 @@
     },
     {
       "date": "2026-08-30",
-      "profit": 11179.64
+      "profit": 11173.88
     },
     {
       "date": "2026-08-30",
-      "profit": 11172.92
+      "profit": 11171.9
     },
     {
       "date": "2026-08-30",
-      "profit": 11170.94
+      "profit": 11165.93
     },
     {
       "date": "2026-08-30",
-      "profit": 11164.97
+      "profit": 11165.6
     },
     {
       "date": "2026-08-30",
@@ -582,23 +582,23 @@
     },
     {
       "date": "2026-08-30",
-      "profit": 11160.3
+      "profit": 11191.15
     },
     {
       "date": "2026-08-30",
-      "profit": 11186.81
+      "profit": 11190.35
     },
     {
       "date": "2026-08-30",
-      "profit": 11186.01
+      "profit": 11209.69
     },
     {
       "date": "2026-08-30",
-      "profit": 11205.35
+      "profit": 11208.94
     },
     {
       "date": "2026-08-30",
-      "profit": 11204.6
+      "profit": 11214.74
     },
     {
       "date": "2026-08-30",
@@ -610,7 +610,7 @@
     },
     {
       "date": "2026-09-05",
-      "profit": 11193.68
+      "profit": 11191.07
     },
     {
       "date": "2026-09-05",
@@ -722,63 +722,63 @@
     },
     {
       "date": "2026-09-13",
-      "profit": 11229.33
+      "profit": 11225.62
     },
     {
       "date": "2026-09-13",
-      "profit": 11221.51
+      "profit": 11216.22
     },
     {
       "date": "2026-09-13",
-      "profit": 11212.11
+      "profit": 11229.78
     },
     {
       "date": "2026-09-13",
-      "profit": 11225.67
+      "profit": 11228.08
     },
     {
       "date": "2026-09-13",
-      "profit": 11223.97
+      "profit": 11224.72
     },
     {
       "date": "2026-09-13",
-      "profit": 11220.61
+      "profit": 11219.72
     },
     {
       "date": "2026-09-13",
-      "profit": 11229.6
+      "profit": 11214.25
     },
     {
       "date": "2026-09-13",
-      "profit": 11224.13
+      "profit": 11210.14
     },
     {
       "date": "2026-09-13",
-      "profit": 11212.25
+      "profit": 11195.19
     },
     {
       "date": "2026-09-13",
-      "profit": 11197.87
+      "profit": 11190.39
     },
     {
       "date": "2026-09-13",
-      "profit": 11192.82
+      "profit": 11195.23
     },
     {
       "date": "2026-09-13",
-      "profit": 11217.75
+      "profit": 11220.16
     },
     {
       "date": "2026-09-13",
-      "profit": 11212.75
+      "profit": 11215.11
     },
     {
       "date": "2026-09-13",
-      "profit": 11207.95
+      "profit": 11200.73
     },
     {
       "date": "2026-09-13",
-      "profit": 11193.0
+      "profit": 11188.85
     },
     {
       "date": "2026-09-13",
@@ -786,7 +786,7 @@
     },
     {
       "date": "2026-09-14",
-      "profit": 11178.89
+      "profit": 11195.46
     },
     {
       "date": "2026-09-14",
@@ -826,7 +826,7 @@
     },
     {
       "date": "2026-09-20",
-      "profit": 11257.15
+      "profit": 11259.62
     },
     {
       "date": "2026-09-20",
@@ -834,11 +834,11 @@
     },
     {
       "date": "2026-09-20",
-      "profit": 11257.24
+      "profit": 11266.92
     },
     {
       "date": "2026-09-20",
-      "profit": 11271.12
+      "profit": 11256.6
     },
     {
       "date": "2026-09-20",
@@ -850,7 +850,7 @@
     },
     {
       "date": "2026-09-20",
-      "profit": 11262.9
+      "profit": 11241.29
     },
     {
       "date": "2026-09-20",
@@ -858,27 +858,27 @@
     },
     {
       "date": "2026-09-26",
-      "profit": 11367.78
+      "profit": 11251.44
     },
     {
       "date": "2026-09-26",
-      "profit": 11366.41
+      "profit": 11293.78
     },
     {
       "date": "2026-09-26",
-      "profit": 11362.23
+      "profit": 11279.76
     },
     {
       "date": "2026-09-26",
-      "profit": 11369.49
+      "profit": 11274.34
     },
     {
       "date": "2026-09-26",
-      "profit": 11355.47
+      "profit": 11281.6
     },
     {
       "date": "2026-09-26",
-      "profit": 11397.81
+      "profit": 11393.76
     },
     {
       "date": "2026-09-26",
@@ -886,35 +886,35 @@
     },
     {
       "date": "2026-09-27",
-      "profit": 11348.11
+      "profit": 11389.38
     },
     {
       "date": "2026-09-27",
-      "profit": 11318.08
+      "profit": 11385.26
     },
     {
       "date": "2026-09-27",
-      "profit": 11304.94
+      "profit": 11437.49
     },
     {
       "date": "2026-09-27",
-      "profit": 11310.54
+      "profit": 11407.46
     },
     {
       "date": "2026-09-27",
-      "profit": 11280.51
+      "profit": 11413.06
     },
     {
       "date": "2026-09-27",
-      "profit": 11275.27
+      "profit": 11399.92
     },
     {
       "date": "2026-09-27",
-      "profit": 11327.5
+      "profit": 11369.89
     },
     {
       "date": "2026-09-27",
-      "profit": 11323.38
+      "profit": 11325.61
     },
     {
       "date": "2026-09-27",
@@ -922,71 +922,103 @@
     },
     {
       "date": "2026-10-10",
-      "profit": 11314.13
+      "profit": 11333.54
     },
     {
       "date": "2026-10-10",
-      "profit": 11309.46
+      "profit": 11333.14
     },
     {
       "date": "2026-10-10",
-      "profit": 11353.81
+      "profit": 11326.78
     },
     {
       "date": "2026-10-10",
-      "profit": 11387.62
+      "profit": 11360.59
     },
     {
       "date": "2026-10-10",
-      "profit": 11381.26
+      "profit": 11359.03
     },
     {
       "date": "2026-10-10",
-      "profit": 11380.86
+      "profit": 11351.93
     },
     {
       "date": "2026-10-10",
-      "profit": 11373.76
+      "profit": 11338.26
+    },
+    {
+      "date": "2026-10-10",
+      "profit": 11382.61
+    },
+    {
+      "date": "2026-10-10",
+      "profit": 11377.94
+    },
+    {
+      "date": "2026-10-10",
+      "profit": 11371.7
     },
     {
       "date": "2026-10-11",
-      "profit": 11370.13
+      "profit": 11371.31
     },
     {
       "date": "2026-10-11",
-      "profit": 11363.75
+      "profit": 11369.89
     },
     {
       "date": "2026-10-11",
-      "profit": 11350.75
+      "profit": 11395.39
     },
     {
       "date": "2026-10-11",
-      "profit": 11349.03
+      "profit": 11391.76
     },
     {
       "date": "2026-10-11",
-      "profit": 11364.13
+      "profit": 11392.95
     },
     {
       "date": "2026-10-11",
-      "profit": 11365.32
+      "profit": 11408.05
     },
     {
       "date": "2026-10-11",
-      "profit": 11354.83
+      "profit": 11406.33
     },
     {
       "date": "2026-10-11",
-      "profit": 11380.33
+      "profit": 11393.33
     },
     {
       "date": "2026-10-11",
-      "profit": 11378.91
+      "profit": 11386.95
     },
     {
       "date": "2026-10-11",
-      "profit": 11378.52
+      "profit": 11376.46
+    },
+    {
+      "date": "2026-10-14",
+      "profit": 11389.51
+    },
+    {
+      "date": "2026-10-14",
+      "profit": 11384.26
+    },
+    {
+      "date": "2026-10-14",
+      "profit": 11422.94
+    },
+    {
+      "date": "2026-10-14",
+      "profit": 11419.45
+    },
+    {
+      "date": "2026-10-14",
+      "profit": 11404.28
     }
   ]
 }

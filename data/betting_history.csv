@@ -207,9 +207,9 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-10-10,toronto vs cf montreal,Home,0.53,1.87,1.88,0.4,Förlust,-0.4
 2026-10-10,toronto vs cf montreal,Away,0.37,2.73,3.25,6.36,Förlust,-6.36
 2026-10-10,chicago fire vs new york city,Away,0.41,2.45,3.55,13.26,Vinst,33.81
-2026-10-10,charlotte vs dallas,Home,0.56,1.79,2.1,11.97,Placerat,0.0
+2026-10-10,charlotte vs dallas,Home,0.56,1.79,2.1,11.97,Vinst,13.17
 2026-10-10,inter miami vs dc united,Away,0.25,4.0,5.8,7.1,Förlust,-7.1
-2026-10-10,red bulls vs san diego fc,Away,0.5,1.99,2.3,13.67,Placerat,0.0
+2026-10-10,red bulls vs san diego fc,Away,0.5,1.99,2.3,13.67,Förlust,-13.67
 2026-10-10,philadelphia union vs real salt lake,Away,0.27,3.65,5.8,9.24,Vinst,44.35
 2026-10-11,austin fc vs nashville,Home,0.32,3.09,3.45,3.63,Förlust,-3.63
 2026-10-11,austin fc vs nashville,Away,0.58,1.73,1.86,6.38,Förlust,-6.38
@@ -219,7 +219,7 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-10-11,colorado rapids vs san jose,Home,0.53,1.88,1.91,1.31,Vinst,1.19
 2026-10-11,colorado rapids vs san jose,Away,0.37,2.71,3.75,10.49,Förlust,-10.49
 2026-10-11,lafc vs vancouver whitecaps,Away,0.5,1.98,2.69,15.09,Vinst,25.5
-2026-10-10,charlotte vs dallas,Away,0.38,2.65,2.75,1.56,Placerat,0.0
+2026-10-10,charlotte vs dallas,Away,0.38,2.65,2.75,1.56,Förlust,-1.56
 2026-10-10,inter miami vs dc united,Draw,0.24,4.19,5.3,4.67,Förlust,-4.67
 2026-10-10,philadelphia union vs real salt lake,Draw,0.25,3.97,5.4,6.24,Förlust,-6.24
 2026-10-11,kansas city vs portland timbers,Draw,0.27,3.74,3.95,1.42,Förlust,-1.42
@@ -237,3 +237,5 @@ Datum,Match,Spel,AI Sannolikhet,Vårt Odds,Marknadsodds,Rek. Insats (kr),Status,
 2026-10-15,lafc vs austin fc,Away,0.21,4.69,6.78,5.84,Förlust,-5.84
 2026-10-15,san diego fc vs houston dynamo,Home,0.54,1.86,2.19,17.04,Förlust,-17.04
 2026-10-15,san diego fc vs houston dynamo,Away,0.32,3.09,3.23,1.51,Vinst,3.37
+2026-10-15,nashville vs kansas city,Draw,0.16,6.12,7.8,3.07,Förlust,-3.07
+2026-10-15,nashville vs kansas city,Away,0.17,5.97,12.3,7.12,Vinst,80.46
