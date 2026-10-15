@@ -1,49 +1,13 @@
 {
-  "updated_at": "2026-10-15 03:37",
+  "updated_at": "2026-10-15 10:59",
   "summary": {
     "current_bankroll": 11430.59,
     "profit_sek": 1430.59,
     "profit_pct": 14.31,
-    "next_matchday": "2026-10-15",
-    "last_sync": "2026-10-15 03:37"
+    "next_matchday": "2026-10-17",
+    "last_sync": "2026-10-15 10:59"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-17",
-      "match": "new england revolution vs chicago fire",
-      "prediction": "Away",
-      "odds": 2.75,
-      "stake": 1.64,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.38)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "orlando city vs dc united",
-      "prediction": "Away",
-      "odds": 4.1,
-      "stake": 7.45,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.32)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "new york city vs lafc",
-      "prediction": "Home",
-      "odds": 2.7,
-      "stake": 1.73,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.38)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "new york city vs lafc",
-      "prediction": "Away",
-      "odds": 2.45,
-      "stake": 0.88,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.42)"
-    },
     {
       "date": "2026-10-17",
       "match": "red bulls vs toronto",
@@ -97,6 +61,42 @@
       "stake": 1.39,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.54)"
+    },
+    {
+      "date": "2026-10-17",
+      "match": "philadelphia union vs charlotte",
+      "prediction": "Draw",
+      "odds": 4.6,
+      "stake": 4.66,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.27)"
+    },
+    {
+      "date": "2026-10-17",
+      "match": "new england revolution vs chicago fire",
+      "prediction": "Draw",
+      "odds": 3.85,
+      "stake": 0.71,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.27)"
+    },
+    {
+      "date": "2026-10-17",
+      "match": "orlando city vs dc united",
+      "prediction": "Draw",
+      "odds": 4.1,
+      "stake": 1.57,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.26)"
+    },
+    {
+      "date": "2026-10-17",
+      "match": "red bulls vs toronto",
+      "prediction": "Draw",
+      "odds": 3.95,
+      "stake": 1.45,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.27)"
     }
   ],
   "history": [
