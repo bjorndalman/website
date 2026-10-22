@@ -1,94 +1,13 @@
 {
-  "updated_at": "2026-10-21 21:21",
+  "updated_at": "2026-10-22 03:41",
   "summary": {
     "current_bankroll": 11391.22,
     "profit_sek": 1391.22,
     "profit_pct": 13.91,
-    "next_matchday": "2026-10-21",
-    "last_sync": "2026-10-21 21:21"
+    "next_matchday": "2026-10-24",
+    "last_sync": "2026-10-22 03:41"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-18",
-      "match": "kansas city vs real salt lake",
-      "prediction": "Home",
-      "odds": 2.75,
-      "stake": 4.42,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.4)"
-    },
-    {
-      "date": "2026-10-18",
-      "match": "portland timbers vs colorado rapids",
-      "prediction": "Away",
-      "odds": 2.75,
-      "stake": 2.37,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.38)"
-    },
-    {
-      "date": "2026-10-18",
-      "match": "san jose vs nashville",
-      "prediction": "Away",
-      "odds": 1.88,
-      "stake": 1.39,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.54)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "philadelphia union vs charlotte",
-      "prediction": "Draw",
-      "odds": 4.6,
-      "stake": 4.66,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.27)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "new england revolution vs chicago fire",
-      "prediction": "Draw",
-      "odds": 3.85,
-      "stake": 0.71,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.27)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "orlando city vs dc united",
-      "prediction": "Draw",
-      "odds": 4.1,
-      "stake": 1.57,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.26)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "red bulls vs toronto",
-      "prediction": "Draw",
-      "odds": 3.95,
-      "stake": 1.45,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.27)"
-    },
-    {
-      "date": "2026-10-18",
-      "match": "kansas city vs real salt lake",
-      "prediction": "Away",
-      "odds": 2.23,
-      "stake": 3.19,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.47)"
-    },
-    {
-      "date": "2026-10-17",
-      "match": "new england revolution vs chicago fire",
-      "prediction": "Home",
-      "odds": 2.23,
-      "stake": 0.27,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.45)"
-    },
     {
       "date": "2026-10-24",
       "match": "cf montreal vs nashville",
@@ -97,6 +16,87 @@
       "stake": 10.62,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.69)"
+    },
+    {
+      "date": "2026-10-24",
+      "match": "red bulls vs inter miami",
+      "prediction": "Away",
+      "odds": 1.79,
+      "stake": 15.19,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.68)"
+    },
+    {
+      "date": "2026-10-24",
+      "match": "dc united vs cincinnati",
+      "prediction": "Away",
+      "odds": 2.38,
+      "stake": 8.33,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.48)"
+    },
+    {
+      "date": "2026-10-24",
+      "match": "philadelphia union vs new england revolution",
+      "prediction": "Away",
+      "odds": 4.5,
+      "stake": 6.42,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.29)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "kansas city vs austin fc",
+      "prediction": "Away",
+      "odds": 2.95,
+      "stake": 15.19,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.5)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "colorado rapids vs vancouver whitecaps",
+      "prediction": "Away",
+      "odds": 2.18,
+      "stake": 15.19,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.62)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "dallas vs san jose",
+      "prediction": "Away",
+      "odds": 4.0,
+      "stake": 8.45,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.33)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "houston dynamo vs minnesota united",
+      "prediction": "Away",
+      "odds": 3.3,
+      "stake": 8.52,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.38)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "real salt lake vs st. louis city",
+      "prediction": "Away",
+      "odds": 2.5,
+      "stake": 7.44,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.46)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "portland timbers vs charlotte",
+      "prediction": "Away",
+      "odds": 2.88,
+      "stake": 15.19,
+      "status": "Placerat",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.5)"
     }
   ],
   "history": [
