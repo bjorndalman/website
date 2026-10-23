@@ -10,7 +10,7 @@ const swedishData = {
   education: [
     {
       school: "Chalmers Tekniska Högskola",
-      program: "Ingenjör Elektroteknik 180 hp",
+      program: "Högskoleingenjör Elektroteknik 180 hp",
       years: "",
       description: "Kurser inom elektronik, telekommunikation, signalbehandling, programmering, styrsystem, mikrovågsteknik och inbyggda system."
     },
