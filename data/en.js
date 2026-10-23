@@ -19,7 +19,7 @@ const defaultData = {
       program: "Further Education 105 ECTS",
       years: " - 2026",
       description: [
-        "Digital Electronic Design with VHDL 7.5 ECTS Points" <span style="color: #2563eb; font-weight: bold; font-style: italic; margin-left: 8px;">NEW</span>',
+        'Digital Electronic Design with VHDL 7.5 ECTS Points" <span style="color: #2563eb; font-weight: bold; font-style: italic; margin-left: 8px;">NEW</span>',
         "Electronic Design 7.5 ECTS Points",
         "High Voltage Engineering 7.5 ECTS Points",
         "Nuclear Power Safety 7.5 ECTS Points",
