@@ -4,7 +4,7 @@ const defaultData = {
     initials: "BD",
     title: "Electrical Engineer",
     email: "bjorn.k.dahlman@gmail.com",
-    presentation: "Engineer with a background in electronic communication systems at Chalmers, experienced in telecom, automotive and technical testing. Skilled in troubleshooting, system analysis and documentation, with additional strengths in communication and adaptability from healthcare work. Continuously developing my expertise, currently pursuing studies in high-voltage engineering and nuclear safety. Structured, analytical and open to new opportunities."
+    presentation: "Electrical Engineer (BSc from Chalmers) with expertise in electronic communication, telecom, automotive, and technical testing. Strong problem-solver proficient in troubleshooting, system analysis, and documentation. Brings adaptability and strong communication skills from healthcare, combined with completed advanced coursework in electronic design, high-voltage engineering, and nuclear safety. Structured, analytical, and open to new career opportunities."
   },
   skills: ["AutoCAD", "Python", "Matlab", "C/C++", "Visual Studio", "National Instruments", "RF Systems", "Embedded Systems", "Automotive Technology", "Telecommunication"],
   education: [
