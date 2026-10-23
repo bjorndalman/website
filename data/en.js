@@ -24,8 +24,8 @@ const defaultData = {
         'High Voltage Engineering 7.5 ECTS Points <span style="color: #2563eb; font-weight: bold; font-style: italic; margin-left: 8px;">NEW</span>',
         'Nuclear Power Safety 7.5 ECTS Points <span style="color: #2563eb; font-weight: bold; font-style: italic; margin-left: 8px;">NEW</span>',
         'Business Planning for High Growth Startups 7.5 ECTS Points <span style="color: #2563eb; font-weight: bold; font-style: italic; margin-left: 8px;">NEW</span>',
-        'Radiation Physics 7.5 ECTS Points <span style="color: #2563eb; font-weight: bold; font-style: italic; margin-left: 8px;">NEW</span>',
-        'Electrical Measurements Techniques 7.5 ECTS Points <span style="color: #2563eb; font-weight: bold; font-style: italic; margin-left: 8px;">NEW</span>',
+        "Radiation Physics 7.5 ECTS Points",
+        "Electrical Measurements Techniques 7.5 ECTS Points",
         "C++/C Programming 22.5 ECTS Points",
         "Embedded Systems 30 ECTS Points"
       ]
