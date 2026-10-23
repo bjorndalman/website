@@ -4,7 +4,7 @@ const swedishData = {
     initials: "BD",
     title: "Högskoleingenjör i elektroteknik",
     email: "bjorn.k.dahlman@gmail.com",
-    presentation: "Högskoleingenjör i elektroteknik från Chalmers med kompetens inom elektronisk kommunikation, telekom, fordonsindustri och teknisk provning. Problemlösare med god vana av felsökning, systemanalys och dokumentation. Bidrar med god anpassningsförmåga och kommunikationsförmåga från indutrin och sjukvården, kombinerat med avklarade fördjupningskurser inom elektronikkonstruktion, högspänningsteknik och kärnkraftssäkerhet. Strukturerad, analytisk och öppen för nya karriärmöjligheter."
+    presentation: "Högskoleingenjör i elektroteknik från Chalmers med kompetens inom elektronisk kommunikation, telekom, fordonsindustri och teknisk provning. Problemlösare med god vana av felsökning, systemanalys och dokumentation. Bidrar med god anpassningsförmåga och kommunikationsförmåga från indutrin och sjukvården, kombinerat med fördjupningskurser inom elektronikkonstruktion, högspänningsteknik och kärnkraftssäkerhet. Strukturerad, analytisk och öppen för nya karriärmöjligheter."
   },
   skills: ["AutoCAD", "Python", "Matlab", "C/C++", "Visual Studio", "National Instruments", "RF-system", "Inbyggda system", "Fordonsteknik", "Telekommunikation"],
   education: [
