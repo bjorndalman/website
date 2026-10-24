@@ -1,22 +1,13 @@
 {
-  "updated_at": "2026-10-24 15:32",
+  "updated_at": "2026-10-24 20:23",
   "summary": {
     "current_bankroll": 11397.12,
     "profit_sek": 1397.12,
     "profit_pct": 13.97,
     "next_matchday": "2026-10-24",
-    "last_sync": "2026-10-24 15:32"
+    "last_sync": "2026-10-24 20:23"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-25",
-      "match": "dallas vs san jose",
-      "prediction": "Away",
-      "odds": 4.0,
-      "stake": 8.45,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.33)"
-    },
     {
       "date": "2026-10-25",
       "match": "houston dynamo vs minnesota united",
@@ -97,6 +88,15 @@
       "stake": 1.07,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.28)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "colorado rapids vs vancouver whitecaps",
+      "prediction": "Home",
+      "odds": 3.0,
+      "stake": 2.96,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.36)"
     }
   ],
   "history": [
