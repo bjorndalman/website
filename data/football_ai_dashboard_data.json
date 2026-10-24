@@ -1,49 +1,13 @@
 {
-  "updated_at": "2026-10-24 10:27",
+  "updated_at": "2026-10-24 15:32",
   "summary": {
-    "current_bankroll": 11400.38,
-    "profit_sek": 1400.38,
-    "profit_pct": 14.0,
+    "current_bankroll": 11397.12,
+    "profit_sek": 1397.12,
+    "profit_pct": 13.97,
     "next_matchday": "2026-10-24",
-    "last_sync": "2026-10-24 10:27"
+    "last_sync": "2026-10-24 15:32"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-24",
-      "match": "dc united vs cincinnati",
-      "prediction": "Away",
-      "odds": 2.38,
-      "stake": 8.33,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.48)"
-    },
-    {
-      "date": "2026-10-24",
-      "match": "philadelphia union vs new england revolution",
-      "prediction": "Away",
-      "odds": 4.5,
-      "stake": 6.42,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.29)"
-    },
-    {
-      "date": "2026-10-25",
-      "match": "kansas city vs austin fc",
-      "prediction": "Away",
-      "odds": 2.95,
-      "stake": 15.19,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.5)"
-    },
-    {
-      "date": "2026-10-25",
-      "match": "colorado rapids vs vancouver whitecaps",
-      "prediction": "Away",
-      "odds": 2.18,
-      "stake": 15.19,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.62)"
-    },
     {
       "date": "2026-10-25",
       "match": "dallas vs san jose",
@@ -97,6 +61,42 @@
       "stake": 3.13,
       "status": "Vinst",
       "reasoning": "Kalman AI EV-spel (Prob: 0.37)"
+    },
+    {
+      "date": "2026-10-24",
+      "match": "philadelphia union vs new england revolution",
+      "prediction": "Draw",
+      "odds": 4.3,
+      "stake": 1.95,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.25)"
+    },
+    {
+      "date": "2026-10-24",
+      "match": "orlando city vs new york city",
+      "prediction": "Draw",
+      "odds": 3.75,
+      "stake": 1.31,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.28)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "dallas vs san jose",
+      "prediction": "Draw",
+      "odds": 4.1,
+      "stake": 2.64,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.27)"
+    },
+    {
+      "date": "2026-10-25",
+      "match": "houston dynamo vs minnesota united",
+      "prediction": "Draw",
+      "odds": 3.7,
+      "stake": 1.07,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.28)"
     }
   ],
   "history": [
@@ -670,27 +670,27 @@
     },
     {
       "date": "2026-09-06",
-      "profit": 11206.59
+      "profit": 11202.58
     },
     {
       "date": "2026-09-06",
-      "profit": 11199.53
+      "profit": 11195.52
     },
     {
       "date": "2026-09-06",
-      "profit": 11197.19
+      "profit": 11193.18
     },
     {
       "date": "2026-09-06",
-      "profit": 11191.58
+      "profit": 11187.57
     },
     {
       "date": "2026-09-06",
-      "profit": 11206.81
+      "profit": 11202.8
     },
     {
       "date": "2026-09-06",
-      "profit": 11200.13
+      "profit": 11199.9
     },
     {
       "date": "2026-09-06",
@@ -930,7 +930,7 @@
     },
     {
       "date": "2026-10-10",
-      "profit": 11356.92
+      "profit": 11358.49
     },
     {
       "date": "2026-10-10",
@@ -942,15 +942,15 @@
     },
     {
       "date": "2026-10-10",
-      "profit": 11338.18
+      "profit": 11332.22
     },
     {
       "date": "2026-10-10",
-      "profit": 11351.35
+      "profit": 11345.39
     },
     {
       "date": "2026-10-10",
-      "profit": 11344.25
+      "profit": 11338.29
     },
     {
       "date": "2026-10-10",
@@ -1034,15 +1034,15 @@
     },
     {
       "date": "2026-10-15",
-      "profit": 11397.35
+      "profit": 11396.21
     },
     {
       "date": "2026-10-15",
-      "profit": 11393.68
+      "profit": 11476.67
     },
     {
       "date": "2026-10-15",
-      "profit": 11397.05
+      "profit": 11480.04
     },
     {
       "date": "2026-10-15",
@@ -1130,11 +1130,11 @@
     },
     {
       "date": "2026-10-18",
-      "profit": 11404.18
+      "profit": 11384.61
     },
     {
       "date": "2026-10-18",
-      "profit": 11401.81
+      "profit": 11382.24
     },
     {
       "date": "2026-10-18",
@@ -1150,27 +1150,35 @@
     },
     {
       "date": "2026-10-24",
-      "profit": 11387.97
+      "profit": 11389.27
     },
     {
       "date": "2026-10-24",
-      "profit": 11377.35
+      "profit": 11378.65
     },
     {
       "date": "2026-10-24",
-      "profit": 11389.35
+      "profit": 11390.65
     },
     {
       "date": "2026-10-24",
-      "profit": 11400.85
+      "profit": 11402.15
     },
     {
       "date": "2026-10-24",
-      "profit": 11394.43
+      "profit": 11395.73
     },
     {
       "date": "2026-10-24",
-      "profit": 11400.38
+      "profit": 11392.48
+    },
+    {
+      "date": "2026-10-24",
+      "profit": 11398.43
+    },
+    {
+      "date": "2026-10-24",
+      "profit": 11397.12
     }
   ]
 }
