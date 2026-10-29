@@ -1,31 +1,13 @@
 {
-  "updated_at": "2026-10-29 04:47",
+  "updated_at": "2026-10-29 12:27",
   "summary": {
     "current_bankroll": 11400.23,
     "profit_sek": 1400.23,
     "profit_pct": 14.0,
-    "next_matchday": "2026-10-29",
-    "last_sync": "2026-10-29 04:47"
+    "next_matchday": "2026-10-31",
+    "last_sync": "2026-10-29 12:27"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-29",
-      "match": "st. louis city vs portland timbers",
-      "prediction": "Draw",
-      "odds": 4.35,
-      "stake": 1.46,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.24)"
-    },
-    {
-      "date": "2026-10-29",
-      "match": "austin fc vs real salt lake",
-      "prediction": "Home",
-      "odds": 2.7,
-      "stake": 6.71,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.43)"
-    },
     {
       "date": "2026-10-31",
       "match": "charlotte vs orlando city",
@@ -97,6 +79,24 @@
       "stake": 12.21,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.52)"
+    },
+    {
+      "date": "2026-10-31",
+      "match": "cincinnati vs philadelphia union",
+      "prediction": "Away",
+      "odds": 2.17,
+      "stake": 8.92,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.52)"
+    },
+    {
+      "date": "2026-11-01",
+      "match": "colorado rapids vs chicago fire",
+      "prediction": "Away",
+      "odds": 2.95,
+      "stake": 11.07,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.44)"
     }
   ],
   "history": [
