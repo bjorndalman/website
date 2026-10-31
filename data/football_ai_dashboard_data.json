@@ -1,22 +1,13 @@
 {
-  "updated_at": "2026-10-31 04:31",
+  "updated_at": "2026-10-31 11:50",
   "summary": {
     "current_bankroll": 11459.73,
     "profit_sek": 1459.73,
     "profit_pct": 14.6,
     "next_matchday": "2026-10-31",
-    "last_sync": "2026-10-31 04:31"
+    "last_sync": "2026-10-31 11:50"
   },
   "latest_bets": [
-    {
-      "date": "2026-10-31",
-      "match": "san jose vs real salt lake",
-      "prediction": "Away",
-      "odds": 2.88,
-      "stake": 7.6,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.41)"
-    },
     {
       "date": "2026-10-31",
       "match": "kansas city vs dallas",
@@ -97,6 +88,15 @@
       "stake": 15.2,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.42)"
+    },
+    {
+      "date": "2026-11-01",
+      "match": "nashville vs red bulls",
+      "prediction": "Home",
+      "odds": 1.44,
+      "stake": 0.96,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.7)"
     }
   ],
   "history": [
