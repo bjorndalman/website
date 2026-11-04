@@ -2,1272 +2,1272 @@
   "updated_at": "2026-11-04",
   "summary": {
     "start_capital": 100000.0,
-    "current_bankroll": 104337.28,
-    "total_bankroll": 104337.28,
-    "cash_available": 104337.28,
+    "current_bankroll": 104099.68,
+    "total_bankroll": 104099.68,
+    "cash_available": 104099.68,
     "invested": 0.0,
-    "net_profit": 4337.28,
-    "profit_sek": 4337.28,
-    "profit_pct": 4.34,
-    "return_pct": 4.34,
-    "max_drawdown_pct": -18.98,
-    "sharpe_ratio": 0.65
+    "net_profit": 4099.68,
+    "profit_sek": 4099.68,
+    "profit_pct": 4.1,
+    "return_pct": 4.1,
+    "max_drawdown_pct": -17.34,
+    "sharpe_ratio": 1.02
   },
   "history": [
     {
       "date": "2025-11-04",
-      "bankroll": 92293.82,
-      "profit": -7706.18
+      "bankroll": 86411.65,
+      "profit": -13588.35
     },
     {
       "date": "2025-11-05",
-      "bankroll": 92762.49,
-      "profit": -7237.51
+      "bankroll": 86880.33,
+      "profit": -13119.67
     },
     {
       "date": "2025-11-06",
-      "bankroll": 92293.05,
-      "profit": -7706.95
+      "bankroll": 86622.82,
+      "profit": -13377.18
     },
     {
       "date": "2025-11-07",
-      "bankroll": 91830.6,
-      "profit": -8169.4
+      "bankroll": 86442.94,
+      "profit": -13557.06
     },
     {
       "date": "2025-11-10",
-      "bankroll": 92857.59,
-      "profit": -7142.41
+      "bankroll": 87428.38,
+      "profit": -12571.62
     },
     {
       "date": "2025-11-11",
-      "bankroll": 93643.76,
-      "profit": -6356.24
+      "bankroll": 87952.76,
+      "profit": -12047.24
     },
     {
       "date": "2025-11-12",
-      "bankroll": 94458.44,
-      "profit": -5541.56
+      "bankroll": 88655.23,
+      "profit": -11344.77
     },
     {
       "date": "2025-11-13",
-      "bankroll": 93525.89,
-      "profit": -6474.11
+      "bankroll": 87863.97,
+      "profit": -12136.03
     },
     {
       "date": "2025-11-14",
-      "bankroll": 92089.54,
-      "profit": -7910.46
+      "bankroll": 86652.02,
+      "profit": -13347.98
     },
     {
       "date": "2025-11-17",
-      "bankroll": 90659.12,
-      "profit": -9340.88
+      "bankroll": 85599.76,
+      "profit": -14400.24
     },
     {
       "date": "2025-11-18",
-      "bankroll": 88071.34,
-      "profit": -11928.66
+      "bankroll": 83448.31,
+      "profit": -16551.69
     },
     {
       "date": "2025-11-19",
-      "bankroll": 89051.22,
-      "profit": -10948.78
+      "bankroll": 84245.34,
+      "profit": -15754.66
     },
     {
       "date": "2025-11-20",
-      "bankroll": 88927.59,
-      "profit": -11072.41
+      "bankroll": 84271.31,
+      "profit": -15728.69
     },
     {
       "date": "2025-11-21",
-      "bankroll": 89653.58,
-      "profit": -10346.42
+      "bankroll": 84631.61,
+      "profit": -15368.39
     },
     {
       "date": "2025-11-24",
-      "bankroll": 91287.29,
-      "profit": -8712.71
+      "bankroll": 86140.66,
+      "profit": -13859.34
     },
     {
       "date": "2025-11-25",
-      "bankroll": 92332.58,
-      "profit": -7667.42
+      "bankroll": 86924.15,
+      "profit": -13075.85
     },
     {
       "date": "2025-11-26",
-      "bankroll": 93174.92,
-      "profit": -6825.08
+      "bankroll": 87791.42,
+      "profit": -12208.58
     },
     {
       "date": "2025-11-27",
-      "bankroll": 93945.61,
-      "profit": -6054.39
+      "bankroll": 88262.91,
+      "profit": -11737.09
     },
     {
       "date": "2025-11-28",
-      "bankroll": 94443.09,
-      "profit": -5556.91
+      "bankroll": 88569.24,
+      "profit": -11430.76
     },
     {
       "date": "2025-12-01",
-      "bankroll": 94813.42,
-      "profit": -5186.58
+      "bankroll": 88877.24,
+      "profit": -11122.76
     },
     {
       "date": "2025-12-02",
-      "bankroll": 94489.09,
-      "profit": -5510.91
+      "bankroll": 88623.55,
+      "profit": -11376.45
     },
     {
       "date": "2025-12-03",
-      "bankroll": 94446.16,
-      "profit": -5553.84
+      "bankroll": 88726.06,
+      "profit": -11273.94
     },
     {
       "date": "2025-12-04",
-      "bankroll": 96126.87,
-      "profit": -3873.13
+      "bankroll": 89816.69,
+      "profit": -10183.31
     },
     {
       "date": "2025-12-05",
-      "bankroll": 95732.09,
-      "profit": -4267.91
+      "bankroll": 89737.72,
+      "profit": -10262.28
     },
     {
       "date": "2025-12-08",
-      "bankroll": 95419.59,
-      "profit": -4580.41
+      "bankroll": 89362.89,
+      "profit": -10637.11
     },
     {
       "date": "2025-12-09",
-      "bankroll": 94504.62,
-      "profit": -5495.38
+      "bankroll": 88684.79,
+      "profit": -11315.21
     },
     {
       "date": "2025-12-10",
-      "bankroll": 94640.66,
-      "profit": -5359.34
+      "bankroll": 88908.1,
+      "profit": -11091.9
     },
     {
       "date": "2025-12-11",
-      "bankroll": 96326.35,
-      "profit": -3673.65
+      "bankroll": 89924.75,
+      "profit": -10075.25
     },
     {
       "date": "2025-12-12",
-      "bankroll": 96288.28,
-      "profit": -3711.72
+      "bankroll": 89720.46,
+      "profit": -10279.54
     },
     {
       "date": "2025-12-15",
-      "bankroll": 96346.42,
-      "profit": -3653.58
+      "bankroll": 90052.86,
+      "profit": -9947.14
     },
     {
       "date": "2025-12-16",
-      "bankroll": 96006.62,
-      "profit": -3993.38
+      "bankroll": 89621.64,
+      "profit": -10378.36
     },
     {
       "date": "2025-12-17",
-      "bankroll": 95348.96,
-      "profit": -4651.04
+      "bankroll": 89205.0,
+      "profit": -10795.0
     },
     {
       "date": "2025-12-18",
-      "bankroll": 96695.75,
-      "profit": -3304.25
+      "bankroll": 90385.57,
+      "profit": -9614.43
     },
     {
       "date": "2025-12-19",
-      "bankroll": 96888.37,
-      "profit": -3111.63
+      "bankroll": 90511.7,
+      "profit": -9488.3
     },
     {
       "date": "2025-12-22",
-      "bankroll": 97028.56,
-      "profit": -2971.44
+      "bankroll": 90680.98,
+      "profit": -9319.02
     },
     {
       "date": "2025-12-23",
-      "bankroll": 97057.08,
-      "profit": -2942.92
+      "bankroll": 90780.15,
+      "profit": -9219.85
     },
     {
       "date": "2025-12-29",
-      "bankroll": 98371.45,
-      "profit": -1628.55
+      "bankroll": 91658.18,
+      "profit": -8341.82
     },
     {
       "date": "2025-12-30",
-      "bankroll": 98964.08,
-      "profit": -1035.92
+      "bankroll": 92296.52,
+      "profit": -7703.48
     },
     {
       "date": "2026-01-02",
-      "bankroll": 99203.24,
-      "profit": -796.76
+      "bankroll": 92199.09,
+      "profit": -7800.91
     },
     {
       "date": "2026-01-05",
-      "bankroll": 99316.77,
-      "profit": -683.23
+      "bankroll": 92748.95,
+      "profit": -7251.05
     },
     {
       "date": "2026-01-07",
-      "bankroll": 101742.39,
-      "profit": 1742.39
+      "bankroll": 94779.79,
+      "profit": -5220.21
     },
     {
       "date": "2026-01-08",
-      "bankroll": 100421.67,
-      "profit": 421.67
+      "bankroll": 93700.09,
+      "profit": -6299.91
     },
     {
       "date": "2026-01-09",
-      "bankroll": 101899.69,
-      "profit": 1899.69
+      "bankroll": 95007.73,
+      "profit": -4992.27
     },
     {
       "date": "2026-01-12",
-      "bankroll": 101984.23,
-      "profit": 1984.23
+      "bankroll": 95237.72,
+      "profit": -4762.28
     },
     {
       "date": "2026-01-13",
-      "bankroll": 102454.4,
-      "profit": 2454.4
+      "bankroll": 95545.82,
+      "profit": -4454.18
     },
     {
       "date": "2026-01-14",
-      "bankroll": 102848.52,
-      "profit": 2848.52
+      "bankroll": 95952.4,
+      "profit": -4047.6
     },
     {
       "date": "2026-01-15",
-      "bankroll": 105156.49,
-      "profit": 5156.49
+      "bankroll": 97570.56,
+      "profit": -2429.44
     },
     {
       "date": "2026-01-16",
-      "bankroll": 104484.42,
-      "profit": 4484.42
+      "bankroll": 96807.07,
+      "profit": -3192.93
     },
     {
       "date": "2026-01-19",
-      "bankroll": 101281.06,
-      "profit": 1281.06
+      "bankroll": 94455.59,
+      "profit": -5544.41
     },
     {
       "date": "2026-01-20",
-      "bankroll": 100742.19,
-      "profit": 742.19
+      "bankroll": 94319.81,
+      "profit": -5680.19
     },
     {
       "date": "2026-01-21",
-      "bankroll": 101841.54,
-      "profit": 1841.54
+      "bankroll": 94991.14,
+      "profit": -5008.86
     },
     {
       "date": "2026-01-22",
-      "bankroll": 102507.05,
-      "profit": 2507.05
+      "bankroll": 95232.79,
+      "profit": -4767.21
     },
     {
       "date": "2026-01-23",
-      "bankroll": 102919.12,
-      "profit": 2919.12
+      "bankroll": 95989.76,
+      "profit": -4010.24
     },
     {
       "date": "2026-01-26",
-      "bankroll": 103971.27,
-      "profit": 3971.27
+      "bankroll": 97137.49,
+      "profit": -2862.51
     },
     {
       "date": "2026-01-27",
-      "bankroll": 103641.2,
-      "profit": 3641.2
+      "bankroll": 96990.26,
+      "profit": -3009.74
     },
     {
       "date": "2026-01-28",
-      "bankroll": 103920.26,
-      "profit": 3920.26
+      "bankroll": 96961.82,
+      "profit": -3038.18
     },
     {
       "date": "2026-01-29",
-      "bankroll": 104001.47,
-      "profit": 4001.47
+      "bankroll": 97570.78,
+      "profit": -2429.22
     },
     {
       "date": "2026-01-30",
-      "bankroll": 105064.03,
-      "profit": 5064.03
+      "bankroll": 96734.26,
+      "profit": -3265.74
     },
     {
       "date": "2026-02-02",
-      "bankroll": 107105.11,
-      "profit": 7105.11
+      "bankroll": 97640.88,
+      "profit": -2359.12
     },
     {
       "date": "2026-02-03",
-      "bankroll": 108641.3,
-      "profit": 8641.3
+      "bankroll": 98965.13,
+      "profit": -1034.87
     },
     {
       "date": "2026-02-04",
-      "bankroll": 109724.48,
-      "profit": 9724.48
+      "bankroll": 99553.81,
+      "profit": -446.19
     },
     {
       "date": "2026-02-05",
-      "bankroll": 108511.08,
-      "profit": 8511.08
+      "bankroll": 98057.83,
+      "profit": -1942.17
     },
     {
       "date": "2026-02-06",
-      "bankroll": 109779.45,
-      "profit": 9779.45
+      "bankroll": 99002.07,
+      "profit": -997.93
     },
     {
       "date": "2026-02-09",
-      "bankroll": 110952.5,
-      "profit": 10952.5
+      "bankroll": 100050.45,
+      "profit": 50.45
     },
     {
       "date": "2026-02-10",
-      "bankroll": 111948.5,
-      "profit": 11948.5
+      "bankroll": 100373.26,
+      "profit": 373.26
     },
     {
       "date": "2026-02-11",
-      "bankroll": 112496.97,
-      "profit": 12496.97
+      "bankroll": 101000.68,
+      "profit": 1000.68
     },
     {
       "date": "2026-02-12",
-      "bankroll": 111513.68,
-      "profit": 11513.68
+      "bankroll": 100021.54,
+      "profit": 21.54
     },
     {
       "date": "2026-02-13",
-      "bankroll": 110273.0,
-      "profit": 10273.0
+      "bankroll": 99811.44,
+      "profit": -188.56
     },
     {
       "date": "2026-02-16",
-      "bankroll": 109803.43,
-      "profit": 9803.43
+      "bankroll": 99570.42,
+      "profit": -429.58
     },
     {
       "date": "2026-02-17",
-      "bankroll": 109583.13,
-      "profit": 9583.13
+      "bankroll": 99146.51,
+      "profit": -853.49
     },
     {
       "date": "2026-02-18",
-      "bankroll": 110538.4,
-      "profit": 10538.4
+      "bankroll": 100409.28,
+      "profit": 409.28
     },
     {
       "date": "2026-02-19",
-      "bankroll": 110184.4,
-      "profit": 10184.4
+      "bankroll": 100204.88,
+      "profit": 204.88
     },
     {
       "date": "2026-02-20",
-      "bankroll": 110477.47,
-      "profit": 10477.47
+      "bankroll": 101004.92,
+      "profit": 1004.92
     },
     {
       "date": "2026-02-23",
-      "bankroll": 110085.22,
-      "profit": 10085.22
+      "bankroll": 100899.41,
+      "profit": 899.41
     },
     {
       "date": "2026-02-24",
-      "bankroll": 111988.9,
-      "profit": 11988.9
+      "bankroll": 102757.38,
+      "profit": 2757.38
     },
     {
       "date": "2026-02-25",
-      "bankroll": 112773.21,
-      "profit": 12773.21
+      "bankroll": 103741.15,
+      "profit": 3741.15
     },
     {
       "date": "2026-02-26",
-      "bankroll": 112649.19,
-      "profit": 12649.19
+      "bankroll": 103542.33,
+      "profit": 3542.33
     },
     {
       "date": "2026-02-27",
-      "bankroll": 113597.48,
-      "profit": 13597.48
+      "bankroll": 104311.94,
+      "profit": 4311.94
     },
     {
       "date": "2026-03-02",
-      "bankroll": 109648.98,
-      "profit": 9648.98
+      "bankroll": 101472.97,
+      "profit": 1472.97
     },
     {
       "date": "2026-03-03",
-      "bankroll": 105291.65,
-      "profit": 5291.65
+      "bankroll": 97842.85,
+      "profit": -2157.15
     },
     {
       "date": "2026-03-04",
-      "bankroll": 107032.55,
-      "profit": 7032.55
+      "bankroll": 99247.15,
+      "profit": -752.85
     },
     {
       "date": "2026-03-05",
-      "bankroll": 105821.41,
-      "profit": 5821.41
+      "bankroll": 97878.1,
+      "profit": -2121.9
     },
     {
       "date": "2026-03-06",
-      "bankroll": 103803.27,
-      "profit": 3803.27
+      "bankroll": 96287.98,
+      "profit": -3712.02
     },
     {
       "date": "2026-03-09",
-      "bankroll": 100089.38,
-      "profit": 89.38
+      "bankroll": 93243.13,
+      "profit": -6756.87
     },
     {
       "date": "2026-03-10",
-      "bankroll": 104362.87,
-      "profit": 4362.87
+      "bankroll": 97180.03,
+      "profit": -2819.97
     },
     {
       "date": "2026-03-11",
-      "bankroll": 103264.65,
-      "profit": 3264.65
+      "bankroll": 96326.98,
+      "profit": -3673.02
     },
     {
       "date": "2026-03-12",
-      "bankroll": 102708.14,
-      "profit": 2708.14
+      "bankroll": 96285.76,
+      "profit": -3714.24
     },
     {
       "date": "2026-03-13",
-      "bankroll": 100276.8,
-      "profit": 276.8
+      "bankroll": 94232.58,
+      "profit": -5767.42
     },
     {
       "date": "2026-03-16",
-      "bankroll": 100599.65,
-      "profit": 599.65
+      "bankroll": 94243.76,
+      "profit": -5756.24
     },
     {
       "date": "2026-03-17",
-      "bankroll": 100653.72,
-      "profit": 653.72
+      "bankroll": 94231.34,
+      "profit": -5768.66
     },
     {
       "date": "2026-03-18",
-      "bankroll": 99899.57,
-      "profit": -100.43
+      "bankroll": 93394.07,
+      "profit": -6605.93
     },
     {
       "date": "2026-03-19",
-      "bankroll": 94930.22,
-      "profit": -5069.78
+      "bankroll": 88944.17,
+      "profit": -11055.83
     },
     {
       "date": "2026-03-20",
-      "bankroll": 93151.86,
-      "profit": -6848.14
+      "bankroll": 87261.39,
+      "profit": -12738.61
     },
     {
       "date": "2026-03-23",
-      "bankroll": 94837.67,
-      "profit": -5162.33
+      "bankroll": 88760.2,
+      "profit": -11239.8
     },
     {
       "date": "2026-03-24",
-      "bankroll": 95435.06,
-      "profit": -4564.94
+      "bankroll": 89270.32,
+      "profit": -10729.68
     },
     {
       "date": "2026-03-25",
-      "bankroll": 97419.94,
-      "profit": -2580.06
+      "bankroll": 90926.92,
+      "profit": -9073.08
     },
     {
       "date": "2026-03-26",
-      "bankroll": 93518.76,
-      "profit": -6481.24
+      "bankroll": 87050.67,
+      "profit": -12949.33
     },
     {
       "date": "2026-03-27",
-      "bankroll": 92197.57,
-      "profit": -7802.43
+      "bankroll": 86219.84,
+      "profit": -13780.16
     },
     {
       "date": "2026-03-30",
-      "bankroll": 92037.1,
-      "profit": -7962.9
+      "bankroll": 86674.38,
+      "profit": -13325.62
     },
     {
       "date": "2026-03-31",
-      "bankroll": 94096.62,
-      "profit": -5903.38
+      "bankroll": 88521.97,
+      "profit": -11478.03
     },
     {
       "date": "2026-04-01",
-      "bankroll": 97460.12,
-      "profit": -2539.88
+      "bankroll": 91449.14,
+      "profit": -8550.86
     },
     {
       "date": "2026-04-02",
-      "bankroll": 95880.99,
-      "profit": -4119.01
+      "bankroll": 89878.32,
+      "profit": -10121.68
     },
     {
       "date": "2026-04-07",
-      "bankroll": 96323.42,
-      "profit": -3676.58
+      "bankroll": 90291.66,
+      "profit": -9708.34
     },
     {
       "date": "2026-04-08",
-      "bankroll": 101203.5,
-      "profit": 1203.5
+      "bankroll": 94486.08,
+      "profit": -5513.92
     },
     {
       "date": "2026-04-09",
-      "bankroll": 100550.43,
-      "profit": 550.43
+      "bankroll": 94202.85,
+      "profit": -5797.15
     },
     {
       "date": "2026-04-10",
-      "bankroll": 101911.64,
-      "profit": 1911.64
+      "bankroll": 95443.55,
+      "profit": -4556.45
     },
     {
       "date": "2026-04-13",
-      "bankroll": 101252.56,
-      "profit": 1252.56
+      "bankroll": 94975.62,
+      "profit": -5024.38
     },
     {
       "date": "2026-04-14",
-      "bankroll": 102672.26,
-      "profit": 2672.26
+      "bankroll": 96108.59,
+      "profit": -3891.41
     },
     {
       "date": "2026-04-15",
-      "bankroll": 102439.69,
-      "profit": 2439.69
+      "bankroll": 96050.55,
+      "profit": -3949.45
     },
     {
       "date": "2026-04-16",
-      "bankroll": 103161.22,
-      "profit": 3161.22
+      "bankroll": 96452.11,
+      "profit": -3547.89
     },
     {
       "date": "2026-04-17",
-      "bankroll": 105014.99,
-      "profit": 5014.99
+      "bankroll": 98247.7,
+      "profit": -1752.3
     },
     {
       "date": "2026-04-20",
-      "bankroll": 103469.15,
-      "profit": 3469.15
+      "bankroll": 97200.52,
+      "profit": -2799.48
     },
     {
       "date": "2026-04-21",
-      "bankroll": 102246.91,
-      "profit": 2246.91
+      "bankroll": 96314.89,
+      "profit": -3685.11
     },
     {
       "date": "2026-04-22",
-      "bankroll": 101770.03,
-      "profit": 1770.03
+      "bankroll": 96162.14,
+      "profit": -3837.86
     },
     {
       "date": "2026-04-23",
-      "bankroll": 102643.9,
-      "profit": 2643.9
+      "bankroll": 96699.41,
+      "profit": -3300.59
     },
     {
       "date": "2026-04-24",
-      "bankroll": 98474.47,
-      "profit": -1525.53
+      "bankroll": 95688.19,
+      "profit": -4311.81
     },
     {
       "date": "2026-04-27",
-      "bankroll": 97799.54,
-      "profit": -2200.46
+      "bankroll": 94456.41,
+      "profit": -5543.59
     },
     {
       "date": "2026-04-28",
-      "bankroll": 97035.14,
-      "profit": -2964.86
+      "bankroll": 93428.14,
+      "profit": -6571.86
     },
     {
       "date": "2026-04-29",
-      "bankroll": 96534.2,
-      "profit": -3465.8
+      "bankroll": 92646.7,
+      "profit": -7353.3
     },
     {
       "date": "2026-04-30",
-      "bankroll": 97260.82,
-      "profit": -2739.18
+      "bankroll": 93273.59,
+      "profit": -6726.41
     },
     {
       "date": "2026-05-04",
-      "bankroll": 96609.24,
-      "profit": -3390.76
+      "bankroll": 92326.96,
+      "profit": -7673.04
     },
     {
       "date": "2026-05-05",
-      "bankroll": 98304.84,
-      "profit": -1695.16
+      "bankroll": 93914.52,
+      "profit": -6085.48
     },
     {
       "date": "2026-05-06",
-      "bankroll": 102796.81,
-      "profit": 2796.81
+      "bankroll": 97878.73,
+      "profit": -2121.27
     },
     {
       "date": "2026-05-07",
-      "bankroll": 101333.51,
-      "profit": 1333.51
+      "bankroll": 96594.12,
+      "profit": -3405.88
     },
     {
       "date": "2026-05-08",
-      "bankroll": 99574.4,
-      "profit": -425.6
+      "bankroll": 94897.34,
+      "profit": -5102.66
     },
     {
       "date": "2026-05-11",
-      "bankroll": 99502.5,
-      "profit": -497.5
+      "bankroll": 95311.65,
+      "profit": -4688.35
     },
     {
       "date": "2026-05-12",
-      "bankroll": 98113.38,
-      "profit": -1886.62
+      "bankroll": 94088.75,
+      "profit": -5911.25
     },
     {
       "date": "2026-05-13",
-      "bankroll": 98711.35,
-      "profit": -1288.65
+      "bankroll": 94719.95,
+      "profit": -5280.05
     },
     {
       "date": "2026-05-15",
-      "bankroll": 97465.62,
-      "profit": -2534.38
+      "bankroll": 93636.29,
+      "profit": -6363.71
     },
     {
       "date": "2026-05-18",
-      "bankroll": 98204.66,
-      "profit": -1795.34
+      "bankroll": 94346.24,
+      "profit": -5653.76
     },
     {
       "date": "2026-05-19",
-      "bankroll": 93568.71,
-      "profit": -6431.29
+      "bankroll": 94490.19,
+      "profit": -5509.81
     },
     {
       "date": "2026-05-20",
-      "bankroll": 95274.21,
-      "profit": -4725.79
+      "bankroll": 96231.14,
+      "profit": -3768.86
     },
     {
       "date": "2026-05-21",
-      "bankroll": 96304.65,
-      "profit": -3695.35
+      "bankroll": 97310.73,
+      "profit": -2689.27
     },
     {
       "date": "2026-05-22",
-      "bankroll": 97645.69,
-      "profit": -2354.31
+      "bankroll": 98475.73,
+      "profit": -1524.27
     },
     {
       "date": "2026-05-25",
-      "bankroll": 99985.54,
-      "profit": -14.46
+      "bankroll": 100541.23,
+      "profit": 541.23
     },
     {
       "date": "2026-05-26",
-      "bankroll": 99181.54,
-      "profit": -818.46
+      "bankroll": 99629.78,
+      "profit": -370.22
     },
     {
       "date": "2026-05-27",
-      "bankroll": 98789.36,
-      "profit": -1210.64
+      "bankroll": 99486.8,
+      "profit": -513.2
     },
     {
       "date": "2026-05-28",
-      "bankroll": 97862.03,
-      "profit": -2137.97
+      "bankroll": 98553.92,
+      "profit": -1446.08
     },
     {
       "date": "2026-05-29",
-      "bankroll": 98252.93,
-      "profit": -1747.07
+      "bankroll": 98791.07,
+      "profit": -1208.93
     },
     {
       "date": "2026-06-01",
-      "bankroll": 96958.95,
-      "profit": -3041.05
+      "bankroll": 97517.87,
+      "profit": -2482.13
     },
     {
       "date": "2026-06-02",
-      "bankroll": 100007.58,
-      "profit": 7.58
+      "bankroll": 100753.5,
+      "profit": 753.5
     },
     {
       "date": "2026-06-03",
-      "bankroll": 99692.14,
-      "profit": -307.86
+      "bankroll": 99908.23,
+      "profit": -91.77
     },
     {
       "date": "2026-06-04",
-      "bankroll": 99876.99,
-      "profit": -123.01
+      "bankroll": 99831.27,
+      "profit": -168.73
     },
     {
       "date": "2026-06-05",
-      "bankroll": 98868.71,
-      "profit": -1131.29
+      "bankroll": 98604.83,
+      "profit": -1395.17
     },
     {
       "date": "2026-06-08",
-      "bankroll": 98242.33,
-      "profit": -1757.67
+      "bankroll": 97963.91,
+      "profit": -2036.09
     },
     {
       "date": "2026-06-09",
-      "bankroll": 96410.28,
-      "profit": -3589.72
+      "bankroll": 96516.24,
+      "profit": -3483.76
     },
     {
       "date": "2026-06-10",
-      "bankroll": 95191.92,
-      "profit": -4808.08
+      "bankroll": 95568.0,
+      "profit": -4432.0
     },
     {
       "date": "2026-06-11",
-      "bankroll": 96237.2,
-      "profit": -3762.8
+      "bankroll": 96588.35,
+      "profit": -3411.65
     },
     {
       "date": "2026-06-12",
-      "bankroll": 98425.21,
-      "profit": -1574.79
+      "bankroll": 98863.62,
+      "profit": -1136.38
     },
     {
       "date": "2026-06-15",
-      "bankroll": 99594.83,
-      "profit": -405.17
+      "bankroll": 100051.93,
+      "profit": 51.93
     },
     {
       "date": "2026-06-16",
-      "bankroll": 99508.34,
-      "profit": -491.66
+      "bankroll": 100206.47,
+      "profit": 206.47
     },
     {
       "date": "2026-06-17",
-      "bankroll": 100016.49,
-      "profit": 16.49
+      "bankroll": 100824.74,
+      "profit": 824.74
     },
     {
       "date": "2026-06-18",
-      "bankroll": 100356.11,
-      "profit": 356.11
+      "bankroll": 100915.03,
+      "profit": 915.03
     },
     {
       "date": "2026-06-22",
-      "bankroll": 100505.06,
-      "profit": 505.06
+      "bankroll": 101234.36,
+      "profit": 1234.36
     },
     {
       "date": "2026-06-23",
-      "bankroll": 98469.34,
-      "profit": -1530.66
+      "bankroll": 99381.48,
+      "profit": -618.52
     },
     {
       "date": "2026-06-24",
-      "bankroll": 98064.33,
-      "profit": -1935.67
+      "bankroll": 98722.98,
+      "profit": -1277.02
     },
     {
       "date": "2026-06-25",
-      "bankroll": 99555.83,
-      "profit": -444.17
+      "bankroll": 99927.75,
+      "profit": -72.25
     },
     {
       "date": "2026-06-26",
-      "bankroll": 98125.42,
-      "profit": -1874.58
+      "bankroll": 98437.08,
+      "profit": -1562.92
     },
     {
       "date": "2026-06-29",
-      "bankroll": 98398.83,
-      "profit": -1601.17
+      "bankroll": 98812.31,
+      "profit": -1187.69
     },
     {
       "date": "2026-06-30",
-      "bankroll": 99948.34,
-      "profit": -51.66
+      "bankroll": 100160.27,
+      "profit": 160.27
     },
     {
       "date": "2026-07-01",
-      "bankroll": 99162.58,
-      "profit": -837.42
+      "bankroll": 99628.0,
+      "profit": -372.0
     },
     {
       "date": "2026-07-02",
-      "bankroll": 99057.2,
-      "profit": -942.8
+      "bankroll": 99769.87,
+      "profit": -230.13
     },
     {
       "date": "2026-07-03",
-      "bankroll": 100559.17,
-      "profit": 559.17
+      "bankroll": 101284.31,
+      "profit": 1284.31
     },
     {
       "date": "2026-07-06",
-      "bankroll": 99819.43,
-      "profit": -180.57
+      "bankroll": 100681.7,
+      "profit": 681.7
     },
     {
       "date": "2026-07-07",
-      "bankroll": 98432.75,
-      "profit": -1567.25
+      "bankroll": 99430.08,
+      "profit": -569.92
     },
     {
       "date": "2026-07-08",
-      "bankroll": 95301.92,
-      "profit": -4698.08
+      "bankroll": 96677.4,
+      "profit": -3322.6
     },
     {
       "date": "2026-07-09",
-      "bankroll": 97629.53,
-      "profit": -2370.47
+      "bankroll": 98978.0,
+      "profit": -1022.0
     },
     {
       "date": "2026-07-10",
-      "bankroll": 97562.97,
-      "profit": -2437.03
+      "bankroll": 99044.42,
+      "profit": -955.58
     },
     {
       "date": "2026-07-13",
-      "bankroll": 97819.5,
-      "profit": -2180.5
+      "bankroll": 99298.88,
+      "profit": -701.12
     },
     {
       "date": "2026-07-14",
-      "bankroll": 97747.61,
-      "profit": -2252.39
+      "bankroll": 99316.32,
+      "profit": -683.68
     },
     {
       "date": "2026-07-15",
-      "bankroll": 97019.68,
-      "profit": -2980.32
+      "bankroll": 98418.02,
+      "profit": -1581.98
     },
     {
       "date": "2026-07-16",
-      "bankroll": 96294.27,
-      "profit": -3705.73
+      "bankroll": 97808.96,
+      "profit": -2191.04
     },
     {
       "date": "2026-07-17",
-      "bankroll": 95060.92,
-      "profit": -4939.08
+      "bankroll": 96704.43,
+      "profit": -3295.57
     },
     {
       "date": "2026-07-20",
-      "bankroll": 94650.96,
-      "profit": -5349.04
+      "bankroll": 96439.92,
+      "profit": -3560.08
     },
     {
       "date": "2026-07-21",
-      "bankroll": 94178.28,
-      "profit": -5821.72
+      "bankroll": 96089.82,
+      "profit": -3910.18
     },
     {
       "date": "2026-07-22",
-      "bankroll": 95780.68,
-      "profit": -4219.32
+      "bankroll": 97667.29,
+      "profit": -2332.71
     },
     {
       "date": "2026-07-23",
-      "bankroll": 94195.07,
-      "profit": -5804.93
+      "bankroll": 96164.79,
+      "profit": -3835.21
     },
     {
       "date": "2026-07-24",
-      "bankroll": 95363.65,
-      "profit": -4636.35
+      "bankroll": 97204.55,
+      "profit": -2795.45
     },
     {
       "date": "2026-07-27",
-      "bankroll": 96272.93,
-      "profit": -3727.07
+      "bankroll": 97818.78,
+      "profit": -2181.22
     },
     {
       "date": "2026-07-28",
-      "bankroll": 96458.4,
-      "profit": -3541.6
+      "bankroll": 97933.62,
+      "profit": -2066.38
     },
     {
       "date": "2026-07-29",
-      "bankroll": 97413.46,
-      "profit": -2586.54
+      "bankroll": 97764.61,
+      "profit": -2235.39
     },
     {
       "date": "2026-07-30",
-      "bankroll": 97941.24,
-      "profit": -2058.76
+      "bankroll": 98554.19,
+      "profit": -1445.81
     },
     {
       "date": "2026-07-31",
-      "bankroll": 97965.67,
-      "profit": -2034.33
+      "bankroll": 98780.15,
+      "profit": -1219.85
     },
     {
       "date": "2026-08-03",
-      "bankroll": 99127.74,
-      "profit": -872.26
+      "bankroll": 99830.03,
+      "profit": -169.97
     },
     {
       "date": "2026-08-04",
-      "bankroll": 101482.96,
-      "profit": 1482.96
+      "bankroll": 101979.55,
+      "profit": 1979.55
     },
     {
       "date": "2026-08-05",
-      "bankroll": 101793.85,
-      "profit": 1793.85
+      "bankroll": 101993.31,
+      "profit": 1993.31
     },
     {
       "date": "2026-08-06",
-      "bankroll": 101609.84,
-      "profit": 1609.84
+      "bankroll": 101788.53,
+      "profit": 1788.53
     },
     {
       "date": "2026-08-07",
-      "bankroll": 101725.3,
-      "profit": 1725.3
+      "bankroll": 101920.61,
+      "profit": 1920.61
     },
     {
       "date": "2026-08-10",
-      "bankroll": 101681.31,
-      "profit": 1681.31
+      "bankroll": 102094.78,
+      "profit": 2094.78
     },
     {
       "date": "2026-08-11",
-      "bankroll": 101629.84,
-      "profit": 1629.84
+      "bankroll": 102014.23,
+      "profit": 2014.23
     },
     {
       "date": "2026-08-12",
-      "bankroll": 101385.35,
-      "profit": 1385.35
+      "bankroll": 101788.44,
+      "profit": 1788.44
     },
     {
       "date": "2026-08-13",
-      "bankroll": 101043.61,
-      "profit": 1043.61
+      "bankroll": 101349.04,
+      "profit": 1349.04
     },
     {
       "date": "2026-08-14",
-      "bankroll": 101058.59,
-      "profit": 1058.59
+      "bankroll": 101551.03,
+      "profit": 1551.03
     },
     {
       "date": "2026-08-17",
-      "bankroll": 100715.52,
-      "profit": 715.52
+      "bankroll": 101367.94,
+      "profit": 1367.94
     },
     {
       "date": "2026-08-18",
-      "bankroll": 100001.41,
-      "profit": 1.41
+      "bankroll": 100699.54,
+      "profit": 699.54
     },
     {
       "date": "2026-08-19",
-      "bankroll": 100849.86,
-      "profit": 849.86
+      "bankroll": 101545.91,
+      "profit": 1545.91
     },
     {
       "date": "2026-08-20",
-      "bankroll": 101575.61,
-      "profit": 1575.61
+      "bankroll": 102198.94,
+      "profit": 2198.94
     },
     {
       "date": "2026-08-21",
-      "bankroll": 103596.8,
-      "profit": 3596.8
+      "bankroll": 103931.32,
+      "profit": 3931.32
     },
     {
       "date": "2026-08-24",
-      "bankroll": 104040.37,
-      "profit": 4040.37
+      "bankroll": 104590.98,
+      "profit": 4590.98
     },
     {
       "date": "2026-08-25",
-      "bankroll": 105375.43,
-      "profit": 5375.43
+      "bankroll": 105797.22,
+      "profit": 5797.22
     },
     {
       "date": "2026-08-26",
-      "bankroll": 105306.92,
-      "profit": 5306.92
+      "bankroll": 105924.01,
+      "profit": 5924.01
     },
     {
       "date": "2026-08-27",
-      "bankroll": 104911.77,
-      "profit": 4911.77
+      "bankroll": 105657.69,
+      "profit": 5657.69
     },
     {
       "date": "2026-08-28",
-      "bankroll": 105555.96,
-      "profit": 5555.96
+      "bankroll": 106299.8,
+      "profit": 6299.8
     },
     {
       "date": "2026-08-31",
-      "bankroll": 104359.67,
-      "profit": 4359.67
+      "bankroll": 105126.36,
+      "profit": 5126.36
     },
     {
       "date": "2026-09-01",
-      "bankroll": 102456.7,
-      "profit": 2456.7
+      "bankroll": 103348.06,
+      "profit": 3348.06
     },
     {
       "date": "2026-09-02",
-      "bankroll": 101682.6,
-      "profit": 1682.6
+      "bankroll": 102640.45,
+      "profit": 2640.45
     },
     {
       "date": "2026-09-03",
-      "bankroll": 103105.6,
-      "profit": 3105.6
+      "bankroll": 103949.17,
+      "profit": 3949.17
     },
     {
       "date": "2026-09-04",
-      "bankroll": 103467.92,
-      "profit": 3467.92
+      "bankroll": 104292.79,
+      "profit": 4292.79
     },
     {
       "date": "2026-09-07",
-      "bankroll": 103787.06,
-      "profit": 3787.06
+      "bankroll": 104657.64,
+      "profit": 4657.64
     },
     {
       "date": "2026-09-08",
-      "bankroll": 105214.32,
-      "profit": 5214.32
+      "bankroll": 106111.91,
+      "profit": 6111.91
     },
     {
       "date": "2026-09-09",
-      "bankroll": 103481.16,
-      "profit": 3481.16
+      "bankroll": 104497.19,
+      "profit": 4497.19
     },
     {
       "date": "2026-09-10",
-      "bankroll": 101598.27,
-      "profit": 1598.27
+      "bankroll": 102753.51,
+      "profit": 2753.51
     },
     {
       "date": "2026-09-11",
-      "bankroll": 102274.67,
-      "profit": 2274.67
+      "bankroll": 103255.38,
+      "profit": 3255.38
     },
     {
       "date": "2026-09-14",
-      "bankroll": 100413.83,
-      "profit": 413.83
+      "bankroll": 101558.68,
+      "profit": 1558.68
     },
     {
       "date": "2026-09-15",
-      "bankroll": 100025.56,
-      "profit": 25.56
+      "bankroll": 101280.53,
+      "profit": 1280.53
     },
     {
       "date": "2026-09-16",
-      "bankroll": 101126.99,
-      "profit": 1126.99
+      "bankroll": 102309.24,
+      "profit": 2309.24
     },
     {
       "date": "2026-09-17",
-      "bankroll": 102353.36,
-      "profit": 2353.36
+      "bankroll": 103431.72,
+      "profit": 3431.72
     },
     {
       "date": "2026-09-18",
-      "bankroll": 100623.87,
-      "profit": 623.87
+      "bankroll": 101905.85,
+      "profit": 1905.85
     },
     {
       "date": "2026-09-21",
-      "bankroll": 101940.42,
-      "profit": 1940.42
+      "bankroll": 103118.51,
+      "profit": 3118.51
     },
     {
       "date": "2026-09-22",
-      "bankroll": 103472.02,
-      "profit": 3472.02
+      "bankroll": 104517.14,
+      "profit": 4517.14
     },
     {
       "date": "2026-09-23",
-      "bankroll": 102319.19,
-      "profit": 2319.19
+      "bankroll": 103393.39,
+      "profit": 3393.39
     },
     {
       "date": "2026-09-24",
-      "bankroll": 100459.89,
-      "profit": 459.89
+      "bankroll": 101642.14,
+      "profit": 1642.14
     },
     {
       "date": "2026-09-25",
-      "bankroll": 101248.06,
-      "profit": 1248.06
+      "bankroll": 102291.1,
+      "profit": 2291.1
     },
     {
       "date": "2026-09-28",
-      "bankroll": 100651.83,
-      "profit": 651.83
+      "bankroll": 101665.78,
+      "profit": 1665.78
     },
     {
       "date": "2026-09-29",
-      "bankroll": 100453.46,
-      "profit": 453.46
+      "bankroll": 101629.48,
+      "profit": 1629.48
     },
     {
       "date": "2026-09-30",
-      "bankroll": 100436.98,
-      "profit": 436.98
+      "bankroll": 101575.6,
+      "profit": 1575.6
     },
     {
       "date": "2026-10-01",
-      "bankroll": 98559.19,
-      "profit": -1440.81
+      "bankroll": 99901.43,
+      "profit": -98.57
     },
     {
       "date": "2026-10-02",
-      "bankroll": 100116.35,
-      "profit": 116.35
+      "bankroll": 101514.68,
+      "profit": 1514.68
     },
     {
       "date": "2026-10-05",
-      "bankroll": 100252.63,
-      "profit": 252.63
+      "bankroll": 101777.71,
+      "profit": 1777.71
     },
     {
       "date": "2026-10-06",
-      "bankroll": 101391.48,
-      "profit": 1391.48
+      "bankroll": 102879.16,
+      "profit": 2879.16
     },
     {
       "date": "2026-10-07",
-      "bankroll": 100374.43,
-      "profit": 374.43
+      "bankroll": 101872.5,
+      "profit": 1872.5
     },
     {
       "date": "2026-10-08",
-      "bankroll": 99587.78,
-      "profit": -412.22
+      "bankroll": 101187.67,
+      "profit": 1187.67
     },
     {
       "date": "2026-10-09",
-      "bankroll": 102133.71,
-      "profit": 2133.71
+      "bankroll": 103529.97,
+      "profit": 3529.97
     },
     {
       "date": "2026-10-12",
-      "bankroll": 102786.45,
-      "profit": 2786.45
+      "bankroll": 104174.4,
+      "profit": 4174.4
     },
     {
       "date": "2026-10-13",
-      "bankroll": 103401.65,
-      "profit": 3401.65
+      "bankroll": 104519.49,
+      "profit": 4519.49
     },
     {
       "date": "2026-10-14",
-      "bankroll": 102942.09,
-      "profit": 2942.09
+      "bankroll": 103983.06,
+      "profit": 3983.06
     },
     {
       "date": "2026-10-15",
-      "bankroll": 101377.81,
-      "profit": 1377.81
+      "bankroll": 102381.37,
+      "profit": 2381.37
     },
     {
       "date": "2026-10-16",
-      "bankroll": 102650.81,
-      "profit": 2650.81
+      "bankroll": 103500.61,
+      "profit": 3500.61
     },
     {
       "date": "2026-10-19",
-      "bankroll": 101529.34,
-      "profit": 1529.34
+      "bankroll": 102534.98,
+      "profit": 2534.98
     },
     {
       "date": "2026-10-20",
-      "bankroll": 100972.63,
-      "profit": 972.63
+      "bankroll": 101947.1,
+      "profit": 1947.1
     },
     {
       "date": "2026-10-21",
-      "bankroll": 101061.14,
-      "profit": 1061.14
+      "bankroll": 102091.72,
+      "profit": 2091.72
     },
     {
       "date": "2026-10-22",
-      "bankroll": 97789.81,
-      "profit": -2210.19
+      "bankroll": 98978.29,
+      "profit": -1021.71
     },
     {
       "date": "2026-10-23",
-      "bankroll": 99273.11,
-      "profit": -726.89
+      "bankroll": 100378.48,
+      "profit": 378.48
     },
     {
       "date": "2026-10-26",
-      "bankroll": 100948.21,
-      "profit": 948.21
+      "bankroll": 102095.14,
+      "profit": 2095.14
     },
     {
       "date": "2026-10-27",
-      "bankroll": 101919.59,
-      "profit": 1919.59
+      "bankroll": 102860.82,
+      "profit": 2860.82
     },
     {
       "date": "2026-10-28",
-      "bankroll": 102363.02,
-      "profit": 2363.02
+      "bankroll": 103358.27,
+      "profit": 3358.27
     },
     {
       "date": "2026-10-29",
-      "bankroll": 103078.35,
-      "profit": 3078.35
+      "bankroll": 103803.49,
+      "profit": 3803.49
     },
     {
       "date": "2026-10-30",
-      "bankroll": 102848.89,
-      "profit": 2848.89
+      "bankroll": 103447.28,
+      "profit": 3447.28
     },
     {
       "date": "2026-11-02",
-      "bankroll": 104177.11,
-      "profit": 4177.11
+      "bankroll": 104507.47,
+      "profit": 4507.47
     },
     {
       "date": "2026-11-03",
-      "bankroll": 103686.12,
-      "profit": 3686.12
+      "bankroll": 103943.76,
+      "profit": 3943.76
     },
     {
       "date": "2026-11-04",
-      "bankroll": 104337.28,
-      "profit": 4337.28
+      "bankroll": 104099.68,
+      "profit": 4099.68
     }
   ],
   "latest_trades_and_forecasts": [
@@ -1276,230 +1276,230 @@
       "stock": "ABB.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 853.0,
-      "kalman_value": 856.32,
+      "price": 847.6,
+      "kalman_value": 853.95,
       "ai_investment": 0.0,
-      "argument": "Divergent pull-back against general market strength signals increased short-term uncertainty. (Q: 1.20x, R: 1.40x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "ALFA.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 543.4,
-      "kalman_value": 542.95,
+      "price": 543.0,
+      "kalman_value": 542.8,
       "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.0%). Standard quantitative Kalman analysis applied."
+      "argument": "Low daily volatility (-0.07%). Standard quantitative Kalman analysis applied."
     },
     {
       "date": "2026-11-04",
       "stock": "ASSA-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 399.3,
-      "kalman_value": 397.31,
+      "price": 398.7,
+      "kalman_value": 397.0,
       "ai_investment": 0.0,
-      "argument": "Steady upward movement supporting a consistent positive trend. (Q: 1.00x, R: 0.90x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "AZN.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 1834.5,
-      "kalman_value": 1817.38,
+      "price": 1842.5,
+      "kalman_value": 1819.02,
       "ai_investment": 0.0,
-      "argument": "Low volatility defensive stock confirming steady positive momentum. (Q: 0.80x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "ATCO-A.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 187.05,
-      "kalman_value": 186.61,
+      "price": 185.9,
+      "kalman_value": 186.18,
       "ai_investment": 0.0,
-      "argument": "Low daily volatility (-0.87%). Standard quantitative Kalman analysis applied."
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "BOL.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 516.4,
-      "kalman_value": 509.18,
+      "price": 511.4,
+      "kalman_value": 506.26,
       "ai_investment": 0.0,
-      "argument": "Sharp daily price surge indicates heightened volatility alongside strong directional signal. (Q: 1.70x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "ELUX-B.ST",
-      "action": "HOLD",
-      "status": "HOLD",
-      "price": 31.4,
-      "kalman_value": 30.54,
+      "action": "CLOSED",
+      "status": "CLOSED",
+      "price": 31.69,
+      "kalman_value": 30.52,
       "ai_investment": 0.0,
-      "argument": "Strong price jump reflects elevated volatility and potential recovery trend. (Q: 1.60x, R: 0.80x)"
+      "argument": "Take Profit: Priset överstiger Fair Value med >3% (Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x))"
     },
     {
       "date": "2026-11-04",
       "stock": "ERIC-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 108.85,
-      "kalman_value": 108.98,
+      "price": 107.35,
+      "kalman_value": 108.42,
       "ai_investment": 0.0,
-      "argument": "Moderate gain aligned with stable market conditions and standard momentum. (Q: 1.00x, R: 0.90x)"
+      "argument": "Low daily volatility (0.19%). Standard quantitative Kalman analysis applied."
     },
     {
       "date": "2026-11-04",
       "stock": "ESSITY-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 287.6,
-      "kalman_value": 283.17,
+      "price": 287.0,
+      "kalman_value": 282.5,
       "ai_investment": 0.0,
-      "argument": "Solid upward drive indicates low noise and clear positive signal. (Q: 1.10x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "EVO.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 857.6,
-      "kalman_value": 848.71,
+      "price": 854.0,
+      "kalman_value": 847.37,
       "ai_investment": 0.0,
-      "argument": "Modest daily gain under standard operating market conditions. (Q: 1.00x, R: 1.00x)"
+      "argument": "Low daily volatility (0.59%). Standard quantitative Kalman analysis applied."
     },
     {
       "date": "2026-11-04",
       "stock": "GETI-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 278.5,
-      "kalman_value": 276.46,
+      "price": 279.0,
+      "kalman_value": 276.43,
       "ai_investment": 0.0,
-      "argument": "Firm advance confirming quality trend with slightly elevated trading momentum. (Q: 1.20x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "HEXA-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 110.6,
-      "kalman_value": 110.34,
+      "price": 109.6,
+      "kalman_value": 109.95,
       "ai_investment": 0.0,
-      "argument": "Stable gain reflecting controlled price action and minimal market noise. (Q: 0.90x, R: 0.90x)"
+      "argument": "Low daily volatility (0.27%). Standard quantitative Kalman analysis applied."
     },
     {
       "date": "2026-11-04",
       "stock": "HM-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 179.35,
-      "kalman_value": 176.69,
+      "price": 179.85,
+      "kalman_value": 176.5,
       "ai_investment": 0.0,
-      "argument": "Strong daily price gain highlights increased volatility and sharp upward trend. (Q: 1.60x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "INVE-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 435.4,
-      "kalman_value": 431.68,
+      "price": 434.4,
+      "kalman_value": 431.01,
       "ai_investment": 0.0,
-      "argument": "Consistent quality performance showing solid signal with low background noise. (Q: 0.80x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "KINV-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 73.72,
-      "kalman_value": 73.05,
+      "price": 73.8,
+      "kalman_value": 73.07,
       "ai_investment": 0.0,
-      "argument": "Mild gain with ongoing underlying volatility typical for investment asset. (Q: 1.10x, R: 1.00x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "NDA-SE.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 179.25,
-      "kalman_value": 176.23,
+      "price": 179.45,
+      "kalman_value": 175.91,
       "ai_investment": 0.0,
-      "argument": "Significant banking sector rally displaying sharp price movement and strong signal. (Q: 1.50x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "SAND.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 361.4,
-      "kalman_value": 362.03,
+      "price": 362.1,
+      "kalman_value": 362.29,
       "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.03%). Standard quantitative Kalman analysis applied."
+      "argument": "Low daily volatility (0.22%). Standard quantitative Kalman analysis applied."
     },
     {
       "date": "2026-11-04",
       "stock": "SCA-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 124.35,
-      "kalman_value": 122.28,
+      "price": 124.05,
+      "kalman_value": 121.95,
       "ai_investment": 0.0,
-      "argument": "Strong daily performance supporting an accelerating positive trend. (Q: 1.20x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "SEB-A.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 215.0,
-      "kalman_value": 210.91,
+      "price": 214.7,
+      "kalman_value": 210.33,
       "ai_investment": 0.0,
-      "argument": "Robust price increase signaling clear trend strength in banking sector. (Q: 1.30x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "SKF-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 276.9,
-      "kalman_value": 277.6,
+      "price": 274.8,
+      "kalman_value": 276.81,
       "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.51%). Standard quantitative Kalman analysis applied."
+      "argument": "Low daily volatility (-0.25%). Standard quantitative Kalman analysis applied."
     },
     {
       "date": "2026-11-04",
       "stock": "SWED-A.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 401.0,
-      "kalman_value": 394.44,
+      "price": 402.2,
+      "kalman_value": 394.17,
       "ai_investment": 0.0,
-      "argument": "Solid upward impulse indicating clear trend with moderate momentum. (Q: 1.20x, R: 0.80x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "TELIA.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 49.4,
-      "kalman_value": 49.32,
+      "price": 49.57,
+      "kalman_value": 49.38,
       "ai_investment": 0.0,
-      "argument": "Low daily volatility (0.75%). Standard quantitative Kalman analysis applied."
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-04",
       "stock": "VOLV-B.ST",
       "action": "HOLD",
       "status": "HOLD",
-      "price": 312.0,
-      "kalman_value": 309.69,
+      "price": 311.5,
+      "kalman_value": 309.42,
       "ai_investment": 0.0,
-      "argument": "Steady positive gain under low-noise, normal trading conditions. (Q: 0.90x, R: 0.90x)"
+      "argument": "Avvikelse identifierad av AI. (Q: 1.00x, R: 1.00x)"
     }
   ]
 }
