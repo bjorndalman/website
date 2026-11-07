@@ -1,102 +1,102 @@
 {
-  "updated_at": "2026-11-02 14:58",
+  "updated_at": "2026-11-07 05:00",
   "summary": {
-    "current_bankroll": 11407.49,
-    "profit_sek": 1407.49,
-    "profit_pct": 14.07,
+    "current_bankroll": 11324.39,
+    "profit_sek": 1324.39,
+    "profit_pct": 13.24,
     "next_matchday": "2026-11-07",
-    "last_sync": "2026-11-02 14:58"
+    "last_sync": "2026-11-07 05:00"
   },
   "latest_bets": [
     {
-      "date": "2026-10-31",
-      "match": "kansas city vs dallas",
-      "prediction": "Home",
-      "odds": 3.35,
-      "stake": 2.75,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.32)"
-    },
-    {
-      "date": "2026-11-01",
-      "match": "colorado rapids vs chicago fire",
-      "prediction": "Home",
-      "odds": 2.32,
-      "stake": 12.21,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.52)"
-    },
-    {
-      "date": "2026-10-31",
-      "match": "cincinnati vs philadelphia union",
+      "date": "2026-11-07",
+      "match": "orlando city vs new england revolution",
       "prediction": "Away",
-      "odds": 2.17,
-      "stake": 8.92,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.52)"
-    },
-    {
-      "date": "2026-11-01",
-      "match": "colorado rapids vs chicago fire",
-      "prediction": "Away",
-      "odds": 2.95,
-      "stake": 11.07,
+      "odds": 3.45,
+      "stake": 12.72,
       "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.44)"
+      "reasoning": "Kalman AI EV-spel (Prob: 0.41)"
     },
     {
-      "date": "2026-11-01",
-      "match": "nashville vs red bulls",
+      "date": "2026-11-07",
+      "match": "philadelphia union vs toronto",
       "prediction": "Away",
-      "odds": 6.0,
-      "stake": 2.18,
+      "odds": 6.75,
+      "stake": 10.33,
       "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.19)"
+      "reasoning": "Kalman AI EV-spel (Prob: 0.26)"
     },
     {
-      "date": "2026-11-02",
-      "match": "new england revolution vs inter miami",
+      "date": "2026-11-08",
+      "match": "austin fc vs portland timbers",
       "prediction": "Home",
-      "odds": 2.75,
-      "stake": 1.26,
+      "odds": 4.75,
+      "stake": 15.21,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.37)"
     },
     {
-      "date": "2026-11-02",
-      "match": "new england revolution vs inter miami",
-      "prediction": "Away",
-      "odds": 2.3,
-      "stake": 0.84,
+      "date": "2026-11-08",
+      "match": "dallas vs colorado rapids",
+      "prediction": "Home",
+      "odds": 2.0,
+      "stake": 4.44,
       "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.44)"
+      "reasoning": "Kalman AI EV-spel (Prob: 0.53)"
     },
     {
-      "date": "2026-11-02",
-      "match": "lafc vs minnesota united",
+      "date": "2026-11-08",
+      "match": "dallas vs colorado rapids",
       "prediction": "Away",
-      "odds": 4.6,
-      "stake": 11.83,
+      "odds": 3.4,
+      "stake": 5.46,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.34)"
     },
     {
-      "date": "2026-11-02",
-      "match": "portland timbers vs houston dynamo",
-      "prediction": "Away",
-      "odds": 3.75,
-      "stake": 15.2,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.42)"
+      "date": "2026-11-08",
+      "match": "houston dynamo vs st. louis city",
+      "prediction": "Home",
+      "odds": 2.43,
+      "stake": 8.24,
+      "status": "Vinst",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.48)"
     },
     {
-      "date": "2026-11-01",
-      "match": "nashville vs red bulls",
+      "date": "2026-11-08",
+      "match": "houston dynamo vs st. louis city",
+      "prediction": "Away",
+      "odds": 2.7,
+      "stake": 3.08,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.4)"
+    },
+    {
+      "date": "2026-11-08",
+      "match": "minnesota united vs san jose",
+      "prediction": "Away",
+      "odds": 4.35,
+      "stake": 13.92,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.37)"
+    },
+    {
+      "date": "2026-11-08",
+      "match": "san diego fc vs kansas city",
       "prediction": "Home",
-      "odds": 1.44,
-      "stake": 0.96,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.7)"
+      "odds": 1.52,
+      "stake": 16.42,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.71)"
+    },
+    {
+      "date": "2026-11-08",
+      "match": "san diego fc vs kansas city",
+      "prediction": "Away",
+      "odds": 5.3,
+      "stake": 0.41,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.19)"
     }
   ],
   "history": [
@@ -754,31 +754,31 @@
     },
     {
       "date": "2026-09-13",
-      "profit": 11228.97
+      "profit": 11212.25
     },
     {
       "date": "2026-09-13",
-      "profit": 11217.09
+      "profit": 11207.25
     },
     {
       "date": "2026-09-13",
-      "profit": 11202.71
+      "profit": 11192.3
     },
     {
       "date": "2026-09-13",
-      "profit": 11197.66
+      "profit": 11187.5
     },
     {
       "date": "2026-09-13",
-      "profit": 11222.59
+      "profit": 11192.34
     },
     {
       "date": "2026-09-13",
-      "profit": 11217.59
+      "profit": 11217.27
     },
     {
       "date": "2026-09-13",
-      "profit": 11212.79
+      "profit": 11212.22
     },
     {
       "date": "2026-09-13",
@@ -794,7 +794,7 @@
     },
     {
       "date": "2026-09-18",
-      "profit": 11173.0
+      "profit": 11185.73
     },
     {
       "date": "2026-09-18",
@@ -802,15 +802,15 @@
     },
     {
       "date": "2026-09-19",
-      "profit": 11205.36
+      "profit": 11199.54
     },
     {
       "date": "2026-09-19",
-      "profit": 11222.68
+      "profit": 11241.34
     },
     {
       "date": "2026-09-19",
-      "profit": 11264.48
+      "profit": 11237.75
     },
     {
       "date": "2026-09-19",
@@ -858,27 +858,27 @@
     },
     {
       "date": "2026-09-26",
-      "profit": 11251.44
+      "profit": 11297.96
     },
     {
       "date": "2026-09-26",
-      "profit": 11293.78
+      "profit": 11283.94
     },
     {
       "date": "2026-09-26",
-      "profit": 11279.76
+      "profit": 11278.52
     },
     {
       "date": "2026-09-26",
-      "profit": 11274.34
+      "profit": 11285.78
     },
     {
       "date": "2026-09-26",
-      "profit": 11281.6
+      "profit": 11397.94
     },
     {
       "date": "2026-09-26",
-      "profit": 11393.76
+      "profit": 11396.57
     },
     {
       "date": "2026-09-26",
@@ -886,7 +886,7 @@
     },
     {
       "date": "2026-09-27",
-      "profit": 11389.38
+      "profit": 11444.62
     },
     {
       "date": "2026-09-27",
@@ -902,19 +902,19 @@
     },
     {
       "date": "2026-09-27",
-      "profit": 11387.97
+      "profit": 11437.85
     },
     {
       "date": "2026-09-27",
-      "profit": 11357.94
+      "profit": 11424.71
     },
     {
       "date": "2026-09-27",
-      "profit": 11327.91
+      "profit": 11394.68
     },
     {
       "date": "2026-09-27",
-      "profit": 11314.77
+      "profit": 11350.4
     },
     {
       "date": "2026-09-27",
@@ -922,15 +922,15 @@
     },
     {
       "date": "2026-10-10",
-      "profit": 11319.97
+      "profit": 11313.27
     },
     {
       "date": "2026-10-10",
-      "profit": 11313.61
+      "profit": 11312.87
     },
     {
       "date": "2026-10-10",
-      "profit": 11347.42
+      "profit": 11306.51
     },
     {
       "date": "2026-10-10",
@@ -938,23 +938,23 @@
     },
     {
       "date": "2026-10-10",
-      "profit": 11326.65
+      "profit": 11353.49
     },
     {
       "date": "2026-10-10",
-      "profit": 11371.0
+      "profit": 11351.93
     },
     {
       "date": "2026-10-10",
-      "profit": 11364.76
+      "profit": 11338.26
     },
     {
       "date": "2026-10-10",
-      "profit": 11360.09
+      "profit": 11382.61
     },
     {
       "date": "2026-10-10",
-      "profit": 11358.53
+      "profit": 11377.94
     },
     {
       "date": "2026-10-10",
@@ -962,31 +962,31 @@
     },
     {
       "date": "2026-10-11",
-      "profit": 11397.2
+      "profit": 11386.8
     },
     {
       "date": "2026-10-11",
-      "profit": 11395.78
+      "profit": 11386.41
     },
     {
       "date": "2026-10-11",
-      "profit": 11395.39
+      "profit": 11384.99
     },
     {
       "date": "2026-10-11",
-      "profit": 11396.58
+      "profit": 11410.49
     },
     {
       "date": "2026-10-11",
-      "profit": 11411.68
+      "profit": 11404.11
     },
     {
       "date": "2026-10-11",
-      "profit": 11409.96
+      "profit": 11405.3
     },
     {
       "date": "2026-10-11",
-      "profit": 11396.96
+      "profit": 11403.58
     },
     {
       "date": "2026-10-11",
@@ -1002,27 +1002,27 @@
     },
     {
       "date": "2026-10-14",
-      "profit": 11372.52
+      "profit": 11361.29
     },
     {
       "date": "2026-10-14",
-      "profit": 11375.13
+      "profit": 11356.04
     },
     {
       "date": "2026-10-14",
-      "profit": 11359.96
+      "profit": 11352.1
     },
     {
       "date": "2026-10-14",
-      "profit": 11373.01
+      "profit": 11348.61
     },
     {
       "date": "2026-10-14",
-      "profit": 11369.52
+      "profit": 11387.29
     },
     {
       "date": "2026-10-14",
-      "profit": 11408.2
+      "profit": 11400.34
     },
     {
       "date": "2026-10-14",
@@ -1030,11 +1030,11 @@
     },
     {
       "date": "2026-10-15",
-      "profit": 11399.28
+      "profit": 11400.42
     },
     {
       "date": "2026-10-15",
-      "profit": 11396.75
+      "profit": 11480.88
     },
     {
       "date": "2026-10-15",
@@ -1042,7 +1042,7 @@
     },
     {
       "date": "2026-10-15",
-      "profit": 11474.14
+      "profit": 11480.58
     },
     {
       "date": "2026-10-15",
@@ -1054,23 +1054,23 @@
     },
     {
       "date": "2026-10-15",
-      "profit": 11457.65
+      "profit": 11454.63
     },
     {
       "date": "2026-10-15",
-      "profit": 11447.38
+      "profit": 11440.61
     },
     {
       "date": "2026-10-15",
-      "profit": 11432.21
+      "profit": 11430.34
     },
     {
       "date": "2026-10-15",
-      "profit": 11422.75
+      "profit": 11415.17
     },
     {
       "date": "2026-10-15",
-      "profit": 11447.63
+      "profit": 11405.71
     },
     {
       "date": "2026-10-15",
@@ -1154,11 +1154,11 @@
     },
     {
       "date": "2026-10-24",
-      "profit": 11395.86
+      "profit": 11395.22
     },
     {
       "date": "2026-10-24",
-      "profit": 11392.61
+      "profit": 11391.97
     },
     {
       "date": "2026-10-24",
@@ -1226,7 +1226,7 @@
     },
     {
       "date": "2026-10-28",
-      "profit": 11376.06
+      "profit": 11390.35
     },
     {
       "date": "2026-10-28",
@@ -1286,7 +1286,7 @@
     },
     {
       "date": "2026-10-31",
-      "profit": 11410.67
+      "profit": 11392.63
     },
     {
       "date": "2026-10-31",
@@ -1302,7 +1302,7 @@
     },
     {
       "date": "2026-10-31",
-      "profit": 11452.83
+      "profit": 11455.34
     },
     {
       "date": "2026-10-31",
@@ -1334,19 +1334,43 @@
     },
     {
       "date": "2026-11-02",
-      "profit": 11419.49
+      "profit": 11433.43
     },
     {
       "date": "2026-11-02",
-      "profit": 11418.23
+      "profit": 11434.52
     },
     {
       "date": "2026-11-02",
-      "profit": 11419.32
+      "profit": 11422.69
     },
     {
       "date": "2026-11-02",
       "profit": 11407.49
+    },
+    {
+      "date": "2026-11-07",
+      "profit": 11392.28
+    },
+    {
+      "date": "2026-11-07",
+      "profit": 11377.07
+    },
+    {
+      "date": "2026-11-07",
+      "profit": 11364.35
+    },
+    {
+      "date": "2026-11-07",
+      "profit": 11349.14
+    },
+    {
+      "date": "2026-11-07",
+      "profit": 11334.72
+    },
+    {
+      "date": "2026-11-07",
+      "profit": 11324.39
     }
   ]
 }
