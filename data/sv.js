@@ -37,6 +37,12 @@ const swedishData = {
       description: "Certifierad med 25 dagars teknisk utbildning i Datatransmission, med fokus på standarden Synchronous Digital Hierarchy (SDH) och Marconi transmissionssystem. Dokumenterad expertis inom hela livscykeln för SDH-nätverk, inklusive nätverksprinciper, drift, underhåll och komplex design. Kunskaper i specifika Marconi-plattformar (41/51 C, STM-1 MSH 11, MSH63/64) och nätverkshanteringsverktyg (Marconi MV36/38). Stark grund inom Optiska Tekniker och praktisk erfarenhet av mätningar och felsökning av datanätverk med hög kapacitet. Redo att bidra med djup teknisk kunskap för att hantera och optimera kritisk telekommunikationsinfrastruktur."
     },
     {
+      school: "Lindholmens Gymnasium",
+      program: "Fordonsteknik - Inriktning Personbil",
+      years: "",
+      description: "Praktisk och teoretisk kompetens inom modern fordonsteknik, service och felsökning. Utbildad i att hantera avancerade mekaniska verktyg, datorbaserad OBD-II-diagnostik och elektronik för effektiv felkodshantering. Erfarenhet av underhåll av motor, bromsar och växellådor, samt grundläggande kunskaper inom högspänningssäkerhet för el- och hybridfordon (EV)."
+    },
+    {
       school: "K3 - Karlsborg",
       program: "Militärtjänst - Jägarutbildning",
       years: "",
