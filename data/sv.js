@@ -40,7 +40,7 @@ const swedishData = {
       school: "Lindholmens Gymnasium",
       program: "Fordonsteknik - Inriktning Personbil",
       years: "",
-      description: "Praktisk och teoretisk kompetens inom modern fordonsteknik, service och felsökning. Utbildad i att hantera avancerade mekaniska verktyg, datorbaserad OBD-II-diagnostik och elektronik för effektiv felkodshantering. Erfarenhet av underhåll av motor, bromsar och växellådor, samt grundläggande kunskaper inom högspänningssäkerhet för el- och hybridfordon (EV)."
+      description: "Praktisk och teoretisk kompetens inom modern fordonsteknik, service och felsökning. Utbildad i att hantera avancerade mekaniska verktyg, datorbaserad OBD-II-diagnostik och elektronik för effektiv felkodshantering. Erfarenhet av underhåll av motor, bromsar och växellådor."
     },
     {
       school: "K3 - Karlsborg",
