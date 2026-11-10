@@ -40,7 +40,7 @@ const defaultData = {
       school: "Lindholmen Vocational High School",
       program: "Automotive Technology & Diagnostics",
       years: "",
-      description: "Practical and theoretical proficiency in modern automotive engineering, servicing, and fault-tracing. Trained to handle advanced mechanical tools, OBD-II computer diagnostics, and electronics to efficiently locate system errors. The expertise includes hands-on experience in engine, brake, and gearbox maintenance, alongside foundational knowledge in high-voltage safety for electric and hybrid vehicles (EV)."
+      description: "Practical and theoretical proficiency in modern automotive engineering, servicing, and fault-tracing. Trained to handle advanced mechanical tools, OBD-II computer diagnostics, and electronics to efficiently locate system errors. The expertise includes hands-on experience in engine, brake, and gearbox maintenance."
     },
     {
       school: "K3 - Karlsborg",
