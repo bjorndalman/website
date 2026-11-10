@@ -37,8 +37,8 @@ const defaultData = {
       description: "Certified professional with 25 days of specialized technical training in Data Transmission Technology, focusing on the Synchronous Digital Hierarchy (SDH) standard and Marconi transmission systems. Proven expertise in the complete lifecycle of SDH networks, including network principles, operation, maintenance, and complex design. Proficient with specific Marconi platforms (41/51 C, STM-1 MSH 11, MSH63/64) and network management tools (Marconi MV36/38). Strong foundation in Optical Techniques and hands-on experience in measurements and troubleshooting high-capacity data networks. Ready to contribute deep technical knowledge to managing and optimizing critical telecommunications infrastructure."
     },
     {
-      school: "Automotive Technology & Diagnostics",
-      program: "Passenger Car Specialization",
+      school: "Lindholmen Vocational High School",
+      program: "Automotive Technology & Diagnostics",
       years: "",
       description: "Practical and theoretical proficiency in modern automotive engineering, servicing, and fault-tracing. Trained to handle advanced mechanical tools, OBD-II computer diagnostics, and electronics to efficiently locate system errors. The expertise includes hands-on experience in engine, brake, and gearbox maintenance, alongside foundational knowledge in high-voltage safety for electric and hybrid vehicles (EV)."
     },
