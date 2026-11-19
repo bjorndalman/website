@@ -201,8 +201,8 @@
     },
     {
       "date": "2026-01-19",
-      "bankroll": 101277.83,
-      "profit": 1277.83
+      "bankroll": 101277.84,
+      "profit": 1277.84
     },
     {
       "date": "2026-01-20",
@@ -356,8 +356,8 @@
     },
     {
       "date": "2026-03-03",
-      "bankroll": 105288.22,
-      "profit": 5288.22
+      "bankroll": 105288.21,
+      "profit": 5288.21
     },
     {
       "date": "2026-03-04",
@@ -436,8 +436,8 @@
     },
     {
       "date": "2026-03-25",
-      "bankroll": 97416.59,
-      "profit": -2583.41
+      "bankroll": 97416.58,
+      "profit": -2583.42
     },
     {
       "date": "2026-03-26",
@@ -1307,9 +1307,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 1777.5,
-      "kalman_value": 1818.62,
+      "kalman_value": 1818.87,
       "ai_investment": 0.0,
-      "argument": "Sharp price drop indicates elevated short-term event or market risk. (Q: 1.60x, R: 1.00x)"
+      "argument": "Sharp price drop indicates elevated short-term volatility and downside risk. (Q: 1.50x, R: 1.00x)"
     },
     {
       "date": "2026-11-19",
@@ -1339,7 +1339,7 @@
       "price": 31.04,
       "kalman_value": 31.9,
       "ai_investment": 0.0,
-      "argument": "Significant daily decline reflects increased earnings uncertainty and sell pressure. (Q: 1.50x, R: 1.00x)"
+      "argument": "Negative daily movement highlights ongoing earnings and operational uncertainty. (Q: 1.40x, R: 1.00x)"
     },
     {
       "date": "2026-11-19",
@@ -1359,7 +1359,7 @@
       "price": 285.2,
       "kalman_value": 289.28,
       "ai_investment": 0.0,
-      "argument": "Moderate negative price action aligns with typical market movements. (Q: 1.00x, R: 1.00x)"
+      "argument": "Mild price decline reflects stable conditions under standard market noise. (Q: 1.00x, R: 1.00x)"
     },
     {
       "date": "2026-11-19",
@@ -1419,7 +1419,7 @@
       "price": 68.3,
       "kalman_value": 67.91,
       "ai_investment": 0.0,
-      "argument": "Sharp upward movement shows strong positive momentum and reliable trend direction. (Q: 1.50x, R: 0.80x)"
+      "argument": "Strong positive gain indicates increased short-term momentum and volatility. (Q: 1.50x, R: 0.80x)"
     },
     {
       "date": "2026-11-19",
@@ -1449,7 +1449,7 @@
       "price": 112.35,
       "kalman_value": 114.13,
       "ai_investment": 0.0,
-      "argument": "Moderate downward movement under standard market trading noise conditions. (Q: 1.10x, R: 1.00x)"
+      "argument": "Moderate decline aligns with broader market weakness and standard risk. (Q: 1.10x, R: 1.00x)"
     },
     {
       "date": "2026-11-19",
@@ -1469,7 +1469,7 @@
       "price": 274.7,
       "kalman_value": 274.0,
       "ai_investment": 0.0,
-      "argument": "Steady positive gain suggests a constructive upward trend signal. (Q: 1.00x, R: 0.90x)"
+      "argument": "Steady upward movement signals healthy momentum with clear signal quality. (Q: 1.00x, R: 0.90x)"
     },
     {
       "date": "2026-11-19",
@@ -1487,9 +1487,9 @@
       "action": "HOLD",
       "status": "HOLD",
       "price": 48.79,
-      "kalman_value": 49.47,
+      "kalman_value": 49.48,
       "ai_investment": 0.0,
-      "argument": "Typical daily fluctuation showing routine market adjustment without extreme noise. (Q: 1.00x, R: 1.00x)"
+      "argument": "Defensive stock profile maintains stable conditions despite a minor price decline. (Q: 0.90x, R: 1.00x)"
     },
     {
       "date": "2026-11-19",
