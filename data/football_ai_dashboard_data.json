@@ -1,40 +1,13 @@
 {
-  "updated_at": "2026-11-09 15:28",
+  "updated_at": "2026-11-20 06:07",
   "summary": {
     "current_bankroll": 11294.61,
     "profit_sek": 1294.61,
     "profit_pct": 12.95,
-    "next_matchday": "2026-11-20",
-    "last_sync": "2026-11-09 15:28"
+    "next_matchday": "2026-11-21",
+    "last_sync": "2026-11-20 06:07"
   },
   "latest_bets": [
-    {
-      "date": "2026-11-07",
-      "match": "philadelphia union vs toronto",
-      "prediction": "Away",
-      "odds": 6.75,
-      "stake": 10.33,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.26)"
-    },
-    {
-      "date": "2026-11-08",
-      "match": "austin fc vs portland timbers",
-      "prediction": "Home",
-      "odds": 4.75,
-      "stake": 15.21,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.37)"
-    },
-    {
-      "date": "2026-11-08",
-      "match": "dallas vs colorado rapids",
-      "prediction": "Home",
-      "odds": 2.0,
-      "stake": 4.44,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.53)"
-    },
     {
       "date": "2026-11-08",
       "match": "dallas vs colorado rapids",
@@ -97,6 +70,33 @@
       "stake": 2.18,
       "status": "Vinst",
       "reasoning": "Kalman AI EV-spel (Prob: 0.23)"
+    },
+    {
+      "date": "2026-11-21",
+      "match": "new england revolution vs philadelphia union",
+      "prediction": "Home",
+      "odds": 3.11,
+      "stake": 6.58,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.38)"
+    },
+    {
+      "date": "2026-11-22",
+      "match": "chicago fire vs charlotte",
+      "prediction": "Draw",
+      "odds": 4.5,
+      "stake": 2.04,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.24)"
+    },
+    {
+      "date": "2026-11-22",
+      "match": "chicago fire vs charlotte",
+      "prediction": "Away",
+      "odds": 4.75,
+      "stake": 15.06,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.43)"
     }
   ],
   "history": [
