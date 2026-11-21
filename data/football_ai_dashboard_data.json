@@ -1,40 +1,13 @@
 {
-  "updated_at": "2026-11-20 06:07",
+  "updated_at": "2026-11-21 05:59",
   "summary": {
-    "current_bankroll": 11294.61,
-    "profit_sek": 1294.61,
-    "profit_pct": 12.95,
+    "current_bankroll": 11288.03,
+    "profit_sek": 1288.03,
+    "profit_pct": 12.88,
     "next_matchday": "2026-11-21",
-    "last_sync": "2026-11-20 06:07"
+    "last_sync": "2026-11-21 05:59"
   },
   "latest_bets": [
-    {
-      "date": "2026-11-08",
-      "match": "dallas vs colorado rapids",
-      "prediction": "Away",
-      "odds": 3.4,
-      "stake": 5.46,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.34)"
-    },
-    {
-      "date": "2026-11-08",
-      "match": "houston dynamo vs st. louis city",
-      "prediction": "Home",
-      "odds": 2.43,
-      "stake": 8.24,
-      "status": "Vinst",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.48)"
-    },
-    {
-      "date": "2026-11-08",
-      "match": "houston dynamo vs st. louis city",
-      "prediction": "Away",
-      "odds": 2.7,
-      "stake": 3.08,
-      "status": "Förlust",
-      "reasoning": "Kalman AI EV-spel (Prob: 0.4)"
-    },
     {
       "date": "2026-11-08",
       "match": "minnesota united vs san jose",
@@ -97,6 +70,33 @@
       "stake": 15.06,
       "status": "Förlust",
       "reasoning": "Kalman AI EV-spel (Prob: 0.43)"
+    },
+    {
+      "date": "2026-11-23",
+      "match": "vancouver whitecaps vs real salt lake",
+      "prediction": "Draw",
+      "odds": 4.88,
+      "stake": 0.39,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.21)"
+    },
+    {
+      "date": "2026-11-23",
+      "match": "vancouver whitecaps vs real salt lake",
+      "prediction": "Away",
+      "odds": 5.52,
+      "stake": 0.35,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.18)"
+    },
+    {
+      "date": "2026-11-24",
+      "match": "st. louis city vs lafc",
+      "prediction": "Away",
+      "odds": 2.87,
+      "stake": 14.46,
+      "status": "Förlust",
+      "reasoning": "Kalman AI EV-spel (Prob: 0.47)"
     }
   ],
   "history": [
@@ -1082,7 +1082,7 @@
     },
     {
       "date": "2026-10-17",
-      "profit": 11425.66
+      "profit": 11428.87
     },
     {
       "date": "2026-10-17",
@@ -1102,11 +1102,11 @@
     },
     {
       "date": "2026-10-17",
-      "profit": 11410.5
+      "profit": 11413.96
     },
     {
       "date": "2026-10-17",
-      "profit": 11409.62
+      "profit": 11413.08
     },
     {
       "date": "2026-10-17",
@@ -1407,6 +1407,10 @@
     {
       "date": "2026-11-08",
       "profit": 11294.61
+    },
+    {
+      "date": "2026-11-21",
+      "profit": 11288.03
     }
   ]
 }
