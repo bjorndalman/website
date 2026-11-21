@@ -1,47 +1,66 @@
-name: Deploy static content to Pages
+name: Update Sitemap and Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
+# Cancel any in-progress run if a new commit is pushed
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     steps:
-      - name: Checkout
+      - name: Checkout repository with full git history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Generate Sitemap
-        uses: cicirello/generate-sitemap@v1
-        with:
-          base-url-path: https://dalmanium.se/
-          path-to-root: '.'
-          include-html: true
-          sitemap-format: xml
-
-      - name: Commit and push sitemap
+      - name: Generate sitemap.xml
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f sitemap.xml ]; then
-            git add sitemap.xml
-            git commit -m "Automated sitemap update [skip ci]" || echo "No changes to commit"
+          BASE_URL="https://dalmanium.se"
+          {
+            echo '<?xml version="1.0" encoding="UTF-8"?>'
+            echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+
+            # Find all .html and .pdf files, excluding .git and hidden folders
+            find . -type f \( -name "*.html" -o -name "*.pdf" \) \
+              -not -path '*/.*' | sort | while read -r file; do
+
+              # Convert ./index.html -> / and ./sv/index.html -> /sv/
+              rel_path="${file#./}"
+              url_path="/${rel_path}"
+              url_path="${url_path%/index.html}"
+              [[ -z "$url_path" ]] && url_path="/"
+              [[ "$rel_path" == */index.html ]] && url_path="${url_path}/"
+
+              # Get last commit date for the file in ISO 8601 format
+              lastmod=$(git log -1 --format="%cI" -- "$file")
+              [[ -z "$lastmod" ]] && lastmod=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+              echo "  <url>"
+              echo "    <loc>${BASE_URL}${url_path}</loc>"
+              echo "    <lastmod>${lastmod}</lastmod>"
+              echo "  </url>"
+            done
+
+            echo '</urlset>'
+          } > sitemap.xml
+
+      - name: Commit and push updated sitemap.xml
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: update sitemap.xml [skip ci]"
             git push
           fi
 
@@ -53,6 +72,16 @@ jobs:
         with:
           path: '.'
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
