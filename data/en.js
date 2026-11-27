@@ -16,9 +16,10 @@ const defaultData = {
     },
     {
       school: "Chalmers - University of Gothenburg",
-      program: "Further Education 105 ECTS",
+      program: "Further Education 112.5 ECTS",
       years: " - 2026",
       description: [
+        "Embedded Systems In FPGA 7.5 ECTS Points",
         "Digital Electronic Design with VHDL 7.5 ECTS Points",
         "Electronic Design 7.5 ECTS Points",
         "High Voltage Engineering 7.5 ECTS Points",
