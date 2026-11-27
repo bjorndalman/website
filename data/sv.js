@@ -16,9 +16,10 @@ const swedishData = {
     },
     {
       school: "Chalmers - Göteborgs Universitet",
-      program: "Vidareutbildning 105 hp",
+      program: "Vidareutbildning 112.5 hp",
       years: " - 2026",
       description: [
+        "Inbyggda System i FPGA 7.5 hp",
         "Digital Elektronikkonstruktion i VHDL 7.5 hp",
         "Elektronikkonstruktion 7.5 hp",
         "Högspänningsteknik 7.5 hp",
